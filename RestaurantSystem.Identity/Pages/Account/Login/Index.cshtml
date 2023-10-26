@@ -1,0 +1,92 @@
+@page
+@model RestaurantSystem.Identity.Pages.Login.Index
+
+<div class="login-page">   
+
+    <div class="row justify-content-center">
+
+        @if (Model.View.EnableLocalLogin)
+        {
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header bg-warning">
+                        <div class="d-flex">
+                            <div style="font-size: 45px"><i class="fa-solid fa-clover fa-2xl mt-2" style="color: #000000;"></i></div>
+                            <h2 class="m-1">Lucky Food</h2>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <form asp-page="/Account/Login/Index">
+                            <input type="hidden" asp-for="Input.ReturnUrl" />
+                            <div asp-validation-summary="ModelOnly"></div>
+
+                            <div class="form-group">
+                                <label asp-for="Input.Username">Login</label>
+                                <input class="form-control" placeholder="Login" asp-for="Input.Username" autofocus>
+                                <span class="text-danger" asp-validation-for="Input.Username"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Password"></label>
+                                <input type="password" class="form-control" placeholder="Password" asp-for="Input.Password" autocomplete="off">
+                                <span class="text-danger" asp-validation-for="Input.Password"></span>
+                            </div>
+                            
+                            @if (Model.View.AllowRememberLogin)
+                            {
+                                <div class="form-group">
+                                    <div class="form-check">
+                                        <input class="form-check-input" asp-for="Input.RememberLogin">
+                                        <label class="form-check-label" asp-for="Input.RememberLogin">
+                                            Remember me
+                                        </label>
+                                    </div>
+                                    <a class="mt-2" href="/Account/Create">Dont have an account?</a>
+                                </div>
+                            }
+                            
+                            <div class="row">
+                                <button class="btn btn-warning col m-3 font-weight-bold" name="Input.Button" value="login">Login</button>
+                                <button class="btn btn-danger col m-3 font-weight-bold" name="Input.Button" value="cancel">Exit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+
+        @* @if (Model.View.VisibleExternalProviders.Any())
+        {
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h2>External Account</h2>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-inline">
+                            @foreach (var provider in Model.View.VisibleExternalProviders)
+                            {
+                                <li class="list-inline-item">
+                                    <a class="btn btn-secondary"
+                                       asp-page="/ExternalLogin/Challenge"
+                                       asp-route-scheme="@provider.AuthenticationScheme"
+                                       asp-route-returnUrl="@Model.Input.ReturnUrl">
+                                        @provider.DisplayName
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        } *@
+
+        @if (!Model.View.EnableLocalLogin && !Model.View.VisibleExternalProviders.Any())
+        {
+            <div class="alert alert-warning">
+                <strong>Invalid login request</strong>
+                There are no login schemes configured for this request.
+            </div>
+        }
+    </div>
+</div>

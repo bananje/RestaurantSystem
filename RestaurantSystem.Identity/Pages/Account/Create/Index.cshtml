@@ -1,0 +1,62 @@
+@page
+@model RestaurantSystem.Identity.Pages.Create.Index
+
+<div class="login-page">
+
+    @if (!Model.CanClose)
+    {
+         <div class="row justify-content-center">
+
+            <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header bg-warning">
+                        <div class="d-flex">
+                            <div style="font-size: 45px"><i class="fa-solid fa-clover fa-2xl mt-2" style="color: #000000;"></i></div>
+                            <h2 class="m-1">Lucky Food</h2>
+                        </div>
+                    </div>
+
+                    <div class="card-body">
+                        <form asp-page="/Account/Create/Index">
+                            <div asp-validation-summary="ModelOnly"></div>
+
+                            <div class="form-group">
+                                <label asp-for="Input.Username">Login</label>
+                                <input class="form-control" placeholder="Username" asp-for="Input.Username" autofocus>
+                                <span class="text-danger" asp-validation-for="Input.Username"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Password"></label>
+                                <input type="password" class="form-control" placeholder="Password" asp-for="Input.Password" autocomplete="off">
+                                <span class="text-danger" asp-validation-for="Input.Password"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Name"></label>
+                                <input type="text" class="form-control" placeholder="Name" asp-for="Input.Name">
+                                <span class="text-danger" asp-validation-for="Input.Name"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Input.Email"></label>
+                                <input type="email" class="form-control" placeholder="Email" asp-for="Input.Email">
+                                <span class="text-danger" asp-validation-for="Input.Email"></span>
+                            </div>
+
+                            <div class="row">
+                                <button class="btn btn-warning col m-3 font-weight-bold" name="Input.Button" value="create">Register</button>
+                                <button class="btn btn-danger col m-3 font-weight-bold" name="Input.Button" value="cancel">Exit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>        
+    }    
+    else
+    {
+        <div class="d-flex justify-content-center">
+        <img src="~/images/clever.png" width="300" height="300"/>
+        </div>
+        <h1 class="text-center">This page masy be closed!</h1>
+    } 
+
+</div>
