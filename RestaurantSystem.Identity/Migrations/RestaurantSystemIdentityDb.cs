@@ -13,6 +13,5 @@ namespace RestaurantSystem.Models
         public RestaurantSystemIdentityDb(DbContextOptions<RestaurantSystemIdentityDb> options) : base(options)
         {           
         }
-
     }
 }

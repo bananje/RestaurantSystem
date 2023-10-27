@@ -31,7 +31,6 @@ builder.Services.AddAuthentication(options =>
                     options.SaveTokens = true;
 
                     options.GetClaimsFromUserInfoEndpoint = true;
-                    options.ClaimActions.MapAll(); // включить в Claims данный Claim;
                 });
 
 builder.Services.AddAuthorization(cfg =>

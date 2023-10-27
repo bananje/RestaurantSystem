@@ -5,6 +5,6 @@ namespace RestaurantMenu.Utils.IServices
 {
     public interface IValidatorService
     {
-        bool ValidateObject(object obj);
+        bool ValidateModel(object obj);
     }
 }

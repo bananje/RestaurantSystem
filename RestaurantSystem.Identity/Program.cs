@@ -4,6 +4,8 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.ApplicationModels;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
+using RestaurantMenu.Utils.IServices;
+using RestaurantMenu.Utils.Services;
 using RestaurantSystem.Identity;
 using RestaurantSystem.Models;
 using RestaurantSystem.Models.Models;
@@ -15,14 +17,23 @@ var builder = WebApplication.CreateBuilder(args);
 string connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 var migationAssembly = typeof(Program).Assembly.GetName().Name;
 
-builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
 
 builder.Services.AddDbContext<RestaurantSystemIdentityDb>(options =>
                 {
                     options.UseSqlServer(connectionString, opt => opt.MigrationsAssembly(migationAssembly));
                 })
-                .AddIdentity<WebAppUser, IdentityRole>()
+                .AddIdentity<WebAppUser, IdentityRole>(options =>
+                {
+                    options.Password.RequireLowercase = true; 
+                    options.Password.RequireUppercase = true;
+                    options.Password.RequireDigit = true;
+                    options.Password.RequireNonAlphanumeric = true;
+                    options.Password.RequiredLength = 6;
+                })
                 .AddEntityFrameworkStores<RestaurantSystemIdentityDb>();
+
 builder.Services.AddIdentityServer(options =>
                 {
                     options.Events.RaiseErrorEvents = true;
@@ -39,6 +50,11 @@ builder.Services.AddIdentityServer(options =>
                                                 => opt.MigrationsAssembly(migationAssembly)))
                 .AddAspNetIdentity<WebAppUser>();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Auth/Login";
+});
+
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(5);
@@ -46,7 +62,7 @@ builder.Services.AddSession(options =>
     options.Cookie.IsEssential = true;
 });
 
-
+builder.Services.AddTransient<IValidatorService, ValidatorService>();
 
 var app = builder.Build();
 
@@ -55,7 +71,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-app.MapRazorPages().RequireAuthorization();
+app.MapControllers();
 app.UseSession();
 
 if (args.Contains("/seed"))

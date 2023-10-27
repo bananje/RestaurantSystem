@@ -5,14 +5,6 @@
       "PackagePath": "staticwebassets\\css\\site.css"
     },
     {
-      "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\css\\site.min.css",
-      "PackagePath": "staticwebassets\\css\\site.min.css"
-    },
-    {
-      "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\css\\site.scss",
-      "PackagePath": "staticwebassets\\css\\site.scss"
-    },
-    {
       "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\duende-logo.svg",
       "PackagePath": "staticwebassets\\duende-logo.svg"
     },
@@ -23,6 +15,14 @@
     {
       "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\images\\Clever.png",
       "PackagePath": "staticwebassets\\images\\Clever.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\images\\bg.jpg",
+      "PackagePath": "staticwebassets\\images\\bg.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\images\\favicon.ico",
+      "PackagePath": "staticwebassets\\images\\favicon.ico"
     },
     {
       "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\js\\signin-redirect.js",
@@ -93,14 +93,6 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
-    },
-    {
-      "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
-    },
-    {
       "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
@@ -109,28 +101,12 @@
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
-    },
-    {
-      "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
-    },
-    {
       "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
       "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
-    },
-    {
-      "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
-    },
-    {
-      "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
-      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
       "Id": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",

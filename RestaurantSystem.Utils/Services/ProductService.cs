@@ -52,7 +52,7 @@ namespace RestaurantMenu.Utils.Services
         {
             if (product != null)
             {
-                bool isValid = _validatorService.ValidateObject(product);
+                bool isValid = _validatorService.ValidateModel(product);
                 if (!isValid) return false;
 
                 if (isValid)
