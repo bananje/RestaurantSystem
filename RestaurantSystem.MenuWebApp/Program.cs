@@ -34,7 +34,10 @@ builder.Services.AddAuthentication(options =>
                     options.SaveTokens = true;
 
                     options.GetClaimsFromUserInfoEndpoint = true;
+<<<<<<< HEAD
                     options.ClaimActions.MapJsonKey("role", "role");
+=======
+>>>>>>> c7a13f1b4897e0e2ba4d3ba32db6fe63f5c50ee0
                 });
 
 builder.Services.AddAuthorization();

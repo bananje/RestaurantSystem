@@ -59,6 +59,11 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.LogoutPath = "/Auth/Logout";
 });
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = "/Auth/Login";
+});
+
 builder.Services.AddSession(options =>
 {
     options.IdleTimeout = TimeSpan.FromMinutes(5);
@@ -67,7 +72,10 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddTransient<IValidatorService, ValidatorService>();
+<<<<<<< HEAD
 builder.Services.AddTransient<IProfileService, SampleProfileService>();
+=======
+>>>>>>> c7a13f1b4897e0e2ba4d3ba32db6fe63f5c50ee0
 
 var app = builder.Build();
 

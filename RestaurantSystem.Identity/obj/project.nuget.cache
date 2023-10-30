@@ -1,6 +1,10 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "wHv9blOe7spLtgGtHGHdUM4VpoY8ifJTBHkY8bkZoegeaw1nk4Pm5iqWI9XxEzufws9Y5JwB/TqTdZL2kR7XlQ==",
+=======
+  "dgSpecHash": "6jCZDgJGbueGIWuzz+7G04N/BFoIqJilcWgs5Aw/GDXI36QkUjLIXOIi/3ssnFB2itCefMyBaCxHWHWtEoGe8Q==",
+>>>>>>> c7a13f1b4897e0e2ba4d3ba32db6fe63f5c50ee0
   "success": true,
   "projectFilePath": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.Identity\\RestaurantSystem.Identity.csproj",
   "expectedPackageFiles": [

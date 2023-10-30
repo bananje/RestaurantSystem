@@ -28,7 +28,13 @@ namespace RestaurantMenu.App.Pages
         [BindProperty]
         public int MenuId { get; set; }
         public async Task OnGetAsync() 
+<<<<<<< HEAD
         {           
+=======
+        {
+            var t = User.Claims;
+            var userClaims = HttpContext.User.Claims;
+>>>>>>> c7a13f1b4897e0e2ba4d3ba32db6fe63f5c50ee0
             HttpContext.Session.SetInt32(WC.SessionValues.ProductCategory.ToString(), ProductCategory);
             Header = ProductCategory == 1 ? WC.Categories.Food.ToString() : WC.Categories.Bar.ToString();
             Products = await _productService.GetProductsAsync(ProductCategory);
