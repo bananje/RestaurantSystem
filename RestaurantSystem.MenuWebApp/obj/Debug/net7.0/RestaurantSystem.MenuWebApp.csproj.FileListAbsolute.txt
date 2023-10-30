@@ -295,9 +295,6 @@ C:\Users\Hermann\source\repos\RestaurantSystem.MenuWebApp\obj\Debug\net7.0\ref\R
 C:\Users\Hermann\source\repos\RestaurantSystem.MenuWebApp\bin\Debug\net7.0\runtimes\unix\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 C:\Users\Hermann\source\repos\RestaurantSystem.MenuWebApp\bin\Debug\net7.0\runtimes\win\lib\netcoreapp3.1\Microsoft.Data.SqlClient.dll
 C:\Users\Hermann\source\repos\RestaurantSystem.MenuWebApp\bin\Debug\net7.0\runtimes\win\lib\netstandard2.0\System.Runtime.Caching.dll
-C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\obj\Debug\net7.0\RestaurantSystem.MenuWebApp.dll
-C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\obj\Debug\net7.0\refint\RestaurantSystem.MenuWebApp.dll
-C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\obj\Debug\net7.0\RestaurantSystem.MenuWebApp.pdb
 C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\bin\Debug\net7.0\appsettings.Development.json
 C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\bin\Debug\net7.0\appsettings.json
 C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\bin\Debug\net7.0\libman.json
@@ -590,5 +587,8 @@ C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\obj\D
 C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\obj\Debug\net7.0\scopedcss\bundle\RestaurantSystem.MenuWebApp.styles.css
 C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\obj\Debug\net7.0\scopedcss\projectbundle\RestaurantSystem.MenuWebApp.bundle.scp.css
 C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\obj\Debug\net7.0\RestaurantSystem.MenuWebApp.csproj.CopyComplete
+C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\obj\Debug\net7.0\RestaurantSystem.MenuWebApp.dll
+C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\obj\Debug\net7.0\refint\RestaurantSystem.MenuWebApp.dll
+C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\obj\Debug\net7.0\RestaurantSystem.MenuWebApp.pdb
 C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\obj\Debug\net7.0\RestaurantSystem.MenuWebApp.genruntimeconfig.cache
 C:\Users\Hermann\source\repos\RestaurantSystem\RestaurantSystem.MenuWebApp\obj\Debug\net7.0\ref\RestaurantSystem.MenuWebApp.dll

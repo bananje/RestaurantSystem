@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RestaurantSystem.Identity.Views.Auth;
 using RestaurantSystem.Models.Models;
 
 namespace RestaurantSystem.Identity.Pages.Login;

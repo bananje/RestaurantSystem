@@ -43,7 +43,7 @@
         @* Module for addind new products *@
         <div class="d-flex menu-header">
             <h3 class="fw-bold m-4 mb-0 text-uppercase">Меню <span style="color: orange">@Model.Header</span></h3>
-            @if (User.HasClaim(ClaimTypes.DateOfBirth, "01.01.2020"))
+            @if (User.IsInRole("Admin"))
             {
                 <a asp-controller="Product" asp-route-id="0" class="mt-3" style="font-size: 25px">
                     <i class="fa-regular fa-square-plus" style="color: black;"></i>

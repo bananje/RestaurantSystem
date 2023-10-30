@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "RShIg3S+2zK9dpWAY3IHdlYSJrthSTDPnXpubo/OGK0=",
+  "Hash": "VzRIFVK1MG+qW95BvFazVndOZwDLvy2sNdJTSflTo4E=",
   "Source": "RestaurantSystem.MenuWebApp",
   "BasePath": "_content/RestaurantSystem.MenuWebApp",
   "Mode": "Default",
@@ -1309,12 +1309,12 @@
       "OriginalItemSpec": "wwwroot\\images\\menu\\япона-мама.jpg"
     },
     {
-      "Identity": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.MenuWebApp\\wwwroot\\images\\product\\0b7a35ea-206f-4fc6-99d4-ad6444e1aa51.png",
+      "Identity": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.MenuWebApp\\wwwroot\\images\\product\\d7f3eb0f-5577-4eb3-9aba-80d3618a7531.jpg",
       "SourceId": "RestaurantSystem.MenuWebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.MenuWebApp\\wwwroot\\",
       "BasePath": "_content/RestaurantSystem.MenuWebApp",
-      "RelativePath": "images/product/0b7a35ea-206f-4fc6-99d4-ad6444e1aa51.png",
+      "RelativePath": "images/product/d7f3eb0f-5577-4eb3-9aba-80d3618a7531.jpg",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1323,41 +1323,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\product\\0b7a35ea-206f-4fc6-99d4-ad6444e1aa51.png"
-    },
-    {
-      "Identity": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.MenuWebApp\\wwwroot\\images\\product\\77ae53fa-f306-4fa3-9d4a-aa7d788c0357.png",
-      "SourceId": "RestaurantSystem.MenuWebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.MenuWebApp\\wwwroot\\",
-      "BasePath": "_content/RestaurantSystem.MenuWebApp",
-      "RelativePath": "images/product/77ae53fa-f306-4fa3-9d4a-aa7d788c0357.png",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\product\\77ae53fa-f306-4fa3-9d4a-aa7d788c0357.png"
-    },
-    {
-      "Identity": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.MenuWebApp\\wwwroot\\images\\product\\db65bb8d-e95c-425c-a72e-53b586ef01e9.jpg",
-      "SourceId": "RestaurantSystem.MenuWebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.MenuWebApp\\wwwroot\\",
-      "BasePath": "_content/RestaurantSystem.MenuWebApp",
-      "RelativePath": "images/product/db65bb8d-e95c-425c-a72e-53b586ef01e9.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\product\\db65bb8d-e95c-425c-a72e-53b586ef01e9.jpg"
+      "OriginalItemSpec": "wwwroot\\images\\product\\d7f3eb0f-5577-4eb3-9aba-80d3618a7531.jpg"
     },
     {
       "Identity": "C:\\Users\\Hermann\\source\\repos\\RestaurantSystem\\RestaurantSystem.MenuWebApp\\wwwroot\\images\\static\\deliveryBG.jpg",

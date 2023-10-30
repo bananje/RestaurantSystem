@@ -11,7 +11,7 @@ namespace IdentityServerAspNetIdentity;
 
 public class SeedData
 {
-    public static void EnsureSeedData(WebApplication app)
+    public static async void EnsureSeedData(WebApplication app)
     {
         using (var scope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
         {
@@ -35,16 +35,24 @@ public class SeedData
                     throw new Exception(result.Errors.First().Description);
                 }
 
+                await userMgr.AddToRoleAsync(alice, "Admin");
+
                 result = userMgr.AddClaimsAsync(alice, new Claim[]{
                             new Claim(JwtClaimTypes.Name, "Alice Smith"),
                             new Claim(JwtClaimTypes.GivenName, "Alice"),
                             new Claim(JwtClaimTypes.FamilyName, "Smith"),
                             new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
+                            new Claim(JwtClaimTypes.JsonWebKey, "bfe11443-382e-4fd2-9683-38786e48937b")
                         }).Result;
+
+                var userClaims = await userMgr.GetClaimsAsync(alice);
+
                 if (!result.Succeeded)
                 {
                     throw new Exception(result.Errors.First().Description);
-                }              
+                }
+
+                await userMgr.UpdateAsync(alice);
             }         
         }
     }

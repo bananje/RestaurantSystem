@@ -12,12 +12,15 @@
 <div class="row mt-1 m-2">
 
     @foreach (Product prod in Model)
-    {       
+    {
         <div class="col-xl-3 col-sm-6">
             <div class="card mt-5">
                 <div class="d-flex card-marks">
-                    <a asp-controller="Product" asp-route-id="@prod.ProductId" class="m-1"><i class="fa-solid fa-pen-to-square" style="color: darkorange;"></i></a>
-                    <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="m-1"><i class="fa-solid fa-trash" style="color: darkorange;"></i></a>                    
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-controller="Product" asp-route-id="@prod.ProductId" class="m-1"><i class="fa-solid fa-pen-to-square" style="color: darkorange;"></i></a>
+                        <a data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="m-1"><i class="fa-solid fa-trash" style="color: darkorange;"></i></a>
+                    }                  
                 </div>
 
                 @* paste default image *@

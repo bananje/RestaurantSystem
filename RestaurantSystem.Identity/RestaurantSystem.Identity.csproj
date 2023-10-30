@@ -22,10 +22,11 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.Extensions.Localization" Version="7.0.13" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="7.0.9" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\RestaurantSystem.Utils\RestaurantSystem.Utils.csproj" />
+    <ProjectReference Include="..\RestaurantSystem.Utils\RestaurantSystem.Utils.csproj" />
     <ProjectReference Include="..\RestaurantSystem.Models\RestaurantSystem.Models.csproj" />
     <ProjectReference Include="..\RestaurantSystem.Utils\RestaurantSystem.Utils.csproj" />
   </ItemGroup>

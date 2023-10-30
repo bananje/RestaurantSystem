@@ -1,20 +1,32 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace RestaurantSystem.MenuWebApp.Controllers
 {
+    [Route("[controller]")]
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
-        {
-            _logger = logger;
-        }
-
+        [Route("[action]")]
         public IActionResult Index()
         {
             return View();
         }
-        
+
+        [Route("[action]")]
+        public async Task<IActionResult> Logout()
+        {
+            return SignOut(CookieAuthenticationDefaults.AuthenticationScheme,
+                           OpenIdConnectDefaults.AuthenticationScheme);
+        }
+
+        [Authorize]
+        [Route("[action]")]
+        public IActionResult Login()
+        {
+            return RedirectToAction(nameof(Index), "Home");
+        }       
     }
 }

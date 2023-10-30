@@ -1,4 +1,6 @@
-﻿using Duende.IdentityServer.Models;
+﻿using Duende.IdentityServer;
+using Duende.IdentityServer.Models;
+using IdentityModel;
 using RestaurantMenu.Utils;
 
 namespace IdentityServerAspNetIdentity;
@@ -9,7 +11,7 @@ public static class Config
         new IdentityResource[]
         {
             new IdentityResources.OpenId(),
-            new IdentityResources.Profile(),
+            new IdentityResources.Profile()         
         };
 
     public static IEnumerable<ApiScope> ApiScopes =>
@@ -30,11 +32,17 @@ public static class Config
                 AllowedGrantTypes = GrantTypes.Code,
 
                 RedirectUris = { "https://localhost:7235/signin-oidc" },
-                FrontChannelLogoutUri = "https://localhost:7235/signout-oidc",
                 PostLogoutRedirectUris = { "https://localhost:7235/signout-callback-oidc" },
 
                 AllowOfflineAccess = true,
-                AllowedScopes = { "openid", "profile", "Menu"}
+                AllowedScopes =
+                { 
+                    "Menu",
+                    IdentityServerConstants.StandardScopes.OpenId,
+                    IdentityServerConstants.StandardScopes.Profile,
+                    JwtClaimTypes.Role
+                },
+                AlwaysIncludeUserClaimsInIdToken = true,
             },
         };
 }

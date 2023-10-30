@@ -1,16 +1,11 @@
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RestaurantMenu.Models.Models;
 using RestaurantMenu.Utils;
 using RestaurantMenu.Utils.IServices;
-using System.Security.Claims;
 
 namespace RestaurantMenu.App.Pages
 {
-    //[Authorize(Policy = "Admin")]
-    [Authorize]
     public class MenuModel : PageModel
     {
         public bool IsSelectedMenu = false;
@@ -33,13 +28,11 @@ namespace RestaurantMenu.App.Pages
         [BindProperty]
         public int MenuId { get; set; }
         public async Task OnGetAsync() 
-        {
-            var t = User.IsInRole("Admin");
+        {           
             HttpContext.Session.SetInt32(WC.SessionValues.ProductCategory.ToString(), ProductCategory);
             Header = ProductCategory == 1 ? WC.Categories.Food.ToString() : WC.Categories.Bar.ToString();
             Products = await _productService.GetProductsAsync(ProductCategory);
             Menu = await _menuService.GetMenuAsync(ProductCategory);
-            var claims = User.Claims;
         }
         public async Task OnPostGetProducts()
         {

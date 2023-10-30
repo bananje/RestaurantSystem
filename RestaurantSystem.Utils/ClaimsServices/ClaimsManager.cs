@@ -14,9 +14,7 @@ namespace RestaurantSystem.Utils.ClaimsServices
 
             var idTokenJson = context.GetTokenAsync("id_token").GetAwaiter().GetResult();
             var accessTokenJson = context.GetTokenAsync("access_token").GetAwaiter().GetResult();
-            var refreshTokenJson = context.GetTokenAsync("refresh_token").GetAwaiter().GetResult();
 
-            AddTokenInfo("Refresh Token", refreshTokenJson, true);
             AddTokenInfo("Identity Token", idTokenJson);
             AddTokenInfo("Access Token", accessTokenJson);
             AddTokenInfo("User Claims", claims);

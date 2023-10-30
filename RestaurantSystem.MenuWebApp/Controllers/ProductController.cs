@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using RestaurantMenu.Models.Models;
 using RestaurantMenu.Models.VM;
@@ -7,6 +8,8 @@ using RestaurantMenu.Utils.IServices;
 
 namespace RestaurantSystem.MenuApp.Controllers
 {
+    [Authorize(Roles = "Admin")]
+    [Route("[controller]")]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -21,6 +24,8 @@ namespace RestaurantSystem.MenuApp.Controllers
             _mapper = mapper;
             _menuService = menuService;
         }
+
+        [Route("[action]")]
         public async Task<IActionResult> Index(int id)
         {
             int? categoryId = HttpContext.Session.GetInt32(WC.SessionValues.ProductCategory.ToString());
@@ -47,6 +52,7 @@ namespace RestaurantSystem.MenuApp.Controllers
             return View(productVM);
         }
 
+        [Route("[action]")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpsertProductAsync(ProductDTO? product)
@@ -60,6 +66,8 @@ namespace RestaurantSystem.MenuApp.Controllers
             
             return Redirect("/Menu");
         }
+
+        [Route("[action]")]
         public async Task<IActionResult> DeleteProductAsync(int id)
         {
             if(id != 0)

@@ -52,7 +52,7 @@ namespace RestaurantMenu.Utils.Services
         {
             if (product != null)
             {
-                bool isValid = _validatorService.ValidateObject(product);
+                bool isValid = _validatorService.ValidateModel(product);
                 if (!isValid) return false;
 
                 if (isValid)
@@ -62,7 +62,10 @@ namespace RestaurantMenu.Utils.Services
                     Product prodToCache = new();
                     var files = _httpContextProvider.CurrentHttpContext.Request.Form.Files;
 
-                    // edit/update product on db
+                    // update product on db
+                    Product changeProduct = cachedProducts.FirstOrDefault(u => u.ProductId == product.ProductId);
+                    prodToCache = _mapper.Map<Product>(product);
+
                     if (product.ProductId != 0)
                     {
                         string fileId = null;
@@ -90,15 +93,13 @@ namespace RestaurantMenu.Utils.Services
                             }
                             await _db.Images.AddAsync(new Image() { ImageId = fileName, Path = fileName + extension });
                             fileId = fileName.ToString();
-                        }
-
-                        Product changeProduct = cachedProducts.FirstOrDefault(u => u.ProductId == product.ProductId);
-                        prodToCache = _mapper.Map<Product>(product);
-                        if (fileId is not null)
-                        {
                             prodToCache.ImageId = Guid.Parse(fileId);
                         }
-
+                        else
+                        {
+                            prodToCache.ImageId = changeProduct.ImageId;
+                        }
+                                           
                         cachedProducts.Remove(changeProduct);
                         _db.Products.Update(prodToCache);
                     }

@@ -1,18 +1,12 @@
-﻿using RestaurantMenu.Models.Models;
-using RestaurantMenu.Utils.IServices;
-using RestaurantSystem.Models.VM;
-using System;
-using System.Collections.Generic;
+﻿using RestaurantMenu.Utils.IServices;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace RestaurantMenu.Utils.Services
 {
     public class ValidatorService : IValidatorService
     {       
-        public bool ValidateObject(object obj) 
+        public bool ValidateModel(object obj) 
         {
             var validaionContext = new ValidationContext(obj);
             var validationResults = new List<ValidationResult>();
