@@ -1,0 +1,59 @@
+﻿@model RestaurantSystem.Models.VM.LoginVM
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <form class="window" method="post" asp-action="Login">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <input hidden asp-for="ReturnUrl"/>
+
+                <h1> Войти</h1>           
+                <div class="row justify-content-center">
+                    <button type="button" class="btn btn-primary btn-social fw-bold"><i class="fa-brands m-1 fa-vk fa-xl" style="color: white;"></i>VK</button>
+                    <button type="button" class="btn btn-dark btn-social fw-bold"><i class="fa-brands m-1 fa-xl fa-google-plus" style="color: #ffffff;"></i>Google</button>
+                </div>
+
+                <div class="user-input mb-3">                   
+                    <span class="text-danger m-1 fw-bold" asp-validation-for="UserName"></span>
+                    <label asp-for="UserName" class="fw-medium mb-1 m-1 fw-bold"></label>
+                    <div class="input-container">
+                        <i class="fa-solid fa-user text-dark "></i>
+                        <input asp-for="UserName" type="text" placeholder="Ваше имя">
+                    </div>
+                    <span class="text-danger m-1 fw-bold" asp-validation-for="UserName"></span>
+                </div>
+                <div class="user-input mb-3">
+                    <span class="text-danger m-1 fw-bold" asp-validation-for="Password"></span>
+                    <label asp-for="Password" class="fw-medium mb-1 m-1 fw-bold"></label>
+                    <div class="input-container">
+                        <i class="fa-solid fa-lock text-dark"></i>
+                        <input asp-for="Password" type="text" placeholder="Ваш пароль">
+                    </div>
+                    <span class="text-danger m-1 fw-bold" asp-validation-for="UserName"></span>
+                </div>
+                <div class="row" style="margin-left: 60px">
+                    <a class="text-decoration-none fw-bold col-5">Забыли пароль?</a>
+                    <div class="form-check form-switch col">
+                        <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault" asp-for="RememberLogin">
+                        <label class="form-check-label" asp-for="RememberLogin">Запомнить меня</label>
+                    </div>
+                </div>
+
+                <div class="row justify-content-center mt-4 ">
+                    <button value="login" name="Button" type="submit" class="btn btn-warning w-25 m-2 fw-bold">
+                        <i class="fa-solid fa-l m-2 fa-utensils" style="color: #000000;"></i>
+                        Готово
+                     </button>
+                    <button value="cancel" type="submit" name="Button" class="btn btn-dark w-25 m-2 fw-bold">Отмена</button>
+                    <a href="/Auth/Register" class="text-decoration-none mt-3 text-center fw-bold">
+                        Нет аккаунта?
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
