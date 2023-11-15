@@ -1,0 +1,17 @@
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\obj\Debug\net7.0\LuckyFoodSystem.Application.csproj.AssemblyReference.cache
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\obj\Debug\net7.0\LuckyFoodSystem.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\obj\Debug\net7.0\LuckyFoodSystem.Application.AssemblyInfoInputs.cache
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\obj\Debug\net7.0\LuckyFoodSystem.Application.AssemblyInfo.cs
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\obj\Debug\net7.0\LuckyFoodSystem.Application.csproj.CoreCompileInputs.cache
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\bin\Debug\net7.0\LuckyFoodSystem.Application.deps.json
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\bin\Debug\net7.0\LuckyFoodSystem.Application.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\bin\Debug\net7.0\LuckyFoodSystem.Application.pdb
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\bin\Debug\net7.0\LuckyFoodSystem.Contracts.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\bin\Debug\net7.0\LuckyFoodSystem.Contracts.pdb
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\obj\Debug\net7.0\LuckyFoodSystem.Application.csproj.CopyComplete
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\obj\Debug\net7.0\LuckyFoodSystem.Application.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\obj\Debug\net7.0\refint\LuckyFoodSystem.Application.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\obj\Debug\net7.0\LuckyFoodSystem.Application.pdb
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\obj\Debug\net7.0\ref\LuckyFoodSystem.Application.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\bin\Debug\net7.0\LuckyFoodSystem.Domain.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Application\bin\Debug\net7.0\LuckyFoodSystem.Domain.pdb

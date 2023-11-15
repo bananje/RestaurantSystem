@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "Bx+wHF7JV9X1dwbuosq/IidM9p1F2JzWD3dM0TwW3a7rICuHTD2JvI5YQdgbU8FZNefv98VtVJGk6qRmse3TPQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Contracts\\LuckyFoodSystem.Contracts.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Hermann\\.nuget\\packages\\erroror\\1.3.0\\erroror.1.3.0.nupkg.sha512",
+    "C:\\Users\\Hermann\\.nuget\\packages\\microsoft.aspnetcore.http.features\\2.2.0\\microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512",
+    "C:\\Users\\Hermann\\.nuget\\packages\\microsoft.extensions.primitives\\2.2.0\\microsoft.extensions.primitives.2.2.0.nupkg.sha512",
+    "C:\\Users\\Hermann\\.nuget\\packages\\system.memory\\4.5.1\\system.memory.4.5.1.nupkg.sha512",
+    "C:\\Users\\Hermann\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\4.5.1\\system.runtime.compilerservices.unsafe.4.5.1.nupkg.sha512"
+  ],
+  "logs": []
+}

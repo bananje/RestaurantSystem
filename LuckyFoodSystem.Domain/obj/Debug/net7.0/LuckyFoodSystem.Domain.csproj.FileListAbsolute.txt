@@ -1,0 +1,12 @@
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\bin\Debug\net7.0\LuckyFoodSystem.Domain.deps.json
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\bin\Debug\net7.0\LuckyFoodSystem.Domain.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\bin\Debug\net7.0\LuckyFoodSystem.Domain.pdb
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\LuckyFoodSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\LuckyFoodSystem.Domain.AssemblyInfoInputs.cache
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\LuckyFoodSystem.Domain.AssemblyInfo.cs
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\LuckyFoodSystem.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\LuckyFoodSystem.Domain.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\refint\LuckyFoodSystem.Domain.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\LuckyFoodSystem.Domain.pdb
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\ref\LuckyFoodSystem.Domain.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\LuckyFoodSystem.Domain.csproj.AssemblyReference.cache
