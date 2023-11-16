@@ -1,9 +1,8 @@
 ﻿namespace LuckyFoodSystem.Infrastructure.Services.MemoryCacheService
-{
-    public static class CacheSettings<T>
+{    
+    public class CacheSettings
     {
-        public const string ObjKey = $"{nameof(T)} obj with ID -";
-        public const string ListObjKey = $"{nameof(T)} obj list";
+        public const string ObjKey = $"_obj_with_ID";
         public const int StorageTime = 3;
     }
 }

@@ -1,7 +1,6 @@
 ﻿using BuberDinner.Domain.Common.Models;
 using LuckyFoodSystem.AggregationModels.Common.Enumerations;
 using LuckyFoodSystem.AggregationModels.ImageAggregate;
-using LuckyFoodSystem.AggregationModels.ImageAggregate.ValueObjects;
 using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using LuckyFoodSystem.AggregationModels.ProductAggregate;
 
@@ -13,6 +12,7 @@ namespace LuckyFoodSystem.AggregationModels.MenuAggregate
         private readonly List<Image> _images = new();
         public Name Name { get; private set; } = null!;
         public Category Category { get; private set; } = null!;
+
         public IReadOnlyList<Image> Images => _images.ToList();
         public IReadOnlyCollection<Product> Products => _products;
         private Menu(MenuId menuId,

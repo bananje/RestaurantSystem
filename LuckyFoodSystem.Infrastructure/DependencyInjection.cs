@@ -2,7 +2,7 @@
 using LuckyFoodSystem.Application.Common.Interfaces.Services;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Context;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Interceptors;
-using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories;
+using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepository;
 using LuckyFoodSystem.Infrastructure.Services;
 using LuckyFoodSystem.Infrastructure.Services.MemoryCacheService;
 using Microsoft.AspNetCore.Http;
@@ -17,11 +17,12 @@ namespace LuckyFoodSystem.Infrastructure
         public static IServiceCollection AddInfrastructure(this IServiceCollection services,
                                                            IConfiguration configuration)
         {
-            AddServices(services);
-            AddPersistance(services, configuration);
-
             services.AddMemoryCache();
             services.AddDistributedMemoryCache();
+
+            AddServices(services);
+            AddPersistance(services, configuration);
+          
 
             return services;
         }
@@ -30,7 +31,15 @@ namespace LuckyFoodSystem.Infrastructure
         {
             services.AddDbContext<LuckyFoodDbContext>(options =>
                        options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration.GetConnectionString("Redis");             
+            });
+            
+
             services.AddScoped<IMenuRepository, MenuRepository>();
+            services.Decorate<IMenuRepository, CachedMenuRepository>();
+
             services.AddScoped<PublishDomainEventsInterceptor>();
 
             return services;
@@ -39,9 +48,9 @@ namespace LuckyFoodSystem.Infrastructure
         private static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddSingleton<IMemoryCacheProvider, MemoryCacheProvider>();
             services.AddSingleton<IHttpContextProvider, HttpContextProvider>();
             services.AddSingleton<IImageService, ImageService>();
+            services.AddSingleton<ICacheProvider, CacheProvider>();
 
             return services;
         }

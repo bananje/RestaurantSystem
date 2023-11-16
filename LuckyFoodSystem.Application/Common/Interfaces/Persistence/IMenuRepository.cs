@@ -5,9 +5,9 @@ namespace LuckyFoodSystem.Application.Common.Interfaces.Persistence
 {
     public interface IMenuRepository
     {
-        Task<List<Menu>> GetMenusAsync();
-        Task<List<Menu>> GetMenusByCategoryAsync(int categoryId);
-        Task<Menu> GetMenuByIdAsync(MenuId menuId);
+        Task<List<Menu>> GetMenusAsync(CancellationToken cancellationToken = default);
+        Task<List<Menu>> GetMenusByCategoryAsync(int categoryId, CancellationToken cancellationToken = default);
+        Task<Menu> GetMenuByIdAsync(MenuId menuId, CancellationToken cancellationToken = default);
         Task AddMenuAsync(Menu menu, string rootPath);
         //Task RemoveMenuAsync(int menuId, string rootPath);
         //Task UpdateMenuAsync(int menuId, Menu menu, string rootPath);

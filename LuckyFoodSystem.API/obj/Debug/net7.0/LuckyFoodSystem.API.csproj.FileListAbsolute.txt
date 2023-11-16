@@ -93,3 +93,13 @@ C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\LuckyFoodSystem.API.pdb
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\LuckyFoodSystem.API.genruntimeconfig.cache
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\ref\LuckyFoodSystem.API.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7.0\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7.0\Microsoft.Extensions.Caching.StackExchangeRedis.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7.0\Microsoft.Extensions.Options.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7.0\Microsoft.Extensions.Primitives.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7.0\Newtonsoft.Json.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7.0\Scrutor.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7.0\StackExchange.Redis.dll
