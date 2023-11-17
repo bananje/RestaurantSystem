@@ -59,7 +59,13 @@ namespace LuckyFoodSystem.Application.Common.Errors
 
         public override ValidationProblemDetails CreateValidationProblemDetails(HttpContext httpContext, ModelStateDictionary modelStateDictionary, int? statusCode = null, string? title = null, string? type = null, string? detail = null, string? instance = null)
         {
-            throw new NotImplementedException();
+            return new ValidationProblemDetails
+            {
+                Title = title ?? "One or more validation errors occurred.",
+                Status = statusCode ?? StatusCodes.Status400BadRequest,
+                Detail = detail ?? "Please refer to the errors property for additional details.",
+                Instance = instance ?? httpContext.Request.Path
+            };
         }
     }
 }

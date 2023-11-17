@@ -3,5 +3,5 @@
 namespace LuckyFoodSystem.Application.Menus.Common
 {
     public record MenuResult(
-        List<Menu> Menus);
+        List<Menu>? Menus = null);
 }

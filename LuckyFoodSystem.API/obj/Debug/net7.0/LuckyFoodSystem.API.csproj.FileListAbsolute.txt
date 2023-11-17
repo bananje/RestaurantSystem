@@ -78,7 +78,6 @@ C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7.0\LuckyFoodSystem.Application.pdb
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7.0\LuckyFoodSystem.Contracts.pdb
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\bin\Debug\net7.0\LuckyFoodSystem.Domain.pdb
-C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\LuckyFoodSystem.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\staticwebassets\msbuild.LuckyFoodSystem.API.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\staticwebassets\msbuild.build.LuckyFoodSystem.API.props
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\staticwebassets\msbuild.buildMultiTargeting.LuckyFoodSystem.API.props

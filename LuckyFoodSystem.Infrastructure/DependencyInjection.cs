@@ -33,7 +33,7 @@ namespace LuckyFoodSystem.Infrastructure
                        options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = configuration.GetConnectionString("Redis");             
+                options.Configuration = configuration.GetConnectionString(CacheSettings.Redis);             
             });
             
 
@@ -50,7 +50,7 @@ namespace LuckyFoodSystem.Infrastructure
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IHttpContextProvider, HttpContextProvider>();
             services.AddSingleton<IImageService, ImageService>();
-            services.AddSingleton<ICacheProvider, CacheProvider>();
+            services.AddSingleton<IMemoryCacheService, MemoryCacheService>();
 
             return services;
         }

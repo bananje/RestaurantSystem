@@ -1,13 +1,12 @@
 ﻿using LuckyFoodSystem.AggregationModels.ImageAggregate;
 using LuckyFoodSystem.Application.Common.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
-using Microsoft.EntityFrameworkCore;
 
 namespace LuckyFoodSystem.Infrastructure.Services
 {
     public class ImageService : IImageService
     {
-        public async Task<List<Image>> LoadImage(IFormFileCollection files, string rootPath)
+        public async Task<List<Image>> LoadImages(IFormFileCollection files, string rootPath)
         {
             List<Image> images = new();
             foreach (var file in files)
@@ -21,15 +20,18 @@ namespace LuckyFoodSystem.Infrastructure.Services
             }
             return images;
         }
-        public void RemoveImage(string rootPath, Image img)
+        public void RemoveImage(string rootPath, List<Image> images)
         { 
-            if (img is not null)
+            if (images is not null)
             {
-                var oldFile = Path.Combine(rootPath, img.Path);
-                if (File.Exists(oldFile))
+                foreach (var img in images)
                 {
-                    File.Delete(oldFile);
-                }
+                    var oldFile = Path.Combine(rootPath, img.Path);
+                    if (File.Exists(oldFile))
+                    {
+                        File.Delete(oldFile);
+                    }
+                }                              
             }
         }       
     }

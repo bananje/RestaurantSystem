@@ -22,9 +22,4 @@
     <ProjectReference Include="..\LuckyFoodSystem.Domain\LuckyFoodSystem.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Menus\Commands\Update\" />
-    <Folder Include="Menus\Commands\Delete\" />
-  </ItemGroup>
-
 </Project>

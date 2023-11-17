@@ -1,5 +1,8 @@
 ﻿using LuckyFoodSystem.AggregationModels.MenuAggregate;
+using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using LuckyFoodSystem.Application.Menus.Commands.Create;
+using LuckyFoodSystem.Application.Menus.Commands.Delete;
+using LuckyFoodSystem.Application.Menus.Commands.Update;
 using LuckyFoodSystem.Application.Menus.Common;
 using LuckyFoodSystem.Contracts.Menu;
 using Mapster;
@@ -12,6 +15,11 @@ namespace LuckyFoodSystem.Application.Common.Mapping
         {
             config.NewConfig<(CreateMenuRequest Request, string rootPath), CreateMenuCommand>()
                   .Map(dest => dest.rootPath, src => src.rootPath)
+                  .Map(dest => dest, src => src.Request);
+
+            config.NewConfig<(CreateMenuRequest Request, string rootPath, Guid MenuId), UpdateMenuCommand>()
+                  .Map(dest => dest.rootPath, src => src.rootPath)
+                  .Map(dest => dest.MenuId, src => src.MenuId)
                   .Map(dest => dest, src => src.Request);
 
             config.NewConfig<Menu, MenuResponseObject>()
