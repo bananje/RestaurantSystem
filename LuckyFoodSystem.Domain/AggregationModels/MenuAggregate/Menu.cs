@@ -3,7 +3,6 @@ using LuckyFoodSystem.AggregationModels.Common.Enumerations;
 using LuckyFoodSystem.AggregationModels.ImageAggregate;
 using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using LuckyFoodSystem.AggregationModels.ProductAggregate;
-using System.Text.Json.Serialization;
 
 namespace LuckyFoodSystem.AggregationModels.MenuAggregate
 {
@@ -26,14 +25,32 @@ namespace LuckyFoodSystem.AggregationModels.MenuAggregate
 
         public static Menu Create(Name name, Category category)
             => new(MenuId.CreateUnique(), name, category);
+        public static Menu UpdateMenu(Menu oldMenu, Menu newMenu)
+        {
+            var updatedProperties = newMenu.GetType().GetProperties();
+            foreach (var property in updatedProperties)
+            {
+                var newValue = property.GetValue(newMenu);
 
+                if (newValue is IReadOnlyCollection<object> || newValue is MenuId) continue;
+
+                if (newValue is not null)
+                {
+                    var oldProperty = oldMenu.GetType().GetProperty(property.Name);
+                    if (oldProperty != null && oldProperty.CanWrite)
+                    {
+                        oldProperty.SetValue(oldMenu, newValue);
+                    }
+                }
+            }
+
+            return oldMenu;
+        }     
         public static Menu Set(MenuId menuId, Name name, Category category)
             => new(menuId, name, category);
-
         public void AddImages(List<Image> newImages)
-            => newImages.ForEach(img => { _images.Add(img); });       
-        public void RemoveImages(List<Image> newImages)
-            => newImages.ForEach(img => { _images.Remove(img); });
-        public void ClearImages() => _images.Clear();
+            => newImages.ForEach(img => { _images.Add(img); });
+        public void RemoveImages(List<Guid> imageIds)
+            => _images.RemoveAll(img => imageIds.Contains(img.Id.Value));             
     }
 }

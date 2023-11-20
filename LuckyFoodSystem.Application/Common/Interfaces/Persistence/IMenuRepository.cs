@@ -10,6 +10,6 @@ namespace LuckyFoodSystem.Application.Common.Interfaces.Persistence
         Task<Menu> GetMenuByIdAsync(MenuId menuId, CancellationToken cancellationToken = default);
         Task AddMenuAsync(Menu menu, string rootPath, CancellationToken cancellationToken = default);
         Task<bool> RemoveMenuAsync(MenuId menuId, string rootPath, CancellationToken cancellationToken = default);
-        Task UpdateMenuAsync(Menu updatedMenu, List<Guid> imageIds, string rootPath, CancellationToken cancellationToken = default);
+        Task UpdateMenuAsync(Menu updatedMenu, string rootPath, CancellationToken cancellationToken = default, List<Guid> imageIds = null!);
     }
 }

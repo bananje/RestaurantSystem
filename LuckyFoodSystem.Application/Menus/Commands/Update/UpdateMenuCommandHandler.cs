@@ -7,6 +7,7 @@ using LuckyFoodSystem.Application.Menus.Common;
 using LuckyFoodSystem.Domain.AggregationModels.Errors;
 using MediatR;
 
+
 namespace LuckyFoodSystem.Application.Menus.Commands.Update
 {
     internal class UpdateMenuCommandHandler
@@ -18,11 +19,11 @@ namespace LuckyFoodSystem.Application.Menus.Commands.Update
             _menuRepository = menuRepository;
         }
         public async Task<ErrorOr<MenuResult>> Handle(UpdateMenuCommand request, CancellationToken cancellationToken)
-        {
+        {    
             var menuId = MenuId.Create(request.MenuId);
-            var updatedMenu = Menu.Set(menuId, 
+            var updatedMenu = Menu.Set(menuId,
                                        new Name(request.Name),
-                                       Category.FromName(request.Category));
+                                       Category.FromName(request.Category));   
 
             Menu? existedMenu = await _menuRepository.GetMenuByIdAsync(menuId);
             if(existedMenu is null)
@@ -30,8 +31,9 @@ namespace LuckyFoodSystem.Application.Menus.Commands.Update
                 return Errors.Global.ObjectNonExistentException;
             }
 
-            updatedMenu.AddImages(existedMenu.Images.ToList());
-            await _menuRepository.UpdateMenuAsync(updatedMenu, request.ImageIds, request.rootPath, cancellationToken);
+            existedMenu = Menu.UpdateMenu(existedMenu, updatedMenu);
+
+            await _menuRepository.UpdateMenuAsync(existedMenu, request.rootPath, cancellationToken, request.ImageIds);
 
             Menu[] menus = { updatedMenu };
             return new MenuResult(menus.ToList());

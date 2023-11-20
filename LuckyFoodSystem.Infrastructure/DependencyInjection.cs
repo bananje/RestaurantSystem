@@ -49,7 +49,7 @@ namespace LuckyFoodSystem.Infrastructure
         {
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IHttpContextProvider, HttpContextProvider>();
-            services.AddSingleton<IImageService, ImageService>();
+            services.AddTransient<IImageService, ImageService>();
             services.AddSingleton<IMemoryCacheService, MemoryCacheService>();
 
             return services;

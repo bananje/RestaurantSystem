@@ -105,7 +105,7 @@ namespace LuckyFoodSystem.API.Controllers
         }
 
         [HttpPut("/menu/{menuId:guid}")]
-        public async Task<IActionResult> UpdateMenu(Guid menuId, [FromForm] CreateMenuRequest request)
+        public async Task<IActionResult> UpdateMenu(Guid menuId, [FromForm] UpdateMenuRequest request)
         {
             await Task.CompletedTask;
 

@@ -152,13 +152,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
                 }
             }
             return;
-        }    
-
-        public Task UpdateMenuAsync(Menu menu, string rootPath, CancellationToken cancellationToken = default)
-        {
-            throw new NotImplementedException();
-        }
-
+        }          
         public async Task<bool> RemoveMenuAsync(MenuId menuId, string rootPath, CancellationToken cancellationToken)
         {
             await Task.CompletedTask;
@@ -178,12 +172,10 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
             }            
 
             return false;
-        }                     
-
-        public async Task UpdateMenuAsync(Menu updatedMenu, List<Guid> imageIds, string rootPath, CancellationToken cancellationToken = default)
+        }                           
+        public async Task UpdateMenuAsync(Menu updatedMenu, string rootPath, CancellationToken cancellationToken = default, List<Guid> imageIds = null!)
         {
-            await _decorated.UpdateMenuAsync(updatedMenu, imageIds, rootPath, cancellationToken);
-            throw new NotImplementedException();
+            await _decorated.UpdateMenuAsync(updatedMenu, rootPath, cancellationToken, imageIds);
         }
     }
 }

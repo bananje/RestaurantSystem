@@ -1,5 +1,4 @@
 ﻿using ErrorOr;
-using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using LuckyFoodSystem.Application.Menus.Common;
 using MediatR;
 

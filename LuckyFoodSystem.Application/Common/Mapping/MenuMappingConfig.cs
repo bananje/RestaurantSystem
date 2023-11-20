@@ -17,7 +17,7 @@ namespace LuckyFoodSystem.Application.Common.Mapping
                   .Map(dest => dest.rootPath, src => src.rootPath)
                   .Map(dest => dest, src => src.Request);
 
-            config.NewConfig<(CreateMenuRequest Request, string rootPath, Guid MenuId), UpdateMenuCommand>()
+            config.NewConfig<(UpdateMenuRequest Request, string rootPath, Guid MenuId), UpdateMenuCommand>()
                   .Map(dest => dest.rootPath, src => src.rootPath)
                   .Map(dest => dest.MenuId, src => src.MenuId)
                   .Map(dest => dest, src => src.Request);
@@ -30,6 +30,10 @@ namespace LuckyFoodSystem.Application.Common.Mapping
 
             config.NewConfig<MenuResult, MenuResponse>()
                    .Map(dest => dest.Response, src => src.Menus.Adapt<List<MenuResponseObject>>());
+
+            config.NewConfig<UpdateMenuCommand, Menu>()
+                   .Map(dest => dest.Name, src => src.Name)
+                   .Map(dest => dest.Category.Name, src => src.Category);
 
         }
     }

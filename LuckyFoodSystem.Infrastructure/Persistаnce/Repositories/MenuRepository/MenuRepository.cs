@@ -1,6 +1,5 @@
 ﻿using LuckyFoodSystem.AggregationModels.Common.Enumerations;
 using LuckyFoodSystem.AggregationModels.ImageAggregate;
-using LuckyFoodSystem.AggregationModels.ImageAggregate.ValueObjects;
 using LuckyFoodSystem.AggregationModels.MenuAggregate;
 using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using LuckyFoodSystem.Application.Common.Interfaces.Persistence;
@@ -27,8 +26,9 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
         {
             await Task.CompletedTask;
             Menu? menu = _context.Menus.Include(u => u.Images)
-                                        .AsEnumerable()
-                                        .SingleOrDefault(u => u.Id.Value == menuId.Value);
+                                       .AsTracking()
+                                       .AsEnumerable()                                      
+                                       .SingleOrDefault(u => u.Id.Value == menuId.Value);
             return menu;
         }
         public async Task<List<Menu>> GetMenusAsync(CancellationToken cancellationToken = default)
@@ -45,7 +45,6 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
                 if (files.Count() is not 0 || files is not null)
                 {
                     List<Image> images = await _imageService.LoadImages(files, rootPath);
-                    images.ForEach(async img => { await _context.Images.AddAsync(img); });
                     menu.AddImages(images);
                 }
 
@@ -72,7 +71,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
             List<Image> images = selectedMenu.Images.ToList();
             if(images is not null || images.Count() is not 0)
             {
-                _imageService.RemoveImage(rootPath, images);
+                _imageService.RemoveFromPath(rootPath, images);
                 _context.Images.RemoveRange(images);
             }
 
@@ -87,41 +86,24 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
             {
                 await Task.CompletedTask;
             }
-        }              
-
-        public async Task UpdateMenuAsync(Menu updatedMenu, List<Guid> imageIds, 
-                                          string rootPath, CancellationToken cancellationToken = default)
-        {           
-            // upload new files 
+        }                   
+        public async Task UpdateMenuAsync(Menu updatedMenu, string rootPath, CancellationToken cancellationToken = default, List<Guid> imageIds = null!)
+        {
             var files = _httpContextProvider.CurrentHttpContext.Request.Form.Files;
             if (files.Count() is not 0)
             {
                 List<Image> images = await _imageService.LoadImages(files, rootPath);
-                images.ForEach(async img => { await _context.Images.AddAsync(img); });
                 updatedMenu.AddImages(images);
             }
 
-            if (imageIds.Count() is not 0)
-            {              
-                List<Image> fdf = new();
-                foreach (var item in imageIds)
-                {
-                    Image? img =  _context.Images.AsEnumerable()
-                        .FirstOrDefault(u => u.Id.Value == item);
-
-                    _context.Images.Remove(img);
-                    fdf.Add(img);
-                }
-                
-
-                await _context.SaveChangesAsync();
-
-                fdf.RemoveAll(item => imageIds.Contains(item.Id.Value));
-                updatedMenu.AddImages(fdf);
+            if (imageIds is not null)
+            {
+                List<Guid> imagesForDeleting = _imageService.RemoveImages(rootPath, imageIds);
+                updatedMenu.RemoveImages(imagesForDeleting);
             }
 
             _context.Menus.Update(updatedMenu);
-            await _context.SaveChangesAsync();         
+            await _context.SaveChangesAsync();
         }
     }
 }

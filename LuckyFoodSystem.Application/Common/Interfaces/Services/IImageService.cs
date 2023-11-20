@@ -6,6 +6,7 @@ namespace LuckyFoodSystem.Application.Common.Interfaces.Services
     public interface IImageService
     {
         Task<List<Image>> LoadImages(IFormFileCollection files, string rootPath);
-        void RemoveImage(string rootPath, List<Image> images);
+        List<Guid> RemoveImages(string rootPath, List<Guid> imageIds);
+        void RemoveFromPath(string rootPath, List<Image> images);
     }
 }

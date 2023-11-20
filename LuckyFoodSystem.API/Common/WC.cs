@@ -2,7 +2,7 @@
 {
     public static class WC
     {
-        public const string MenuImagePath = "/images/menu";
-        public const string ProductImagePath = "/images/product";
+        public const string MenuImagePath = @"\images\menu";
+        public const string ProductImagePath = @"\images\product";
     }
 }
