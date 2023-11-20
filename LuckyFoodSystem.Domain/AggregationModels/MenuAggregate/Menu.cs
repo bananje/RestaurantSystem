@@ -25,7 +25,7 @@ namespace LuckyFoodSystem.AggregationModels.MenuAggregate
 
         public static Menu Create(Name name, Category category)
             => new(MenuId.CreateUnique(), name, category);
-        public static Menu UpdateMenu(Menu oldMenu, Menu newMenu)
+        public static Menu Update(Menu oldMenu, Menu newMenu)
         {
             var updatedProperties = newMenu.GetType().GetProperties();
             foreach (var property in updatedProperties)

@@ -2,12 +2,11 @@
 using LuckyFoodSystem.AggregationModels.MenuAggregate;
 using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using LuckyFoodSystem.Application.Common.Interfaces.Persistence;
-using LuckyFoodSystem.Infrastructure.Services.MemoryCacheService;
+using LuckyFoodSystem.Infrastructure.Services.Cache;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using StackExchange.Redis;
-
 
 namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepository
 {
@@ -95,7 +94,46 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
                     cancellationToken);
             }
         }      
+        public async Task<bool> RemoveMenuAsync(MenuId menuId, string rootPath, CancellationToken cancellationToken)
+        {
+            await Task.CompletedTask;
+            bool result = await _decorated.RemoveMenuAsync(menuId, rootPath, cancellationToken);
 
+            if (result)
+            {
+                string key = $"{_cacheKey}:{menuId.Value}";
+                string? cachedMenu = await _distributedCache.GetStringAsync(key, cancellationToken);
+
+                if (!string.IsNullOrEmpty(cachedMenu))
+                {
+                    await _distributedCache.RemoveAsync(key, cancellationToken);
+                }
+
+                return true;
+            }            
+
+            return false;
+        }                           
+        public async Task<Menu> UpdateMenuAsync(MenuId menuId, Menu updatedMenu, string rootPath,
+                                                CancellationToken cancellationToken = default, List<Guid> imageIds = null!)
+        {
+            Menu menu = new();
+            if(updatedMenu is not null)
+            {
+                menu = await _decorated.UpdateMenuAsync(menuId, updatedMenu, rootPath, cancellationToken, imageIds);
+
+                if(menu is not null)
+                {
+                    string key = $"{_cacheKey}:{menuId.Value}";
+                    await _distributedCache.SetStringAsync(
+                            key,
+                            JsonConvert.SerializeObject(menu, new MenuConverter()),
+                            cancellationToken);
+                }               
+            }
+
+            return menu!;
+        }
         private async Task<List<Menu>> GetMenuCollectionFromCache(CancellationToken cancellationToken, int categoryId = 0)
         {
             var redis = ConnectionMultiplexer
@@ -152,30 +190,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
                 }
             }
             return;
-        }          
-        public async Task<bool> RemoveMenuAsync(MenuId menuId, string rootPath, CancellationToken cancellationToken)
-        {
-            await Task.CompletedTask;
-            bool result = await _decorated.RemoveMenuAsync(menuId, rootPath, cancellationToken);
-
-            if (result)
-            {
-                string key = $"{_cacheKey}:{menuId.Value}";
-                string? cachedMenu = await _distributedCache.GetStringAsync(key, cancellationToken);
-
-                if (!string.IsNullOrEmpty(cachedMenu))
-                {
-                    await _distributedCache.RemoveAsync(key, cancellationToken);
-                }
-
-                return true;
-            }            
-
-            return false;
-        }                           
-        public async Task UpdateMenuAsync(Menu updatedMenu, string rootPath, CancellationToken cancellationToken = default, List<Guid> imageIds = null!)
-        {
-            await _decorated.UpdateMenuAsync(updatedMenu, rootPath, cancellationToken, imageIds);
         }
+
     }
 }

@@ -26,7 +26,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
         {
             await Task.CompletedTask;
             Menu? menu = _context.Menus.Include(u => u.Images)
-                                       .AsTracking()
+                                       .AsNoTracking()
                                        .AsEnumerable()                                      
                                        .SingleOrDefault(u => u.Id.Value == menuId.Value);
             return menu;
@@ -87,23 +87,31 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
                 await Task.CompletedTask;
             }
         }                   
-        public async Task UpdateMenuAsync(Menu updatedMenu, string rootPath, CancellationToken cancellationToken = default, List<Guid> imageIds = null!)
+        public async Task<Menu> UpdateMenuAsync(MenuId menuId, Menu updatedMenu, string rootPath, CancellationToken cancellationToken = default, List<Guid> imageIds = null!)
         {
-            var files = _httpContextProvider.CurrentHttpContext.Request.Form.Files;
-            if (files.Count() is not 0)
+            var thisMenu = _context.Menus.AsEnumerable().FirstOrDefault(u => u.Id.Value == menuId.Value);
+            if (thisMenu is not null)
             {
-                List<Image> images = await _imageService.LoadImages(files, rootPath);
-                updatedMenu.AddImages(images);
+                thisMenu = Menu.Update(thisMenu, updatedMenu);
+                var files = _httpContextProvider.CurrentHttpContext.Request.Form.Files;
+
+                if (files.Count() is not 0)
+                {
+                    List<Image> images = await _imageService.LoadImages(files, rootPath);
+                    thisMenu.AddImages(images);
+                }
+
+                if (imageIds is not null)
+                {
+                    List<Guid> imagesForDeleting = _imageService.RemoveImages(rootPath, imageIds);
+                    thisMenu.RemoveImages(imagesForDeleting);
+                }
+
+                _context.Menus.Update(thisMenu);
+                await _context.SaveChangesAsync();
             }
 
-            if (imageIds is not null)
-            {
-                List<Guid> imagesForDeleting = _imageService.RemoveImages(rootPath, imageIds);
-                updatedMenu.RemoveImages(imagesForDeleting);
-            }
-
-            _context.Menus.Update(updatedMenu);
-            await _context.SaveChangesAsync();
+            return thisMenu!;
         }
     }
 }

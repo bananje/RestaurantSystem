@@ -29,11 +29,8 @@ namespace LuckyFoodSystem.Application.Menus.Commands.Update
             if(existedMenu is null)
             {
                 return Errors.Global.ObjectNonExistentException;
-            }
-
-            existedMenu = Menu.UpdateMenu(existedMenu, updatedMenu);
-
-            await _menuRepository.UpdateMenuAsync(existedMenu, request.rootPath, cancellationToken, request.ImageIds);
+            }           
+            await _menuRepository.UpdateMenuAsync(menuId, updatedMenu, request.rootPath, cancellationToken, request.ImageIds);
 
             Menu[] menus = { updatedMenu };
             return new MenuResult(menus.ToList());

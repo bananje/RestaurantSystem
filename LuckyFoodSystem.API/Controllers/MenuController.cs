@@ -90,6 +90,7 @@ namespace LuckyFoodSystem.API.Controllers
         }
 
         [HttpDelete("/menu/{menuId:guid}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
         public async Task<IActionResult> RemoveMenuAsync(Guid menuId)
         {
             await Task.CompletedTask;
@@ -100,7 +101,7 @@ namespace LuckyFoodSystem.API.Controllers
             ErrorOr<MenuResult> deletingMenuResult = await _mediator.Send(command);
 
             return deletingMenuResult.Match(
-                addindMenuResult => Accepted(),
+                addindMenuResult => NoContent(),
                 errors => Problem(errors));
         }
 
@@ -115,7 +116,7 @@ namespace LuckyFoodSystem.API.Controllers
             ErrorOr<MenuResult> updatingMenuResult = await _mediator.Send(command);
 
             return updatingMenuResult.Match(
-                updatingMenuResult => Ok(),
+                updatingMenuResult => Ok(_mapper.Map<MenuResponse>(updatingMenuResult)),
                 errors => Problem(errors));
         }
     }
