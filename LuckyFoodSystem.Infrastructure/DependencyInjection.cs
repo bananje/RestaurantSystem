@@ -3,6 +3,7 @@ using LuckyFoodSystem.Application.Common.Interfaces.Services;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Context;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Interceptors;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepository;
+using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductRepository;
 using LuckyFoodSystem.Infrastructure.Services;
 using LuckyFoodSystem.Infrastructure.Services.Cache;
 using LuckyFoodSystem.Infrastructure.Services.Cache.MemoryCacheService;
@@ -40,6 +41,8 @@ namespace LuckyFoodSystem.Infrastructure
 
             services.AddScoped<IMenuRepository, MenuRepository>();
             services.Decorate<IMenuRepository, CachedMenuRepository>();
+
+            services.AddScoped<IProductRepository, ProductRepository>();
 
             services.AddScoped<PublishDomainEventsInterceptor>();
 

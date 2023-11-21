@@ -29,13 +29,14 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
                                        .AsNoTracking()
                                        .AsEnumerable()                                      
                                        .SingleOrDefault(u => u.Id.Value == menuId.Value);
-            return menu;
+            return menu!;
         }
         public async Task<List<Menu>> GetMenusAsync(CancellationToken cancellationToken = default)
-            => await _context.Menus.Include(u => u.Images).ToListAsync();
+            => await _context.Menus.Include(u => u.Images).ToListAsync(cancellationToken);
         public async Task<List<Menu>> GetMenusByCategoryAsync(int categoryId, CancellationToken cancellationToken = default)
             => await _context.Menus
-                        .Where(u => u.Category == Category.FromId(categoryId)).Include(u => u.Images).ToListAsync();
+                        .Where(u => u.Category == Category.FromId(categoryId)).Include(u => u.Images)
+                        .ToListAsync(cancellationToken);
         public async Task AddMenuAsync(Menu menu, string rootPath, CancellationToken cancellationToken = default)
         {
             if (menu is not null)
@@ -47,16 +48,9 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
                     List<Image> images = await _imageService.LoadImages(files, rootPath);
                     menu.AddImages(images);
                 }
-
-                try
-                {                   
-                    _context.Menus.Add(menu);
-                    _context.SaveChanges();
-                }
-                finally
-                {
-                    await Task.CompletedTask;
-                }
+                             
+                await _context.Menus.AddAsync(menu);
+                await _context.SaveChangesAsync(cancellationToken);               
             }
         }
         public async Task<bool> RemoveMenuAsync(MenuId menuId, string rootPath, CancellationToken cancellationToken = default)

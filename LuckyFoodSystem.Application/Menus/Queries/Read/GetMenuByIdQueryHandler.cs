@@ -26,8 +26,7 @@ namespace LuckyFoodSystem.Application.Menus.Queries.Read
                return Errors.Global.ObjectNonExistentException;
             }
 
-            List<Menu> menus = new() { selectedMenu };
-            return new MenuResult(menus);
+            return new MenuResult(new Menu[] { selectedMenu }.ToList());
         }
     }
 }

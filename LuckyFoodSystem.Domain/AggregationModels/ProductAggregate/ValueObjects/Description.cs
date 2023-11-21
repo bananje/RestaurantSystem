@@ -6,7 +6,7 @@ namespace LuckyFoodSystem.AggregationModels.ProductAggregate.ValueObjects
     {
         public Description(string value)
         {
-            if(value.Length < 15 || value.Length > 30)
+            if(value.Length < 15 || value.Length > 300)
             {
                 throw new Exception("Invalid input description");
             }

@@ -11,7 +11,6 @@ using LuckyFoodSystem.Contracts.Menu;
 using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
 namespace LuckyFoodSystem.API.Controllers
 {

@@ -37,7 +37,7 @@ namespace LuckyFoodSystem.AggregationModels.MenuAggregate
                 if (newValue is not null)
                 {
                     var oldProperty = oldMenu.GetType().GetProperty(property.Name);
-                    if (oldProperty != null && oldProperty.CanWrite)
+                    if (oldProperty is not null && oldProperty.CanWrite)
                     {
                         oldProperty.SetValue(oldMenu, newValue);
                     }

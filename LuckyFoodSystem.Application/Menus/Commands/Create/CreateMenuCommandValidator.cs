@@ -2,13 +2,13 @@
 
 namespace LuckyFoodSystem.Application.Menus.Commands.Create
 {
-    public class CreateCommandValidator : AbstractValidator<CreateMenuCommand>
+    public class CreateMenuCommandValidator : AbstractValidator<CreateMenuCommand>
     {
-        public CreateCommandValidator()
+        public CreateMenuCommandValidator()
         {
             RuleFor(x => x.Name)
                         .Length(3, 50)
-                        .WithMessage("Длина наименования должна от 3 до 50 символов");
+                        .WithMessage("Допустимая длина наименования от 3 до 50 символов");
             RuleFor(x => x.Name)
                         .NotEmpty()
                         .WithMessage("Значение не может быть пустым");

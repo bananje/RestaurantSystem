@@ -5,7 +5,6 @@ using LuckyFoodSystem.AggregationModels.MenuAggregate;
 using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using System.Text.Json.Nodes;
 
 namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepository
 {
@@ -41,15 +40,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
         public override void WriteJson(JsonWriter writer, Menu? value, JsonSerializer serializer)
         {
             var images = value.Images.Select(image => new { image.Path, image.Id.Value }).ToList();
-
-            //var properties = value.GetType().GetProperties();
-            //foreach (var property in properties)
-            //{
-            //    var propertyValue = property.GetValue(value);
-            //    if (propertyValue is null) continue;
-
-            //    JsonObject.Create();
-            //}
+           
             JObject obj = new JObject
             {
                 { "Id", value.Id.Value },

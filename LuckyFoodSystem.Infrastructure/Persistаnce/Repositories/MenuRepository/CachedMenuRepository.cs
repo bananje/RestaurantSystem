@@ -15,7 +15,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
         private readonly IMenuRepository _decorated;
         private readonly IDistributedCache _distributedCache;
         private readonly IConfiguration _configuration;
-        private string _cacheKey = $"menus{CacheSettings.ObjKey}";
+        private string _cacheKey = $"menu{CacheSettings.ObjKey}";
 
         public CachedMenuRepository(IMenuRepository decorated,
                                     IDistributedCache distributedCache,

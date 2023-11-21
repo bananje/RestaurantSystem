@@ -17,14 +17,14 @@ namespace LuckyFoodSystem.Application.Menus.Queries.Read
         }             
         public async Task<ErrorOr<MenuResult>> Handle(GetMenuByCategoryQuery request, CancellationToken cancellationToken)
         {
-            var selectedMenu = await _menuRepository.GetMenusByCategoryAsync(request.categoryId);
+            IEnumerable<Menu> selectedMenus = await _menuRepository.GetMenusByCategoryAsync(request.categoryId);
 
-            if (selectedMenu is null)
+            if (selectedMenus is null || selectedMenus.Count() is 0)
             {
                 return Errors.Global.CollectionNonExistentException;
             }
 
-            return new MenuResult(selectedMenu);
+            return new MenuResult(selectedMenus.ToList());
         }
     }
 }
