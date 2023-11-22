@@ -1,5 +1,6 @@
-﻿using LuckyFoodSystem.AggregationModels.ImageAggregate;
-using LuckyFoodSystem.AggregationModels.ImageAggregate.ValueObjects;
+﻿using LuckyFoodSystem.AggregationModels.Common.Enumerations;
+using LuckyFoodSystem.AggregationModels.ImageAggregate;
+using LuckyFoodSystem.AggregationModels.MenuAggregate;
 using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using LuckyFoodSystem.AggregationModels.ProductAggregate;
 using LuckyFoodSystem.AggregationModels.ProductAggregate.ValueObjects;
@@ -13,47 +14,62 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
     public class ProductRepository : IProductRepository
     {
         private readonly IHttpContextProvider _httpContextProvider;
+        private readonly IMenuRepository _menuRepository;
         private readonly IImageService _imageService;
         private readonly LuckyFoodDbContext _context;
         public ProductRepository(IHttpContextProvider httpContextProvider,
                                  IImageService imageService,
-                                 LuckyFoodDbContext context)
+                                 LuckyFoodDbContext context,
+                                 IMenuRepository menuRepository)
         {
             _httpContextProvider = httpContextProvider;
             _imageService = imageService;
             _context = context;
+            _menuRepository = menuRepository;
         }
         
-        public Product GetProductById(ProductId productId, CancellationToken cancellationToken = default)
-                => _context.Products.Include(u => u.Images)
-                                    .Include(u => u.Menus)
-                                    .AsNoTracking()
-                                    .AsEnumerable()
-                                    .SingleOrDefault(u => u.Id.Value == productId.Value)!;       
+        public async Task<Product> GetProductByIdAsync(ProductId productId, CancellationToken cancellationToken = default)
+                => await _context.Products.Include(u => u.Images)
+                                          .Include(u => u.Menus)
+                                          .AsNoTracking().FirstAsync(u => u.Id == productId);       
         public async Task<List<Product>> GetProductsAsync(CancellationToken cancellationToken = default)
                 => await _context.Products.Include(u => u.Images)
                                           .Include(u => u.Menus).ToListAsync(cancellationToken);
         public async Task<List<Product>> GetProductsByCategoryAsync(int categoryId, CancellationToken cancellationToken = default)
-                => await _context.Products.Where(u => u.Category.Id == categoryId)
+                => await _context.Products.Where(u => u.Category == Category.FromId(categoryId))
                                           .Include(u => u.Images)
-                                          .Include(u => u.Menus).ToListAsync(cancellationToken);
-        public async Task<List<Product>> GetProductsByMenuAsync(MenuId menuId, CancellationToken cancellationToken = default)
-                => await _context.Products.Where(u => u.Menus.Any(i => i.Id.Value == menuId.Value))
                                           .Include(u => u.Menus)
-                                          .Include(u => u.Images).ToListAsync(cancellationToken);
-       
-        public async Task AddProductAsync(Product product, string rootPath, CancellationToken cancellationToken = default)
+                                          .ToListAsync(cancellationToken);
+        public async Task<List<Product>> GetProductsByMenuAsync(MenuId menuId, CancellationToken cancellationToken = default)
+                => await _context.Products.Where(u => u.Menus.Any(i => i.Id == menuId))
+                                          .Include(u => u.Menus)
+                                          .Include(u => u.Images).ToListAsync(cancellationToken);     
+        public async Task AddProductAsync(Product product, List<Guid> menusIds, string rootPath, CancellationToken cancellationToken = default)
         {
             if(product is not null)
-            {
-                var files = _httpContextProvider.CurrentHttpContext.Request.Form.Files;
+            {               
+                if(menusIds.Count() is not 0)
+                {
+                    List<Menu> menus = new();
+                    foreach (var menuId in menusIds)
+                    {
+                        Menu? menu = await _menuRepository.GetMenuByIdAsync(MenuId.Create(menuId));
+                        if (menu is null) continue;
 
-                if (files.Count() is not 0 || files is not null)
+                        _context.Attach(menu);
+                        menus.Add(menu);
+                    }
+
+                    if(menus.Count() is not 0) product.AddMenus(menus);                   
+                }
+
+                var files = _httpContextProvider.CurrentHttpContext.Request.Form.Files;
+                if (files.Count() is not 0 && files is not null)
                 {
                     List<Image> images = await _imageService.LoadImages(files, rootPath);
                     product.AddImages(images);
                 }
- 
+
                 await _context.Products.AddAsync(product);
                 await _context.SaveChangesAsync(cancellationToken);                
             }
@@ -87,24 +103,44 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             }
         }
         public async Task<Product> UpdateProductAsync(ProductId productId, Product updatedProduct, string rootPath, 
-                                                      CancellationToken cancellationToken = default, List<Guid> imageIds = null!)
+                                                      CancellationToken cancellationToken = default,
+                                                      List<Guid> imageIds = null!, List<Guid> menuAddingIds = null!, List<Guid> menuDeletingIds = null!)
         {
-            var thisProduct = _context.Products.AsEnumerable().FirstOrDefault(u => u.Id.Value == productId.Value);
+            var thisProduct = await _context.Products.Include(u => u.Menus).FirstOrDefaultAsync(u => u.Id == productId);
             if (thisProduct is not null)
             {
                 thisProduct = Product.Update(thisProduct, updatedProduct);
-                var files = _httpContextProvider.CurrentHttpContext.Request.Form.Files;
-
-                if (files.Count() is not 0)
+                
+                if(menuAddingIds is not null)
                 {
-                    List<Image> images = await _imageService.LoadImages(files, rootPath);
-                    thisProduct.AddImages(images);
+                    List<Guid> deletingMenus = new();
+                    foreach (var menuId in menuAddingIds)
+                    {
+                        Menu? menu = await _context.Menus.FirstAsync(u => u.Id == MenuId.Create(menuId));
+                        if (menu is null) continue;
+
+                        deletingMenus.Add(menuId);
+                    }
+
+                    if(deletingMenus.Count() is not 0) thisProduct.RemoveMenus(deletingMenus);                   
+                }
+
+                if(menuDeletingIds is not null)
+                {
+
                 }
 
                 if (imageIds is not null)
                 {
                     List<Guid> imagesForDeleting = _imageService.RemoveImages(rootPath, imageIds);
                     thisProduct.RemoveImages(imagesForDeleting);
+                }
+
+                var files = _httpContextProvider.CurrentHttpContext.Request.Form.Files;
+                if (files.Count() is not 0)
+                {
+                    List<Image> images = await _imageService.LoadImages(files, rootPath);
+                    thisProduct.AddImages(images);
                 }
 
                 _context.Products.Update(thisProduct);

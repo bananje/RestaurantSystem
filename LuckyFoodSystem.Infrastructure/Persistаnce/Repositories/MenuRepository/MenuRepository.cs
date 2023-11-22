@@ -22,21 +22,15 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
             _imageService = imageService;
             _context = context;
         }       
-        public async Task<Menu> GetMenuByIdAsync(MenuId menuId, CancellationToken cancellationToken = default)            
-        {
-            await Task.CompletedTask;
-            Menu? menu = _context.Menus.Include(u => u.Images)
-                                       .AsNoTracking()
-                                       .AsEnumerable()                                      
-                                       .SingleOrDefault(u => u.Id.Value == menuId.Value);
-            return menu!;
-        }
+        public async Task<Menu> GetMenuByIdAsync(MenuId menuId, CancellationToken cancellationToken = default)      
+            => await _context.Menus.Include(u => u.Images)
+                                   .AsNoTracking().LastAsync(u => u.Id == menuId);       
         public async Task<List<Menu>> GetMenusAsync(CancellationToken cancellationToken = default)
             => await _context.Menus.Include(u => u.Images).ToListAsync(cancellationToken);
         public async Task<List<Menu>> GetMenusByCategoryAsync(int categoryId, CancellationToken cancellationToken = default)
             => await _context.Menus
-                        .Where(u => u.Category == Category.FromId(categoryId)).Include(u => u.Images)
-                        .ToListAsync(cancellationToken);
+                     .Where(u => u.Category == Category.FromId(categoryId)).Include(u => u.Images)
+                     .ToListAsync(cancellationToken);
         public async Task AddMenuAsync(Menu menu, string rootPath, CancellationToken cancellationToken = default)
         {
             if (menu is not null)
@@ -63,7 +57,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
             if (selectedMenu is null) return false;
 
             List<Image> images = selectedMenu.Images.ToList();
-            if(images is not null || images.Count() is not 0)
+            if(images is not null || images!.Count() is not 0)
             {
                 _imageService.RemoveFromPath(rootPath, images);
                 _context.Images.RemoveRange(images);

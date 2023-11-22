@@ -9,11 +9,12 @@ namespace LuckyFoodSystem.Application.Common.Interfaces.Persistence
         Task<List<Product>> GetProductsAsync(CancellationToken cancellationToken = default);
         Task<List<Product>> GetProductsByMenuAsync(MenuId menuId, CancellationToken cancellationToken = default);
         Task<List<Product>> GetProductsByCategoryAsync(int categoryId, CancellationToken cancellationToken = default);
-        Product GetProductById(ProductId productId, CancellationToken cancellationToken = default);
+        Task<Product> GetProductByIdAsync(ProductId productId, CancellationToken cancellationToken = default);
         Task<bool> RemoveProductAsync(ProductId productId, string rootPath, CancellationToken cancellationToken = default);
-        Task AddProductAsync(Product product, string rootPath, CancellationToken cancellationToken = default);
+        Task AddProductAsync(Product product, List<Guid> menusIds, string rootPath, CancellationToken cancellationToken = default);
         Task<Product> UpdateProductAsync(ProductId productId, Product updatedProduct,
-                                         string rootPath, CancellationToken cancellationToken = default, List<Guid> imageIds = null!);
+                                         string rootPath, CancellationToken cancellationToken = default,
+                                         List<Guid> imageIds = null!, List<Guid> menuAddingIds = null!, List<Guid> menuDeletingIds = null!);
         
     }
 }

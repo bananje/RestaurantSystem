@@ -75,9 +75,13 @@ namespace LuckyFoodSystem.AggregationModels.ProductAggregate
             return oldProduct;
         }
         public void AddImages(List<Image> newImages)
-            => newImages.ForEach(img => { _images.Add(img); });
+            => newImages.ForEach(_images.Add);
         public void RemoveImages(List<Guid> imageIds)
             => _images.RemoveAll(img => imageIds.Contains(img.Id.Value));
+        public void AddMenus(List<Menu> updatedMenu)
+            => updatedMenu.ForEach(_menus.Add);
+        public void RemoveMenus(List<Guid> menuIds)
+           => _menus.RemoveAll(img => menuIds.Contains(img.Id.Value));
 
     }
 }

@@ -20,7 +20,7 @@ namespace LuckyFoodSystem.Application.Products.Queries.Read
         {
             await Task.CompletedTask;
 
-            var selectedProduct = _productRepository.GetProductById(request.ProductId);
+            var selectedProduct = await _productRepository.GetProductByIdAsync(request.ProductId);
 
             if (selectedProduct is null)
             {

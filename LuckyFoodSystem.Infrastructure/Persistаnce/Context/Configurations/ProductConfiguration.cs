@@ -1,5 +1,6 @@
 ﻿using LuckyFoodSystem.AggregationModels.Common.Enumerations;
 using LuckyFoodSystem.AggregationModels.ProductAggregate;
+using LuckyFoodSystem.AggregationModels.ProductAggregate.Enumerations;
 using LuckyFoodSystem.AggregationModels.ProductAggregate.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -31,6 +32,14 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Context.Configurations
                     .IsRequired();
             });
 
+            builder.OwnsOne(u => u.ShortDescription, desc =>
+            {
+                desc.Property(d => d.Value)
+                    .HasColumnName("ShortDescription")
+                    .HasMaxLength(50)
+                    .IsRequired();
+            });
+
             builder.OwnsOne(u => u.Title, desc =>
             {
                 desc.Property(d => d.Value)
@@ -46,7 +55,19 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Context.Configurations
                     .IsRequired();
             });
 
-            builder.OwnsOne(x => x.Weight);
+            builder.OwnsOne(x => x.Weight, desc =>
+            {
+                desc.Property(d => d.WeightValue)
+                     .HasColumnName("Weight_WeightValue")
+                     .IsRequired();
+
+                desc.Property(d => d.WeightUnit)
+                    .HasColumnName("Weight_WeightUnit")
+                    .IsRequired()
+                    .HasConversion(
+                        id => id.Id,
+                        value => WeightUnits.FromId(value));
+            });
 
             builder.Property(x => x.Category)
                 .IsRequired()

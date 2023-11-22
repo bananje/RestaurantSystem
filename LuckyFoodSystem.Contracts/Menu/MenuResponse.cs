@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-
-namespace LuckyFoodSystem.Contracts.Menu
+﻿namespace LuckyFoodSystem.Contracts.Menu
 {
     public record MenuResponse(
             List<MenuResponseObject> Response);

@@ -87,7 +87,6 @@ C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\LuckyFoodSystem.API.AssemblyInfoInputs.cache
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\LuckyFoodSystem.API.AssemblyInfo.cs
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\LuckyFoodSystem.API.csproj.CoreCompileInputs.cache
-C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\LuckyFoodSystem.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\LuckyFoodSystem.API.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\staticwebassets\msbuild.LuckyFoodSystem.API.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\staticwebassets\msbuild.build.LuckyFoodSystem.API.props
@@ -103,3 +102,4 @@ C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\LuckyFoodSystem.API.pdb
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\LuckyFoodSystem.API.genruntimeconfig.cache
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\ref\LuckyFoodSystem.API.dll
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.API\obj\Debug\net7.0\LuckyFoodSystem.API.MvcApplicationPartsAssemblyInfo.cs

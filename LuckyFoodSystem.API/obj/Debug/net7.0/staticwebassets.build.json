@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "JMR7huHzaQvfAdJfV1BDOTpgYIwunDKuzlDNquwvveM=",
+  "Hash": "bxdoNeN4UH7AImDGf/SSncgAQ9YV0iObXRI0kN5vdcM=",
   "Source": "LuckyFoodSystem.API",
   "BasePath": "_content/LuckyFoodSystem.API",
   "Mode": "Default",
@@ -15,5 +15,91 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.API\\wwwroot\\images\\menu\\0dc71acf-f0ba-49a6-8b2f-415bbfcb5e73.png",
+      "SourceId": "LuckyFoodSystem.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.API\\wwwroot\\",
+      "BasePath": "_content/LuckyFoodSystem.API",
+      "RelativePath": "images/menu/0dc71acf-f0ba-49a6-8b2f-415bbfcb5e73.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\menu\\0dc71acf-f0ba-49a6-8b2f-415bbfcb5e73.png"
+    },
+    {
+      "Identity": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.API\\wwwroot\\images\\menu\\6180e628-ffe6-4504-b665-9bcc6fe334e9.png",
+      "SourceId": "LuckyFoodSystem.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.API\\wwwroot\\",
+      "BasePath": "_content/LuckyFoodSystem.API",
+      "RelativePath": "images/menu/6180e628-ffe6-4504-b665-9bcc6fe334e9.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\menu\\6180e628-ffe6-4504-b665-9bcc6fe334e9.png"
+    },
+    {
+      "Identity": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.API\\wwwroot\\images\\menu\\ea975e47-2ec2-4ad9-b09b-5390d46b90bf.png",
+      "SourceId": "LuckyFoodSystem.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.API\\wwwroot\\",
+      "BasePath": "_content/LuckyFoodSystem.API",
+      "RelativePath": "images/menu/ea975e47-2ec2-4ad9-b09b-5390d46b90bf.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\menu\\ea975e47-2ec2-4ad9-b09b-5390d46b90bf.png"
+    },
+    {
+      "Identity": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.API\\wwwroot\\images\\menu\\eafb221b-6840-4e58-9513-710026ae08ff.png",
+      "SourceId": "LuckyFoodSystem.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.API\\wwwroot\\",
+      "BasePath": "_content/LuckyFoodSystem.API",
+      "RelativePath": "images/menu/eafb221b-6840-4e58-9513-710026ae08ff.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\menu\\eafb221b-6840-4e58-9513-710026ae08ff.png"
+    },
+    {
+      "Identity": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.API\\wwwroot\\images\\product\\640815bd-761d-48e8-a713-828ad134c46e.png",
+      "SourceId": "LuckyFoodSystem.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.API\\wwwroot\\",
+      "BasePath": "_content/LuckyFoodSystem.API",
+      "RelativePath": "images/product/640815bd-761d-48e8-a713-828ad134c46e.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\product\\640815bd-761d-48e8-a713-828ad134c46e.png"
+    }
+  ]
 }

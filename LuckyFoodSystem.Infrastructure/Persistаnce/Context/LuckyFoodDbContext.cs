@@ -11,7 +11,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Context
         public LuckyFoodDbContext() { }
         public LuckyFoodDbContext(DbContextOptions<LuckyFoodDbContext> dbContextOptions) 
             : base(dbContextOptions) { }
-     
+
         public DbSet<Product> Products { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Menu> Menus { get; set; }

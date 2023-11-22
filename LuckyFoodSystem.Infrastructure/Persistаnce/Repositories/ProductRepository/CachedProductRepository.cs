@@ -25,7 +25,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             _distributedCache = distributedCache;
         }
        
-        public Product GetProductById(ProductId productId, CancellationToken cancellationToken = default)
+        public async Task<Product> GetProductById(ProductId productId, CancellationToken cancellationToken = default)
         {
             string key = $"{_cacheKey}:{productId.Value}";
             Product? product;
@@ -33,7 +33,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             string? cachedProduct = _distributedCache.GetString(key);
             if (string.IsNullOrEmpty(cachedProduct))
             {
-                product = _decorated.GetProductById(productId, cancellationToken);
+                product = await _decorated.GetProductByIdAsync(productId, cancellationToken);
 
                 if (product is null) return product!;
 
@@ -83,6 +83,21 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
         }
 
         public Task<Product> UpdateProductAsync(ProductId productId, Product updatedProduct, string rootPath, CancellationToken cancellationToken = default, List<Guid> imageIds = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task AddProductAsync(Product product, List<Guid> menusIds, string rootPath, CancellationToken cancellationToken = default)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<Product> IProductRepository.GetProductByIdAsync(ProductId productId, CancellationToken cancellationToken)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Product> UpdateProductAsync(ProductId productId, Product updatedProduct, string rootPath, CancellationToken cancellationToken = default, List<Guid> imageIds = null, List<Guid> menuIds = null)
         {
             throw new NotImplementedException();
         }

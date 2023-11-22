@@ -81,9 +81,9 @@ namespace LuckyFoodSystem.API.Controllers
             string rootPath = _webHostEnvironment.WebRootPath + WC.MenuImagePath;
             var command = _mapper.Map<CreateMenuCommand>((request, rootPath));
 
-            ErrorOr<MenuResult> addindMenuResult = await _mediator.Send(command);
+            ErrorOr<MenuResult> addingMenuResult = await _mediator.Send(command);
 
-            return addindMenuResult.Match(
+            return addingMenuResult.Match(
                 addindMenuResult => Ok(_mapper.Map<MenuResponse>(addindMenuResult)),
                 errors => Problem(errors));
         }

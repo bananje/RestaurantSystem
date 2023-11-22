@@ -3,5 +3,5 @@
 namespace LuckyFoodSystem.Application.Products.Common
 {
     public record ProductResult(
-            List<Product> Products);
+            List<Product> Products = null!);
 }

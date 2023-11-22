@@ -1,12 +1,13 @@
 ﻿using ErrorOr;
 using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using LuckyFoodSystem.AggregationModels.ProductAggregate.ValueObjects;
-using LuckyFoodSystem.Application.Menus.Common;
-using LuckyFoodSystem.Application.Menus.Queries.Read;
+using LuckyFoodSystem.API.Common;
+using LuckyFoodSystem.Application.Products.Commands.Create;
+using LuckyFoodSystem.Application.Products.Commands.Delete;
+using LuckyFoodSystem.Application.Products.Commands.Update;
 using LuckyFoodSystem.Application.Products.Common;
 using LuckyFoodSystem.Application.Products.Queries.Read;
-using LuckyFoodSystem.Contracts.Menu;
-using LuckyFoodSystem.Contracts.Products;
+using LuckyFoodSystem.Contracts.Product;
 using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -33,12 +34,12 @@ namespace LuckyFoodSystem.API.Controllers
         {
             await Task.CompletedTask;
 
-            var query = new GetAllMenusQuery();
+            var query = new GetAllProductsQuery();
 
-            ErrorOr<MenuResult> getingMenuResult = await _mediator.Send(query);
+            ErrorOr<ProductResult> getingProductResult = await _mediator.Send(query);
 
-            return getingMenuResult.Match(
-                getingMenuResult => Ok(_mapper.Map<ProductResponse>(getingMenuResult)),
+            return getingProductResult.Match(
+                getingProductResult => Ok(_mapper.Map<ProductResponse>(getingProductResult)),
                 errors => Problem(errors));
         }
 
@@ -52,7 +53,7 @@ namespace LuckyFoodSystem.API.Controllers
             ErrorOr<ProductResult> gettingByIdResult = await _mediator.Send(query);
 
             return gettingByIdResult.Match(
-                gettingByIdResult => Ok(_mapper.Map<ProductResult>(gettingByIdResult)),
+                gettingByIdResult => Ok(_mapper.Map<ProductResponse>(gettingByIdResult)),
                 errors => Problem(errors));
         }
 
@@ -81,6 +82,52 @@ namespace LuckyFoodSystem.API.Controllers
 
             return gettingByMenuResult.Match(
                 gettingByMenuResult => Ok(_mapper.Map<ProductResponse>(gettingByMenuResult)),
+                errors => Problem(errors));
+        }
+
+        [HttpPost("/product")]
+        public async Task<IActionResult> СreateProductAsync([FromForm] CreateProductRequest request)
+        {
+            await Task.CompletedTask;
+
+            string rootPath = _webHostEnvironment.WebRootPath + WC.ProductImagePath;
+            var command = _mapper.Map<CreateProductCommand>((request, rootPath));
+
+            ErrorOr<ProductResult> addingProductResult = await _mediator.Send(command);
+
+            return addingProductResult.Match(
+                addingProductResult => Ok(_mapper.Map<ProductResponse>(addingProductResult)),
+                errors => Problem(errors));
+        }
+
+        [HttpDelete("/product/{productId:guid}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        public async Task<IActionResult> RemoveProductAsync(Guid productId)
+        {
+            await Task.CompletedTask;
+
+            string rootPath = _webHostEnvironment.WebRootPath + WC.ProductImagePath;
+            var command = new DeleteProductCommand(ProductId.Create(productId), rootPath);
+
+            ErrorOr<ProductResult> deletingProductResult = await _mediator.Send(command);
+
+            return deletingProductResult.Match(
+                deletingProductResult => NoContent(),
+                errors => Problem(errors));
+        }
+
+        [HttpPut("/product/{productId:guid}")]
+        public async Task<IActionResult> UpdateProductAsync(Guid productId, [FromForm] UpdateProductRequest request)
+        {
+            await Task.CompletedTask;
+
+            string rootPath = _webHostEnvironment.WebRootPath + WC.ProductImagePath;
+            var command = _mapper.Map<UpdateProductCommand>((request, rootPath, productId));
+
+            ErrorOr<ProductResult> updatingProductResult = await _mediator.Send(command);
+
+            return updatingProductResult.Match(
+                updatingMenuResult => Ok(_mapper.Map<ProductResponse>(updatingMenuResult)),
                 errors => Problem(errors));
         }
     }

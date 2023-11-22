@@ -10,11 +10,11 @@ using MediatR;
 
 namespace LuckyFoodSystem.Application.Menus.Commands.Update
 {
-    internal class UpdateMenuCommandHandler
+    internal class UpdateProductCommandHandler
         : IRequestHandler<UpdateMenuCommand, ErrorOr<MenuResult>>
     {
         private readonly IMenuRepository _menuRepository;
-        public UpdateMenuCommandHandler(IMenuRepository menuRepository)
+        public UpdateProductCommandHandler(IMenuRepository menuRepository)
         {
             _menuRepository = menuRepository;
         }
@@ -32,8 +32,7 @@ namespace LuckyFoodSystem.Application.Menus.Commands.Update
             }           
             await _menuRepository.UpdateMenuAsync(menuId, updatedMenu, request.rootPath, cancellationToken, request.ImageIds);
 
-            Menu[] menus = { updatedMenu };
-            return new MenuResult(menus.ToList());
+            return new MenuResult(new Menu[] { updatedMenu }.ToList());
         }
     }
 }

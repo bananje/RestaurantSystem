@@ -12,5 +12,6 @@ namespace LuckyFoodSystem.Application.Products.Commands.Create
             float WeightValue,
             string WeightUnit,
             string Category,
+            List<Guid> MenusIds,
             string rootPath) : IRequest<ErrorOr<ProductResult>>;
 }
