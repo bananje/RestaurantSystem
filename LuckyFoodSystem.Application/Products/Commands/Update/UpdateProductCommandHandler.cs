@@ -40,10 +40,10 @@ namespace LuckyFoodSystem.Application.Products.Commands.Update
                 return Errors.Global.ObjectNonExistentException;
             }         
             
-            await _productRepository.UpdateProductAsync(productId, updatedProduct, request.rootPath,
-                                                        cancellationToken, request.ImagesIds, request.MenusIds);
+            Product newProduct = await _productRepository.UpdateProductAsync(productId, updatedProduct, request.rootPath,
+                                                        cancellationToken, request.ImagesIds, request.AddingMenusIds, request.DeletingMenusIds);
 
-            return new ProductResult(new Product[] { updatedProduct }.ToList());
+            return new ProductResult(new Product[] { newProduct }.ToList());
         }    
     }
 }

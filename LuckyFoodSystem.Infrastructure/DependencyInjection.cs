@@ -43,6 +43,7 @@ namespace LuckyFoodSystem.Infrastructure
             services.Decorate<IMenuRepository, CachedMenuRepository>();
 
             services.AddScoped<IProductRepository, ProductRepository>();
+            services.Decorate<IProductRepository, CachedProductRepository>();
 
             services.AddScoped<PublishDomainEventsInterceptor>();
 

@@ -1,12 +1,13 @@
-﻿using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
+﻿using LuckyFoodSystem.AggregationModels.Common.Enumerations;
+using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using LuckyFoodSystem.AggregationModels.ProductAggregate;
 using LuckyFoodSystem.AggregationModels.ProductAggregate.ValueObjects;
 using LuckyFoodSystem.Application.Common.Interfaces.Persistence;
-using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepository;
 using LuckyFoodSystem.Infrastructure.Services.Cache;
 using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
+using StackExchange.Redis;
 
 namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductRepository
 {
@@ -24,22 +25,23 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             _decorated = productRepository;
             _distributedCache = distributedCache;
         }
-       
-        public async Task<Product> GetProductById(ProductId productId, CancellationToken cancellationToken = default)
+        
+        public async Task<Product> GetProductByIdAsync(ProductId productId, CancellationToken cancellationToken = default)
         {
             string key = $"{_cacheKey}:{productId.Value}";
             Product? product;
 
-            string? cachedProduct = _distributedCache.GetString(key);
+            string? cachedProduct = await _distributedCache.GetStringAsync(key, cancellationToken);
             if (string.IsNullOrEmpty(cachedProduct))
             {
                 product = await _decorated.GetProductByIdAsync(productId, cancellationToken);
 
                 if (product is null) return product!;
 
-                 _distributedCache.SetString(
+                await _distributedCache.SetStringAsync(
                     key,
-                    JsonConvert.SerializeObject(product, new MenuConverter()));
+                    JsonConvert.SerializeObject(product, new ProductConverter()),
+                    cancellationToken);
 
                 return product;
             }
@@ -51,55 +53,163 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
                     ConstructorHandling =
                         ConstructorHandling.AllowNonPublicDefaultConstructor,
                     ContractResolver = new PrivateResolver(),
-                    Converters = { new MenuConverter() }
+                    Converters = { new ProductConverter() }
                 });
 
             return product!;
         }
 
-        public Task<List<Product>> GetProductsAsync(CancellationToken cancellationToken = default)
+        public async Task<List<Product>> GetProductsAsync(CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var productsList = await GetProductCollectionFromCache(cancellationToken);
+
+            if (productsList is null || productsList.Count() is 0)
+            {
+                productsList = await _decorated.GetProductsAsync(cancellationToken);
+                await SetProductCollectionToCache(productsList, cancellationToken);
+            }
+
+            return productsList;
         }
 
-        public Task<List<Product>> GetProductsByCategoryAsync(int categoryId, CancellationToken cancellationToken = default)
+        public async Task<List<Product>> GetProductsByCategoryAsync(int categoryId, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var productsByCategoryNameList = await GetProductCollectionFromCache(cancellationToken, categoryId);
+
+            if (productsByCategoryNameList is null || productsByCategoryNameList.Count() is 0)
+            {
+                productsByCategoryNameList = await _decorated.GetProductsByCategoryAsync(categoryId);
+                await SetProductCollectionToCache(productsByCategoryNameList, cancellationToken);
+            }
+
+            return productsByCategoryNameList;
         }
 
-        public Task<List<Product>> GetProductsByMenuAsync(MenuId menuId, CancellationToken cancellationToken = default)
+        public async Task<List<Product>> GetProductsByMenuAsync(MenuId menuId, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            var productsByMenuIdList = await GetProductCollectionFromCache(cancellationToken,
+                                                                           menuId: menuId.Value.ToString()!);
+
+            if (productsByMenuIdList is null || productsByMenuIdList.Count() is 0)
+            {
+                productsByMenuIdList = await _decorated.GetProductsByMenuAsync(menuId);
+                await SetProductCollectionToCache(productsByMenuIdList, cancellationToken);
+            }
+
+            return productsByMenuIdList;
         }
 
-        public Task<bool> RemoveProductAsync(ProductId productId, string rootPath, CancellationToken cancellationToken = default)
+        public async Task AddProductAsync(Product product, List<Guid> menusIds, string rootPath, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            if (product is not null)
+            {
+                await _decorated.AddProductAsync(product, menusIds, rootPath, cancellationToken);
+
+                string key = $"{_cacheKey}:{product.Id.Value}";
+                await _distributedCache.SetStringAsync(
+                    key,
+                    JsonConvert.SerializeObject(product, new ProductConverter()),
+                    cancellationToken);
+            }
         }
 
-        public Task AddProductAsync(Product product, string rootPath, CancellationToken cancellationToken = default)
+        public async Task<bool> RemoveProductAsync(ProductId productId, string rootPath, CancellationToken cancellationToken = default)
         {
-            throw new NotImplementedException();
+            bool result = await _decorated.RemoveProductAsync(productId, rootPath, cancellationToken);
+
+            if (result)
+            {
+                string key = $"{_cacheKey}:{productId.Value}";
+                string? cachedProduct = await _distributedCache.GetStringAsync(key, cancellationToken);
+
+                if (!string.IsNullOrEmpty(cachedProduct))
+                    await _distributedCache.RemoveAsync(key, cancellationToken);
+
+                return true;
+            }
+
+            return false;
         }
 
-        public Task<Product> UpdateProductAsync(ProductId productId, Product updatedProduct, string rootPath, CancellationToken cancellationToken = default, List<Guid> imageIds = null)
+        public async Task<Product> UpdateProductAsync(ProductId productId, Product updatedProduct, string rootPath, 
+                                                CancellationToken cancellationToken = default, 
+                                                List<Guid> imageIds = null!, List<Guid> menuAddingIds = null!, List<Guid> menuDeletingIds = null!)
         {
-            throw new NotImplementedException();
+            if (updatedProduct is not null)
+            {
+                updatedProduct = await _decorated.UpdateProductAsync(productId, updatedProduct, rootPath, cancellationToken, imageIds, menuAddingIds, menuDeletingIds);
+
+                string key = $"{_cacheKey}:{productId.Value}";
+                await _distributedCache.SetStringAsync(
+                                key,
+                                JsonConvert.SerializeObject(updatedProduct, new ProductConverter()),
+                                cancellationToken);
+            }
+
+            return updatedProduct!;
         }
 
-        public Task AddProductAsync(Product product, List<Guid> menusIds, string rootPath, CancellationToken cancellationToken = default)
+        private async Task<List<Product>> GetProductCollectionFromCache(CancellationToken cancellationToken, 
+                                                                        int categoryId = 0, string menuId = null!)
         {
-            throw new NotImplementedException();
-        }
+            var redis = ConnectionMultiplexer
+               .Connect(_configuration.GetConnectionString(CacheSettings.Redis)!);
 
-        Task<Product> IProductRepository.GetProductByIdAsync(ProductId productId, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
+            var keys = redis.GetServer(_configuration.GetConnectionString(CacheSettings.Redis)!)
+                            .Keys(pattern: $"{_cacheKey}*");
 
-        public Task<Product> UpdateProductAsync(ProductId productId, Product updatedProduct, string rootPath, CancellationToken cancellationToken = default, List<Guid> imageIds = null, List<Guid> menuIds = null)
+            var productsList = new List<Product>();
+            if (keys.Count() is not 0)
+            {
+                foreach (var key in keys)
+                {
+                    string? value = await _distributedCache.GetStringAsync(key!, cancellationToken);
+
+                    Product product = JsonConvert.DeserializeObject<Product>(
+                        value!,
+                        new JsonSerializerSettings
+                        {
+                            ConstructorHandling =
+                                ConstructorHandling.AllowNonPublicDefaultConstructor,
+                            ContractResolver = new PrivateResolver(),
+                            Converters = { new ProductConverter() }
+                        })!;
+
+                    productsList.Add(product);
+                }
+
+                if (categoryId is not 0)
+                {
+                    if (productsList is not null || productsList!.Count() is not 0)
+                        productsList = productsList!
+                            .Where(u => u.Category.Name == Category.FromId(categoryId).Name).ToList();
+                }
+
+                if(menuId is not null)
+                {
+                    if (productsList is not null || productsList!.Count() is not 0)
+                        productsList = productsList!
+                            .Where(u => u.Menus.Any(u => u.Id == MenuId.Create(Guid.Parse(menuId)))).ToList();
+                }
+            }
+
+            return productsList!;
+        }
+        private async Task SetProductCollectionToCache(List<Product> products, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            if (products.Count() is not 0 || products is not null)
+            {
+                foreach (var product in products)
+                {
+                    string key = $"{_cacheKey}:{product.Id.Value}";
+
+                    await _distributedCache.SetStringAsync(
+                        key,
+                        JsonConvert.SerializeObject(product, new ProductConverter()),
+                        cancellationToken);
+                }
+            }
+            return;
         }
     }
 }

@@ -10,7 +10,8 @@ namespace LuckyFoodSystem.Contracts.Product
             float WeightValue,
             string WeightUnit,
             string Category,
-            List<Guid> ImageIds = null!,
-            List<Guid> MenuIds = null!,
+            HashSet<Guid> ImageIds = null!,
+            HashSet<Guid> DeletingMenuIds = null!,
+            HashSet<Guid> AddingMenuIds = null!,
             IFormFileCollection? Files = null);
 }

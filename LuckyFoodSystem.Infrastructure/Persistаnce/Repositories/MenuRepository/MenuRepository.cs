@@ -22,9 +22,9 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
             _imageService = imageService;
             _context = context;
         }       
-        public async Task<Menu> GetMenuByIdAsync(MenuId menuId, CancellationToken cancellationToken = default)      
+        public async Task<Menu?> GetMenuByIdAsync(MenuId menuId, CancellationToken cancellationToken = default)      
             => await _context.Menus.Include(u => u.Images)
-                                   .AsNoTracking().LastAsync(u => u.Id == menuId);       
+                                   .AsNoTracking().FirstOrDefaultAsync(u => u.Id == menuId);       
         public async Task<List<Menu>> GetMenusAsync(CancellationToken cancellationToken = default)
             => await _context.Menus.Include(u => u.Images).ToListAsync(cancellationToken);
         public async Task<List<Menu>> GetMenusByCategoryAsync(int categoryId, CancellationToken cancellationToken = default)

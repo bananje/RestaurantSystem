@@ -14,6 +14,7 @@ namespace LuckyFoodSystem.Application.Products.Commands.Update
             string WeightUnit,
             string Category,
             string rootPath,
-            List<Guid> MenusIds = null!,
+            List<Guid> DeletingMenusIds = null!,
+            List<Guid> AddingMenusIds = null!,
             List<Guid> ImagesIds = null!) : IRequest<ErrorOr<ProductResult>>;
 }

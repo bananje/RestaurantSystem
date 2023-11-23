@@ -6,5 +6,5 @@ namespace LuckyFoodSystem.Contracts.Menu
             string? Name = null,
             string? Category = null,
             IFormFileCollection? Files = null,
-            List<Guid>? ImageIds = null);
+            HashSet<Guid>? ImageIds = null);
 }

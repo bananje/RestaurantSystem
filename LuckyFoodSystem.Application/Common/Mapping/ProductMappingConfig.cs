@@ -33,7 +33,8 @@ namespace LuckyFoodSystem.Application.Common.Mapping
             config.NewConfig<(UpdateProductRequest Request, string rootPath, Guid ProductId), UpdateProductCommand>()
                   .Map(dest => dest.rootPath, src => src.rootPath)
                   .Map(dest => dest.ProductId, src => src.ProductId)
-                  .Map(dest => dest.MenusIds, src => src.Request.MenuIds)
+                  .Map(dest => dest.DeletingMenusIds, src => src.Request.DeletingMenuIds)
+                  .Map(dest => dest.AddingMenusIds, src => src.Request.AddingMenuIds)
                   .Map(dest => dest.ImagesIds, src => src.Request.ImageIds)
                   .Map(dest => dest, src => src.Request);
         }

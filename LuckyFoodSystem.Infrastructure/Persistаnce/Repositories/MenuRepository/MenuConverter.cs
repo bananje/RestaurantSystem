@@ -10,16 +10,17 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
 {
     public class MenuConverter : JsonConverter<Menu>
     {
-        public override Menu? ReadJson(JsonReader reader, Type objectType, Menu? existingValue, bool hasExistingValue, JsonSerializer serializer)
+        public override Menu? ReadJson(JsonReader reader, Type objectType,
+                                       Menu? existingValue, bool hasExistingValue, JsonSerializer serializer)
         {
             JObject obj = JObject.Load(reader);
 
             var menu = Menu.Set(
-                MenuId.Create(Guid.Parse(obj["Id"]!.ToString())),
-                new Name(obj["Name"]!.ToString()),
-                Category.FromName(obj["Category"]!.ToString()));
+                MenuId.Create(Guid.Parse(obj[nameof(Menu.Id)]!.ToString())),
+                new Name(obj[nameof(Menu.Name)]!.ToString()),
+                Category.FromName(obj[nameof(Menu.Category)]!.ToString()));
 
-            var imagesToken = obj["Images"];
+            var imagesToken = obj[nameof(Menu.Images)];
             if (imagesToken != null && imagesToken.Type == JTokenType.Array)
             {
                 List<Image> images = new();
@@ -39,14 +40,14 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
 
         public override void WriteJson(JsonWriter writer, Menu? value, JsonSerializer serializer)
         {
-            var images = value.Images.Select(image => new { image.Path, image.Id.Value }).ToList();
+            var images = value!.Images.Select(image => new { image.Path, image.Id.Value }).ToList();
            
             JObject obj = new JObject
             {
-                { "Id", value.Id.Value },
-                { "Name", value.Name.Value },
-                { "Category", value.Category.Name },
-                { "Images", JToken.FromObject(images, serializer) }
+                { nameof(Menu.Id), value.Id.Value },
+                { nameof(Menu.Name), value.Name.Value },
+                { nameof(Menu.Category), value.Category.Name },
+                { nameof(Menu.Images), JToken.FromObject(images, serializer) }
             };           
 
             obj.WriteTo(writer);

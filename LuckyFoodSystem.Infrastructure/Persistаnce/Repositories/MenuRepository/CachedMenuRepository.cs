@@ -55,7 +55,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
                     Converters = { new MenuConverter() }
                 });
 
-            return menu;
+            return menu!;
         }              
         public async Task<List<Menu>> GetMenusAsync(CancellationToken cancellationToken = default)
         {           
@@ -165,15 +165,12 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
                 if (categoryId is not 0)
                 {
                     if (menusList is not null || menusList!.Count() is not 0)
-                    {
                         menusList = menusList!
                             .Where(u => u.Category.Name == Category.FromId(categoryId).Name).ToList();
-
-                    }
                 }
             }
 
-            return menusList;
+            return menusList!;
         }
         private async Task SetMenuCollectionToCache(List<Menu> menus, CancellationToken cancellationToken)
         {

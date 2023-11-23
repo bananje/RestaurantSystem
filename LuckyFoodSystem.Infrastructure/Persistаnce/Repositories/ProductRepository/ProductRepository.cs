@@ -28,10 +28,10 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             _menuRepository = menuRepository;
         }
         
-        public async Task<Product> GetProductByIdAsync(ProductId productId, CancellationToken cancellationToken = default)
+        public async Task<Product?> GetProductByIdAsync(ProductId productId, CancellationToken cancellationToken = default)
                 => await _context.Products.Include(u => u.Images)
                                           .Include(u => u.Menus)
-                                          .AsNoTracking().FirstAsync(u => u.Id == productId);       
+                                          .AsNoTracking().FirstOrDefaultAsync(u => u.Id == productId);       
         public async Task<List<Product>> GetProductsAsync(CancellationToken cancellationToken = default)
                 => await _context.Products.Include(u => u.Images)
                                           .Include(u => u.Menus).ToListAsync(cancellationToken);
@@ -106,29 +106,18 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
                                                       CancellationToken cancellationToken = default,
                                                       List<Guid> imageIds = null!, List<Guid> menuAddingIds = null!, List<Guid> menuDeletingIds = null!)
         {
-            var thisProduct = await _context.Products.Include(u => u.Menus).FirstOrDefaultAsync(u => u.Id == productId);
+            var thisProduct = await _context.Products.Include(u => u.Menus)
+                                                     .Include(m => m.Images)
+                                                     .FirstOrDefaultAsync(u => u.Id == productId);
             if (thisProduct is not null)
             {
                 thisProduct = Product.Update(thisProduct, updatedProduct);
                 
                 if(menuAddingIds is not null)
-                {
-                    List<Guid> deletingMenus = new();
-                    foreach (var menuId in menuAddingIds)
-                    {
-                        Menu? menu = await _context.Menus.FirstAsync(u => u.Id == MenuId.Create(menuId));
-                        if (menu is null) continue;
-
-                        deletingMenus.Add(menuId);
-                    }
-
-                    if(deletingMenus.Count() is not 0) thisProduct.RemoveMenus(deletingMenus);                   
-                }
+                    await AddMenuToProductAsync(thisProduct, menuAddingIds);
 
                 if(menuDeletingIds is not null)
-                {
-
-                }
+                    await RemoveMenusFromProductAsync(thisProduct, menuDeletingIds);
 
                 if (imageIds is not null)
                 {
@@ -148,6 +137,33 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             }
 
             return thisProduct!;
+        }
+
+        private async Task RemoveMenusFromProductAsync(Product product, List<Guid> menusIds)
+        {
+            List<Guid> selectedMenus = new();
+            foreach (var menuId in menusIds)
+            {
+                Menu? menu = await _context.Menus.FirstAsync(u => u.Id == MenuId.Create(menuId));
+                if (menu is null) continue;
+
+                selectedMenus.Add(menuId);
+            }
+
+            if (selectedMenus.Count() is not 0) product.RemoveMenus(selectedMenus);
+        }         
+        private async Task AddMenuToProductAsync(Product product, List<Guid> menusIds)
+        {
+            List<Menu> selectedMenus = new();
+            foreach (var menuId in menusIds)
+            {
+                Menu? menu = await _context.Menus.FirstAsync(u => u.Id == MenuId.Create(menuId));
+                if (menu is null) continue;
+
+                selectedMenus.Add(menu);
+            }
+
+            if (selectedMenus.Count() is not 0) product.AddMenus(selectedMenus);
         }
     }
 }
