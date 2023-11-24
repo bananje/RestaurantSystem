@@ -23,22 +23,13 @@ namespace LuckyFoodSystem.Infrastructure
             services.AddDistributedMemoryCache();
 
             AddServices(services);
-            AddPersistance(services, configuration);
+            AddPersistance(services);
+            AddContext(services, configuration);
           
-
             return services;
         }
-        private static IServiceCollection AddPersistance(this IServiceCollection services,
-                                                        IConfiguration configuration)
-        {
-            services.AddDbContext<LuckyFoodDbContext>(options =>
-                       options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-            services.AddStackExchangeRedisCache(options =>
-            {
-                options.Configuration = configuration.GetConnectionString(CacheSettings.Redis);             
-            });
-            
-
+        public static IServiceCollection AddPersistance(this IServiceCollection services)
+        {                      
             services.AddScoped<IMenuRepository, MenuRepository>();
             services.Decorate<IMenuRepository, CachedMenuRepository>();
 
@@ -50,7 +41,20 @@ namespace LuckyFoodSystem.Infrastructure
             return services;
         }
 
-        private static IServiceCollection AddServices(this IServiceCollection services)
+        public static IServiceCollection AddContext(this IServiceCollection services,
+                                                    IConfiguration configuration)
+        {
+            services.AddDbContext<LuckyFoodDbContext>(options =>
+                      options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.Configuration = configuration.GetConnectionString(CacheSettings.Redis);
+            });
+
+            return services;
+        }
+
+        public static IServiceCollection AddServices(this IServiceCollection services)
         {
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
             services.AddSingleton<IHttpContextProvider, HttpContextProvider>();

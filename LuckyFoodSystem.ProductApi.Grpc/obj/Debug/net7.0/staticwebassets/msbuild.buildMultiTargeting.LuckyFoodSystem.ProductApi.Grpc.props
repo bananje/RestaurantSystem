@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\LuckyFoodSystem.ProductApi.Grpc.props" />
+</Project>
