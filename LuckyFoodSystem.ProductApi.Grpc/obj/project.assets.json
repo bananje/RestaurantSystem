@@ -3868,6 +3868,8 @@
   "projectFileDependencyGroups": {
     "net7.0": [
       "Grpc.AspNetCore >= 2.49.0",
+      "LuckyFoodSystem.Application >= 1.0.0",
+      "LuckyFoodSystem.Domain >= 1.0.0",
       "LuckyFoodSystem.Infrastructure >= 1.0.0"
     ]
   },
@@ -3904,6 +3906,12 @@
         "net7.0": {
           "targetAlias": "net7.0",
           "projectReferences": {
+            "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Application\\LuckyFoodSystem.Application.csproj": {
+              "projectPath": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Application\\LuckyFoodSystem.Application.csproj"
+            },
+            "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Domain\\LuckyFoodSystem.Domain.csproj": {
+              "projectPath": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Domain\\LuckyFoodSystem.Domain.csproj"
+            },
             "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Infrastructure\\LuckyFoodSystem.Infrastructure.csproj": {
               "projectPath": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Infrastructure\\LuckyFoodSystem.Infrastructure.csproj"
             }

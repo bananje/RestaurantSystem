@@ -34,7 +34,7 @@ namespace LuckyFoodSystem.Application.Products.Commands.Update
                                           new Weight(request.WeightValue, WeightUnits.FromName(request.WeightUnit)),
                                           Category.FromName(request.Category));
 
-            Product? existedProduct = await _productRepository.GetProductByIdAsync(productId);
+            Product? existedProduct = await _productRepository.GetProductByIdAsync(productId, cancellationToken);
             if(existedProduct is null)
             {
                 return Errors.Global.ObjectNonExistentException;

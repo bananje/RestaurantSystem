@@ -380,6 +380,12 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
+              "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Application\\LuckyFoodSystem.Application.csproj": {
+                "projectPath": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Application\\LuckyFoodSystem.Application.csproj"
+              },
+              "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Domain\\LuckyFoodSystem.Domain.csproj": {
+                "projectPath": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Domain\\LuckyFoodSystem.Domain.csproj"
+              },
               "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Infrastructure\\LuckyFoodSystem.Infrastructure.csproj": {
                 "projectPath": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Infrastructure\\LuckyFoodSystem.Infrastructure.csproj"
               }

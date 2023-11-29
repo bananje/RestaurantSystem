@@ -27,7 +27,7 @@ namespace LuckyFoodSystem.Application.Products.Commands.Create
                                          new Weight(request.WeightValue, WeightUnits.FromName(request.WeightUnit)),
                                          Category.FromName(request.Category));
 
-            await _productRepository.AddProductAsync(product, request.MenusIds, request.rootPath);
+            await _productRepository.AddProductAsync(product, request.MenusIds, request.rootPath, cancellationToken);
 
             return new ProductResult(new Product[] { product }.ToList());
         }

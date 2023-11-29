@@ -19,7 +19,8 @@ namespace LuckyFoodSystem.Application.Products.Queries.Read
         {
             await Task.CompletedTask;
 
-            IEnumerable<Product>? selectedProducts = await _productRepository.GetProductsByMenuAsync(request.MenuId);
+            IEnumerable<Product>? selectedProducts =
+                  await _productRepository.GetProductsByMenuAsync(request.MenuId, cancellationToken);
 
             if (selectedProducts is null || selectedProducts.Count() is 0)
             {

@@ -1,6 +1,7 @@
 ﻿using LuckyFoodSystem.AggregationModels.Common.Enumerations;
 using LuckyFoodSystem.AggregationModels.MenuAggregate;
 using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
+using LuckyFoodSystem.Application.Common.Constants;
 using LuckyFoodSystem.Application.Common.Interfaces.Persistence;
 using LuckyFoodSystem.Infrastructure.Services.Cache;
 using Microsoft.Extensions.Caching.Distributed;
@@ -25,7 +26,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
             _distributedCache = distributedCache;
             _configuration = configuration;
         }        
-        public async Task<Menu> GetMenuByIdAsync(MenuId menuId, CancellationToken cancellationToken = default)
+        public async Task<Menu> GetMenuByIdAsync(MenuId menuId, CancellationToken cancellationToken)
         {
             string key = $"{_cacheKey}:{menuId.Value}";
             Menu? menu;
@@ -35,7 +36,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
             {
                 menu = await _decorated.GetMenuByIdAsync(menuId, cancellationToken);
 
-                if (menu is null) return menu;
+                if (menu is null) return menu!;
 
                 await _distributedCache.SetStringAsync( 
                     key,
@@ -57,7 +58,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
 
             return menu!;
         }              
-        public async Task<List<Menu>> GetMenusAsync(CancellationToken cancellationToken = default)
+        public async Task<List<Menu>> GetMenusAsync(CancellationToken cancellationToken)
         {           
             var menusList = await GetMenuCollectionFromCache(cancellationToken);
 
@@ -69,19 +70,19 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
 
             return menusList;         
         }
-        public async Task<List<Menu>> GetMenusByCategoryAsync(int categoryId, CancellationToken cancellationToken = default)
+        public async Task<List<Menu>> GetMenusByCategoryAsync(int categoryId, CancellationToken cancellationToken)
         {
             var menusByCategoryNameList = await GetMenuCollectionFromCache(cancellationToken, categoryId);
             
             if(menusByCategoryNameList is null || menusByCategoryNameList.Count() is 0)
             {
-                menusByCategoryNameList = await _decorated.GetMenusByCategoryAsync(categoryId);
+                menusByCategoryNameList = await _decorated.GetMenusByCategoryAsync(categoryId, cancellationToken);
                 await SetMenuCollectionToCache(menusByCategoryNameList, cancellationToken);
             }
 
             return menusByCategoryNameList;
         }
-        public async Task AddMenuAsync(Menu menu, string rootPath, CancellationToken cancellationToken = default)
+        public async Task AddMenuAsync(Menu menu, string rootPath, CancellationToken cancellationToken)
         {
             if (menu is not null)
             {
@@ -115,7 +116,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
             return false;
         }                           
         public async Task<Menu> UpdateMenuAsync(MenuId menuId, Menu updatedMenu, string rootPath,
-                                                CancellationToken cancellationToken = default, List<Guid> imageIds = null!)
+                                                CancellationToken cancellationToken, List<Guid> imageIds = null!)
         {
             Menu menu = new();
             if(updatedMenu is not null)
@@ -137,9 +138,9 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
         private async Task<List<Menu>> GetMenuCollectionFromCache(CancellationToken cancellationToken, int categoryId = 0)
         {
             var redis = ConnectionMultiplexer
-               .Connect(_configuration.GetConnectionString(CacheSettings.Redis)!);
+               .Connect(_configuration.GetConnectionString(ConnectionNames.Redis)!);
 
-            var keys = redis.GetServer(_configuration.GetConnectionString(CacheSettings.Redis)!)
+            var keys = redis.GetServer(_configuration.GetConnectionString(ConnectionNames.Redis)!)
                             .Keys(pattern: $"{_cacheKey}*");
 
             var menusList = new List<Menu>();
@@ -147,10 +148,10 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
             {
                 foreach (var key in keys)
                 {
-                    string? value = await _distributedCache.GetStringAsync(key, cancellationToken);
+                    string? value = await _distributedCache.GetStringAsync(key!, cancellationToken);
 
                     Menu menu = JsonConvert.DeserializeObject<Menu>(
-                        value,
+                        value!,
                         new JsonSerializerSettings
                         {
                             ConstructorHandling =

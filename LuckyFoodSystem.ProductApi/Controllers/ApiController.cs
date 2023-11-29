@@ -7,6 +7,8 @@ namespace LuckyFoodSystem.API.Controllers
     [ApiController]
     public class ApiController : ControllerBase
     {
+        [HttpGet("health")]
+        public string CheckHealth() => "Presentation module is working...";
         protected IActionResult Problem(List<Error> errors)
         {
             if (errors.All(error => error.Type == ErrorType.Validation))

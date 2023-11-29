@@ -17,7 +17,7 @@ namespace LuckyFoodSystem.Application.Menus.Queries.Read
         }
         public async Task<ErrorOr<MenuResult>> Handle(GetAllMenusQuery request, CancellationToken cancellationToken)
         {
-            IEnumerable<Menu> menus = await _menuRepository.GetMenusAsync();
+            IEnumerable<Menu> menus = await _menuRepository.GetMenusAsync(cancellationToken);
             if (menus.Count() is 0)
             {
                 return Errors.Global.CollectionNonExistentException;

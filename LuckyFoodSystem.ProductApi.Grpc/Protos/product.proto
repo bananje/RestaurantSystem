@@ -8,16 +8,16 @@ import "google/protobuf/wrappers.proto";
 
 service ProductService{
 	rpc GetAllProducts(google.protobuf.Empty) returns (ProductListResponse);
-	rpc GetProductById(GetProductByIdRequest) returns (Product);
+	rpc GetProductById(GetProductByIdRequest) returns (ProductReply);
 	rpc GetProductsByCategory(GetProductsByCategoryRequest) returns (ProductListResponse);
 	rpc GetProductsByMenu(GetProductByMenuRequest) returns (ProductListResponse);
 
 	rpc GetAllMenus(google.protobuf.Empty) returns (MenuListResponse);
-	rpc GetMenuById(GetMenuByIdRequest) returns (Menu);
+	rpc GetMenuById(GetMenuByIdRequest) returns (MenuReply);
 	rpc GetMenuByCategory(GetMenuByCategoryRequest) returns (MenuListResponse);
 }
 
-message Product{
+message ProductReply{
 	google.protobuf.StringValue id = 1;
 	string title = 2;
 	string description = 3;
@@ -26,24 +26,24 @@ message Product{
 	float weight_value = 6;
 	string weight_unit = 7;
 	string category = 8;
-	repeated Image images = 9;
-	repeated Menu menus = 10;
+	repeated ImageReply images = 9;
+	repeated MenuReply menus = 10;
 }
-message Image{
+message ImageReply{
 	string id = 1;
 	string path = 2;
 }
-message Menu{
+message MenuReply{
 	string name = 1;
 	string category = 2;
-	repeated Image images = 3;
+	repeated ImageReply images = 3;
 }
 
 message MenuListResponse{
-	repeated Menu Menu = 1;
+	repeated MenuReply Menu = 1;
 }
 message ProductListResponse{
-	repeated Product Products = 1;
+	repeated ProductReply Products = 1;
 }
 
 message GetProductByIdRequest{

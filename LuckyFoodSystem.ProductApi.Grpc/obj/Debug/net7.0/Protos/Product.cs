@@ -26,40 +26,42 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
           string.Concat(
             "ChRQcm90b3MvcHJvZHVjdC5wcm90bxIHcHJvZHVjdBobZ29vZ2xlL3Byb3Rv",
             "YnVmL2VtcHR5LnByb3RvGh5nb29nbGUvcHJvdG9idWYvd3JhcHBlcnMucHJv",
-            "dG8i/AEKB1Byb2R1Y3QSKAoCaWQYASABKAsyHC5nb29nbGUucHJvdG9idWYu",
-            "U3RyaW5nVmFsdWUSDQoFdGl0bGUYAiABKAkSEwoLZGVzY3JpcHRpb24YAyAB",
-            "KAkSGQoRc2hvcnRfZGVzY3JpcHRpb24YBCABKAkSDQoFcHJpY2UYBSABKAIS",
-            "FAoMd2VpZ2h0X3ZhbHVlGAYgASgCEhMKC3dlaWdodF91bml0GAcgASgJEhAK",
-            "CGNhdGVnb3J5GAggASgJEh4KBmltYWdlcxgJIAMoCzIOLnByb2R1Y3QuSW1h",
-            "Z2USHAoFbWVudXMYCiADKAsyDS5wcm9kdWN0Lk1lbnUiIQoFSW1hZ2USCgoC",
-            "aWQYASABKAkSDAoEcGF0aBgCIAEoCSJGCgRNZW51EgwKBG5hbWUYASABKAkS",
-            "EAoIY2F0ZWdvcnkYAiABKAkSHgoGaW1hZ2VzGAMgAygLMg4ucHJvZHVjdC5J",
-            "bWFnZSIvChBNZW51TGlzdFJlc3BvbnNlEhsKBE1lbnUYASADKAsyDS5wcm9k",
-            "dWN0Lk1lbnUiOQoTUHJvZHVjdExpc3RSZXNwb25zZRIiCghQcm9kdWN0cxgB",
-            "IAMoCzIQLnByb2R1Y3QuUHJvZHVjdCIjChVHZXRQcm9kdWN0QnlJZFJlcXVl",
-            "c3QSCgoCaWQYASABKAkiKgocR2V0UHJvZHVjdHNCeUNhdGVnb3J5UmVxdWVz",
-            "dBIKCgJpZBgBIAEoBSIlChdHZXRQcm9kdWN0QnlNZW51UmVxdWVzdBIKCgJp",
-            "ZBgBIAEoCSIgChJHZXRNZW51QnlJZFJlcXVlc3QSCgoCaWQYASABKAkiJgoY",
-            "R2V0TWVudUJ5Q2F0ZWdvcnlSZXF1ZXN0EgoKAmlkGAEgASgFMp8ECg5Qcm9k",
-            "dWN0U2VydmljZRJGCg5HZXRBbGxQcm9kdWN0cxIWLmdvb2dsZS5wcm90b2J1",
-            "Zi5FbXB0eRocLnByb2R1Y3QuUHJvZHVjdExpc3RSZXNwb25zZRJCCg5HZXRQ",
-            "cm9kdWN0QnlJZBIeLnByb2R1Y3QuR2V0UHJvZHVjdEJ5SWRSZXF1ZXN0GhAu",
-            "cHJvZHVjdC5Qcm9kdWN0ElwKFUdldFByb2R1Y3RzQnlDYXRlZ29yeRIlLnBy",
+            "dG8iiwIKDFByb2R1Y3RSZXBseRIoCgJpZBgBIAEoCzIcLmdvb2dsZS5wcm90",
+            "b2J1Zi5TdHJpbmdWYWx1ZRINCgV0aXRsZRgCIAEoCRITCgtkZXNjcmlwdGlv",
+            "bhgDIAEoCRIZChFzaG9ydF9kZXNjcmlwdGlvbhgEIAEoCRINCgVwcmljZRgF",
+            "IAEoAhIUCgx3ZWlnaHRfdmFsdWUYBiABKAISEwoLd2VpZ2h0X3VuaXQYByAB",
+            "KAkSEAoIY2F0ZWdvcnkYCCABKAkSIwoGaW1hZ2VzGAkgAygLMhMucHJvZHVj",
+            "dC5JbWFnZVJlcGx5EiEKBW1lbnVzGAogAygLMhIucHJvZHVjdC5NZW51UmVw",
+            "bHkiJgoKSW1hZ2VSZXBseRIKCgJpZBgBIAEoCRIMCgRwYXRoGAIgASgJIlAK",
+            "CU1lbnVSZXBseRIMCgRuYW1lGAEgASgJEhAKCGNhdGVnb3J5GAIgASgJEiMK",
+            "BmltYWdlcxgDIAMoCzITLnByb2R1Y3QuSW1hZ2VSZXBseSI0ChBNZW51TGlz",
+            "dFJlc3BvbnNlEiAKBE1lbnUYASADKAsyEi5wcm9kdWN0Lk1lbnVSZXBseSI+",
+            "ChNQcm9kdWN0TGlzdFJlc3BvbnNlEicKCFByb2R1Y3RzGAEgAygLMhUucHJv",
+            "ZHVjdC5Qcm9kdWN0UmVwbHkiIwoVR2V0UHJvZHVjdEJ5SWRSZXF1ZXN0EgoK",
+            "AmlkGAEgASgJIioKHEdldFByb2R1Y3RzQnlDYXRlZ29yeVJlcXVlc3QSCgoC",
+            "aWQYASABKAUiJQoXR2V0UHJvZHVjdEJ5TWVudVJlcXVlc3QSCgoCaWQYASAB",
+            "KAkiIAoSR2V0TWVudUJ5SWRSZXF1ZXN0EgoKAmlkGAEgASgJIiYKGEdldE1l",
+            "bnVCeUNhdGVnb3J5UmVxdWVzdBIKCgJpZBgBIAEoBTKpBAoOUHJvZHVjdFNl",
+            "cnZpY2USRgoOR2V0QWxsUHJvZHVjdHMSFi5nb29nbGUucHJvdG9idWYuRW1w",
+            "dHkaHC5wcm9kdWN0LlByb2R1Y3RMaXN0UmVzcG9uc2USRwoOR2V0UHJvZHVj",
+            "dEJ5SWQSHi5wcm9kdWN0LkdldFByb2R1Y3RCeUlkUmVxdWVzdBoVLnByb2R1",
+            "Y3QuUHJvZHVjdFJlcGx5ElwKFUdldFByb2R1Y3RzQnlDYXRlZ29yeRIlLnBy",
             "b2R1Y3QuR2V0UHJvZHVjdHNCeUNhdGVnb3J5UmVxdWVzdBocLnByb2R1Y3Qu",
             "UHJvZHVjdExpc3RSZXNwb25zZRJTChFHZXRQcm9kdWN0c0J5TWVudRIgLnBy",
             "b2R1Y3QuR2V0UHJvZHVjdEJ5TWVudVJlcXVlc3QaHC5wcm9kdWN0LlByb2R1",
             "Y3RMaXN0UmVzcG9uc2USQAoLR2V0QWxsTWVudXMSFi5nb29nbGUucHJvdG9i",
-            "dWYuRW1wdHkaGS5wcm9kdWN0Lk1lbnVMaXN0UmVzcG9uc2USOQoLR2V0TWVu",
-            "dUJ5SWQSGy5wcm9kdWN0LkdldE1lbnVCeUlkUmVxdWVzdBoNLnByb2R1Y3Qu",
-            "TWVudRJRChFHZXRNZW51QnlDYXRlZ29yeRIhLnByb2R1Y3QuR2V0TWVudUJ5",
-            "Q2F0ZWdvcnlSZXF1ZXN0GhkucHJvZHVjdC5NZW51TGlzdFJlc3BvbnNlQiKq",
-            "Ah9MdWNreUZvb2RTeXN0ZW0uUHJvZHVjdEFwaS5HcnBjYgZwcm90bzM="));
+            "dWYuRW1wdHkaGS5wcm9kdWN0Lk1lbnVMaXN0UmVzcG9uc2USPgoLR2V0TWVu",
+            "dUJ5SWQSGy5wcm9kdWN0LkdldE1lbnVCeUlkUmVxdWVzdBoSLnByb2R1Y3Qu",
+            "TWVudVJlcGx5ElEKEUdldE1lbnVCeUNhdGVnb3J5EiEucHJvZHVjdC5HZXRN",
+            "ZW51QnlDYXRlZ29yeVJlcXVlc3QaGS5wcm9kdWN0Lk1lbnVMaXN0UmVzcG9u",
+            "c2VCIqoCH0x1Y2t5Rm9vZFN5c3RlbS5Qcm9kdWN0QXBpLkdycGNiBnByb3Rv",
+            "Mw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.ProductApi.Grpc.Product), global::LuckyFoodSystem.ProductApi.Grpc.Product.Parser, new[]{ "Id", "Title", "Description", "ShortDescription", "Price", "WeightValue", "WeightUnit", "Category", "Images", "Menus" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.ProductApi.Grpc.Image), global::LuckyFoodSystem.ProductApi.Grpc.Image.Parser, new[]{ "Id", "Path" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.ProductApi.Grpc.Menu), global::LuckyFoodSystem.ProductApi.Grpc.Menu.Parser, new[]{ "Name", "Category", "Images" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.ProductApi.Grpc.ProductReply), global::LuckyFoodSystem.ProductApi.Grpc.ProductReply.Parser, new[]{ "Id", "Title", "Description", "ShortDescription", "Price", "WeightValue", "WeightUnit", "Category", "Images", "Menus" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.ProductApi.Grpc.ImageReply), global::LuckyFoodSystem.ProductApi.Grpc.ImageReply.Parser, new[]{ "Id", "Path" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.ProductApi.Grpc.MenuReply), global::LuckyFoodSystem.ProductApi.Grpc.MenuReply.Parser, new[]{ "Name", "Category", "Images" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.ProductApi.Grpc.MenuListResponse), global::LuckyFoodSystem.ProductApi.Grpc.MenuListResponse.Parser, new[]{ "Menu" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.ProductApi.Grpc.ProductListResponse), global::LuckyFoodSystem.ProductApi.Grpc.ProductListResponse.Parser, new[]{ "Products" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.ProductApi.Grpc.GetProductByIdRequest), global::LuckyFoodSystem.ProductApi.Grpc.GetProductByIdRequest.Parser, new[]{ "Id" }, null, null, null, null),
@@ -73,16 +75,16 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
   }
   #region Messages
-  public sealed partial class Product : pb::IMessage<Product>
+  public sealed partial class ProductReply : pb::IMessage<ProductReply>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Product> _parser = new pb::MessageParser<Product>(() => new Product());
+    private static readonly pb::MessageParser<ProductReply> _parser = new pb::MessageParser<ProductReply>(() => new ProductReply());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Product> Parser { get { return _parser; } }
+    public static pb::MessageParser<ProductReply> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -98,7 +100,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Product() {
+    public ProductReply() {
       OnConstruction();
     }
 
@@ -106,7 +108,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Product(Product other) : this() {
+    public ProductReply(ProductReply other) : this() {
       Id = other.Id;
       title_ = other.title_;
       description_ = other.description_;
@@ -122,8 +124,8 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Product Clone() {
-      return new Product(this);
+    public ProductReply Clone() {
+      return new ProductReply(this);
     }
 
     /// <summary>Field number for the "id" field.</summary>
@@ -226,35 +228,35 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     /// <summary>Field number for the "images" field.</summary>
     public const int ImagesFieldNumber = 9;
-    private static readonly pb::FieldCodec<global::LuckyFoodSystem.ProductApi.Grpc.Image> _repeated_images_codec
-        = pb::FieldCodec.ForMessage(74, global::LuckyFoodSystem.ProductApi.Grpc.Image.Parser);
-    private readonly pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Image> images_ = new pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Image>();
+    private static readonly pb::FieldCodec<global::LuckyFoodSystem.ProductApi.Grpc.ImageReply> _repeated_images_codec
+        = pb::FieldCodec.ForMessage(74, global::LuckyFoodSystem.ProductApi.Grpc.ImageReply.Parser);
+    private readonly pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.ImageReply> images_ = new pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.ImageReply>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Image> Images {
+    public pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.ImageReply> Images {
       get { return images_; }
     }
 
     /// <summary>Field number for the "menus" field.</summary>
     public const int MenusFieldNumber = 10;
-    private static readonly pb::FieldCodec<global::LuckyFoodSystem.ProductApi.Grpc.Menu> _repeated_menus_codec
-        = pb::FieldCodec.ForMessage(82, global::LuckyFoodSystem.ProductApi.Grpc.Menu.Parser);
-    private readonly pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Menu> menus_ = new pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Menu>();
+    private static readonly pb::FieldCodec<global::LuckyFoodSystem.ProductApi.Grpc.MenuReply> _repeated_menus_codec
+        = pb::FieldCodec.ForMessage(82, global::LuckyFoodSystem.ProductApi.Grpc.MenuReply.Parser);
+    private readonly pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.MenuReply> menus_ = new pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.MenuReply>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Menu> Menus {
+    public pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.MenuReply> Menus {
       get { return menus_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Product);
+      return Equals(other as ProductReply);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Product other) {
+    public bool Equals(ProductReply other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -426,7 +428,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Product other) {
+    public void MergeFrom(ProductReply other) {
       if (other == null) {
         return;
       }
@@ -581,16 +583,16 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
   }
 
-  public sealed partial class Image : pb::IMessage<Image>
+  public sealed partial class ImageReply : pb::IMessage<ImageReply>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Image> _parser = new pb::MessageParser<Image>(() => new Image());
+    private static readonly pb::MessageParser<ImageReply> _parser = new pb::MessageParser<ImageReply>(() => new ImageReply());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Image> Parser { get { return _parser; } }
+    public static pb::MessageParser<ImageReply> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -606,7 +608,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Image() {
+    public ImageReply() {
       OnConstruction();
     }
 
@@ -614,7 +616,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Image(Image other) : this() {
+    public ImageReply(ImageReply other) : this() {
       id_ = other.id_;
       path_ = other.path_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
@@ -622,8 +624,8 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Image Clone() {
-      return new Image(this);
+    public ImageReply Clone() {
+      return new ImageReply(this);
     }
 
     /// <summary>Field number for the "id" field.</summary>
@@ -653,12 +655,12 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Image);
+      return Equals(other as ImageReply);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Image other) {
+    public bool Equals(ImageReply other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -744,7 +746,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Image other) {
+    public void MergeFrom(ImageReply other) {
       if (other == null) {
         return;
       }
@@ -807,16 +809,16 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
   }
 
-  public sealed partial class Menu : pb::IMessage<Menu>
+  public sealed partial class MenuReply : pb::IMessage<MenuReply>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
   #endif
   {
-    private static readonly pb::MessageParser<Menu> _parser = new pb::MessageParser<Menu>(() => new Menu());
+    private static readonly pb::MessageParser<MenuReply> _parser = new pb::MessageParser<MenuReply>(() => new MenuReply());
     private pb::UnknownFieldSet _unknownFields;
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public static pb::MessageParser<Menu> Parser { get { return _parser; } }
+    public static pb::MessageParser<MenuReply> Parser { get { return _parser; } }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
@@ -832,7 +834,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Menu() {
+    public MenuReply() {
       OnConstruction();
     }
 
@@ -840,7 +842,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Menu(Menu other) : this() {
+    public MenuReply(MenuReply other) : this() {
       name_ = other.name_;
       category_ = other.category_;
       images_ = other.images_.Clone();
@@ -849,8 +851,8 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public Menu Clone() {
-      return new Menu(this);
+    public MenuReply Clone() {
+      return new MenuReply(this);
     }
 
     /// <summary>Field number for the "name" field.</summary>
@@ -879,24 +881,24 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     /// <summary>Field number for the "images" field.</summary>
     public const int ImagesFieldNumber = 3;
-    private static readonly pb::FieldCodec<global::LuckyFoodSystem.ProductApi.Grpc.Image> _repeated_images_codec
-        = pb::FieldCodec.ForMessage(26, global::LuckyFoodSystem.ProductApi.Grpc.Image.Parser);
-    private readonly pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Image> images_ = new pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Image>();
+    private static readonly pb::FieldCodec<global::LuckyFoodSystem.ProductApi.Grpc.ImageReply> _repeated_images_codec
+        = pb::FieldCodec.ForMessage(26, global::LuckyFoodSystem.ProductApi.Grpc.ImageReply.Parser);
+    private readonly pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.ImageReply> images_ = new pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.ImageReply>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Image> Images {
+    public pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.ImageReply> Images {
       get { return images_; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override bool Equals(object other) {
-      return Equals(other as Menu);
+      return Equals(other as MenuReply);
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public bool Equals(Menu other) {
+    public bool Equals(MenuReply other) {
       if (ReferenceEquals(other, null)) {
         return false;
       }
@@ -987,7 +989,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public void MergeFrom(Menu other) {
+    public void MergeFrom(MenuReply other) {
       if (other == null) {
         return;
       }
@@ -1105,12 +1107,12 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     /// <summary>Field number for the "Menu" field.</summary>
     public const int MenuFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::LuckyFoodSystem.ProductApi.Grpc.Menu> _repeated_menu_codec
-        = pb::FieldCodec.ForMessage(10, global::LuckyFoodSystem.ProductApi.Grpc.Menu.Parser);
-    private readonly pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Menu> menu_ = new pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Menu>();
+    private static readonly pb::FieldCodec<global::LuckyFoodSystem.ProductApi.Grpc.MenuReply> _repeated_menu_codec
+        = pb::FieldCodec.ForMessage(10, global::LuckyFoodSystem.ProductApi.Grpc.MenuReply.Parser);
+    private readonly pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.MenuReply> menu_ = new pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.MenuReply>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Menu> Menu {
+    public pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.MenuReply> Menu {
       get { return menu_; }
     }
 
@@ -1283,12 +1285,12 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
 
     /// <summary>Field number for the "Products" field.</summary>
     public const int ProductsFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::LuckyFoodSystem.ProductApi.Grpc.Product> _repeated_products_codec
-        = pb::FieldCodec.ForMessage(10, global::LuckyFoodSystem.ProductApi.Grpc.Product.Parser);
-    private readonly pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Product> products_ = new pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Product>();
+    private static readonly pb::FieldCodec<global::LuckyFoodSystem.ProductApi.Grpc.ProductReply> _repeated_products_codec
+        = pb::FieldCodec.ForMessage(10, global::LuckyFoodSystem.ProductApi.Grpc.ProductReply.Parser);
+    private readonly pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.ProductReply> products_ = new pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.ProductReply>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.Product> Products {
+    public pbc::RepeatedField<global::LuckyFoodSystem.ProductApi.Grpc.ProductReply> Products {
       get { return products_; }
     }
 

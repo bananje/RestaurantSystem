@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "36Fha2LtU6Wq87mT7cckvIk31pojwXCTxiN/qbkeN2RFMukjkO+kSks0qK5C5ZmPZS8pVitwKGi++h2ONTenxg==",
+  "dgSpecHash": "VJd+sxfdg5Ew3EqycmnN3C17rfBpucw+06+MKTyVBdbLqRUDLenfXi26qfP/0ETzrnilyqu6epiZcsm+5N3bdQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.ProductApi.Grpc\\LuckyFoodSystem.ProductApi.Grpc.csproj",
   "expectedPackageFiles": [

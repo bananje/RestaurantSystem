@@ -22,16 +22,16 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
             _imageService = imageService;
             _context = context;
         }       
-        public async Task<Menu?> GetMenuByIdAsync(MenuId menuId, CancellationToken cancellationToken = default)      
+        public async Task<Menu?> GetMenuByIdAsync(MenuId menuId, CancellationToken cancellationToken)      
             => await _context.Menus.Include(u => u.Images)
                                    .AsNoTracking().FirstOrDefaultAsync(u => u.Id == menuId);       
-        public async Task<List<Menu>> GetMenusAsync(CancellationToken cancellationToken = default)
+        public async Task<List<Menu>> GetMenusAsync(CancellationToken cancellationToken)
             => await _context.Menus.Include(u => u.Images).ToListAsync(cancellationToken);
-        public async Task<List<Menu>> GetMenusByCategoryAsync(int categoryId, CancellationToken cancellationToken = default)
+        public async Task<List<Menu>> GetMenusByCategoryAsync(int categoryId, CancellationToken cancellationToken)
             => await _context.Menus
                      .Where(u => u.Category == Category.FromId(categoryId)).Include(u => u.Images)
                      .ToListAsync(cancellationToken);
-        public async Task AddMenuAsync(Menu menu, string rootPath, CancellationToken cancellationToken = default)
+        public async Task AddMenuAsync(Menu menu, string rootPath, CancellationToken cancellationToken)
         {
             if (menu is not null)
             {
@@ -41,13 +41,13 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
                 {
                     List<Image> images = await _imageService.LoadImages(files, rootPath);
                     menu.AddImages(images);
-                }
-                             
+                }               
+
                 await _context.Menus.AddAsync(menu);
                 await _context.SaveChangesAsync(cancellationToken);               
             }
         }
-        public async Task<bool> RemoveMenuAsync(MenuId menuId, string rootPath, CancellationToken cancellationToken = default)
+        public async Task<bool> RemoveMenuAsync(MenuId menuId, string rootPath, CancellationToken cancellationToken)
         {
             var selectedMenu = _context.Menus
                     .Include(m => m.Images)
@@ -59,14 +59,14 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
             List<Image> images = selectedMenu.Images.ToList();
             if(images is not null || images!.Count() is not 0)
             {
-                _imageService.RemoveFromPath(rootPath, images);
-                _context.Images.RemoveRange(images);
+                _imageService.RemoveFromPath(rootPath, images!);
+                _context.Images.RemoveRange(images!);
             }
 
             try
             {
                 _context.Menus.Remove(selectedMenu);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(cancellationToken);
 
                 return true;
             }
@@ -75,7 +75,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
                 await Task.CompletedTask;
             }
         }                   
-        public async Task<Menu> UpdateMenuAsync(MenuId menuId, Menu updatedMenu, string rootPath, CancellationToken cancellationToken = default, List<Guid> imageIds = null!)
+        public async Task<Menu> UpdateMenuAsync(MenuId menuId, Menu updatedMenu, string rootPath, CancellationToken cancellationToken, List<Guid> imageIds = null!)
         {
             var thisMenu = _context.Menus.AsEnumerable().FirstOrDefault(u => u.Id.Value == menuId.Value);
             if (thisMenu is not null)
@@ -96,7 +96,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepositor
                 }
 
                 _context.Menus.Update(thisMenu);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(cancellationToken);
             }
 
             return thisMenu!;

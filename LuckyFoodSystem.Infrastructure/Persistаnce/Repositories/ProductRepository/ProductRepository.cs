@@ -28,23 +28,23 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             _menuRepository = menuRepository;
         }
         
-        public async Task<Product?> GetProductByIdAsync(ProductId productId, CancellationToken cancellationToken = default)
+        public async Task<Product?> GetProductByIdAsync(ProductId productId, CancellationToken cancellationToken)
                 => await _context.Products.Include(u => u.Images)
                                           .Include(u => u.Menus)
                                           .AsNoTracking().FirstOrDefaultAsync(u => u.Id == productId);       
         public async Task<List<Product>> GetProductsAsync(CancellationToken cancellationToken = default)
                 => await _context.Products.Include(u => u.Images)
                                           .Include(u => u.Menus).ToListAsync(cancellationToken);
-        public async Task<List<Product>> GetProductsByCategoryAsync(int categoryId, CancellationToken cancellationToken = default)
+        public async Task<List<Product>> GetProductsByCategoryAsync(int categoryId, CancellationToken cancellationToken)
                 => await _context.Products.Where(u => u.Category == Category.FromId(categoryId))
                                           .Include(u => u.Images)
                                           .Include(u => u.Menus)
                                           .ToListAsync(cancellationToken);
-        public async Task<List<Product>> GetProductsByMenuAsync(MenuId menuId, CancellationToken cancellationToken = default)
+        public async Task<List<Product>> GetProductsByMenuAsync(MenuId menuId, CancellationToken cancellationToken)
                 => await _context.Products.Where(u => u.Menus.Any(i => i.Id == menuId))
                                           .Include(u => u.Menus)
                                           .Include(u => u.Images).ToListAsync(cancellationToken);     
-        public async Task AddProductAsync(Product product, List<Guid> menusIds, string rootPath, CancellationToken cancellationToken = default)
+        public async Task AddProductAsync(Product product, List<Guid> menusIds, string rootPath, CancellationToken cancellationToken)
         {
             if(product is not null)
             {               
@@ -53,7 +53,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
                     List<Menu> menus = new();
                     foreach (var menuId in menusIds)
                     {
-                        Menu? menu = await _menuRepository.GetMenuByIdAsync(MenuId.Create(menuId));
+                        Menu? menu = await _menuRepository.GetMenuByIdAsync(MenuId.Create(menuId), cancellationToken);
                         if (menu is null) continue;
 
                         _context.Attach(menu);
@@ -74,7 +74,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
                 await _context.SaveChangesAsync(cancellationToken);                
             }
         }
-        public async Task<bool> RemoveProductAsync(ProductId productId, string rootPath, CancellationToken cancellationToken = default)
+        public async Task<bool> RemoveProductAsync(ProductId productId, string rootPath, CancellationToken cancellationToken)
         {
             var selectedProduct= _context.Products
                     .Include(m => m.Images)
@@ -103,7 +103,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             }
         }
         public async Task<Product> UpdateProductAsync(ProductId productId, Product updatedProduct, string rootPath, 
-                                                      CancellationToken cancellationToken = default,
+                                                      CancellationToken cancellationToken,
                                                       List<Guid> imageIds = null!, List<Guid> menuAddingIds = null!, List<Guid> menuDeletingIds = null!)
         {
             var thisProduct = await _context.Products.Include(u => u.Menus)
@@ -133,7 +133,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
                 }
 
                 _context.Products.Update(thisProduct);
-                await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync(cancellationToken);
             }
 
             return thisProduct!;

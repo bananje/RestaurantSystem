@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Application
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Domain", "LuckyFoodSystem.Domain\LuckyFoodSystem.Domain.csproj", "{AD5E727B-27BD-4F76-8A1E-C5D8E77610CD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyFoodSystem.ProductApi.Grpc", "LuckyFoodSystem.ProductApi.Grpc\LuckyFoodSystem.ProductApi.Grpc.csproj", "{FDB05CC0-07AB-4D65-B02A-D26C67F81C6F}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.ProductAPI", "LuckyFoodSystem.ProductApi\LuckyFoodSystem.ProductAPI.csproj", "{791CDC4A-A00F-45C7-A6DB-337864BBDB80}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Identity", "LuckyFoodSystem.Identity\LuckyFoodSystem.Identity.csproj", "{C64EFF68-2F81-4C84-B5B0-190697EFEA49}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.UserRoleApiGrpc", "LuckyFoodSystem.UserRoleApiGrpc\LuckyFoodSystem.UserRoleApiGrpc.csproj", "{2F10B9FF-7D8A-4188-A270-77BC9DE9A561}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,14 +39,18 @@ Global
 		{AD5E727B-27BD-4F76-8A1E-C5D8E77610CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AD5E727B-27BD-4F76-8A1E-C5D8E77610CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AD5E727B-27BD-4F76-8A1E-C5D8E77610CD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FDB05CC0-07AB-4D65-B02A-D26C67F81C6F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FDB05CC0-07AB-4D65-B02A-D26C67F81C6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FDB05CC0-07AB-4D65-B02A-D26C67F81C6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FDB05CC0-07AB-4D65-B02A-D26C67F81C6F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{791CDC4A-A00F-45C7-A6DB-337864BBDB80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{791CDC4A-A00F-45C7-A6DB-337864BBDB80}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{791CDC4A-A00F-45C7-A6DB-337864BBDB80}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{791CDC4A-A00F-45C7-A6DB-337864BBDB80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C64EFF68-2F81-4C84-B5B0-190697EFEA49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C64EFF68-2F81-4C84-B5B0-190697EFEA49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C64EFF68-2F81-4C84-B5B0-190697EFEA49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C64EFF68-2F81-4C84-B5B0-190697EFEA49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F10B9FF-7D8A-4188-A270-77BC9DE9A561}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F10B9FF-7D8A-4188-A270-77BC9DE9A561}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F10B9FF-7D8A-4188-A270-77BC9DE9A561}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F10B9FF-7D8A-4188-A270-77BC9DE9A561}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

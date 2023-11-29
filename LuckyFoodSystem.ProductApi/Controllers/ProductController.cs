@@ -1,7 +1,8 @@
 ﻿using ErrorOr;
 using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using LuckyFoodSystem.AggregationModels.ProductAggregate.ValueObjects;
-using LuckyFoodSystem.API.Common;
+using LuckyFoodSystem.Application.Common;
+using LuckyFoodSystem.Application.Common.Constants;
 using LuckyFoodSystem.Application.Products.Commands.Create;
 using LuckyFoodSystem.Application.Products.Commands.Delete;
 using LuckyFoodSystem.Application.Products.Commands.Update;
@@ -90,7 +91,7 @@ namespace LuckyFoodSystem.API.Controllers
         {
             await Task.CompletedTask;
 
-            string rootPath = _webHostEnvironment.WebRootPath + WC.ProductImagePath;
+            string rootPath = _webHostEnvironment.WebRootPath + PathConstants.ProductImagePath;
             var command = _mapper.Map<CreateProductCommand>((request, rootPath));
 
             ErrorOr<ProductResult> addingProductResult = await _mediator.Send(command);
@@ -106,7 +107,7 @@ namespace LuckyFoodSystem.API.Controllers
         {
             await Task.CompletedTask;
 
-            string rootPath = _webHostEnvironment.WebRootPath + WC.ProductImagePath;
+            string rootPath = _webHostEnvironment.WebRootPath + PathConstants.ProductImagePath;
             var command = new DeleteProductCommand(ProductId.Create(productId), rootPath);
 
             ErrorOr<ProductResult> deletingProductResult = await _mediator.Send(command);
@@ -121,7 +122,7 @@ namespace LuckyFoodSystem.API.Controllers
         {
             await Task.CompletedTask;
 
-            string rootPath = _webHostEnvironment.WebRootPath + WC.ProductImagePath;
+            string rootPath = _webHostEnvironment.WebRootPath + PathConstants.ProductImagePath;
             var command = _mapper.Map<UpdateProductCommand>((request, rootPath, productId));
 
             ErrorOr<ProductResult> updatingProductResult = await _mediator.Send(command);

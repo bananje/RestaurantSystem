@@ -1,4 +1,5 @@
-﻿using LuckyFoodSystem.Infrastructure;
+﻿using BuberDinner.Api.Mapping;
+using LuckyFoodSystem.Infrastructure;
 
 namespace LuckyFoodSystem.ProductApi.Grpc
 {
@@ -8,6 +9,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc
         {
             services.AddGrpc();
             services.AddPersistance();
+            services.AddMappings();
 
             return services;
         }

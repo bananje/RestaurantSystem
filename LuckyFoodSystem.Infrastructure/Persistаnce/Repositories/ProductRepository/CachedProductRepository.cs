@@ -2,6 +2,7 @@
 using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using LuckyFoodSystem.AggregationModels.ProductAggregate;
 using LuckyFoodSystem.AggregationModels.ProductAggregate.ValueObjects;
+using LuckyFoodSystem.Application.Common.Constants;
 using LuckyFoodSystem.Application.Common.Interfaces.Persistence;
 using LuckyFoodSystem.Infrastructure.Services.Cache;
 using Microsoft.Extensions.Caching.Distributed;
@@ -78,7 +79,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
 
             if (productsByCategoryNameList is null || productsByCategoryNameList.Count() is 0)
             {
-                productsByCategoryNameList = await _decorated.GetProductsByCategoryAsync(categoryId);
+                productsByCategoryNameList = await _decorated.GetProductsByCategoryAsync(categoryId, cancellationToken);
                 await SetProductCollectionToCache(productsByCategoryNameList, cancellationToken);
             }
 
@@ -92,7 +93,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
 
             if (productsByMenuIdList is null || productsByMenuIdList.Count() is 0)
             {
-                productsByMenuIdList = await _decorated.GetProductsByMenuAsync(menuId);
+                productsByMenuIdList = await _decorated.GetProductsByMenuAsync(menuId, cancellationToken);
                 await SetProductCollectionToCache(productsByMenuIdList, cancellationToken);
             }
 
@@ -153,9 +154,9 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
                                                                         int categoryId = 0, string menuId = null!)
         {
             var redis = ConnectionMultiplexer
-               .Connect(_configuration.GetConnectionString(CacheSettings.Redis)!);
+               .Connect(_configuration.GetConnectionString(ConnectionNames.Redis)!);
 
-            var keys = redis.GetServer(_configuration.GetConnectionString(CacheSettings.Redis)!)
+            var keys = redis.GetServer(_configuration.GetConnectionString(ConnectionNames.Redis)!)
                             .Keys(pattern: $"{_cacheKey}*");
 
             var productsList = new List<Product>();

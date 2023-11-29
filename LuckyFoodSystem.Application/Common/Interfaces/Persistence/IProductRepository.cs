@@ -6,14 +6,14 @@ namespace LuckyFoodSystem.Application.Common.Interfaces.Persistence
 {
     public interface IProductRepository
     {
-        Task<List<Product>> GetProductsAsync(CancellationToken cancellationToken = default);
-        Task<List<Product>> GetProductsByMenuAsync(MenuId menuId, CancellationToken cancellationToken = default);
-        Task<List<Product>> GetProductsByCategoryAsync(int categoryId, CancellationToken cancellationToken = default);
-        Task<Product> GetProductByIdAsync(ProductId productId, CancellationToken cancellationToken = default);
-        Task<bool> RemoveProductAsync(ProductId productId, string rootPath, CancellationToken cancellationToken = default);
-        Task AddProductAsync(Product product, List<Guid> menusIds, string rootPath, CancellationToken cancellationToken = default);
+        Task<List<Product>> GetProductsAsync(CancellationToken cancellationToken);
+        Task<List<Product>> GetProductsByMenuAsync(MenuId menuId, CancellationToken cancellationToken);
+        Task<List<Product>> GetProductsByCategoryAsync(int categoryId, CancellationToken cancellationToken);
+        Task<Product> GetProductByIdAsync(ProductId productId, CancellationToken cancellationToken);
+        Task<bool> RemoveProductAsync(ProductId productId, string rootPath, CancellationToken cancellationToken);
+        Task AddProductAsync(Product product, List<Guid> menusIds, string rootPath, CancellationToken cancellationToken);
         Task<Product> UpdateProductAsync(ProductId productId, Product updatedProduct,
-                                         string rootPath, CancellationToken cancellationToken = default,
+                                         string rootPath, CancellationToken cancellationToken,
                                          List<Guid> imageIds = null!, List<Guid> menuAddingIds = null!, List<Guid> menuDeletingIds = null!);
         
     }

@@ -1,16 +1,20 @@
-﻿using LuckyFoodSystem.Application.Common.Interfaces.Persistence;
+﻿using LuckyFoodSystem.Application.Common.Constants;
+using LuckyFoodSystem.Application.Common.Interfaces.Clients;
+using LuckyFoodSystem.Application.Common.Interfaces.Persistence;
 using LuckyFoodSystem.Application.Common.Interfaces.Services;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Context;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Interceptors;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepository;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductRepository;
+using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.RoleRepository;
+using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.UserRepository;
 using LuckyFoodSystem.Infrastructure.Services;
-using LuckyFoodSystem.Infrastructure.Services.Cache;
 using LuckyFoodSystem.Infrastructure.Services.Cache.MemoryCacheService;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using OnlineShop.Library.Clients.IdentityServer;
 
 namespace LuckyFoodSystem.Infrastructure
 {
@@ -36,7 +40,8 @@ namespace LuckyFoodSystem.Infrastructure
             services.AddScoped<IProductRepository, ProductRepository>();
             services.Decorate<IProductRepository, CachedProductRepository>();
 
-            services.AddScoped<PublishDomainEventsInterceptor>();
+            services.AddScoped<IRoleRepository, RoleRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
 
             return services;
         }
@@ -45,10 +50,10 @@ namespace LuckyFoodSystem.Infrastructure
                                                     IConfiguration configuration)
         {
             services.AddDbContext<LuckyFoodDbContext>(options =>
-                      options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
+                      options.UseSqlServer(configuration.GetConnectionString(ConnectionNames.ApplicationConnection)));
             services.AddStackExchangeRedisCache(options =>
             {
-                options.Configuration = configuration.GetConnectionString(CacheSettings.Redis);
+                options.Configuration = configuration.GetConnectionString(ConnectionNames.Redis);
             });
 
             return services;
@@ -60,6 +65,8 @@ namespace LuckyFoodSystem.Infrastructure
             services.AddSingleton<IHttpContextProvider, HttpContextProvider>();
             services.AddTransient<IImageService, ImageService>();
             services.AddSingleton<IMemoryCacheService, MemoryCacheService>();
+            services.AddScoped<PublishDomainEventsInterceptor>();
+            services.AddScoped<IIdentityServerClient, IdentityServerClient>();
 
             return services;
         }

@@ -19,7 +19,7 @@ namespace LuckyFoodSystem.Application.Menus.Queries.Read
         {
             await Task.CompletedTask;
 
-            var selectedMenu = await _menuRepository.GetMenuByIdAsync(request.MenuId);
+            var selectedMenu = await _menuRepository.GetMenuByIdAsync(request.MenuId, cancellationToken);
 
             if(selectedMenu is null)
             {

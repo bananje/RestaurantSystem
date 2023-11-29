@@ -1,7 +1,6 @@
 ﻿using ErrorOr;
 using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
-using LuckyFoodSystem.API.Common;
-using LuckyFoodSystem.Application.Common.Interfaces.Persistence;
+using LuckyFoodSystem.Application.Common.Constants;
 using LuckyFoodSystem.Application.Menus.Commands.Create;
 using LuckyFoodSystem.Application.Menus.Commands.Delete;
 using LuckyFoodSystem.Application.Menus.Commands.Update;
@@ -23,8 +22,7 @@ namespace LuckyFoodSystem.API.Controllers
 
         public MenuController(IMapper mapper,
                               ISender mediator,
-                              IWebHostEnvironment webHostEnvironment,
-                              IMenuRepository menuRepository)
+                              IWebHostEnvironment webHostEnvironment)
         {
             _mapper = mapper;
             _mediator = mediator;
@@ -78,7 +76,7 @@ namespace LuckyFoodSystem.API.Controllers
         {
             await Task.CompletedTask;
 
-            string rootPath = _webHostEnvironment.WebRootPath + WC.MenuImagePath;
+            string rootPath = _webHostEnvironment.WebRootPath + PathConstants.MenuImagePath;
             var command = _mapper.Map<CreateMenuCommand>((request, rootPath));
 
             ErrorOr<MenuResult> addingMenuResult = await _mediator.Send(command);
@@ -94,7 +92,7 @@ namespace LuckyFoodSystem.API.Controllers
         {
             await Task.CompletedTask;
 
-            string rootPath = _webHostEnvironment.WebRootPath + WC.MenuImagePath;
+            string rootPath = _webHostEnvironment.WebRootPath + PathConstants.MenuImagePath;
             var command = new DeleteMenuCommand(MenuId.Create(menuId), rootPath);
 
             ErrorOr<MenuResult> deletingMenuResult = await _mediator.Send(command);
@@ -109,7 +107,7 @@ namespace LuckyFoodSystem.API.Controllers
         {
             await Task.CompletedTask;
 
-            string rootPath = _webHostEnvironment.WebRootPath + WC.MenuImagePath;
+            string rootPath = _webHostEnvironment.WebRootPath + PathConstants.MenuImagePath;
             var command = _mapper.Map<UpdateMenuCommand>((request, rootPath, menuId));
 
             ErrorOr<MenuResult> updatingMenuResult = await _mediator.Send(command);

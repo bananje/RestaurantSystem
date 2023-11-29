@@ -21,7 +21,7 @@ namespace LuckyFoodSystem.Application.Menus.Commands.Create
             var menu = Menu.Create(new Name(request.Name),
                                    Category.FromName(request.Category));
 
-            await _menuRepository.AddMenuAsync(menu, request.rootPath);
+            await _menuRepository.AddMenuAsync(menu, request.rootPath, cancellationToken);
 
             return new MenuResult(new Menu[] { menu }.ToList());
         }

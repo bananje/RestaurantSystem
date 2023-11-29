@@ -52,7 +52,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::LuckyFoodSystem.ProductApi.Grpc.GetProductByIdRequest> __Marshaller_product_GetProductByIdRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.ProductApi.Grpc.GetProductByIdRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::LuckyFoodSystem.ProductApi.Grpc.Product> __Marshaller_product_Product = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.ProductApi.Grpc.Product.Parser));
+    static readonly grpc::Marshaller<global::LuckyFoodSystem.ProductApi.Grpc.ProductReply> __Marshaller_product_ProductReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.ProductApi.Grpc.ProductReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::LuckyFoodSystem.ProductApi.Grpc.GetProductsByCategoryRequest> __Marshaller_product_GetProductsByCategoryRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.ProductApi.Grpc.GetProductsByCategoryRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
@@ -62,7 +62,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByIdRequest> __Marshaller_product_GetMenuByIdRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByIdRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::LuckyFoodSystem.ProductApi.Grpc.Menu> __Marshaller_product_Menu = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.ProductApi.Grpc.Menu.Parser));
+    static readonly grpc::Marshaller<global::LuckyFoodSystem.ProductApi.Grpc.MenuReply> __Marshaller_product_MenuReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.ProductApi.Grpc.MenuReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByCategoryRequest> __Marshaller_product_GetMenuByCategoryRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByCategoryRequest.Parser));
 
@@ -75,12 +75,12 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
         __Marshaller_product_ProductListResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::LuckyFoodSystem.ProductApi.Grpc.GetProductByIdRequest, global::LuckyFoodSystem.ProductApi.Grpc.Product> __Method_GetProductById = new grpc::Method<global::LuckyFoodSystem.ProductApi.Grpc.GetProductByIdRequest, global::LuckyFoodSystem.ProductApi.Grpc.Product>(
+    static readonly grpc::Method<global::LuckyFoodSystem.ProductApi.Grpc.GetProductByIdRequest, global::LuckyFoodSystem.ProductApi.Grpc.ProductReply> __Method_GetProductById = new grpc::Method<global::LuckyFoodSystem.ProductApi.Grpc.GetProductByIdRequest, global::LuckyFoodSystem.ProductApi.Grpc.ProductReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetProductById",
         __Marshaller_product_GetProductByIdRequest,
-        __Marshaller_product_Product);
+        __Marshaller_product_ProductReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::LuckyFoodSystem.ProductApi.Grpc.GetProductsByCategoryRequest, global::LuckyFoodSystem.ProductApi.Grpc.ProductListResponse> __Method_GetProductsByCategory = new grpc::Method<global::LuckyFoodSystem.ProductApi.Grpc.GetProductsByCategoryRequest, global::LuckyFoodSystem.ProductApi.Grpc.ProductListResponse>(
@@ -107,12 +107,12 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
         __Marshaller_product_MenuListResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByIdRequest, global::LuckyFoodSystem.ProductApi.Grpc.Menu> __Method_GetMenuById = new grpc::Method<global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByIdRequest, global::LuckyFoodSystem.ProductApi.Grpc.Menu>(
+    static readonly grpc::Method<global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByIdRequest, global::LuckyFoodSystem.ProductApi.Grpc.MenuReply> __Method_GetMenuById = new grpc::Method<global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByIdRequest, global::LuckyFoodSystem.ProductApi.Grpc.MenuReply>(
         grpc::MethodType.Unary,
         __ServiceName,
         "GetMenuById",
         __Marshaller_product_GetMenuByIdRequest,
-        __Marshaller_product_Menu);
+        __Marshaller_product_MenuReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByCategoryRequest, global::LuckyFoodSystem.ProductApi.Grpc.MenuListResponse> __Method_GetMenuByCategory = new grpc::Method<global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByCategoryRequest, global::LuckyFoodSystem.ProductApi.Grpc.MenuListResponse>(
@@ -139,7 +139,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.ProductApi.Grpc.Product> GetProductById(global::LuckyFoodSystem.ProductApi.Grpc.GetProductByIdRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.ProductApi.Grpc.ProductReply> GetProductById(global::LuckyFoodSystem.ProductApi.Grpc.GetProductByIdRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -163,7 +163,7 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.ProductApi.Grpc.Menu> GetMenuById(global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByIdRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.ProductApi.Grpc.MenuReply> GetMenuById(global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByIdRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -199,11 +199,11 @@ namespace LuckyFoodSystem.ProductApi.Grpc {
     public static void BindService(grpc::ServiceBinderBase serviceBinder, ProductServiceBase serviceImpl)
     {
       serviceBinder.AddMethod(__Method_GetAllProducts, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Protobuf.WellKnownTypes.Empty, global::LuckyFoodSystem.ProductApi.Grpc.ProductListResponse>(serviceImpl.GetAllProducts));
-      serviceBinder.AddMethod(__Method_GetProductById, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.ProductApi.Grpc.GetProductByIdRequest, global::LuckyFoodSystem.ProductApi.Grpc.Product>(serviceImpl.GetProductById));
+      serviceBinder.AddMethod(__Method_GetProductById, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.ProductApi.Grpc.GetProductByIdRequest, global::LuckyFoodSystem.ProductApi.Grpc.ProductReply>(serviceImpl.GetProductById));
       serviceBinder.AddMethod(__Method_GetProductsByCategory, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.ProductApi.Grpc.GetProductsByCategoryRequest, global::LuckyFoodSystem.ProductApi.Grpc.ProductListResponse>(serviceImpl.GetProductsByCategory));
       serviceBinder.AddMethod(__Method_GetProductsByMenu, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.ProductApi.Grpc.GetProductByMenuRequest, global::LuckyFoodSystem.ProductApi.Grpc.ProductListResponse>(serviceImpl.GetProductsByMenu));
       serviceBinder.AddMethod(__Method_GetAllMenus, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Protobuf.WellKnownTypes.Empty, global::LuckyFoodSystem.ProductApi.Grpc.MenuListResponse>(serviceImpl.GetAllMenus));
-      serviceBinder.AddMethod(__Method_GetMenuById, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByIdRequest, global::LuckyFoodSystem.ProductApi.Grpc.Menu>(serviceImpl.GetMenuById));
+      serviceBinder.AddMethod(__Method_GetMenuById, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByIdRequest, global::LuckyFoodSystem.ProductApi.Grpc.MenuReply>(serviceImpl.GetMenuById));
       serviceBinder.AddMethod(__Method_GetMenuByCategory, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.ProductApi.Grpc.GetMenuByCategoryRequest, global::LuckyFoodSystem.ProductApi.Grpc.MenuListResponse>(serviceImpl.GetMenuByCategory));
     }
 
