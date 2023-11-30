@@ -1,7 +1,12 @@
-﻿using Grpc.Core;
+﻿using Google.Protobuf.WellKnownTypes;
+using Grpc.Core;
 using LuckyFoodSystem.Application.Common.Models;
+using LuckyFoodSystem.UserRolesManagementService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using MapsterMapper;
+using System.Security.Claims;
 
 namespace LuckyFoodSystem.UserRolesApiGrpc.Services
 {
@@ -9,13 +14,128 @@ namespace LuckyFoodSystem.UserRolesApiGrpc.Services
     public class UserApiService : UserService.UserServiceBase
     {
         private readonly UserManager<LuckyFoodUser> _userManager;
-        public UserApiService(UserManager<LuckyFoodUser> userManager)
+        private readonly IMapper _mapper;
+        public UserApiService(UserManager<LuckyFoodUser> userManager,
+                              IMapper mapper)
         {
             _userManager = userManager;
+            _mapper = mapper;
         }
-        public override Task<UserReply> CreateUser(CreateUserRequest request, ServerCallContext context)
+        public override async Task<ListReply> GetAll(Empty request, ServerCallContext context)
         {
-            return base.CreateUser(request, context);
+            ListReply listReply = new();
+
+            var usersList = await _userManager.Users
+                .Select(item => new UserReply { Email = item.Email, 
+                                                Id = item.Id,
+                                                UserName = item.UserName,
+                                                PhoneNumber = item.PhoneNumber,})
+                .ToListAsync(context.CancellationToken);
+
+            listReply.Users.AddRange(usersList);
+            return await Task.FromResult(listReply);
+        }
+        public override async Task<UserReply> GetByName(GetUserByNameRequest request, ServerCallContext context)
+        {
+            var user = await _userManager.FindByNameAsync(request.Name);
+
+            if(user == null) 
+                throw new RpcException(new Status(StatusCode.NotFound, "User not found"));
+
+            UserReply userReply = new UserReply() { Email = user.Email,
+                                                    PhoneNumber = user.PhoneNumber,
+                                                    Id = user.Id,
+                                                    UserName = user.UserName};
+
+            return await Task.FromResult(userReply);
+        }
+        public override async Task<UserResponse> Create(CreateUserRequest request, ServerCallContext context)
+        {           
+            var user = _mapper.Map<LuckyFoodUser>(request);
+            var result = await _userManager.CreateAsync(user, request.Password);
+
+            if(!result.Succeeded)
+                throw new RpcException(new Status(StatusCode.Aborted, result.Errors.First().Description));
+
+            List<Claim> claims = request.Claims
+                    .Select(claimModel => new Claim(claimModel.Name, claimModel.Value)).ToList();
+
+            result = await _userManager.AddClaimsAsync(user, claims);
+            if (!result.Succeeded)
+                throw new RpcException(new Status(StatusCode.Aborted, result.Errors.First().Description));
+
+
+            return await Task.FromResult(new UserResponse { Code = StatusCode.OK.ToString(),
+                                                            Description = "User successfully created"});
+        }
+        public override async Task<UserResponse> Update(UpdateUserRequest request, ServerCallContext context)
+        {
+            var userToBeUpdated = await _userManager.FindByNameAsync(request.User.UserName);
+            if(userToBeUpdated is null) 
+                throw new RpcException(new Status(StatusCode.NotFound, "Selected user not found"));
+
+            var updatedUser = _mapper.Map<LuckyFoodUser>(request);
+            var updatedProperties = updatedUser.GetType().GetProperties();
+            foreach (var property in updatedProperties)
+            {
+                var newValue = property.GetValue(updatedUser);
+                if (newValue is not null)
+                {
+                    var oldProperty = userToBeUpdated.GetType().GetProperty(property.Name);
+                    if (oldProperty is not null && oldProperty.CanWrite)
+                    {
+                        oldProperty.SetValue(userToBeUpdated, newValue);
+                    }
+                }
+            }
+
+            var updatedResult = await _userManager.UpdateAsync(userToBeUpdated);
+            if (!updatedResult.Succeeded)
+                throw new RpcException(new Status(StatusCode.Internal, updatedResult.Errors.First().Description));
+
+
+            return await Task.FromResult(new UserResponse { Code = StatusCode.OK.ToString(),
+                                                            Description = "User successfully updated"});
+        }
+        public override async Task<UserResponse> Delete(DeleteUserRequest request, ServerCallContext context)
+        {
+            var user = await _userManager.FindByNameAsync(request.Id);
+            if(user is null)
+                throw new RpcException(new Status(StatusCode.NotFound, "Selected user not found"));
+
+            var result = await _userManager.DeleteAsync(user);
+            if (!result.Succeeded)
+                throw new RpcException(new Status(StatusCode.Internal, result.Errors.First().Description));
+
+            return await Task.FromResult(new UserResponse { Code = StatusCode.OK.ToString(),
+                                                            Description = "User successfully updated"});
+        }
+        public override async Task<UserResponse> DeleteFromRole(DeleteUserFromRoleRequest request, ServerCallContext context)
+        {
+            var user = await _userManager.FindByNameAsync(request.UserName);
+            if (user is null)
+                throw new RpcException(new Status(StatusCode.NotFound, "Selected user not found"));
+
+            var result = await _userManager.RemoveFromRoleAsync(user, request.RoleName);
+            if (!result.Succeeded)
+                throw new RpcException(new Status(StatusCode.Internal, result.Errors.First().Description));
+
+            return await Task.FromResult(new UserResponse { Code = StatusCode.OK.ToString(),
+                                                            Description = "User successfully removed"});
+        }
+        public override async Task<UserResponse> ChangePassword(ChangePasswordRequest request, ServerCallContext context)
+        {
+            var user = await _userManager.FindByNameAsync(request.UserName);
+            if(user == null)
+                throw new RpcException(new Status(StatusCode.NotFound, "Selected user not found"));
+
+            var result = await _userManager
+                .ChangePasswordAsync(user, request.CurrentPassword, request.NewPassword);
+            if (!result.Succeeded)
+                throw new RpcException(new Status(StatusCode.Internal, result.Errors.First().Description));
+
+            return await Task.FromResult(new UserResponse { Code = StatusCode.OK.ToString(),
+                                                            Description = "User successfully removed"});
         }
     }
 }

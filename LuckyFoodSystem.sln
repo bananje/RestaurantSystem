@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.ProductAPI"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Identity", "LuckyFoodSystem.Identity\LuckyFoodSystem.Identity.csproj", "{C64EFF68-2F81-4C84-B5B0-190697EFEA49}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.UserRoleApiGrpc", "LuckyFoodSystem.UserRoleApiGrpc\LuckyFoodSystem.UserRoleApiGrpc.csproj", "{2F10B9FF-7D8A-4188-A270-77BC9DE9A561}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.UserRoleManagementService", "LuckyFoodSystem.UserRoleApiGrpc\LuckyFoodSystem.UserRoleManagementService.csproj", "{2F10B9FF-7D8A-4188-A270-77BC9DE9A561}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{1CE8DA43-9FE2-43A9-AC73-7809847331DF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserRoleServiceTestClient", "UserRoleServiceTestClient\UserRoleServiceTestClient.csproj", "{48C992D3-B361-4D02-978C-484B3BA98008}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,9 +55,16 @@ Global
 		{2F10B9FF-7D8A-4188-A270-77BC9DE9A561}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2F10B9FF-7D8A-4188-A270-77BC9DE9A561}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2F10B9FF-7D8A-4188-A270-77BC9DE9A561}.Release|Any CPU.Build.0 = Release|Any CPU
+		{48C992D3-B361-4D02-978C-484B3BA98008}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{48C992D3-B361-4D02-978C-484B3BA98008}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{48C992D3-B361-4D02-978C-484B3BA98008}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{48C992D3-B361-4D02-978C-484B3BA98008}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{48C992D3-B361-4D02-978C-484B3BA98008} = {1CE8DA43-9FE2-43A9-AC73-7809847331DF}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5E49089E-C369-4B30-9782-0E6592717236}

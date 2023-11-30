@@ -3,7 +3,7 @@ using MapsterMapper;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace BuberDinner.Api.Mapping
+namespace LuckyFoodSystem.Application.Common.Mapping
 {
     public static class DependencyInjection
     {

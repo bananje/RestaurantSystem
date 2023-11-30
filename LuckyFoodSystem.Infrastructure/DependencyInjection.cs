@@ -2,12 +2,11 @@
 using LuckyFoodSystem.Application.Common.Interfaces.Clients;
 using LuckyFoodSystem.Application.Common.Interfaces.Persistence;
 using LuckyFoodSystem.Application.Common.Interfaces.Services;
+using LuckyFoodSystem.Infrastructure.Clients;
+using LuckyFoodSystem.Infrastructure.Interceptors;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Context;
-using LuckyFoodSystem.Infrastructure.Persistаnce.Interceptors;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepository;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductRepository;
-using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.RoleRepository;
-using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.UserRepository;
 using LuckyFoodSystem.Infrastructure.Services;
 using LuckyFoodSystem.Infrastructure.Services.Cache.MemoryCacheService;
 using Microsoft.AspNetCore.Http;
@@ -38,10 +37,7 @@ namespace LuckyFoodSystem.Infrastructure
             services.Decorate<IMenuRepository, CachedMenuRepository>();
 
             services.AddScoped<IProductRepository, ProductRepository>();
-            services.Decorate<IProductRepository, CachedProductRepository>();
-
-            services.AddScoped<IRoleRepository, RoleRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
+            services.Decorate<IProductRepository, CachedProductRepository>();           
 
             return services;
         }
@@ -65,8 +61,8 @@ namespace LuckyFoodSystem.Infrastructure
             services.AddSingleton<IHttpContextProvider, HttpContextProvider>();
             services.AddTransient<IImageService, ImageService>();
             services.AddSingleton<IMemoryCacheService, MemoryCacheService>();
-            services.AddScoped<PublishDomainEventsInterceptor>();
             services.AddScoped<IIdentityServerClient, IdentityServerClient>();
+            services.AddScoped<PublishDomainEventsInterceptor>();
 
             return services;
         }

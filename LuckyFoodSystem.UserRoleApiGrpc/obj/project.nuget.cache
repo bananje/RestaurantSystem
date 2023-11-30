@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ngBvv+lHEacYT4AX5+tkloXCkQjApt5KXPcU2q7uXSXi3Gi58e+4f5zs8J3qwHpRpSHmm9jCZZrngpiJH2rHLw==",
+  "dgSpecHash": "PbLXA1uPkTrpoEPmUFtmuQn083SCZMjSE4c8paO8cBF2fVn57jJJAUbfUxauG35429H0tY2v/W63DTRbJEmmeQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.UserRoleApiGrpc\\LuckyFoodSystem.UserRoleApiGrpc.csproj",
+  "projectFilePath": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.UserRoleApiGrpc\\LuckyFoodSystem.UserRoleManagementService.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hermann\\.nuget\\packages\\automapper\\12.0.0\\automapper.12.0.0.nupkg.sha512",
     "C:\\Users\\Hermann\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",

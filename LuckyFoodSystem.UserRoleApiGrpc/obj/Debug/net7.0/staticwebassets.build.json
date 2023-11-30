@@ -1,8 +1,8 @@
 {
   "Version": 1,
-  "Hash": "Sc2fd2UOclIxFGxWosGpez6MSGrO+C1yp+IcnwGIojY=",
-  "Source": "LuckyFoodSystem.UserRoleApiGrpc",
-  "BasePath": "_content/LuckyFoodSystem.UserRoleApiGrpc",
+  "Hash": "lPi6FmxHKDiNvbWSAW46B47/CceVEkXcgLcFWHc9D/o=",
+  "Source": "LuckyFoodSystem.UserRoleManagementService",
+  "BasePath": "_content/LuckyFoodSystem.UserRoleManagementService",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],

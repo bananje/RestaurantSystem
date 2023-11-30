@@ -7,7 +7,7 @@
 
 using grpc = global::Grpc.Core;
 
-namespace LuckyFoodSystem.UserRolesApiGrpc {
+namespace LuckyFoodSystem.UserRolesManagementService {
   public static partial class UserService
   {
     static readonly string __ServiceName = "user.UserService";
@@ -48,72 +48,84 @@ namespace LuckyFoodSystem.UserRolesApiGrpc {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Google.Protobuf.WellKnownTypes.Empty> __Marshaller_google_protobuf_Empty = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Google.Protobuf.WellKnownTypes.Empty.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesApiGrpc.ListReply> __Marshaller_user_ListReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesApiGrpc.ListReply.Parser));
+    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesManagementService.ListReply> __Marshaller_user_ListReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesManagementService.ListReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesApiGrpc.GetUserByNameRequest> __Marshaller_user_GetUserByNameRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesApiGrpc.GetUserByNameRequest.Parser));
+    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesManagementService.GetUserByNameRequest> __Marshaller_user_GetUserByNameRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesManagementService.GetUserByNameRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesApiGrpc.UserReply> __Marshaller_user_UserReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply.Parser));
+    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesManagementService.UserReply> __Marshaller_user_UserReply = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesManagementService.UserReply.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesApiGrpc.CreateUserRequest> __Marshaller_user_CreateUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesApiGrpc.CreateUserRequest.Parser));
+    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesManagementService.CreateUserRequest> __Marshaller_user_CreateUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesManagementService.CreateUserRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesApiGrpc.UpdateUserRequest> __Marshaller_user_UpdateUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesApiGrpc.UpdateUserRequest.Parser));
+    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesManagementService.UserResponse> __Marshaller_user_UserResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesManagementService.UserResponse.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesApiGrpc.DeleteUserRequest> __Marshaller_user_DeleteUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesApiGrpc.DeleteUserRequest.Parser));
+    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesManagementService.UpdateUserRequest> __Marshaller_user_UpdateUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesManagementService.UpdateUserRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesApiGrpc.DeleteUserFromRoleRequest> __Marshaller_user_DeleteUserFromRoleRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesApiGrpc.DeleteUserFromRoleRequest.Parser));
+    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesManagementService.DeleteUserRequest> __Marshaller_user_DeleteUserRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesManagementService.DeleteUserRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesManagementService.DeleteUserFromRoleRequest> __Marshaller_user_DeleteUserFromRoleRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesManagementService.DeleteUserFromRoleRequest.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::LuckyFoodSystem.UserRolesManagementService.ChangePasswordRequest> __Marshaller_user_ChangePasswordRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::LuckyFoodSystem.UserRolesManagementService.ChangePasswordRequest.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::LuckyFoodSystem.UserRolesApiGrpc.ListReply> __Method_GetAllUsers = new grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::LuckyFoodSystem.UserRolesApiGrpc.ListReply>(
+    static readonly grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::LuckyFoodSystem.UserRolesManagementService.ListReply> __Method_GetAll = new grpc::Method<global::Google.Protobuf.WellKnownTypes.Empty, global::LuckyFoodSystem.UserRolesManagementService.ListReply>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "GetAllUsers",
+        "GetAll",
         __Marshaller_google_protobuf_Empty,
         __Marshaller_user_ListReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::LuckyFoodSystem.UserRolesApiGrpc.GetUserByNameRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply> __Method_GetUserByName = new grpc::Method<global::LuckyFoodSystem.UserRolesApiGrpc.GetUserByNameRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply>(
+    static readonly grpc::Method<global::LuckyFoodSystem.UserRolesManagementService.GetUserByNameRequest, global::LuckyFoodSystem.UserRolesManagementService.UserReply> __Method_GetByName = new grpc::Method<global::LuckyFoodSystem.UserRolesManagementService.GetUserByNameRequest, global::LuckyFoodSystem.UserRolesManagementService.UserReply>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "GetUserByName",
+        "GetByName",
         __Marshaller_user_GetUserByNameRequest,
         __Marshaller_user_UserReply);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::LuckyFoodSystem.UserRolesApiGrpc.CreateUserRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply> __Method_CreateUser = new grpc::Method<global::LuckyFoodSystem.UserRolesApiGrpc.CreateUserRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply>(
+    static readonly grpc::Method<global::LuckyFoodSystem.UserRolesManagementService.CreateUserRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse> __Method_Create = new grpc::Method<global::LuckyFoodSystem.UserRolesManagementService.CreateUserRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "CreateUser",
+        "Create",
         __Marshaller_user_CreateUserRequest,
-        __Marshaller_user_UserReply);
+        __Marshaller_user_UserResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::LuckyFoodSystem.UserRolesApiGrpc.UpdateUserRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply> __Method_UpdateUser = new grpc::Method<global::LuckyFoodSystem.UserRolesApiGrpc.UpdateUserRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply>(
+    static readonly grpc::Method<global::LuckyFoodSystem.UserRolesManagementService.UpdateUserRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse> __Method_Update = new grpc::Method<global::LuckyFoodSystem.UserRolesManagementService.UpdateUserRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "UpdateUser",
+        "Update",
         __Marshaller_user_UpdateUserRequest,
-        __Marshaller_user_UserReply);
+        __Marshaller_user_UserResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::LuckyFoodSystem.UserRolesApiGrpc.DeleteUserRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply> __Method_DeleteUser = new grpc::Method<global::LuckyFoodSystem.UserRolesApiGrpc.DeleteUserRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply>(
+    static readonly grpc::Method<global::LuckyFoodSystem.UserRolesManagementService.DeleteUserRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse> __Method_Delete = new grpc::Method<global::LuckyFoodSystem.UserRolesManagementService.DeleteUserRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "DeleteUser",
+        "Delete",
         __Marshaller_user_DeleteUserRequest,
-        __Marshaller_user_UserReply);
+        __Marshaller_user_UserResponse);
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-    static readonly grpc::Method<global::LuckyFoodSystem.UserRolesApiGrpc.DeleteUserFromRoleRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply> __Method_DeleteUserFromRole = new grpc::Method<global::LuckyFoodSystem.UserRolesApiGrpc.DeleteUserFromRoleRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply>(
+    static readonly grpc::Method<global::LuckyFoodSystem.UserRolesManagementService.DeleteUserFromRoleRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse> __Method_DeleteFromRole = new grpc::Method<global::LuckyFoodSystem.UserRolesManagementService.DeleteUserFromRoleRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse>(
         grpc::MethodType.Unary,
         __ServiceName,
-        "DeleteUserFromRole",
+        "DeleteFromRole",
         __Marshaller_user_DeleteUserFromRoleRequest,
-        __Marshaller_user_UserReply);
+        __Marshaller_user_UserResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::LuckyFoodSystem.UserRolesManagementService.ChangePasswordRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse> __Method_ChangePassword = new grpc::Method<global::LuckyFoodSystem.UserRolesManagementService.ChangePasswordRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse>(
+        grpc::MethodType.Unary,
+        __ServiceName,
+        "ChangePassword",
+        __Marshaller_user_ChangePasswordRequest,
+        __Marshaller_user_UserResponse);
 
     /// <summary>Service descriptor</summary>
     public static global::Google.Protobuf.Reflection.ServiceDescriptor Descriptor
     {
-      get { return global::LuckyFoodSystem.UserRolesApiGrpc.UserReflection.Descriptor.Services[0]; }
+      get { return global::LuckyFoodSystem.UserRolesManagementService.UserReflection.Descriptor.Services[0]; }
     }
 
     /// <summary>Base class for server-side implementations of UserService</summary>
@@ -121,37 +133,43 @@ namespace LuckyFoodSystem.UserRolesApiGrpc {
     public abstract partial class UserServiceBase
     {
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.UserRolesApiGrpc.ListReply> GetAllUsers(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.UserRolesManagementService.ListReply> GetAll(global::Google.Protobuf.WellKnownTypes.Empty request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.UserRolesApiGrpc.UserReply> GetUserByName(global::LuckyFoodSystem.UserRolesApiGrpc.GetUserByNameRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.UserRolesManagementService.UserReply> GetByName(global::LuckyFoodSystem.UserRolesManagementService.GetUserByNameRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.UserRolesApiGrpc.UserReply> CreateUser(global::LuckyFoodSystem.UserRolesApiGrpc.CreateUserRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.UserRolesManagementService.UserResponse> Create(global::LuckyFoodSystem.UserRolesManagementService.CreateUserRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.UserRolesApiGrpc.UserReply> UpdateUser(global::LuckyFoodSystem.UserRolesApiGrpc.UpdateUserRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.UserRolesManagementService.UserResponse> Update(global::LuckyFoodSystem.UserRolesManagementService.UpdateUserRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.UserRolesApiGrpc.UserReply> DeleteUser(global::LuckyFoodSystem.UserRolesApiGrpc.DeleteUserRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.UserRolesManagementService.UserResponse> Delete(global::LuckyFoodSystem.UserRolesManagementService.DeleteUserRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
-      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.UserRolesApiGrpc.UserReply> DeleteUserFromRole(global::LuckyFoodSystem.UserRolesApiGrpc.DeleteUserFromRoleRequest request, grpc::ServerCallContext context)
+      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.UserRolesManagementService.UserResponse> DeleteFromRole(global::LuckyFoodSystem.UserRolesManagementService.DeleteUserFromRoleRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task<global::LuckyFoodSystem.UserRolesManagementService.UserResponse> ChangePassword(global::LuckyFoodSystem.UserRolesManagementService.ChangePasswordRequest request, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -164,12 +182,13 @@ namespace LuckyFoodSystem.UserRolesApiGrpc {
     public static grpc::ServerServiceDefinition BindService(UserServiceBase serviceImpl)
     {
       return grpc::ServerServiceDefinition.CreateBuilder()
-          .AddMethod(__Method_GetAllUsers, serviceImpl.GetAllUsers)
-          .AddMethod(__Method_GetUserByName, serviceImpl.GetUserByName)
-          .AddMethod(__Method_CreateUser, serviceImpl.CreateUser)
-          .AddMethod(__Method_UpdateUser, serviceImpl.UpdateUser)
-          .AddMethod(__Method_DeleteUser, serviceImpl.DeleteUser)
-          .AddMethod(__Method_DeleteUserFromRole, serviceImpl.DeleteUserFromRole).Build();
+          .AddMethod(__Method_GetAll, serviceImpl.GetAll)
+          .AddMethod(__Method_GetByName, serviceImpl.GetByName)
+          .AddMethod(__Method_Create, serviceImpl.Create)
+          .AddMethod(__Method_Update, serviceImpl.Update)
+          .AddMethod(__Method_Delete, serviceImpl.Delete)
+          .AddMethod(__Method_DeleteFromRole, serviceImpl.DeleteFromRole)
+          .AddMethod(__Method_ChangePassword, serviceImpl.ChangePassword).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -179,12 +198,13 @@ namespace LuckyFoodSystem.UserRolesApiGrpc {
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     public static void BindService(grpc::ServiceBinderBase serviceBinder, UserServiceBase serviceImpl)
     {
-      serviceBinder.AddMethod(__Method_GetAllUsers, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Protobuf.WellKnownTypes.Empty, global::LuckyFoodSystem.UserRolesApiGrpc.ListReply>(serviceImpl.GetAllUsers));
-      serviceBinder.AddMethod(__Method_GetUserByName, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.UserRolesApiGrpc.GetUserByNameRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply>(serviceImpl.GetUserByName));
-      serviceBinder.AddMethod(__Method_CreateUser, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.UserRolesApiGrpc.CreateUserRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply>(serviceImpl.CreateUser));
-      serviceBinder.AddMethod(__Method_UpdateUser, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.UserRolesApiGrpc.UpdateUserRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply>(serviceImpl.UpdateUser));
-      serviceBinder.AddMethod(__Method_DeleteUser, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.UserRolesApiGrpc.DeleteUserRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply>(serviceImpl.DeleteUser));
-      serviceBinder.AddMethod(__Method_DeleteUserFromRole, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.UserRolesApiGrpc.DeleteUserFromRoleRequest, global::LuckyFoodSystem.UserRolesApiGrpc.UserReply>(serviceImpl.DeleteUserFromRole));
+      serviceBinder.AddMethod(__Method_GetAll, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Google.Protobuf.WellKnownTypes.Empty, global::LuckyFoodSystem.UserRolesManagementService.ListReply>(serviceImpl.GetAll));
+      serviceBinder.AddMethod(__Method_GetByName, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.UserRolesManagementService.GetUserByNameRequest, global::LuckyFoodSystem.UserRolesManagementService.UserReply>(serviceImpl.GetByName));
+      serviceBinder.AddMethod(__Method_Create, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.UserRolesManagementService.CreateUserRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse>(serviceImpl.Create));
+      serviceBinder.AddMethod(__Method_Update, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.UserRolesManagementService.UpdateUserRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse>(serviceImpl.Update));
+      serviceBinder.AddMethod(__Method_Delete, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.UserRolesManagementService.DeleteUserRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse>(serviceImpl.Delete));
+      serviceBinder.AddMethod(__Method_DeleteFromRole, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.UserRolesManagementService.DeleteUserFromRoleRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse>(serviceImpl.DeleteFromRole));
+      serviceBinder.AddMethod(__Method_ChangePassword, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::LuckyFoodSystem.UserRolesManagementService.ChangePasswordRequest, global::LuckyFoodSystem.UserRolesManagementService.UserResponse>(serviceImpl.ChangePassword));
     }
 
   }

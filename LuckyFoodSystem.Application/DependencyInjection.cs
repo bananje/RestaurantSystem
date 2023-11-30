@@ -1,6 +1,6 @@
-﻿using BuberDinner.Api.Mapping;
-using FluentValidation;
+﻿using FluentValidation;
 using LuckyFoodSystem.Application.Common.Behaviors;
+using LuckyFoodSystem.Application.Common.Mapping;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
