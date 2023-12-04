@@ -8,13 +8,15 @@ namespace LuckyFoodSystem.UserRoleManagementService.Application.Mappings
     {
         public void Register(TypeAdapterConfig config)
         {
-            config.NewConfig<CreateUserRequest, LuckyFoodUser>()
+            config.NewConfig<UpdateUserRequest, LuckyFoodUser>()
                 .Map(dest => dest.Email, src => src.Email)
                 .Map(dest => dest.UserName, src => src.UserName)
-                .Map(dest => dest.PhoneNumber, src => src.PhoneNumber);
+                .Map(dest => dest.PhoneNumber, src => src.PhoneNumber)
+                .Map(dest => dest.EmailConfirmed, src => src.EmailConfirmed)
+                .Ignore(dest => dest.Id);
 
-            config.NewConfig<UpdateUserRequest, LuckyFoodUser>()
-                .Map(dest => dest, src => src.User);
+            //config.NewConfig<UpdateUserRequest, LuckyFoodUser>()
+            //    .Map(dest => dest, src => src.User);
 
         }
     }

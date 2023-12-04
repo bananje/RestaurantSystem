@@ -9,7 +9,7 @@ using pb = global::Google.Protobuf;
 using pbc = global::Google.Protobuf.Collections;
 using pbr = global::Google.Protobuf.Reflection;
 using scg = global::System.Collections.Generic;
-namespace LuckyFoodSystem.UserRolesManagementService {
+namespace LuckyFoodSystem.UserRoleServiceTestClient {
 
   /// <summary>Holder for reflection information generated from Protos/user.proto</summary>
   public static partial class UserReflection {
@@ -29,45 +29,49 @@ namespace LuckyFoodSystem.UserRolesManagementService {
             "TGlzdFJlcGx5Eh4KBVVzZXJzGAEgAygLMg8udXNlci5Vc2VyUmVwbHkibQoJ",
             "VXNlclJlcGx5EgoKAmlkGAEgASgJEhEKCXVzZXJfbmFtZRgCIAEoCRINCgVl",
             "bWFpbBgDIAEoCRIyCgxwaG9uZV9udW1iZXIYBCABKAsyHC5nb29nbGUucHJv",
-            "dG9idWYuU3RyaW5nVmFsdWUiKQoKQ2xhaW1Nb2RlbBIMCgRuYW1lGAEgASgJ",
-            "Eg0KBXZhbHVlGAIgASgJIpgBChFDcmVhdGVVc2VyUmVxdWVzdBIRCgl1c2Vy",
-            "X25hbWUYASABKAkSDQoFZW1haWwYAiABKAkSFwoPZW1haWxfY29uZmlybWVk",
-            "GAMgASgIEhAKCHBhc3N3b3JkGAQgASgJEiAKBkNsYWltcxgFIAMoCzIQLnVz",
-            "ZXIuQ2xhaW1Nb2RlbBIUCgxwaG9uZV9udW1iZXIYBiABKAkiPAoUQWRkVXNl",
-            "clRvUm9sZVJlcXVlc3QSEQoJdXNlcl9uYW1lGAEgASgJEhEKCXJvbGVfbmFt",
-            "ZRgCIAEoCSJaChVDaGFuZ2VQYXNzd29yZFJlcXVlc3QSEQoJdXNlcl9uYW1l",
-            "GAEgASgJEhgKEGN1cnJlbnRfcGFzc3dvcmQYAiABKAkSFAoMbmV3X3Bhc3N3",
-            "b3JkGAMgASgJIiQKFEdldFVzZXJCeU5hbWVSZXF1ZXN0EgwKBG5hbWUYASAB",
-            "KAkiQQoZRGVsZXRlVXNlckZyb21Sb2xlUmVxdWVzdBIRCgl1c2VyX25hbWUY",
-            "ASABKAkSEQoJcm9sZV9uYW1lGAIgASgJIh8KEURlbGV0ZVVzZXJSZXF1ZXN0",
-            "EgoKAmlkGAEgASgJIj4KEVVwZGF0ZVVzZXJSZXF1ZXN0EgoKAmlkGAEgASgJ",
-            "Eh0KBFVzZXIYAiABKAsyDy51c2VyLlVzZXJSZXBseSIxCgxVc2VyUmVzcG9u",
-            "c2USDAoEY29kZRgBIAEoCRITCgtkZXNjcmlwdGlvbhgCIAEoCTKpAwoLVXNl",
-            "clNlcnZpY2USMQoGR2V0QWxsEhYuZ29vZ2xlLnByb3RvYnVmLkVtcHR5Gg8u",
-            "dXNlci5MaXN0UmVwbHkSOAoJR2V0QnlOYW1lEhoudXNlci5HZXRVc2VyQnlO",
-            "YW1lUmVxdWVzdBoPLnVzZXIuVXNlclJlcGx5EjUKBkNyZWF0ZRIXLnVzZXIu",
-            "Q3JlYXRlVXNlclJlcXVlc3QaEi51c2VyLlVzZXJSZXNwb25zZRI1CgZVcGRh",
-            "dGUSFy51c2VyLlVwZGF0ZVVzZXJSZXF1ZXN0GhIudXNlci5Vc2VyUmVzcG9u",
-            "c2USNQoGRGVsZXRlEhcudXNlci5EZWxldGVVc2VyUmVxdWVzdBoSLnVzZXIu",
-            "VXNlclJlc3BvbnNlEkUKDkRlbGV0ZUZyb21Sb2xlEh8udXNlci5EZWxldGVV",
-            "c2VyRnJvbVJvbGVSZXF1ZXN0GhIudXNlci5Vc2VyUmVzcG9uc2USQQoOQ2hh",
-            "bmdlUGFzc3dvcmQSGy51c2VyLkNoYW5nZVBhc3N3b3JkUmVxdWVzdBoSLnVz",
-            "ZXIuVXNlclJlc3BvbnNlQi2qAipMdWNreUZvb2RTeXN0ZW0uVXNlclJvbGVz",
-            "TWFuYWdlbWVudFNlcnZpY2ViBnByb3RvMw=="));
+            "dG9idWYuU3RyaW5nVmFsdWUiLQoKQ2xhaW1zTGlzdBIfCgVDbGFpbRgBIAMo",
+            "CzIQLnVzZXIuQ2xhaW1Nb2RlbCIpCgpDbGFpbU1vZGVsEgwKBG5hbWUYASAB",
+            "KAkSDQoFdmFsdWUYAiABKAkimAEKEUNyZWF0ZVVzZXJSZXF1ZXN0EhEKCXVz",
+            "ZXJfbmFtZRgBIAEoCRINCgVlbWFpbBgCIAEoCRIXCg9lbWFpbF9jb25maXJt",
+            "ZWQYAyABKAgSEAoIcGFzc3dvcmQYBCABKAkSFAoMcGhvbmVfbnVtYmVyGAYg",
+            "ASgJEiAKBkNsYWltcxgHIAEoCzIQLnVzZXIuQ2xhaW1zTGlzdCI8ChRBZGRV",
+            "c2VyVG9Sb2xlUmVxdWVzdBIRCgl1c2VyX25hbWUYASABKAkSEQoJcm9sZV9u",
+            "YW1lGAIgASgJIloKFUNoYW5nZVBhc3N3b3JkUmVxdWVzdBIRCgl1c2VyX25h",
+            "bWUYASABKAkSGAoQY3VycmVudF9wYXNzd29yZBgCIAEoCRIUCgxuZXdfcGFz",
+            "c3dvcmQYAyABKAkiJAoUR2V0VXNlckJ5TmFtZVJlcXVlc3QSDAoEbmFtZRgB",
+            "IAEoCSJBChlEZWxldGVVc2VyRnJvbVJvbGVSZXF1ZXN0EhEKCXVzZXJfbmFt",
+            "ZRgBIAEoCRIRCglyb2xlX25hbWUYAiABKAkiIQoRRGVsZXRlVXNlclJlcXVl",
+            "c3QSDAoEbmFtZRgBIAEoCSKkAQoRVXBkYXRlVXNlclJlcXVlc3QSCgoCaWQY",
+            "ASABKAkSEQoJdXNlcl9uYW1lGAIgASgJEg0KBWVtYWlsGAMgASgJEhcKD2Vt",
+            "YWlsX2NvbmZpcm1lZBgEIAEoCBIQCghwYXNzd29yZBgFIAEoCRIUCgxwaG9u",
+            "ZV9udW1iZXIYBiABKAkSIAoGQ2xhaW1zGAcgASgLMhAudXNlci5DbGFpbXNM",
+            "aXN0IjEKDFVzZXJSZXNwb25zZRIMCgRjb2RlGAEgASgJEhMKC2Rlc2NyaXB0",
+            "aW9uGAIgASgJMqkDCgtVc2VyU2VydmljZRIxCgZHZXRBbGwSFi5nb29nbGUu",
+            "cHJvdG9idWYuRW1wdHkaDy51c2VyLkxpc3RSZXBseRI4CglHZXRCeU5hbWUS",
+            "Gi51c2VyLkdldFVzZXJCeU5hbWVSZXF1ZXN0Gg8udXNlci5Vc2VyUmVwbHkS",
+            "NQoGQ3JlYXRlEhcudXNlci5DcmVhdGVVc2VyUmVxdWVzdBoSLnVzZXIuVXNl",
+            "clJlc3BvbnNlEjUKBlVwZGF0ZRIXLnVzZXIuVXBkYXRlVXNlclJlcXVlc3Qa",
+            "Ei51c2VyLlVzZXJSZXNwb25zZRI1CgZEZWxldGUSFy51c2VyLkRlbGV0ZVVz",
+            "ZXJSZXF1ZXN0GhIudXNlci5Vc2VyUmVzcG9uc2USRQoORGVsZXRlRnJvbVJv",
+            "bGUSHy51c2VyLkRlbGV0ZVVzZXJGcm9tUm9sZVJlcXVlc3QaEi51c2VyLlVz",
+            "ZXJSZXNwb25zZRJBCg5DaGFuZ2VQYXNzd29yZBIbLnVzZXIuQ2hhbmdlUGFz",
+            "c3dvcmRSZXF1ZXN0GhIudXNlci5Vc2VyUmVzcG9uc2VCLKoCKUx1Y2t5Rm9v",
+            "ZFN5c3RlbS5Vc2VyUm9sZVNlcnZpY2VUZXN0Q2xpZW50YgZwcm90bzM="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { global::Google.Protobuf.WellKnownTypes.EmptyReflection.Descriptor, global::Google.Protobuf.WellKnownTypes.WrappersReflection.Descriptor, },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRolesManagementService.ListReply), global::LuckyFoodSystem.UserRolesManagementService.ListReply.Parser, new[]{ "Users" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRolesManagementService.UserReply), global::LuckyFoodSystem.UserRolesManagementService.UserReply.Parser, new[]{ "Id", "UserName", "Email", "PhoneNumber" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRolesManagementService.ClaimModel), global::LuckyFoodSystem.UserRolesManagementService.ClaimModel.Parser, new[]{ "Name", "Value" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRolesManagementService.CreateUserRequest), global::LuckyFoodSystem.UserRolesManagementService.CreateUserRequest.Parser, new[]{ "UserName", "Email", "EmailConfirmed", "Password", "Claims", "PhoneNumber" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRolesManagementService.AddUserToRoleRequest), global::LuckyFoodSystem.UserRolesManagementService.AddUserToRoleRequest.Parser, new[]{ "UserName", "RoleName" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRolesManagementService.ChangePasswordRequest), global::LuckyFoodSystem.UserRolesManagementService.ChangePasswordRequest.Parser, new[]{ "UserName", "CurrentPassword", "NewPassword" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRolesManagementService.GetUserByNameRequest), global::LuckyFoodSystem.UserRolesManagementService.GetUserByNameRequest.Parser, new[]{ "Name" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRolesManagementService.DeleteUserFromRoleRequest), global::LuckyFoodSystem.UserRolesManagementService.DeleteUserFromRoleRequest.Parser, new[]{ "UserName", "RoleName" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRolesManagementService.DeleteUserRequest), global::LuckyFoodSystem.UserRolesManagementService.DeleteUserRequest.Parser, new[]{ "Id" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRolesManagementService.UpdateUserRequest), global::LuckyFoodSystem.UserRolesManagementService.UpdateUserRequest.Parser, new[]{ "Id", "User" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRolesManagementService.UserResponse), global::LuckyFoodSystem.UserRolesManagementService.UserResponse.Parser, new[]{ "Code", "Description" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRoleServiceTestClient.ListReply), global::LuckyFoodSystem.UserRoleServiceTestClient.ListReply.Parser, new[]{ "Users" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRoleServiceTestClient.UserReply), global::LuckyFoodSystem.UserRoleServiceTestClient.UserReply.Parser, new[]{ "Id", "UserName", "Email", "PhoneNumber" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimsList), global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimsList.Parser, new[]{ "Claim" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimModel), global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimModel.Parser, new[]{ "Name", "Value" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRoleServiceTestClient.CreateUserRequest), global::LuckyFoodSystem.UserRoleServiceTestClient.CreateUserRequest.Parser, new[]{ "UserName", "Email", "EmailConfirmed", "Password", "PhoneNumber", "Claims" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRoleServiceTestClient.AddUserToRoleRequest), global::LuckyFoodSystem.UserRoleServiceTestClient.AddUserToRoleRequest.Parser, new[]{ "UserName", "RoleName" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRoleServiceTestClient.ChangePasswordRequest), global::LuckyFoodSystem.UserRoleServiceTestClient.ChangePasswordRequest.Parser, new[]{ "UserName", "CurrentPassword", "NewPassword" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRoleServiceTestClient.GetUserByNameRequest), global::LuckyFoodSystem.UserRoleServiceTestClient.GetUserByNameRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRoleServiceTestClient.DeleteUserFromRoleRequest), global::LuckyFoodSystem.UserRoleServiceTestClient.DeleteUserFromRoleRequest.Parser, new[]{ "UserName", "RoleName" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRoleServiceTestClient.DeleteUserRequest), global::LuckyFoodSystem.UserRoleServiceTestClient.DeleteUserRequest.Parser, new[]{ "Name" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRoleServiceTestClient.UpdateUserRequest), global::LuckyFoodSystem.UserRoleServiceTestClient.UpdateUserRequest.Parser, new[]{ "Id", "UserName", "Email", "EmailConfirmed", "Password", "PhoneNumber", "Claims" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::LuckyFoodSystem.UserRoleServiceTestClient.UserResponse), global::LuckyFoodSystem.UserRoleServiceTestClient.UserResponse.Parser, new[]{ "Code", "Description" }, null, null, null, null)
           }));
     }
     #endregion
@@ -88,7 +92,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::LuckyFoodSystem.UserRolesManagementService.UserReflection.Descriptor.MessageTypes[0]; }
+      get { return global::LuckyFoodSystem.UserRoleServiceTestClient.UserReflection.Descriptor.MessageTypes[0]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -120,12 +124,12 @@ namespace LuckyFoodSystem.UserRolesManagementService {
 
     /// <summary>Field number for the "Users" field.</summary>
     public const int UsersFieldNumber = 1;
-    private static readonly pb::FieldCodec<global::LuckyFoodSystem.UserRolesManagementService.UserReply> _repeated_users_codec
-        = pb::FieldCodec.ForMessage(10, global::LuckyFoodSystem.UserRolesManagementService.UserReply.Parser);
-    private readonly pbc::RepeatedField<global::LuckyFoodSystem.UserRolesManagementService.UserReply> users_ = new pbc::RepeatedField<global::LuckyFoodSystem.UserRolesManagementService.UserReply>();
+    private static readonly pb::FieldCodec<global::LuckyFoodSystem.UserRoleServiceTestClient.UserReply> _repeated_users_codec
+        = pb::FieldCodec.ForMessage(10, global::LuckyFoodSystem.UserRoleServiceTestClient.UserReply.Parser);
+    private readonly pbc::RepeatedField<global::LuckyFoodSystem.UserRoleServiceTestClient.UserReply> users_ = new pbc::RepeatedField<global::LuckyFoodSystem.UserRoleServiceTestClient.UserReply>();
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::LuckyFoodSystem.UserRolesManagementService.UserReply> Users {
+    public pbc::RepeatedField<global::LuckyFoodSystem.UserRoleServiceTestClient.UserReply> Users {
       get { return users_; }
     }
 
@@ -266,7 +270,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::LuckyFoodSystem.UserRolesManagementService.UserReflection.Descriptor.MessageTypes[1]; }
+      get { return global::LuckyFoodSystem.UserRoleServiceTestClient.UserReflection.Descriptor.MessageTypes[1]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -560,6 +564,184 @@ namespace LuckyFoodSystem.UserRolesManagementService {
 
   }
 
+  public sealed partial class ClaimsList : pb::IMessage<ClaimsList>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ClaimsList> _parser = new pb::MessageParser<ClaimsList>(() => new ClaimsList());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ClaimsList> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::LuckyFoodSystem.UserRoleServiceTestClient.UserReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ClaimsList() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ClaimsList(ClaimsList other) : this() {
+      claim_ = other.claim_.Clone();
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ClaimsList Clone() {
+      return new ClaimsList(this);
+    }
+
+    /// <summary>Field number for the "Claim" field.</summary>
+    public const int ClaimFieldNumber = 1;
+    private static readonly pb::FieldCodec<global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimModel> _repeated_claim_codec
+        = pb::FieldCodec.ForMessage(10, global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimModel.Parser);
+    private readonly pbc::RepeatedField<global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimModel> claim_ = new pbc::RepeatedField<global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimModel>();
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public pbc::RepeatedField<global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimModel> Claim {
+      get { return claim_; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ClaimsList);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ClaimsList other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if(!claim_.Equals(other.claim_)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      hash ^= claim_.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      claim_.WriteTo(output, _repeated_claim_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      claim_.WriteTo(ref output, _repeated_claim_codec);
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      size += claim_.CalculateSize(_repeated_claim_codec);
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ClaimsList other) {
+      if (other == null) {
+        return;
+      }
+      claim_.Add(other.claim_);
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 10: {
+            claim_.AddEntriesFrom(input, _repeated_claim_codec);
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+        switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 10: {
+            claim_.AddEntriesFrom(ref input, _repeated_claim_codec);
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
   public sealed partial class ClaimModel : pb::IMessage<ClaimModel>
   #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       , pb::IBufferMessage
@@ -574,7 +756,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::LuckyFoodSystem.UserRolesManagementService.UserReflection.Descriptor.MessageTypes[2]; }
+      get { return global::LuckyFoodSystem.UserRoleServiceTestClient.UserReflection.Descriptor.MessageTypes[3]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -800,7 +982,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::LuckyFoodSystem.UserRolesManagementService.UserReflection.Descriptor.MessageTypes[3]; }
+      get { return global::LuckyFoodSystem.UserRoleServiceTestClient.UserReflection.Descriptor.MessageTypes[4]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -824,8 +1006,8 @@ namespace LuckyFoodSystem.UserRolesManagementService {
       email_ = other.email_;
       emailConfirmed_ = other.emailConfirmed_;
       password_ = other.password_;
-      claims_ = other.claims_.Clone();
       phoneNumber_ = other.phoneNumber_;
+      claims_ = other.claims_ != null ? other.claims_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -883,17 +1065,6 @@ namespace LuckyFoodSystem.UserRolesManagementService {
       }
     }
 
-    /// <summary>Field number for the "Claims" field.</summary>
-    public const int ClaimsFieldNumber = 5;
-    private static readonly pb::FieldCodec<global::LuckyFoodSystem.UserRolesManagementService.ClaimModel> _repeated_claims_codec
-        = pb::FieldCodec.ForMessage(42, global::LuckyFoodSystem.UserRolesManagementService.ClaimModel.Parser);
-    private readonly pbc::RepeatedField<global::LuckyFoodSystem.UserRolesManagementService.ClaimModel> claims_ = new pbc::RepeatedField<global::LuckyFoodSystem.UserRolesManagementService.ClaimModel>();
-    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
-    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public pbc::RepeatedField<global::LuckyFoodSystem.UserRolesManagementService.ClaimModel> Claims {
-      get { return claims_; }
-    }
-
     /// <summary>Field number for the "phone_number" field.</summary>
     public const int PhoneNumberFieldNumber = 6;
     private string phoneNumber_ = "";
@@ -903,6 +1074,18 @@ namespace LuckyFoodSystem.UserRolesManagementService {
       get { return phoneNumber_; }
       set {
         phoneNumber_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Claims" field.</summary>
+    public const int ClaimsFieldNumber = 7;
+    private global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimsList claims_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimsList Claims {
+      get { return claims_; }
+      set {
+        claims_ = value;
       }
     }
 
@@ -925,8 +1108,8 @@ namespace LuckyFoodSystem.UserRolesManagementService {
       if (Email != other.Email) return false;
       if (EmailConfirmed != other.EmailConfirmed) return false;
       if (Password != other.Password) return false;
-      if(!claims_.Equals(other.claims_)) return false;
       if (PhoneNumber != other.PhoneNumber) return false;
+      if (!object.Equals(Claims, other.Claims)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -938,8 +1121,8 @@ namespace LuckyFoodSystem.UserRolesManagementService {
       if (Email.Length != 0) hash ^= Email.GetHashCode();
       if (EmailConfirmed != false) hash ^= EmailConfirmed.GetHashCode();
       if (Password.Length != 0) hash ^= Password.GetHashCode();
-      hash ^= claims_.GetHashCode();
       if (PhoneNumber.Length != 0) hash ^= PhoneNumber.GetHashCode();
+      if (claims_ != null) hash ^= Claims.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -974,10 +1157,13 @@ namespace LuckyFoodSystem.UserRolesManagementService {
         output.WriteRawTag(34);
         output.WriteString(Password);
       }
-      claims_.WriteTo(output, _repeated_claims_codec);
       if (PhoneNumber.Length != 0) {
         output.WriteRawTag(50);
         output.WriteString(PhoneNumber);
+      }
+      if (claims_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Claims);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -1005,10 +1191,13 @@ namespace LuckyFoodSystem.UserRolesManagementService {
         output.WriteRawTag(34);
         output.WriteString(Password);
       }
-      claims_.WriteTo(ref output, _repeated_claims_codec);
       if (PhoneNumber.Length != 0) {
         output.WriteRawTag(50);
         output.WriteString(PhoneNumber);
+      }
+      if (claims_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Claims);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -1032,9 +1221,11 @@ namespace LuckyFoodSystem.UserRolesManagementService {
       if (Password.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Password);
       }
-      size += claims_.CalculateSize(_repeated_claims_codec);
       if (PhoneNumber.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(PhoneNumber);
+      }
+      if (claims_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Claims);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -1060,9 +1251,14 @@ namespace LuckyFoodSystem.UserRolesManagementService {
       if (other.Password.Length != 0) {
         Password = other.Password;
       }
-      claims_.Add(other.claims_);
       if (other.PhoneNumber.Length != 0) {
         PhoneNumber = other.PhoneNumber;
+      }
+      if (other.claims_ != null) {
+        if (claims_ == null) {
+          Claims = new global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimsList();
+        }
+        Claims.MergeFrom(other.Claims);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -1095,12 +1291,15 @@ namespace LuckyFoodSystem.UserRolesManagementService {
             Password = input.ReadString();
             break;
           }
-          case 42: {
-            claims_.AddEntriesFrom(input, _repeated_claims_codec);
-            break;
-          }
           case 50: {
             PhoneNumber = input.ReadString();
+            break;
+          }
+          case 58: {
+            if (claims_ == null) {
+              Claims = new global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimsList();
+            }
+            input.ReadMessage(Claims);
             break;
           }
         }
@@ -1134,12 +1333,15 @@ namespace LuckyFoodSystem.UserRolesManagementService {
             Password = input.ReadString();
             break;
           }
-          case 42: {
-            claims_.AddEntriesFrom(ref input, _repeated_claims_codec);
-            break;
-          }
           case 50: {
             PhoneNumber = input.ReadString();
+            break;
+          }
+          case 58: {
+            if (claims_ == null) {
+              Claims = new global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimsList();
+            }
+            input.ReadMessage(Claims);
             break;
           }
         }
@@ -1163,7 +1365,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::LuckyFoodSystem.UserRolesManagementService.UserReflection.Descriptor.MessageTypes[4]; }
+      get { return global::LuckyFoodSystem.UserRoleServiceTestClient.UserReflection.Descriptor.MessageTypes[5]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1389,7 +1591,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::LuckyFoodSystem.UserRolesManagementService.UserReflection.Descriptor.MessageTypes[5]; }
+      get { return global::LuckyFoodSystem.UserRoleServiceTestClient.UserReflection.Descriptor.MessageTypes[6]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1652,7 +1854,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::LuckyFoodSystem.UserRolesManagementService.UserReflection.Descriptor.MessageTypes[6]; }
+      get { return global::LuckyFoodSystem.UserRoleServiceTestClient.UserReflection.Descriptor.MessageTypes[7]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -1841,7 +2043,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::LuckyFoodSystem.UserRolesManagementService.UserReflection.Descriptor.MessageTypes[7]; }
+      get { return global::LuckyFoodSystem.UserRoleServiceTestClient.UserReflection.Descriptor.MessageTypes[8]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2067,7 +2269,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::LuckyFoodSystem.UserRolesManagementService.UserReflection.Descriptor.MessageTypes[8]; }
+      get { return global::LuckyFoodSystem.UserRoleServiceTestClient.UserReflection.Descriptor.MessageTypes[9]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2087,7 +2289,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public DeleteUserRequest(DeleteUserRequest other) : this() {
-      id_ = other.id_;
+      name_ = other.name_;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2097,15 +2299,15 @@ namespace LuckyFoodSystem.UserRolesManagementService {
       return new DeleteUserRequest(this);
     }
 
-    /// <summary>Field number for the "id" field.</summary>
-    public const int IdFieldNumber = 1;
-    private string id_ = "";
+    /// <summary>Field number for the "name" field.</summary>
+    public const int NameFieldNumber = 1;
+    private string name_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public string Id {
-      get { return id_; }
+    public string Name {
+      get { return name_; }
       set {
-        id_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+        name_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
       }
     }
 
@@ -2124,7 +2326,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
       if (ReferenceEquals(other, this)) {
         return true;
       }
-      if (Id != other.Id) return false;
+      if (Name != other.Name) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2132,7 +2334,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public override int GetHashCode() {
       int hash = 1;
-      if (Id.Length != 0) hash ^= Id.GetHashCode();
+      if (Name.Length != 0) hash ^= Name.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2151,9 +2353,9 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
       output.WriteRawMessage(this);
     #else
-      if (Id.Length != 0) {
+      if (Name.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Id);
+        output.WriteString(Name);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2165,9 +2367,9 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
-      if (Id.Length != 0) {
+      if (Name.Length != 0) {
         output.WriteRawTag(10);
-        output.WriteString(Id);
+        output.WriteString(Name);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -2179,8 +2381,8 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public int CalculateSize() {
       int size = 0;
-      if (Id.Length != 0) {
-        size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
+      if (Name.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Name);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2194,8 +2396,8 @@ namespace LuckyFoodSystem.UserRolesManagementService {
       if (other == null) {
         return;
       }
-      if (other.Id.Length != 0) {
-        Id = other.Id;
+      if (other.Name.Length != 0) {
+        Name = other.Name;
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2213,7 +2415,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
             break;
           case 10: {
-            Id = input.ReadString();
+            Name = input.ReadString();
             break;
           }
         }
@@ -2232,7 +2434,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
             _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
             break;
           case 10: {
-            Id = input.ReadString();
+            Name = input.ReadString();
             break;
           }
         }
@@ -2256,7 +2458,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::LuckyFoodSystem.UserRolesManagementService.UserReflection.Descriptor.MessageTypes[9]; }
+      get { return global::LuckyFoodSystem.UserRoleServiceTestClient.UserReflection.Descriptor.MessageTypes[10]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
@@ -2277,7 +2479,12 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public UpdateUserRequest(UpdateUserRequest other) : this() {
       id_ = other.id_;
-      user_ = other.user_ != null ? other.user_.Clone() : null;
+      userName_ = other.userName_;
+      email_ = other.email_;
+      emailConfirmed_ = other.emailConfirmed_;
+      password_ = other.password_;
+      phoneNumber_ = other.phoneNumber_;
+      claims_ = other.claims_ != null ? other.claims_.Clone() : null;
       _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
     }
 
@@ -2299,15 +2506,75 @@ namespace LuckyFoodSystem.UserRolesManagementService {
       }
     }
 
-    /// <summary>Field number for the "User" field.</summary>
-    public const int UserFieldNumber = 2;
-    private global::LuckyFoodSystem.UserRolesManagementService.UserReply user_;
+    /// <summary>Field number for the "user_name" field.</summary>
+    public const int UserNameFieldNumber = 2;
+    private string userName_ = "";
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
-    public global::LuckyFoodSystem.UserRolesManagementService.UserReply User {
-      get { return user_; }
+    public string UserName {
+      get { return userName_; }
       set {
-        user_ = value;
+        userName_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "email" field.</summary>
+    public const int EmailFieldNumber = 3;
+    private string email_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Email {
+      get { return email_; }
+      set {
+        email_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "email_confirmed" field.</summary>
+    public const int EmailConfirmedFieldNumber = 4;
+    private bool emailConfirmed_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool EmailConfirmed {
+      get { return emailConfirmed_; }
+      set {
+        emailConfirmed_ = value;
+      }
+    }
+
+    /// <summary>Field number for the "password" field.</summary>
+    public const int PasswordFieldNumber = 5;
+    private string password_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string Password {
+      get { return password_; }
+      set {
+        password_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "phone_number" field.</summary>
+    public const int PhoneNumberFieldNumber = 6;
+    private string phoneNumber_ = "";
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public string PhoneNumber {
+      get { return phoneNumber_; }
+      set {
+        phoneNumber_ = pb::ProtoPreconditions.CheckNotNull(value, "value");
+      }
+    }
+
+    /// <summary>Field number for the "Claims" field.</summary>
+    public const int ClaimsFieldNumber = 7;
+    private global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimsList claims_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimsList Claims {
+      get { return claims_; }
+      set {
+        claims_ = value;
       }
     }
 
@@ -2327,7 +2594,12 @@ namespace LuckyFoodSystem.UserRolesManagementService {
         return true;
       }
       if (Id != other.Id) return false;
-      if (!object.Equals(User, other.User)) return false;
+      if (UserName != other.UserName) return false;
+      if (Email != other.Email) return false;
+      if (EmailConfirmed != other.EmailConfirmed) return false;
+      if (Password != other.Password) return false;
+      if (PhoneNumber != other.PhoneNumber) return false;
+      if (!object.Equals(Claims, other.Claims)) return false;
       return Equals(_unknownFields, other._unknownFields);
     }
 
@@ -2336,7 +2608,12 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     public override int GetHashCode() {
       int hash = 1;
       if (Id.Length != 0) hash ^= Id.GetHashCode();
-      if (user_ != null) hash ^= User.GetHashCode();
+      if (UserName.Length != 0) hash ^= UserName.GetHashCode();
+      if (Email.Length != 0) hash ^= Email.GetHashCode();
+      if (EmailConfirmed != false) hash ^= EmailConfirmed.GetHashCode();
+      if (Password.Length != 0) hash ^= Password.GetHashCode();
+      if (PhoneNumber.Length != 0) hash ^= PhoneNumber.GetHashCode();
+      if (claims_ != null) hash ^= Claims.GetHashCode();
       if (_unknownFields != null) {
         hash ^= _unknownFields.GetHashCode();
       }
@@ -2359,9 +2636,29 @@ namespace LuckyFoodSystem.UserRolesManagementService {
         output.WriteRawTag(10);
         output.WriteString(Id);
       }
-      if (user_ != null) {
+      if (UserName.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteMessage(User);
+        output.WriteString(UserName);
+      }
+      if (Email.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Email);
+      }
+      if (EmailConfirmed != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(EmailConfirmed);
+      }
+      if (Password.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Password);
+      }
+      if (PhoneNumber.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(PhoneNumber);
+      }
+      if (claims_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Claims);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(output);
@@ -2377,9 +2674,29 @@ namespace LuckyFoodSystem.UserRolesManagementService {
         output.WriteRawTag(10);
         output.WriteString(Id);
       }
-      if (user_ != null) {
+      if (UserName.Length != 0) {
         output.WriteRawTag(18);
-        output.WriteMessage(User);
+        output.WriteString(UserName);
+      }
+      if (Email.Length != 0) {
+        output.WriteRawTag(26);
+        output.WriteString(Email);
+      }
+      if (EmailConfirmed != false) {
+        output.WriteRawTag(32);
+        output.WriteBool(EmailConfirmed);
+      }
+      if (Password.Length != 0) {
+        output.WriteRawTag(42);
+        output.WriteString(Password);
+      }
+      if (PhoneNumber.Length != 0) {
+        output.WriteRawTag(50);
+        output.WriteString(PhoneNumber);
+      }
+      if (claims_ != null) {
+        output.WriteRawTag(58);
+        output.WriteMessage(Claims);
       }
       if (_unknownFields != null) {
         _unknownFields.WriteTo(ref output);
@@ -2394,8 +2711,23 @@ namespace LuckyFoodSystem.UserRolesManagementService {
       if (Id.Length != 0) {
         size += 1 + pb::CodedOutputStream.ComputeStringSize(Id);
       }
-      if (user_ != null) {
-        size += 1 + pb::CodedOutputStream.ComputeMessageSize(User);
+      if (UserName.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(UserName);
+      }
+      if (Email.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Email);
+      }
+      if (EmailConfirmed != false) {
+        size += 1 + 1;
+      }
+      if (Password.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(Password);
+      }
+      if (PhoneNumber.Length != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeStringSize(PhoneNumber);
+      }
+      if (claims_ != null) {
+        size += 1 + pb::CodedOutputStream.ComputeMessageSize(Claims);
       }
       if (_unknownFields != null) {
         size += _unknownFields.CalculateSize();
@@ -2412,11 +2744,26 @@ namespace LuckyFoodSystem.UserRolesManagementService {
       if (other.Id.Length != 0) {
         Id = other.Id;
       }
-      if (other.user_ != null) {
-        if (user_ == null) {
-          User = new global::LuckyFoodSystem.UserRolesManagementService.UserReply();
+      if (other.UserName.Length != 0) {
+        UserName = other.UserName;
+      }
+      if (other.Email.Length != 0) {
+        Email = other.Email;
+      }
+      if (other.EmailConfirmed != false) {
+        EmailConfirmed = other.EmailConfirmed;
+      }
+      if (other.Password.Length != 0) {
+        Password = other.Password;
+      }
+      if (other.PhoneNumber.Length != 0) {
+        PhoneNumber = other.PhoneNumber;
+      }
+      if (other.claims_ != null) {
+        if (claims_ == null) {
+          Claims = new global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimsList();
         }
-        User.MergeFrom(other.User);
+        Claims.MergeFrom(other.Claims);
       }
       _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
     }
@@ -2438,10 +2785,30 @@ namespace LuckyFoodSystem.UserRolesManagementService {
             break;
           }
           case 18: {
-            if (user_ == null) {
-              User = new global::LuckyFoodSystem.UserRolesManagementService.UserReply();
+            UserName = input.ReadString();
+            break;
+          }
+          case 26: {
+            Email = input.ReadString();
+            break;
+          }
+          case 32: {
+            EmailConfirmed = input.ReadBool();
+            break;
+          }
+          case 42: {
+            Password = input.ReadString();
+            break;
+          }
+          case 50: {
+            PhoneNumber = input.ReadString();
+            break;
+          }
+          case 58: {
+            if (claims_ == null) {
+              Claims = new global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimsList();
             }
-            input.ReadMessage(User);
+            input.ReadMessage(Claims);
             break;
           }
         }
@@ -2464,10 +2831,30 @@ namespace LuckyFoodSystem.UserRolesManagementService {
             break;
           }
           case 18: {
-            if (user_ == null) {
-              User = new global::LuckyFoodSystem.UserRolesManagementService.UserReply();
+            UserName = input.ReadString();
+            break;
+          }
+          case 26: {
+            Email = input.ReadString();
+            break;
+          }
+          case 32: {
+            EmailConfirmed = input.ReadBool();
+            break;
+          }
+          case 42: {
+            Password = input.ReadString();
+            break;
+          }
+          case 50: {
+            PhoneNumber = input.ReadString();
+            break;
+          }
+          case 58: {
+            if (claims_ == null) {
+              Claims = new global::LuckyFoodSystem.UserRoleServiceTestClient.ClaimsList();
             }
-            input.ReadMessage(User);
+            input.ReadMessage(Claims);
             break;
           }
         }
@@ -2491,7 +2878,7 @@ namespace LuckyFoodSystem.UserRolesManagementService {
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
     [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
     public static pbr::MessageDescriptor Descriptor {
-      get { return global::LuckyFoodSystem.UserRolesManagementService.UserReflection.Descriptor.MessageTypes[10]; }
+      get { return global::LuckyFoodSystem.UserRoleServiceTestClient.UserReflection.Descriptor.MessageTypes[11]; }
     }
 
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute]

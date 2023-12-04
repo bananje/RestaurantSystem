@@ -13,7 +13,7 @@ namespace LuckyFoodSystem.Application.Common.Mapping
             config.Scan(Assembly.GetExecutingAssembly());
 
             services.AddSingleton(config);
-            services.AddScoped<IMapper, ServiceMapper>();
+            services.AddSingleton<IMapper, ServiceMapper>();
             return services;
         }
     }

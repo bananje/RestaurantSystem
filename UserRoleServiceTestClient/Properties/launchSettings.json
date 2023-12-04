@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "UserRoleServiceTestClient": {
+      "commandName": "Project",
+      "commandLineArgs": "/seed"
+    }
+  }
+}

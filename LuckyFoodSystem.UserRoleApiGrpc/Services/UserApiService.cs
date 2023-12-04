@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MapsterMapper;
 using System.Security.Claims;
+using Mapster;
+using LuckyFoodSystem.Contracts.User;
 
 namespace LuckyFoodSystem.UserRolesApiGrpc.Services
 {
@@ -14,13 +16,17 @@ namespace LuckyFoodSystem.UserRolesApiGrpc.Services
     public class UserApiService : UserService.UserServiceBase
     {
         private readonly UserManager<LuckyFoodUser> _userManager;
+        private readonly IPasswordHasher<LuckyFoodUser> passwordHasher;
         private readonly IMapper _mapper;
         public UserApiService(UserManager<LuckyFoodUser> userManager,
-                              IMapper mapper)
+                              IMapper mapper,
+                              IPasswordHasher<LuckyFoodUser> passwordHasher)
         {
             _userManager = userManager;
             _mapper = mapper;
+            this.passwordHasher = passwordHasher;
         }
+
         public override async Task<ListReply> GetAll(Empty request, ServerCallContext context)
         {
             ListReply listReply = new();
@@ -35,6 +41,7 @@ namespace LuckyFoodSystem.UserRolesApiGrpc.Services
             listReply.Users.AddRange(usersList);
             return await Task.FromResult(listReply);
         }
+
         public override async Task<UserReply> GetByName(GetUserByNameRequest request, ServerCallContext context)
         {
             var user = await _userManager.FindByNameAsync(request.Name);
@@ -49,16 +56,18 @@ namespace LuckyFoodSystem.UserRolesApiGrpc.Services
 
             return await Task.FromResult(userReply);
         }
+
         public override async Task<UserResponse> Create(CreateUserRequest request, ServerCallContext context)
         {           
             var user = _mapper.Map<LuckyFoodUser>(request);
-            var result = await _userManager.CreateAsync(user, request.Password);
+            var result = await _userManager.CreateAsync(user, request.Password); // создание пользователя
 
             if(!result.Succeeded)
                 throw new RpcException(new Status(StatusCode.Aborted, result.Errors.First().Description));
 
-            List<Claim> claims = request.Claims
-                    .Select(claimModel => new Claim(claimModel.Name, claimModel.Value)).ToList();
+            // cоздание сlaims для пользователя
+            List<Claim> claims = request.Claims.Claim
+                .Select(claimModel => new Claim(claimModel.Name, claimModel.Value)).ToList();
 
             result = await _userManager.AddClaimsAsync(user, claims);
             if (!result.Succeeded)
@@ -68,13 +77,17 @@ namespace LuckyFoodSystem.UserRolesApiGrpc.Services
             return await Task.FromResult(new UserResponse { Code = StatusCode.OK.ToString(),
                                                             Description = "User successfully created"});
         }
+
         public override async Task<UserResponse> Update(UpdateUserRequest request, ServerCallContext context)
         {
-            var userToBeUpdated = await _userManager.FindByNameAsync(request.User.UserName);
-            if(userToBeUpdated is null) 
+            // поиск юзера по его ID
+            var userToBeUpdated = await _userManager.FindByIdAsync(request.Id);
+            if (userToBeUpdated is null)
                 throw new RpcException(new Status(StatusCode.NotFound, "Selected user not found"));
 
-            var updatedUser = _mapper.Map<LuckyFoodUser>(request);
+            var updatedUser = _mapper.Map<LuckyFoodUser>(request); // преобразование запроса в модель юзера
+          
+            // обновление значений у свойств отслеживаемого юзера через рефлексию
             var updatedProperties = updatedUser.GetType().GetProperties();
             foreach (var property in updatedProperties)
             {
@@ -89,17 +102,28 @@ namespace LuckyFoodSystem.UserRolesApiGrpc.Services
                 }
             }
 
+            // обновление текущего юзера
             var updatedResult = await _userManager.UpdateAsync(userToBeUpdated);
             if (!updatedResult.Succeeded)
                 throw new RpcException(new Status(StatusCode.Internal, updatedResult.Errors.First().Description));
 
+            // cоздание сlaims для пользователя
+            List<Claim> claims = request.Claims.Claim
+                .Select(claimModel => new Claim(claimModel.Name, claimModel.Value)).ToList();
 
-            return await Task.FromResult(new UserResponse { Code = StatusCode.OK.ToString(),
-                                                            Description = "User successfully updated"});
+            // добавление новых утверждений
+            updatedResult = await _userManager.AddClaimsAsync(userToBeUpdated, claims);
+
+            return await Task.FromResult(new UserResponse
+            {
+                Code = StatusCode.OK.ToString(),
+                Description = "User successfully updated"
+            });
         }
+
         public override async Task<UserResponse> Delete(DeleteUserRequest request, ServerCallContext context)
         {
-            var user = await _userManager.FindByNameAsync(request.Id);
+            var user = await _userManager.FindByNameAsync(request.Name);
             if(user is null)
                 throw new RpcException(new Status(StatusCode.NotFound, "Selected user not found"));
 
@@ -125,8 +149,11 @@ namespace LuckyFoodSystem.UserRolesApiGrpc.Services
         }
         public override async Task<UserResponse> ChangePassword(ChangePasswordRequest request, ServerCallContext context)
         {
+            var t = request.CurrentPassword.GetHashCode();
             var user = await _userManager.FindByNameAsync(request.UserName);
-            if(user == null)
+
+            var passwordIsValid = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, request.CurrentPassword) == PasswordVerificationResult.Success;
+            if (user == null)
                 throw new RpcException(new Status(StatusCode.NotFound, "Selected user not found"));
 
             var result = await _userManager

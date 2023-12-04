@@ -5,8 +5,9 @@ using OnlineShop.Library.Clients.IdentityServer;
 using Microsoft.Extensions.Logging;
 using LuckyFoodSystem.Application.Common.Options;
 using UserRoleServiceTestClient;
+using LuckyFoodSystem.Application.Common.Mapping;
 
-namespace OnlineShop.ConsoleAppTestApp
+namespace tests.UserRoleServiceTestClient
 {
     class Program
     {
@@ -18,6 +19,8 @@ namespace OnlineShop.ConsoleAppTestApp
                     services.AddHttpClient<IdentityServerClient>();
 
                     services.AddTransient<AuthenticationServiceTest>();
+
+                    services.AddMappings();
 
                     var configurationBuilder = new ConfigurationBuilder()
                         .SetBasePath(Directory.GetCurrentDirectory())
