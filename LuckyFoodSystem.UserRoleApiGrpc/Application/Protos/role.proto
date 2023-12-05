@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "LuckyFoodSystem.UserRolesManagementService";
+
+package role;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service RoleService {
+  rpc GetAll(google.protobuf.Empty) returns (RoleListReply);
+  rpc GetByName(RoleRequest) returns (RoleReply);
+  rpc Create(RoleRequest) returns (RoleResponse);
+  rpc Delete(RoleRequest) returns (RoleResponse);
+}
+
+message RoleListReply{
+  repeated RoleReply Roles = 1;
+}
+message RoleReply{
+	string id = 1;
+	string name = 2;
+}
+message RoleResponse{
+	string code = 1;
+	string description = 2;
+}
+message RoleRequest{
+	string name = 1;
+}

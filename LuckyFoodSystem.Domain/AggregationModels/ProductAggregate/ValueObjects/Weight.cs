@@ -1,4 +1,4 @@
-﻿using BuberDinner.Domain.Common.Models;
+﻿using LuckyFoodSystem.Domain.Models;
 using LuckyFoodSystem.AggregationModels.ProductAggregate.Enumerations;
 
 namespace LuckyFoodSystem.AggregationModels.ProductAggregate.ValueObjects

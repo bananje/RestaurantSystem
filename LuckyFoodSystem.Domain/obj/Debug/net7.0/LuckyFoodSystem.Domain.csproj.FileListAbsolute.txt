@@ -1,4 +1,5 @@
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\bin\Debug\net7.0\LuckyFoodSystem.Domain.deps.json
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\bin\Debug\net7.0\LuckyFoodSystem.Domain.runtimeconfig.json
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\bin\Debug\net7.0\LuckyFoodSystem.Domain.dll
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\bin\Debug\net7.0\LuckyFoodSystem.Domain.pdb
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\LuckyFoodSystem.Domain.csproj.AssemblyReference.cache
@@ -9,4 +10,5 @@ C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\n
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\LuckyFoodSystem.Domain.dll
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\refint\LuckyFoodSystem.Domain.dll
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\LuckyFoodSystem.Domain.pdb
+C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\LuckyFoodSystem.Domain.genruntimeconfig.cache
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Domain\obj\Debug\net7.0\ref\LuckyFoodSystem.Domain.dll

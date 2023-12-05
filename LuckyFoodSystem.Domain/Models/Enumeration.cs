@@ -1,7 +1,7 @@
 ﻿using LuckyFoodSystem.AggregationModels.Common.Enumerations;
 using System.Reflection;
 
-namespace LuckyFoodSystem.Models
+namespace LuckyFoodSystem.Domain.Models
 {
     public class Enumeration
     {

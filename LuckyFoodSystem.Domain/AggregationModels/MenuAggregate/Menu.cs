@@ -1,8 +1,8 @@
-﻿using BuberDinner.Domain.Common.Models;
-using LuckyFoodSystem.AggregationModels.Common.Enumerations;
+﻿using LuckyFoodSystem.AggregationModels.Common.Enumerations;
 using LuckyFoodSystem.AggregationModels.ImageAggregate;
 using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using LuckyFoodSystem.AggregationModels.ProductAggregate;
+using LuckyFoodSystem.Domain.Models;
 
 namespace LuckyFoodSystem.AggregationModels.MenuAggregate
 {

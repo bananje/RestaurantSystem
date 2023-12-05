@@ -4522,9 +4522,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.ProductApi\\LuckyFoodSystem.ProductAPI.csproj",
-      "projectName": "LuckyFoodSystem.ProductAPI",
-      "projectPath": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.ProductApi\\LuckyFoodSystem.ProductAPI.csproj",
+      "projectUniqueName": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.ProductApi\\LuckyFoodSystem.API.csproj",
+      "projectName": "LuckyFoodSystem.API",
+      "projectPath": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.ProductApi\\LuckyFoodSystem.API.csproj",
       "packagesPath": "C:\\Users\\Hermann\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.ProductApi\\obj\\",
       "projectStyle": "PackageReference",

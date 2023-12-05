@@ -8,6 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Protos\role.proto" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Google.Protobuf" Version="3.25.1" />
     <PackageReference Include="Grpc.Core" Version="2.46.6" />
     <PackageReference Include="Grpc.Net.Client" Version="2.49.0" />
@@ -19,11 +23,11 @@
   </ItemGroup>
 
 	<ItemGroup>
+		<Protobuf Include="Protos\role.proto" GrpcServices="Client" />
 		<Protobuf Include="Protos\user.proto" GrpcServices="Client" />
 	</ItemGroup>
 	
   <ItemGroup>
-    <ProjectReference Include="..\LuckyFoodSystem.Infrastructure\LuckyFoodSystem.Infrastructure.csproj" />
     <ProjectReference Include="..\LuckyFoodSystem.UserRoleApiGrpc\LuckyFoodSystem.UserRoleManagementService.csproj" />
   </ItemGroup>
 

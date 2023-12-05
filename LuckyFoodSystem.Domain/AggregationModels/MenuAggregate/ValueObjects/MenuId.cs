@@ -1,4 +1,4 @@
-﻿using BuberDinner.Domain.Common.Models;
+﻿using LuckyFoodSystem.Domain.Models;
 
 namespace LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects
 {

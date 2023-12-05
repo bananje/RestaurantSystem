@@ -4,7 +4,6 @@ C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\obj
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\obj\Debug\net7.0\LuckyFoodSystem.Infrastructure.AssemblyInfo.cs
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\obj\Debug\net7.0\LuckyFoodSystem.Infrastructure.csproj.CoreCompileInputs.cache
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\bin\Debug\net7.0\LuckyFoodSystem.Infrastructure.deps.json
-C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\bin\Debug\net7.0\LuckyFoodSystem.Infrastructure.runtimeconfig.json
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\bin\Debug\net7.0\LuckyFoodSystem.Infrastructure.dll
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\bin\Debug\net7.0\LuckyFoodSystem.Infrastructure.pdb
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\bin\Debug\net7.0\LuckyFoodSystem.Application.dll
@@ -17,5 +16,4 @@ C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\obj
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\obj\Debug\net7.0\LuckyFoodSystem.Infrastructure.dll
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\obj\Debug\net7.0\refint\LuckyFoodSystem.Infrastructure.dll
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\obj\Debug\net7.0\LuckyFoodSystem.Infrastructure.pdb
-C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\obj\Debug\net7.0\LuckyFoodSystem.Infrastructure.genruntimeconfig.cache
 C:\Users\Hermann\source\repos\LuckyFoodSystem\LuckyFoodSystem.Infrastructure\obj\Debug\net7.0\ref\LuckyFoodSystem.Infrastructure.dll

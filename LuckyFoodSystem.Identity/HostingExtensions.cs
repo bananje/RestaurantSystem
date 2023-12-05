@@ -1,11 +1,11 @@
 using Duende.IdentityServer;
+using LuckyFoodSystem.Application.Common.Constants;
+using LuckyFoodSystem.Application.Common.Models;
+using LuckyFoodSystem.Identity.Data;
 using LuckyFoodSystem.Identity.Infrastructure.Seed;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
-using LuckyFoodSystem.Identity.Data;
-using LuckyFoodSystem.Application.Common.Constants;
-using LuckyFoodSystem.Application.Common.Models;
 
 namespace LuckyFoodSystem.Identity;
 

@@ -1,6 +1,7 @@
 ﻿using LuckyFoodSystem.AggregationModels.ImageAggregate;
 using LuckyFoodSystem.AggregationModels.MenuAggregate;
 using LuckyFoodSystem.AggregationModels.ProductAggregate;
+using LuckyFoodSystem.Domain.AggregationModels.OrderAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -8,13 +9,13 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Context
 {
     public class LuckyFoodDbContext : DbContext
     {
-        public LuckyFoodDbContext() { }
         public LuckyFoodDbContext(DbContextOptions<LuckyFoodDbContext> dbContextOptions) 
             : base(dbContextOptions) { }
 
         public DbSet<Product> Products { get; set; }
         public DbSet<Image> Images { get; set; }
         public DbSet<Menu> Menus { get; set; }
+        public DbSet<Order> Orders { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -40,6 +41,11 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Context
                 .HasMany(p => p.Images)
                 .WithMany(i => i.Menus)
                 .UsingEntity(j => j.ToTable("MenuImage"));
+
+            modelBuilder.Entity<Order>()
+                .HasMany(p => p.Products)
+                .WithMany(p => p.Orders)
+                .UsingEntity(p => p.ToTable("OrderProduct"));
 
             base.OnModelCreating(modelBuilder);
         }

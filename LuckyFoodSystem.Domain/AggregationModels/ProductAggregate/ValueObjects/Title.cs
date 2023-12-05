@@ -1,4 +1,4 @@
-﻿using BuberDinner.Domain.Common.Models;
+﻿using LuckyFoodSystem.Domain.Models;
 using System.Text.RegularExpressions;
 
 namespace LuckyFoodSystem.AggregationModels.ProductAggregate.ValueObjects

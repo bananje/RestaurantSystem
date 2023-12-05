@@ -9,6 +9,7 @@ using Mapster;
 using MapsterMapper;
 using Microsoft.Extensions.Options;
 using OnlineShop.Library.Clients.IdentityServer;
+using System.Text;
 
 namespace UserRoleServiceTestClient
 {
@@ -54,7 +55,7 @@ namespace UserRoleServiceTestClient
 
         // тестирование методов для работы пользователями
         public async Task<string> RunUsersClientTest(string[] args)
-        {
+        {           
             var token = await _identityServerClient.GetApiToken(_identityServerOptions);
 
             var headers = new Metadata { { "Authorization", $"Bearer {token.AccessToken}" } };
@@ -63,7 +64,7 @@ namespace UserRoleServiceTestClient
 
             var invoker = channel.Intercept(new AuthenticationInterceptor());
 
-            var client = new UserService.UserServiceClient(invoker);           
+            var client = new UserService.UserServiceClient(invoker);
 
             // --- получение всех пользоватей из API ---
             ListReply users = await client.GetAllAsync(new Google.Protobuf.WellKnownTypes.Empty(), headers);
@@ -102,7 +103,7 @@ namespace UserRoleServiceTestClient
             // --- получение пользователя по его имени ----
             string userNameForGettingByName = "testuser123";
 
-            GetUserByNameRequest getByNameRequest = new() { Name = userNameForGettingByName }; 
+            GetUserByNameRequest getByNameRequest = new() { Name = userNameForGettingByName };
 
             UserReply selectedUser = client.GetByName(getByNameRequest, headers);
             Console.WriteLine($"User with name {userNameForGettingByName}: " + selectedUser);
@@ -120,7 +121,7 @@ namespace UserRoleServiceTestClient
                 new Dictionary<string, string> { { "testclaimtypeupdated", "testclaimvalueup" },
                                                { "testclaimtype1updated", "testclaimvalue1up" }},
                 selectedUser.Id);
-          
+
             var apiRequestForUpdatingUser = _mapper.Map<UpdateUserRequest>(clientRequestForUpdatingUser);
 
             var claimsFromRequestForUpdatingUser = ClaimsList(clientRequestForUpdatingUser);
@@ -135,7 +136,7 @@ namespace UserRoleServiceTestClient
 
             var changePasswordRequest = new UserPasswordChangeRequestDto(
                clientRequestForUpdatingUser.UserName,
-               clientRequestForUpdatingUser.Password,
+               "test@p!assword~124AZ",
                "newPassw0rd!_!fdg345");
 
             var apiChangePasswordRequest = _mapper.Map<ChangePasswordRequest>(changePasswordRequest);
@@ -156,8 +157,58 @@ namespace UserRoleServiceTestClient
 
             Thread.Sleep(100);
 
-            return "OK";
+            return "User Tests: OK";
+        }
 
+        public async Task<string> RunRolesClientTest(string[] args)
+        {
+            var token = await _identityServerClient.GetApiToken(_identityServerOptions);
+
+            var headers = new Metadata { { "Authorization", $"Bearer {token.AccessToken}" } };
+
+            using var channel = GrpcChannel.ForAddress("https://localhost:7230");
+
+            var invoker = channel.Intercept(new AuthenticationInterceptor());
+
+            var client = new RoleService.RoleServiceClient(invoker);
+
+            /// --- Создание ролей ---
+            RoleRequest firstTestRole = new() { Name = "testRole0" };
+            RoleRequest secondTestRole = new() { Name = "testRole1" };
+
+            var creatingResult1 = await client.CreateAsync(firstTestRole, headers);
+            Console.WriteLine("Result of creating first test role: " + creatingResult1);
+
+            var creatingResult2 = await client.CreateAsync(secondTestRole, headers);
+            Console.WriteLine("Result of creating second test role: " + creatingResult2);
+
+            Thread.Sleep(100);
+
+            /// --- Получение всех ролей ---
+            RoleListReply rolesReply = await client.GetAllAsync(new Google.Protobuf.WellKnownTypes.Empty(), headers);
+            foreach (var role in rolesReply.Roles)
+            {
+                Console.WriteLine($"UserName: {role.Name} \n Id: {role.Id}");
+            }
+            Thread.Sleep(100);
+
+            /// --- Получение роли по имени ---
+            var selectedByNameRole = await client.GetByNameAsync(firstTestRole, headers);
+            Console.WriteLine($"Role: UserName: {selectedByNameRole.Name} \n Id: {selectedByNameRole.Id}");
+
+            Thread.Sleep(100);
+
+            /// --- Удаление роли по имени ---
+            
+            var deletingResult1 = await client.DeleteAsync(firstTestRole, headers);
+            Console.WriteLine("Result of deleting first test role: " + deletingResult1);
+
+            var deletingResult2 = await client.DeleteAsync(secondTestRole, headers);
+            Console.WriteLine("Result of deleting second test role: " + deletingResult2);
+
+            Thread.Sleep(100);
+
+            return "Roles test: OK";
         }
     }
 }

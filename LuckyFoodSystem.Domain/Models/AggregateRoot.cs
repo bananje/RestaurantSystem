@@ -1,4 +1,4 @@
-﻿namespace BuberDinner.Domain.Common.Models
+﻿namespace LuckyFoodSystem.Domain.Models
 {
     public abstract class AggregateRoot<TId> : Entity<TId>
         where TId : notnull

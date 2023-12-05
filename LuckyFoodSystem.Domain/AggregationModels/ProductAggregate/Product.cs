@@ -1,17 +1,21 @@
-﻿using BuberDinner.Domain.Common.Models;
-using LuckyFoodSystem.AggregationModels.Common.Enumerations;
+﻿using LuckyFoodSystem.AggregationModels.Common.Enumerations;
 using LuckyFoodSystem.AggregationModels.ImageAggregate;
 using LuckyFoodSystem.AggregationModels.MenuAggregate;
 using LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects;
 using LuckyFoodSystem.AggregationModels.ProductAggregate.ValueObjects;
+using LuckyFoodSystem.Domain.AggregationModels.OrderAggregate;
 using LuckyFoodSystem.Domain.AggregationModels.ProductAggregate.ValueObjects;
+using LuckyFoodSystem.Domain.Models;
 
 namespace LuckyFoodSystem.AggregationModels.ProductAggregate
 {
     public class Product : AggregateRoot<ProductId>
     {
+        private readonly List<Order> _orders = new();
         private readonly List<Image> _images = new();
         private readonly List<Menu> _menus = new();
+
+        public IReadOnlyCollection<Order> Orders => _orders;
         public IReadOnlyCollection<Image> Images => _images;
         public IReadOnlyCollection<Menu> Menus => _menus;
         public Title Title { get; private set; }

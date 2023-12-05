@@ -48,6 +48,7 @@ namespace tests.UserRoleServiceTestClient
                     var service = services.GetRequiredService<AuthenticationServiceTest>();
 
                     var usersResult = await service.RunUsersClientTest(args);
+                    var roleResult = await service.RunRolesClientTest(args);
 
                     Console.WriteLine(usersResult);
                 }

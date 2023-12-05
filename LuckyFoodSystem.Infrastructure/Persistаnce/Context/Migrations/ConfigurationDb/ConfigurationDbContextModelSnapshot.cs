@@ -48,7 +48,7 @@ namespace LuckyFoodSystem.Identity.Migrations.ConfigurationDb
                     b.Property<DateTime?>("LastAccessed")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
@@ -67,7 +67,7 @@ namespace LuckyFoodSystem.Identity.Migrations.ConfigurationDb
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
+                    b.HasIndex("UserName")
                         .IsUnique();
 
                     b.ToTable("ApiResources", (string)null);
@@ -216,7 +216,7 @@ namespace LuckyFoodSystem.Identity.Migrations.ConfigurationDb
                     b.Property<DateTime?>("LastAccessed")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
@@ -235,7 +235,7 @@ namespace LuckyFoodSystem.Identity.Migrations.ConfigurationDb
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
+                    b.HasIndex("UserName")
                         .IsUnique();
 
                     b.ToTable("ApiScopes", (string)null);
@@ -788,7 +788,7 @@ namespace LuckyFoodSystem.Identity.Migrations.ConfigurationDb
                     b.Property<bool>("Enabled")
                         .HasColumnType("bit");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
@@ -807,7 +807,7 @@ namespace LuckyFoodSystem.Identity.Migrations.ConfigurationDb
 
                     b.HasKey("Id");
 
-                    b.HasIndex("Name")
+                    b.HasIndex("UserName")
                         .IsUnique();
 
                     b.ToTable("IdentityResources", (string)null);

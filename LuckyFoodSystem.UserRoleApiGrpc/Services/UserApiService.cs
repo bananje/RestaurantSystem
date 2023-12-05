@@ -7,8 +7,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using MapsterMapper;
 using System.Security.Claims;
-using Mapster;
-using LuckyFoodSystem.Contracts.User;
 
 namespace LuckyFoodSystem.UserRolesApiGrpc.Services
 {
@@ -16,15 +14,12 @@ namespace LuckyFoodSystem.UserRolesApiGrpc.Services
     public class UserApiService : UserService.UserServiceBase
     {
         private readonly UserManager<LuckyFoodUser> _userManager;
-        private readonly IPasswordHasher<LuckyFoodUser> passwordHasher;
         private readonly IMapper _mapper;
         public UserApiService(UserManager<LuckyFoodUser> userManager,
-                              IMapper mapper,
-                              IPasswordHasher<LuckyFoodUser> passwordHasher)
+                              IMapper mapper)
         {
             _userManager = userManager;
             _mapper = mapper;
-            this.passwordHasher = passwordHasher;
         }
 
         public override async Task<ListReply> GetAll(Empty request, ServerCallContext context)
@@ -63,7 +58,7 @@ namespace LuckyFoodSystem.UserRolesApiGrpc.Services
             var result = await _userManager.CreateAsync(user, request.Password); // создание пользователя
 
             if(!result.Succeeded)
-                throw new RpcException(new Status(StatusCode.Aborted, result.Errors.First().Description));
+                throw new RpcException(new Status(StatusCode.Internal, result.Errors.First().Description));
 
             // cоздание сlaims для пользователя
             List<Claim> claims = request.Claims.Claim
@@ -71,7 +66,7 @@ namespace LuckyFoodSystem.UserRolesApiGrpc.Services
 
             result = await _userManager.AddClaimsAsync(user, claims);
             if (!result.Succeeded)
-                throw new RpcException(new Status(StatusCode.Aborted, result.Errors.First().Description));
+                throw new RpcException(new Status(StatusCode.Internal, result.Errors.First().Description));
 
 
             return await Task.FromResult(new UserResponse { Code = StatusCode.OK.ToString(),
@@ -149,10 +144,8 @@ namespace LuckyFoodSystem.UserRolesApiGrpc.Services
         }
         public override async Task<UserResponse> ChangePassword(ChangePasswordRequest request, ServerCallContext context)
         {
-            var t = request.CurrentPassword.GetHashCode();
             var user = await _userManager.FindByNameAsync(request.UserName);
-
-            var passwordIsValid = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, request.CurrentPassword) == PasswordVerificationResult.Success;
+            
             if (user == null)
                 throw new RpcException(new Status(StatusCode.NotFound, "Selected user not found"));
 

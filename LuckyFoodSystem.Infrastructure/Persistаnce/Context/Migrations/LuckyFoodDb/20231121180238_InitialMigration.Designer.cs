@@ -87,7 +87,7 @@ namespace LuckyFoodSystem.Infrastructure.Migrations
                     b.Property<int>("Id")
                         .HasColumnType("int");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -156,7 +156,7 @@ namespace LuckyFoodSystem.Infrastructure.Migrations
 
             modelBuilder.Entity("LuckyFoodSystem.AggregationModels.MenuAggregate.Menu", b =>
                 {
-                    b.OwnsOne("LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects.Name", "Name", b1 =>
+                    b.OwnsOne("LuckyFoodSystem.AggregationModels.MenuAggregate.ValueObjects.UserName", "UserName", b1 =>
                         {
                             b1.Property<Guid>("MenuId")
                                 .HasColumnType("uniqueidentifier");
@@ -175,7 +175,7 @@ namespace LuckyFoodSystem.Infrastructure.Migrations
                                 .HasForeignKey("MenuId");
                         });
 
-                    b.Navigation("Name")
+                    b.Navigation("UserName")
                         .IsRequired();
                 });
 

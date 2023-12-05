@@ -1,4 +1,4 @@
-﻿using LuckyFoodSystem.Models;
+﻿using LuckyFoodSystem.Domain.Models;
 
 namespace LuckyFoodSystem.AggregationModels.Common.Enumerations
 {

@@ -1,0 +1,85 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\menu\\0dc71acf-f0ba-49a6-8b2f-415bbfcb5e73.png",
+      "PackagePath": "staticwebassets\\images\\menu\\0dc71acf-f0ba-49a6-8b2f-415bbfcb5e73.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\menu\\6180e628-ffe6-4504-b665-9bcc6fe334e9.png",
+      "PackagePath": "staticwebassets\\images\\menu\\6180e628-ffe6-4504-b665-9bcc6fe334e9.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\menu\\ea975e47-2ec2-4ad9-b09b-5390d46b90bf.png",
+      "PackagePath": "staticwebassets\\images\\menu\\ea975e47-2ec2-4ad9-b09b-5390d46b90bf.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\menu\\eafb221b-6840-4e58-9513-710026ae08ff.png",
+      "PackagePath": "staticwebassets\\images\\menu\\eafb221b-6840-4e58-9513-710026ae08ff.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\product\\01450f42-b856-48c7-b010-448ada261758.png",
+      "PackagePath": "staticwebassets\\images\\product\\01450f42-b856-48c7-b010-448ada261758.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\product\\07c873c9-54f1-4985-ac94-f035d9a7649d.png",
+      "PackagePath": "staticwebassets\\images\\product\\07c873c9-54f1-4985-ac94-f035d9a7649d.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\product\\41189c1e-6d1c-46be-9834-3b7edad3d41e.png",
+      "PackagePath": "staticwebassets\\images\\product\\41189c1e-6d1c-46be-9834-3b7edad3d41e.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\product\\4bcb6238-2554-4ccb-b34e-87200517ee25.png",
+      "PackagePath": "staticwebassets\\images\\product\\4bcb6238-2554-4ccb-b34e-87200517ee25.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\product\\640815bd-761d-48e8-a713-828ad134c46e.png",
+      "PackagePath": "staticwebassets\\images\\product\\640815bd-761d-48e8-a713-828ad134c46e.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\product\\7a5eec47-2c7a-4f70-839f-6f30fa797b84.png",
+      "PackagePath": "staticwebassets\\images\\product\\7a5eec47-2c7a-4f70-839f-6f30fa797b84.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\product\\9681c1f6-16ca-48e9-90c9-8472d8e7c99b.png",
+      "PackagePath": "staticwebassets\\images\\product\\9681c1f6-16ca-48e9-90c9-8472d8e7c99b.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\product\\a6791611-a336-440a-8e4f-d750c47ff180.jpg",
+      "PackagePath": "staticwebassets\\images\\product\\a6791611-a336-440a-8e4f-d750c47ff180.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\product\\a67efc5e-a87e-4006-8184-2fd64d7db4cc.png",
+      "PackagePath": "staticwebassets\\images\\product\\a67efc5e-a87e-4006-8184-2fd64d7db4cc.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\product\\aaf16ad4-b8f5-452d-86be-41c822bf2758.png",
+      "PackagePath": "staticwebassets\\images\\product\\aaf16ad4-b8f5-452d-86be-41c822bf2758.png"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\product\\ce8a0961-5d65-408e-8491-d80e05f98d58.jpg",
+      "PackagePath": "staticwebassets\\images\\product\\ce8a0961-5d65-408e-8491-d80e05f98d58.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Hermann\\source\\repos\\LuckyFoodSystem\\LuckyFoodSystem.Api\\wwwroot\\images\\product\\ff96076d-e3c2-4bdc-a190-25fabd413da7.png",
+      "PackagePath": "staticwebassets\\images\\product\\ff96076d-e3c2-4bdc-a190-25fabd413da7.png"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.LuckyFoodSystem.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.LuckyFoodSystem.API.props",
+      "PackagePath": "build\\LuckyFoodSystem.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.LuckyFoodSystem.API.props",
+      "PackagePath": "buildMultiTargeting\\LuckyFoodSystem.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.LuckyFoodSystem.API.props",
+      "PackagePath": "buildTransitive\\LuckyFoodSystem.API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

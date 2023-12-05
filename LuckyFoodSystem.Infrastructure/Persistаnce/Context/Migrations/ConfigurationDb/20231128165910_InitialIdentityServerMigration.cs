@@ -528,7 +528,7 @@ namespace LuckyFoodSystem.Identity.Migrations.ConfigurationDb
             migrationBuilder.CreateIndex(
                 name: "IX_ApiResources_Name",
                 table: "ApiResources",
-                column: "Name",
+                column: "UserName",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -557,7 +557,7 @@ namespace LuckyFoodSystem.Identity.Migrations.ConfigurationDb
             migrationBuilder.CreateIndex(
                 name: "IX_ApiScopes_Name",
                 table: "ApiScopes",
-                column: "Name",
+                column: "UserName",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -640,7 +640,7 @@ namespace LuckyFoodSystem.Identity.Migrations.ConfigurationDb
             migrationBuilder.CreateIndex(
                 name: "IX_IdentityResources_Name",
                 table: "IdentityResources",
-                column: "Name",
+                column: "UserName",
                 unique: true);
         }
 
