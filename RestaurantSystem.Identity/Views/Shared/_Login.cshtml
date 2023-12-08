@@ -1,0 +1,30 @@
+﻿@model RestaurantSystem.Models.VM.LoginVM
+
+<div>
+    <form asp-controller="" asp-action="Login" class="form-signin" method="post" name="form">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <label asp-for="UserName"></label>
+        <input asp-for="UserName" class="form-styling" type="text" placeholder="Введите логин" />
+        <span class="text-danger" asp-validation-for="UserName"></span>
+
+        <label asp-for="Password"></label>
+        <input class="form-styling" type="text" asp-for="Password" placeholder="Введите пароль" />
+        <span class="text-danger" asp-validation-for="Password"></span>
+
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" asp-for="RememberLogin">
+                <label class="form-check-label" asp-for="RememberLogin">
+                    Запомнить меня
+                </label>
+            </div>
+        </div>
+
+        <div class="row">
+            <input asp-for="Button" type="submit" class="btn btn-warning col m-3 font-weight-bold" value="Готово" />
+            <input asp-for="Button" type="submit" class="btn btn-warning col m-3 font-weight-bold" value="Отмена" />
+        </div>
+
+    </form>
+</div>

@@ -1,0 +1,67 @@
+﻿@model RestaurantSystem.Models.VM.RegVM
+@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="toast " role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="toast-header">
+                    <img src="..." class="rounded me-2" alt="...">
+                    <strong class="me-auto">Bootstrap</strong>
+                    <small class="text-muted">11 mins ago</small>
+                    <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+                <div class="toast-body">
+                    Hello, world! This is a toast message.
+                </div>
+            </div>
+
+            <form class="window" method="post" asp-action="Register">
+                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                <input hidden asp-for="ReturnUrl" />
+
+                <h1>Зарегистрируйтесь</h1>
+                <div class="row justify-content-center">
+                    <button type="button" class="btn btn-primary btn-social fw-bold"><i class="fa-brands m-1 fa-vk fa-xl" style="color: white;"></i>VK</button>
+                    <button type="button" class="btn btn-dark btn-social fw-bold"><i class="fa-brands m-1 fa-xl fa-google-plus" style="color: #ffffff;"></i>Google</button>
+                </div>
+
+                <div class="row mt-3 justify-content-center m-1">
+                    <div class="user-input-reg col-5">
+                        <label asp-for="UserName" class="fw-medium m-1 fw-bold"></label>
+                        <input asp-for="UserName" placeholder="Ex:ivan123" /><br />
+                        <span class="text-danger m-1 fw-bold" asp-validation-for="UserName"></span>
+                    </div>
+                    <div class="user-input-reg col-5">
+                        <label asp-for="Password" class="fw-medium m-1 fw-bold"></label>
+                        <input asp-for="Password" placeholder="Ex: Pass123$" /><br />
+                        <span class="text-danger m-1 fw-bold" asp-validation-for="Password"></span>
+                    </div>
+                </div>
+                          
+
+                <div class="user-input">
+                    <label asp-for="Email" class="fw-bold m-1"></label>
+                    <input asp-for="Email" placeholder="Ex: ivan123@mail.ru"/><br />
+                    <span class="text-danger m-1 fw-bold" asp-validation-for="Email"></span><br />
+                </div>
+                <div class="user-input ">
+                    <label asp-for="PhoneNumber" class="fw-bold m-1"></label>
+                    <input asp-for="PhoneNumber" type="tel" placeholder="Ex: +79180590011" /><br />
+                    <span class="text-danger m-1 fw-bold" asp-validation-for="PhoneNumber"></span><br />
+                </div>
+
+                <div class="row justify-content-center mt-4 ">
+                    <button value="register" name="Button" type="submit" class="btn btn-warning w-25 m-2 fw-bold">
+                        <i class="fa-solid fa-l m-2 fa-utensils" style="color: #000000;"></i>
+                        Готово
+                    </button>
+                    <button value="cancel" type="submit" name="Button" class="btn btn-dark w-25 m-2 fw-bold">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
