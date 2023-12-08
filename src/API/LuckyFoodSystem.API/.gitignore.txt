@@ -1,0 +1,3 @@
+LuckyFoodSystem.API/obj/
+LuckyFoodSystem.API/bin/
+LuckyFoodSystem.API.csproj.user
