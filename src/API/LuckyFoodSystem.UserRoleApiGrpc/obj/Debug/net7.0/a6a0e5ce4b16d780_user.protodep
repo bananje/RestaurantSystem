@@ -1,0 +1,4 @@
+obj\Debug\net7.0\Application\Protos/User.cs \
+obj\Debug\net7.0\Application\Protos/UserGrpc.cs: C:/Users/vgerm/.nuget/packages/grpc.tools/2.49.0/build/native/include/google/protobuf/empty.proto\
+ C:/Users/vgerm/.nuget/packages/grpc.tools/2.49.0/build/native/include/google/protobuf/wrappers.proto\
+ Application/Protos/user.proto

@@ -1,0 +1,83 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{771D364A-1C17-48FE-840E-AFB42D8472B6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{0DD69CF5-633E-4B65-9294-DBA4ABC00387}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A479083A-19A3-4CE2-AD7D-B84856154822}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserRoleServiceTestClient", "src\test\UserRoleServiceTestClient\UserRoleServiceTestClient.csproj", "{BD3D6F67-DBAF-457D-B857-982CB26573D2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.API", "src\API\LuckyFoodSystem.API\LuckyFoodSystem.API.csproj", "{711ABA44-6347-4EB8-9B3B-F6EC350B5188}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Identity", "src\API\LuckyFoodSystem.Identity\LuckyFoodSystem.Identity.csproj", "{7B964538-AF50-473A-B832-142E80D3F69B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.UserRoleManagementService", "src\API\LuckyFoodSystem.UserRoleApiGrpc\LuckyFoodSystem.UserRoleManagementService.csproj", "{04A8721E-8DD2-4AE5-9AD4-421139C28207}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Application", "src\lib\LuckyFoodSystem.Application\LuckyFoodSystem.Application.csproj", "{CE4224AE-1C37-46C6-AC75-7913AE266254}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Contracts", "src\lib\LuckyFoodSystem.Contracts\LuckyFoodSystem.Contracts.csproj", "{CC6B255D-A138-4DE9-BE62-DDAE94BDEA4E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Infrastructure", "src\lib\LuckyFoodSystem.Infrastructure\LuckyFoodSystem.Infrastructure.csproj", "{6268866B-AB90-4262-9B5D-49694058DB38}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Domain", "src\lib\LuckyFoodSystem.Domain\LuckyFoodSystem.Domain.csproj", "{C77B4E54-4C03-4983-B3B7-DC049CD2F2FE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD3D6F67-DBAF-457D-B857-982CB26573D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD3D6F67-DBAF-457D-B857-982CB26573D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD3D6F67-DBAF-457D-B857-982CB26573D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD3D6F67-DBAF-457D-B857-982CB26573D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{711ABA44-6347-4EB8-9B3B-F6EC350B5188}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{711ABA44-6347-4EB8-9B3B-F6EC350B5188}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{711ABA44-6347-4EB8-9B3B-F6EC350B5188}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{711ABA44-6347-4EB8-9B3B-F6EC350B5188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B964538-AF50-473A-B832-142E80D3F69B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B964538-AF50-473A-B832-142E80D3F69B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B964538-AF50-473A-B832-142E80D3F69B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B964538-AF50-473A-B832-142E80D3F69B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04A8721E-8DD2-4AE5-9AD4-421139C28207}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04A8721E-8DD2-4AE5-9AD4-421139C28207}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04A8721E-8DD2-4AE5-9AD4-421139C28207}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04A8721E-8DD2-4AE5-9AD4-421139C28207}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CE4224AE-1C37-46C6-AC75-7913AE266254}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CE4224AE-1C37-46C6-AC75-7913AE266254}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CE4224AE-1C37-46C6-AC75-7913AE266254}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CE4224AE-1C37-46C6-AC75-7913AE266254}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC6B255D-A138-4DE9-BE62-DDAE94BDEA4E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC6B255D-A138-4DE9-BE62-DDAE94BDEA4E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC6B255D-A138-4DE9-BE62-DDAE94BDEA4E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC6B255D-A138-4DE9-BE62-DDAE94BDEA4E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6268866B-AB90-4262-9B5D-49694058DB38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6268866B-AB90-4262-9B5D-49694058DB38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6268866B-AB90-4262-9B5D-49694058DB38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6268866B-AB90-4262-9B5D-49694058DB38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C77B4E54-4C03-4983-B3B7-DC049CD2F2FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C77B4E54-4C03-4983-B3B7-DC049CD2F2FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C77B4E54-4C03-4983-B3B7-DC049CD2F2FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C77B4E54-4C03-4983-B3B7-DC049CD2F2FE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BD3D6F67-DBAF-457D-B857-982CB26573D2} = {A479083A-19A3-4CE2-AD7D-B84856154822}
+		{711ABA44-6347-4EB8-9B3B-F6EC350B5188} = {771D364A-1C17-48FE-840E-AFB42D8472B6}
+		{7B964538-AF50-473A-B832-142E80D3F69B} = {771D364A-1C17-48FE-840E-AFB42D8472B6}
+		{04A8721E-8DD2-4AE5-9AD4-421139C28207} = {771D364A-1C17-48FE-840E-AFB42D8472B6}
+		{CE4224AE-1C37-46C6-AC75-7913AE266254} = {0DD69CF5-633E-4B65-9294-DBA4ABC00387}
+		{CC6B255D-A138-4DE9-BE62-DDAE94BDEA4E} = {0DD69CF5-633E-4B65-9294-DBA4ABC00387}
+		{6268866B-AB90-4262-9B5D-49694058DB38} = {0DD69CF5-633E-4B65-9294-DBA4ABC00387}
+		{C77B4E54-4C03-4983-B3B7-DC049CD2F2FE} = {0DD69CF5-633E-4B65-9294-DBA4ABC00387}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3EE401C0-EBF5-4564-83E0-C357911485D6}
+	EndGlobalSection
+EndGlobal

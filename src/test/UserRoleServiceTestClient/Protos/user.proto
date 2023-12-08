@@ -1,0 +1,78 @@
+syntax = "proto3";
+
+option csharp_namespace = "LuckyFoodSystem.UserRoleServiceTestClient";
+
+package user;
+
+import "google/protobuf/empty.proto";
+import "google/protobuf/wrappers.proto";
+
+service UserService {
+  rpc GetAll(google.protobuf.Empty) returns (ListReply);
+  rpc GetByName(GetUserByNameRequest) returns (UserReply);
+  rpc Create(CreateUserRequest) returns (UserResponse);
+  rpc Update(UpdateUserRequest) returns (UserResponse);
+  rpc Delete(DeleteUserRequest) returns (UserResponse);
+  rpc DeleteFromRole(DeleteUserFromRoleRequest) returns (UserResponse);
+  rpc ChangePassword(ChangePasswordRequest) returns (UserResponse);
+}
+
+message ListReply{
+  repeated UserReply Users = 1;
+}
+
+message UserReply{
+  string id = 1;
+  string user_name=2;
+  string email = 3;
+  google.protobuf.StringValue phone_number = 4;
+}
+message ClaimsList{
+	repeated ClaimModel Claim = 1;
+}
+message ClaimModel{
+	string name = 1;
+	string value = 2;
+}
+
+message CreateUserRequest{
+	string user_name = 1;
+	string email = 2;
+	bool email_confirmed = 3;
+	string password = 4;
+	string phone_number = 6;
+	ClaimsList Claims = 7;
+}
+message AddUserToRoleRequest{
+	string user_name = 1;
+	string role_name = 2;
+}
+message ChangePasswordRequest{
+	string user_name = 1;
+	string current_password = 2;
+	string new_password = 3;
+}
+message GetUserByNameRequest{
+	string name = 1;
+}
+message DeleteUserFromRoleRequest{
+	string user_name = 1;
+	string role_name = 2;
+}
+message DeleteUserRequest{
+	string name = 1;
+}
+message UpdateUserRequest{
+	string id = 1;
+	string user_name = 2;
+	string email = 3;
+	bool email_confirmed = 4;
+	string password = 5;
+	string phone_number = 6;
+	ClaimsList Claims = 7;
+}
+
+message UserResponse{
+	string code = 1;
+	string description = 2;
+}
