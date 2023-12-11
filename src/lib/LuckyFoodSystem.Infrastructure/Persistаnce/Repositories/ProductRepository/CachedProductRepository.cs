@@ -27,7 +27,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             _distributedCache = distributedCache;
         }
         
-        public async Task<Product> GetProductByIdAsync(ProductId productId, CancellationToken cancellationToken = default)
+        public async Task<Product> GetProductByIdAsync(ProductId productId, CancellationToken cancellationToken)
         {
             string key = $"{_cacheKey}:{productId.Value}";
             Product? product;
@@ -60,7 +60,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             return product!;
         }
 
-        public async Task<List<Product>> GetProductsAsync(CancellationToken cancellationToken = default)
+        public async Task<List<Product>> GetProductsAsync(CancellationToken cancellationToken)
         {
             var productsList = await GetProductCollectionFromCache(cancellationToken);
 
@@ -73,7 +73,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             return productsList;
         }
 
-        public async Task<List<Product>> GetProductsByCategoryAsync(int categoryId, CancellationToken cancellationToken = default)
+        public async Task<List<Product>> GetProductsByCategoryAsync(int categoryId, CancellationToken cancellationToken)
         {
             var productsByCategoryNameList = await GetProductCollectionFromCache(cancellationToken, categoryId);
 
@@ -86,7 +86,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             return productsByCategoryNameList;
         }
 
-        public async Task<List<Product>> GetProductsByMenuAsync(MenuId menuId, CancellationToken cancellationToken = default)
+        public async Task<List<Product>> GetProductsByMenuAsync(MenuId menuId, CancellationToken cancellationToken)
         {
             var productsByMenuIdList = await GetProductCollectionFromCache(cancellationToken,
                                                                            menuId: menuId.Value.ToString()!);
@@ -100,7 +100,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             return productsByMenuIdList;
         }
 
-        public async Task AddProductAsync(Product product, List<Guid> menusIds, string rootPath, CancellationToken cancellationToken = default)
+        public async Task AddProductAsync(Product product, List<Guid> menusIds, string rootPath, CancellationToken cancellationToken)
         {
             if (product is not null)
             {
@@ -114,7 +114,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
             }
         }
 
-        public async Task<bool> RemoveProductAsync(ProductId productId, string rootPath, CancellationToken cancellationToken = default)
+        public async Task<bool> RemoveProductAsync(ProductId productId, string rootPath, CancellationToken cancellationToken)
         {
             bool result = await _decorated.RemoveProductAsync(productId, rootPath, cancellationToken);
 
@@ -133,7 +133,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
         }
 
         public async Task<Product> UpdateProductAsync(ProductId productId, Product updatedProduct, string rootPath, 
-                                                CancellationToken cancellationToken = default, 
+                                                CancellationToken cancellationToken, 
                                                 List<Guid> imageIds = null!, List<Guid> menuAddingIds = null!, List<Guid> menuDeletingIds = null!)
         {
             if (updatedProduct is not null)

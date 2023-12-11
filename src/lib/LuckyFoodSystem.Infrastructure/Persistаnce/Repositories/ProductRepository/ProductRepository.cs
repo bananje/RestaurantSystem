@@ -32,7 +32,7 @@ namespace LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.ProductReposi
                 => await _context.Products.Include(u => u.Images)
                                           .Include(u => u.Menus)
                                           .AsNoTracking().FirstOrDefaultAsync(u => u.Id == productId);       
-        public async Task<List<Product>> GetProductsAsync(CancellationToken cancellationToken = default)
+        public async Task<List<Product>> GetProductsAsync(CancellationToken cancellationToken)
                 => await _context.Products.Include(u => u.Images)
                                           .Include(u => u.Menus).ToListAsync(cancellationToken);
         public async Task<List<Product>> GetProductsByCategoryAsync(int categoryId, CancellationToken cancellationToken)

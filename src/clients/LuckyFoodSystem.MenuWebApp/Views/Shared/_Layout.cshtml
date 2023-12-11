@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RestaurantSystem.MenuApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link href="~/lib/fontawesome-free-6.4.2-web/css/all.css" rel="stylesheet" />
+    <link href="~/lib/fontawesome-free-6.4.2-web/css/all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/RestaurantSystem.MenuApp.styles.css" asp-append-version="true" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,400;0,700;0,800;1,300;1,900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container mt-3 d-flex">
+            <div class="d-flex align-items-center col">
+                <div style="font-size: 45px"><i class="fa-solid fa-clover fa-2xl" style="color: #000000;"></i></div>
+                <h4 class="text-uppercase fw-bold m-2">Lucky FOOD</h4>              
+            </div>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a asp-controller="home" asp-action="logout" style="font-size: 25px" class="mt-4 m-4">
+                    <i class="fa-solid fa-arrow-right-from-bracket" style="color: #000000;"></i>
+                </a>
+            }
+            else
+            {
+                <a asp-controller="home" asp-action="login" style="font-size: 25px" class="mt-4 m-4">
+                    <i class="fa-solid fa-user" style="color: #000000;"></i>
+                </a>
+            }
+        </div>
+    </header>
+    <div>
+       @RenderBody()
+    </div>
+    <footer class="border-top container text-muted mt-5">
+        <div class="row mt-3">
+            <div class="col">
+                &copy; 2023 - LUCKY FOOD
+            </div>
+            <div class="col">
+                <i class="fa-solid fa-square-phone fa-2xl" style="color: #000000;"></i>
+                <a class="text-decoration-none text-dark fw-bolder" href="+79181112233">+7 (918) 111-22-33</a>
+            </div>
+            <div class="col">
+                <i class="fa-solid fa-envelope fa-2xl" style="color: #000000;"></i>
+                <a class="text-decoration-none text-dark fw-bolder" href="kenig_web@gmail.com">kenig_web@gmail.com</a>
+            </div>
+            <div class="col-2">
+                <div class="d-flex">
+                    <i class="fa-brands fa-vk fa-2xl m-2" style="color: #000000;"></i>
+                    <i class="fa-brands fa-square-instagram fa-2xl m-2" style="color: #000000;"></i>
+                    <i class="fa-brands fa-telegram fa-2xl m-2" style="color: #000000;"></i>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

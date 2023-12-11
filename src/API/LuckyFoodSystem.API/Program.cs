@@ -17,11 +17,14 @@ var app = builder.Build();
         app.UseSwaggerUI();
     }
 
+    app.UseHttpsRedirection();
+
     app.UseRouting();
     app.UseStaticFiles();
     app.UseExceptionHandler("/error");
     app.UseHttpsRedirection();
 
+    app.UseAuthentication();
     app.UseAuthorization();
 
     app.MapControllers();

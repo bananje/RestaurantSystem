@@ -23,6 +23,8 @@ namespace LuckyFoodSystem.Application.Common.Mapping
                   .Map(dest => dest.MenusIdS, src => src.Menus.Select(u => u.Id.Value))
                   .Map(dest => dest.Files, src => src.Images.Select(u => u.Path));
 
+
+
             config.NewConfig<ProductResult, ProductResponse>()
                   .Map(dest => dest.Response, src => src.Products.Adapt<List<ProductResponseObject>>());
 

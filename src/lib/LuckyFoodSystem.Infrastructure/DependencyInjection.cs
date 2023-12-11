@@ -2,7 +2,6 @@
 using LuckyFoodSystem.Application.Common.Interfaces.Clients;
 using LuckyFoodSystem.Application.Common.Interfaces.Persistence;
 using LuckyFoodSystem.Application.Common.Interfaces.Services;
-using LuckyFoodSystem.Infrastructure.Clients;
 using LuckyFoodSystem.Infrastructure.Interceptors;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Context;
 using LuckyFoodSystem.Infrastructure.Persistаnce.Repositories.MenuRepository;
@@ -47,6 +46,7 @@ namespace LuckyFoodSystem.Infrastructure
         {
             services.AddDbContext<LuckyFoodDbContext>(options =>
                       options.UseSqlServer(configuration.GetConnectionString(ConnectionNames.ApplicationConnection)));
+
             services.AddStackExchangeRedisCache(options =>
             {
                 options.Configuration = configuration.GetConnectionString(ConnectionNames.Redis);

@@ -9,6 +9,7 @@ using LuckyFoodSystem.Application.Menus.Queries.Read;
 using LuckyFoodSystem.Contracts.Menu;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LuckyFoodSystem.API.Controllers
@@ -28,7 +29,7 @@ namespace LuckyFoodSystem.API.Controllers
             _mediator = mediator;
             _webHostEnvironment = webHostEnvironment;
         }
-        
+
         [HttpGet("/menus")]
         public async Task<IActionResult> GetAllMenusAsync()
         {

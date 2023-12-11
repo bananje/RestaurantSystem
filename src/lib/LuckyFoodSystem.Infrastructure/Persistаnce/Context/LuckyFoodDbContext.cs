@@ -6,7 +6,6 @@ using LuckyFoodSystem.Domain.AggregationModels.OrderAggregate;
 using LuckyFoodSystem.Domain.AggregationModels.ReportAggregate;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using static Duende.IdentityServer.Models.IdentityResources;
 
 namespace LuckyFoodSystem.Infrastructure.Persistаnce.Context
 {

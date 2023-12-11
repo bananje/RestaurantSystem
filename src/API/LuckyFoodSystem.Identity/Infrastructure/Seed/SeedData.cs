@@ -72,6 +72,7 @@ public class SeedData
                             new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
                             new Claim("location", "somewhere")
                         }).Result;
+
                 if (!result.Succeeded)
                 {
                     throw new Exception(result.Errors.First().Description);
