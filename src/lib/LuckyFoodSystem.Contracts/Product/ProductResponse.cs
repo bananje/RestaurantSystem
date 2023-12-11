@@ -1,4 +1,6 @@
-﻿namespace LuckyFoodSystem.Contracts.Product
+﻿using LuckyFoodSystem.Contracts.Menu;
+
+namespace LuckyFoodSystem.Contracts.Product
 {
     public record ProductResponse(
             List<ProductResponseObject> Response);
@@ -12,6 +14,6 @@
             float WeightValue,
             string WeightUnit,
             string Category,
-            List<Guid> MenusIdS,
+            List<MenuResponseObject> MenusList,
             List<string> Files = null!);  
 }

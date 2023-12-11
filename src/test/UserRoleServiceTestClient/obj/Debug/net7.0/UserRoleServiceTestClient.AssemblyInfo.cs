@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UserRoleServiceTestClient")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f6a3b5391e7e52ad7089431ed3ed25263f9b246c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("UserRoleServiceTestClient")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UserRoleServiceTestClient")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

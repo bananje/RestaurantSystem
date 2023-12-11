@@ -1,0 +1,86 @@
+﻿@* @using LuckyFoodSystem.Application.Common.Models.VM;
+@model ProductVM
+@{
+    ViewData["Title"] = "Обновление данных по позиции продуктов";
+    // string action = Model.Product.ProductId != 0 ? "Обновить" : "Добавить";
+}
+<div class="container">
+    <h1 class="text-center mt-5">@ViewData["Title"]</h1>
+    @if (Model.Product != null)
+    {
+        <form class="accordion-body mt-5" enctype="multipart/form-data" method="post" asp-action="UpsertProduct">
+            @if (Model.Product.Response.First().ProductId != null)
+            {
+                <input asp-for="@Model.Product.Id.Value" type="text" class="form-control" style="display: none">
+            }
+            <div class="mb-3">
+                <label asp-for="@Model.Product.Title" class="form-label fw-bold"></label>
+                <input asp-for="@Model.Product.Title" type="text" class="form-control mb-2" id="formGroupExampleInput2" placeholder="Обязательно к заполнению">
+                <span class="text-danger" asp-validation-for="@Model.Product.Title"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Product.Description" for="formGroupExampleInput2" class="form-label fw-bold"></label>
+                <input asp-for="@Model.Product.Description" type="text" class="form-control mb-2" id="formGroupExampleInput2" placeholder="Обязательно к заполнению">
+                <span class="text-danger" asp-validation-for="@Model.Product.Description"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Product.Price" for="formGroupExampleInput2" class="form-label fw-bold"></label>
+                <input asp-for="@Model.Product.Price" type="number" class="form-control mb-2" id="formGroupExampleInput2" placeholder="Обязательно к заполнению">
+                <span class="text-danger" asp-validation-for="@Model.Product.Price"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Product.Weight" for="formGroupExampleInput2" class="form-label fw-bold"></label>
+                <input asp-for="@Model.Product.Weight" type="number" class="form-control mb-2" id="formGroupExampleInput2" placeholder="Обязательно к заполнению">
+                <span class="text-danger" asp-validation-for="@Model.Product.Weight"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Product.WeightValue" for="formGroupExampleInput2" class="form-label fw-bold"></label>
+                <input asp-for="@Model.Product.WeightValue" type="text" class="form-control mb-2" id="formGroupExampleInput2" placeholder="Обязательно к заполнению">
+                <span class="text-danger" asp-validation-for="@Model.Product.WeightValue"></span>
+            </div>
+            <div class="mb-3">
+
+                <div class="d-flex">
+                    <label asp-for="@Model.Product.MenuId" for="formGroupExampleInput2" class="form-label fw-bold"></label>
+                    <i onclick="showMessage()" class="fa-regular fa-circle-question fa-lg mt-2 m-2" style="color: #000000;"></i>
+
+                    toast for warning about category product
+                    <div id="toast-info" class="toast align-items-center text-white bg-warning border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                Для добавление продуктов другой категории перейдите на страницу с продуктами этой категории
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                </div>
+
+                @*selector with sorted menus*@
+                @* <select asp-for="@Model.Product.MenuId" class="form-select" aria-label="Default select example">
+                    <option selected>Выберите меню для продукта</option>
+                    @foreach (Menu menu in Model.)
+                    {
+                        <option value="@menu.MenuId">@menu.Name</option>
+                    }
+                </select>
+
+            </div>
+            <div class="mb-3">
+                <label asp-for="@Model.Product.ImageId for=" formFile" class="form-label fw-bold"></label>
+                <input asp-for="@Model.Product.ImageId" class="form-control" accept="image/*" type="file" id="formFile">
+            </div>
+            <button type="submit" class="btn btn-warning mt-3">@action</button>
+        </form>
+    }
+</div>
+
+@section Scripts{
+    <script>
+        function showMessage(){
+            var toast = document.getElementById("toast-info");
+            toast.classList.add("show");
+        }
+    </script>
+} *@ 
+
+

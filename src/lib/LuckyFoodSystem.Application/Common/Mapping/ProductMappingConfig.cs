@@ -1,4 +1,5 @@
-﻿using LuckyFoodSystem.AggregationModels.ProductAggregate;
+﻿using LuckyFoodSystem.AggregationModels.MenuAggregate;
+using LuckyFoodSystem.AggregationModels.ProductAggregate;
 using LuckyFoodSystem.Application.Products.Commands.Create;
 using LuckyFoodSystem.Application.Products.Commands.Update;
 using LuckyFoodSystem.Application.Products.Common;
@@ -20,10 +21,8 @@ namespace LuckyFoodSystem.Application.Common.Mapping
                   .Map(dest => dest.Price, src => src.Price.Value)
                   .Map(dest => dest.WeightUnit, src => src.Weight.WeightUnit)
                   .Map(dest => dest.WeightValue, src => src.Weight.WeightValue)
-                  .Map(dest => dest.MenusIdS, src => src.Menus.Select(u => u.Id.Value))
+                  .Map(dest => dest.MenusList, src => src.Menus)
                   .Map(dest => dest.Files, src => src.Images.Select(u => u.Path));
-
-
 
             config.NewConfig<ProductResult, ProductResponse>()
                   .Map(dest => dest.Response, src => src.Products.Adapt<List<ProductResponseObject>>());
@@ -39,6 +38,9 @@ namespace LuckyFoodSystem.Application.Common.Mapping
                   .Map(dest => dest.AddingMenusIds, src => src.Request.AddingMenuIds)
                   .Map(dest => dest.ImagesIds, src => src.Request.ImageIds)
                   .Map(dest => dest, src => src.Request);
+
+            config.NewConfig<ProductResponse, List<ProductDTO>>()
+                .Map(dest => dest, src => src.Response);
         }
     }
 }
