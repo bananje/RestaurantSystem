@@ -7,9 +7,13 @@ namespace LuckyFoodSystem.AggregationModels.Common.Enumerations
         public static Category Food = new(1, nameof(Food));
         public static Category Bar = new(2, nameof(Bar));
         public Category(int id, string name) : base(id, name) { }
+
         public static Category FromId(int id)
             => GetAll<Category>().FirstOrDefault(x => x.Id == id)!;
         public static Category FromName(string name)
-            => GetAll<Category>().FirstOrDefault(x => x.Name == name)!;        
+            => GetAll<Category>().FirstOrDefault(x => x.Name == name)!;
+
+        public static int GetId(string name)
+            => GetAll<Category>().First(u => u.Name == name).Id;
     }
 }
