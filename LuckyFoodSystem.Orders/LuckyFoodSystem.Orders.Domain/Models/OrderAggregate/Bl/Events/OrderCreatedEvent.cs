@@ -1,11 +1,12 @@
 ﻿using LuckyFoodSystem.Orders.Domain.Models.CustomerAggregate;
 using LuckyFoodSystem.Orders.Domain.Models.CustomerAggregate.Entity;
+using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Bl.Common;
 using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Enumerations;
 using LuckyFoodSystem.Shared.Domain.Models;
 
 namespace LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Bl.Events;
 
-public class OrderCreatedEvent : DomainEvent
+public class OrderCreatedEvent : DomainEvent, IOrderEvent
 {
    public OrderStatus OrderStatus { get; private set; }
 
@@ -17,7 +18,7 @@ public class OrderCreatedEvent : DomainEvent
 
    public decimal TotalPrice { get; private set; }
 
-   public OrderCreatedEvent(
+    public OrderCreatedEvent(
        OrderId orderId,
        OrderStatus orderStatus,
        PaymentStatus paymentStatus,

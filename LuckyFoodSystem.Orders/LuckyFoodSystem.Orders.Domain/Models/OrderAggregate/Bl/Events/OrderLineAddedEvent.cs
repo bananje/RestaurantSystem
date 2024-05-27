@@ -4,13 +4,13 @@ using LuckyFoodSystem.Shared.Domain.Models;
 
 namespace LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Bl.Events;
 
-public class OrderLineRemovedEvent : DomainEvent, IOrderEvent
+public class OrderLineAddedEvent : DomainEvent, IOrderEvent
 {
-    public OrderLineRemovedEvent(OrderId orderId, OrderLineId newOrderLineId)
+    public OrderLineAddedEvent(OrderId orderId, OrderLine newOrderLine)
     {
         AggregateId = orderId.Value;
-        OrderLineId = newOrderLineId;
+        OrderLine = newOrderLine;
     }
 
-    public OrderLineId OrderLineId { get; private set; }
+    public OrderLine OrderLine { get; private set; }
 }

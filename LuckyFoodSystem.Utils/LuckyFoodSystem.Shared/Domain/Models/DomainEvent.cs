@@ -1,8 +1,8 @@
-﻿using MediatR;
+﻿using LuckyFoodSystem.Shared.Domain.Features;
 
 namespace LuckyFoodSystem.Shared.Domain.Models;
 
-public class DomainEvent : INotification
+public class DomainEvent : IDomainEvent
 {
     /// <summary>
     /// The event identifier

@@ -1,4 +1,5 @@
-﻿using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Entity.ProductEntity;
+﻿using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Entity.OrderLineEntity.Enumerations;
+using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Entity.ProductEntity;
 using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Entity.ProductEntity.Enumerations;
 using LuckyFoodSystem.Shared.Domain.Bl.Exceptions;
 using LuckyFoodSystem.Shared.Domain.Models;
@@ -15,11 +16,15 @@ public class OrderLine : Entity<OrderLineId>
 
     public decimal Discount => this.Product.Discount.Value;
 
+    public ReadyStatus ReadyStatus { get; private set; } 
+
     private OrderLine(
         OrderLineId orderLineId,
         Product product,
+        ReadyStatus readyStatus,
         int quantity)
     {
+        ReadyStatus = readyStatus;
         Product = product;
         this.Quantity = quantity;
     }
@@ -36,8 +41,10 @@ public class OrderLine : Entity<OrderLineId>
             throw new BusinessException($"Количество является обязательным полем");
         }
 
-        return new OrderLine(OrderLineId.CreateUnique(), product, quantity);
+        return new OrderLine(OrderLineId.CreateUnique(), product, ReadyStatus.Unready, quantity);
     }
+
+    public void ChangeStatus(ReadyStatus newStatus) => this.ReadyStatus = newStatus;
 
     public void ChangeQuantity(int quantity)
     {
@@ -46,6 +53,7 @@ public class OrderLine : Entity<OrderLineId>
             throw new BusinessException($"Количество является обязательным полем");
         }
 
+        this.ReadyStatus = ReadyStatus.Unready;
         Quantity = quantity;
     }
 }
