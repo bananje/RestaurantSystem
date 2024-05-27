@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34814.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyFoodSystem.Orders.Bll", "LuckyFoodSystem.Orders\LuckyFoodSystem.Orders.Bll\LuckyFoodSystem.Orders.Bll.csproj", "{184D6FCA-01FD-46AD-80D4-4AA5901A7B93}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Orders.Bll", "LuckyFoodSystem.Orders\LuckyFoodSystem.Orders.Bll\LuckyFoodSystem.Orders.Bll.csproj", "{184D6FCA-01FD-46AD-80D4-4AA5901A7B93}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LuckyFoodSystem.Orders", "LuckyFoodSystem.Orders", "{92FD98F2-B7E9-46E0-9BBD-DF8D271E2D67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyFoodSystem.Orders.Domain", "LuckyFoodSystem.Orders\LuckyFoodSystem.Orders.Domain\LuckyFoodSystem.Orders.Domain.csproj", "{9DBD7A26-CC6C-4CB0-AD6A-AD76A2A3DAAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Orders.Domain", "LuckyFoodSystem.Orders\LuckyFoodSystem.Orders.Domain\LuckyFoodSystem.Orders.Domain.csproj", "{9DBD7A26-CC6C-4CB0-AD6A-AD76A2A3DAAC}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LuckyFoodSystem.Utils", "LuckyFoodSystem.Utils", "{2D7DA8A1-9A75-4AA8-8ED1-C4AC8F0533AD}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Shared", "LuckyFoodSystem.Utils\LuckyFoodSystem.Shared\LuckyFoodSystem.Shared.csproj", "{34482B3A-1D40-480E-AEAD-BC084D8562A0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SourceGeneratingDomain", "LuckyFoodSystem.Utils\SourceGeneratingDomain\SourceGeneratingDomain.csproj", "{08BAB849-21CA-4F30-ACED-DAD42550123B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyFoodSystem.Orders.Infrastructure", "LuckyFoodSystem.Orders\LuckyFoodSystem.Orders.Infrastructure\LuckyFoodSystem.Orders.Infrastructure.csproj", "{1CBA1E19-F100-41A7-8629-8E9B098E5D88}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{08BAB849-21CA-4F30-ACED-DAD42550123B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{08BAB849-21CA-4F30-ACED-DAD42550123B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{08BAB849-21CA-4F30-ACED-DAD42550123B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CBA1E19-F100-41A7-8629-8E9B098E5D88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CBA1E19-F100-41A7-8629-8E9B098E5D88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CBA1E19-F100-41A7-8629-8E9B098E5D88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CBA1E19-F100-41A7-8629-8E9B098E5D88}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{9DBD7A26-CC6C-4CB0-AD6A-AD76A2A3DAAC} = {92FD98F2-B7E9-46E0-9BBD-DF8D271E2D67}
 		{34482B3A-1D40-480E-AEAD-BC084D8562A0} = {2D7DA8A1-9A75-4AA8-8ED1-C4AC8F0533AD}
 		{08BAB849-21CA-4F30-ACED-DAD42550123B} = {2D7DA8A1-9A75-4AA8-8ED1-C4AC8F0533AD}
+		{1CBA1E19-F100-41A7-8629-8E9B098E5D88} = {92FD98F2-B7E9-46E0-9BBD-DF8D271E2D67}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {98C56287-8D18-427E-891C-9A54906C77FA}

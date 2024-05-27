@@ -1,4 +1,5 @@
 ﻿using LuckyFoodSystem.Shared.Domain.Features;
+using System.Text.Json.Serialization;
 
 namespace LuckyFoodSystem.Shared.Domain.Models
 {
@@ -12,7 +13,7 @@ namespace LuckyFoodSystem.Shared.Domain.Models
         }
         protected AggregateRoot() { }
 
-        readonly ICollection<IDomainEvent> _uncommittedEvents = new List<IDomainEvent>();
+        [JsonIgnore] readonly ICollection<IDomainEvent> _uncommittedEvents = new List<IDomainEvent>();
 
         public void MarkChangesAsCommitted()
         {
@@ -28,5 +29,7 @@ namespace LuckyFoodSystem.Shared.Domain.Models
         }
 
         public IEnumerable<IDomainEvent> GetUncommittedChanges() => _uncommittedEvents;
+
+        public long Version { get; set; }
     }
 }
