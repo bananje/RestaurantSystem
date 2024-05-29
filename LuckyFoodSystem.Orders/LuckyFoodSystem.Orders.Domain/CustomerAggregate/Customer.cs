@@ -1,14 +1,14 @@
-﻿using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Bl.Common;
-using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Bl.Events;
+﻿using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Bl.Events;
 using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Entity;
 using LuckyFoodSystem.Orders.Domain.Models.CustomerAggregate.ValueObjects;
 using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Enumerations;
 using LuckyFoodSystem.Orders.Domain.OrderAggregate;
 using LuckyFoodSystem.Shared.Domain.Models;
+using LuckyFoodSystem.Shared.Domain.Models.Contracts;
 
 namespace LuckyFoodSystem.Orders.Domain.CustomerAggregate;
 
-public class Customer : AggregateRoot<CustomerId, ICustomerEvent>
+public class Customer : AggregateRoot<CustomerId>
 {
     private readonly HashSet<OrderId> _orders = [];
 
@@ -65,7 +65,7 @@ public class Customer : AggregateRoot<CustomerId, ICustomerEvent>
 
     public void AddOrder(Order order)
     {
-        if (order.OrderStatus.Name == OrderStatus.Complete.Name)
+        if (order.CurrentStatus.Name == OrderStatus.Complete.Name)
         {
             OrdersCount++;
         }
@@ -91,7 +91,7 @@ public class Customer : AggregateRoot<CustomerId, ICustomerEvent>
 
     #region Event Sourcing
 
-    protected override void Apply(ICustomerEvent @event)
+    protected override void Apply(IDomainEvent @event)
     {
         switch (@event)
         {

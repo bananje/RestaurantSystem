@@ -1,4 +1,5 @@
-﻿using LuckyFoodSystem.Orders.Infrastructure.Options;
+﻿using JasperFx.Core;
+using LuckyFoodSystem.Orders.Infrastructure.Options;
 using Marten;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

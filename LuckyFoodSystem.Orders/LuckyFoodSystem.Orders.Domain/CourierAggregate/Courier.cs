@@ -1,14 +1,19 @@
-﻿using LuckyFoodSystem.Orders.Domain.CourierAggregate.Bl.Common;
-using LuckyFoodSystem.Orders.Domain.CourierAggregate.Bl.Events;
+﻿using LuckyFoodSystem.Orders.Domain.CourierAggregate.Bl.Events;
 using LuckyFoodSystem.Orders.Domain.CourierAggregate.Bl.Rules;
+using LuckyFoodSystem.Orders.Domain.CourierAggregate.Entities;
 using LuckyFoodSystem.Orders.Domain.Models.CourierAggregate.Enumerations;
 using LuckyFoodSystem.Orders.Domain.Models.CustomerAggregate.ValueObjects;
+using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Enumerations;
+using LuckyFoodSystem.Orders.Domain.OrderAggregate;
 using LuckyFoodSystem.Shared.Domain.Models;
+using LuckyFoodSystem.Shared.Domain.Models.Contracts;
 
 namespace LuckyFoodSystem.Orders.Domain.CourierAggregate;
 
-public class Courier : AggregateRoot<CourierId, ICourierEvent>
+public class Courier : AggregateRoot<CourierId>
 {
+    private readonly HashSet<OrderId> _completeOrders = [];
+
     public string FirstName { get; private set; } = string.Empty;
 
     public string MiddleName { get; private set; } = string.Empty;
@@ -19,7 +24,13 @@ public class Courier : AggregateRoot<CourierId, ICourierEvent>
 
     public CourierPhone Phone { get; private set; } = null!;
 
-    public CourierStatus Status { get; private set; } = null!;
+    public CourierStatus Status { get; private set; } = CourierStatus.Inactive;
+
+    public OrderId CurrentDeliveringOrder { get; private set; }
+
+    public Location? Location { get; private set; }
+
+    public IReadOnlyCollection<OrderId> CompleteOrders => _completeOrders;
 
     public string FullName => $"{MiddleName} {FirstName} {LastName}";
 
@@ -54,6 +65,15 @@ public class Courier : AggregateRoot<CourierId, ICourierEvent>
             Status));
     }
 
+    public void GetOrder(OrderId orderId, OrderStatus orderStatus)
+    {
+        CheckRule(new OrderStatusMustHaveCompleteStatusOnly(orderStatus));
+
+        _completeOrders.Add(orderId);
+
+        Status = CourierStatus.Delivering;
+    }
+
     public void ChangeStatus(CourierStatus newStatus)
     {
         CheckRule(new CourierStatusMayNotBeChangedWhenCurrentStatusDelivering(Status, newStatus));
@@ -65,7 +85,7 @@ public class Courier : AggregateRoot<CourierId, ICourierEvent>
 
     #region Event Sourcing
 
-    protected override void Apply(ICourierEvent @event)
+    protected override void Apply(IDomainEvent @event)
     {
         switch (@event)
         {

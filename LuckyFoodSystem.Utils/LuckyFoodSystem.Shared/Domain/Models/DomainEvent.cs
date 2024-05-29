@@ -1,4 +1,4 @@
-﻿using LuckyFoodSystem.Shared.Domain.Features;
+﻿using LuckyFoodSystem.Shared.Domain.Models.Contracts;
 
 namespace LuckyFoodSystem.Shared.Domain.Models;
 

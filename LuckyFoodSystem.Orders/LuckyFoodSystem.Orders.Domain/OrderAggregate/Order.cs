@@ -4,21 +4,22 @@ using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Entity;
 using LuckyFoodSystem.Orders.Domain.Models.CourierAggregate.Enumerations;
 using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Entity.OrderLineEntity.Enumerations;
 using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Enumerations;
-using LuckyFoodSystem.Orders.Domain.OrderAggregate.Bl.Common;
 using LuckyFoodSystem.Orders.Domain.OrderAggregate.Bl.Events;
+using LuckyFoodSystem.Orders.Domain.OrderAggregate.Bl.Exceptions;
 using LuckyFoodSystem.Orders.Domain.OrderAggregate.Bl.Rules;
 using LuckyFoodSystem.Orders.Domain.OrderAggregate.Entity.OrderLineEntity;
 using LuckyFoodSystem.Orders.Domain.OrderAggregate.Entity.ProductEntity;
 using LuckyFoodSystem.Shared.Domain.Bl.Exceptions;
 using LuckyFoodSystem.Shared.Domain.Models;
+using LuckyFoodSystem.Shared.Domain.Models.Contracts;
 
 namespace LuckyFoodSystem.Orders.Domain.OrderAggregate;
 
-public class Order : AggregateRoot<OrderId, IOrderEvent>
+public class Order : AggregateRoot<OrderId>
 {
     private readonly HashSet<OrderLine> _orderLines = [];
 
-    public OrderStatus OrderStatus { get; private set; } = OrderStatus.Accepted;
+    public OrderStatus CurrentStatus { get; private set; } = OrderStatus.Accepted;
 
     public PaymentStatus PaymentStatus { get; private set; } = PaymentStatus.Unpaid;
 
@@ -29,6 +30,12 @@ public class Order : AggregateRoot<OrderId, IOrderEvent>
     public decimal TotalPrice { get; private set; }
 
     public Address DeliveryAddress { get; private set; } = null!;
+
+    public bool IsClosed { get; private set; }
+
+    public OrderStatus ClosedWithStatus { get; private set; }
+
+    public DateTime OrderStatusChangedAt { get; private set; }
 
     public IReadOnlyCollection<OrderLine> OrderLines => _orderLines;
 
@@ -49,7 +56,7 @@ public class Order : AggregateRoot<OrderId, IOrderEvent>
 
         RaiseEvent(new OrderCreatedEvent(
             orderId: Id,
-            orderStatus: OrderStatus,
+            orderStatus: CurrentStatus,
             paymentStatus: PaymentStatus,
             customerId: CustomerId,
             deliveryAddress: DeliveryAddress,
@@ -74,12 +81,16 @@ public class Order : AggregateRoot<OrderId, IOrderEvent>
         CourierId = courierId;
     }
   
-
     public Order AssignCourier(CourierId courierId, CourierStatus courierStatus)
     {
         CheckRule(new TheOrderMustHaveAtLeastOneOrderLine(_orderLines));
         CheckRule(new TheCourierMustHaveValidStatus(courierStatus));
         CheckRule(new PaymentStatusForOrderMustBePaid(PaymentStatus));
+
+        if (CourierId is not null)
+        {
+            throw new CourierAssignedException($"На заказ ID:{Id.Value} уже назначен курьер");
+        }
 
         RaiseEvent(new CourierAppointedEvent(Id, courierId));
 
@@ -87,22 +98,39 @@ public class Order : AggregateRoot<OrderId, IOrderEvent>
             CustomerId,
             DeliveryAddress,
             PaymentStatus,
-            OrderStatus,
+            CurrentStatus,
             GetTotalPrice(),
             courierId);
+    }
+
+    public void CancelOrder()
+    {
+        CheckRule(new OrderMayBeCanceledOnlyWithStatusAccepted(CurrentStatus));
+
+        if (CurrentStatus == OrderStatus.Canceled)
+        {
+            throw new OrderCancelledException($"Текущий заказ {Id.Value} уже имеет статус {OrderStatus.Canceled}");
+        }
+
+        CloseOrder(OrderStatus.Canceled);
     }
 
     public void ChangeOrderStatus(OrderStatus orderStatus)
     {
         CheckRule(new PaymentStatusForOrderMustBePaid(PaymentStatus));
-        CheckRule(new OrderStatusChangesMustBeConsistent(OrderStatus, orderStatus));
+        CheckRule(new OrderStatusChangesMustBeConsistent(CurrentStatus, orderStatus));
 
         if (orderStatus == OrderStatus.Complete)
         {
             CheckRule(new OrderStatusCanNotBeCompleteWhileDontCompletedAllOrderlines(_orderLines));
         }
 
-        OrderStatus = orderStatus;
+        if (orderStatus == OrderStatus.Delivered || orderStatus == OrderStatus.Canceled)
+        {
+            CloseOrder(orderStatus);
+        }
+
+        CurrentStatus = orderStatus;
 
         RaiseEvent(new OrderChangedStatusEvent(Id, orderStatus));
     }
@@ -160,10 +188,20 @@ public class Order : AggregateRoot<OrderId, IOrderEvent>
         return totalPrice > 0 ? totalPrice : 0;
     }
 
+    private void CloseOrder(OrderStatus orderStatus)
+    {
+        OrderStatusChangedAt = DateTime.UtcNow;
+        IsClosed = true;
+        CurrentStatus = orderStatus;
+        ClosedWithStatus = orderStatus;
+
+        RaiseEvent(new OrderClosedEvent(CurrentStatus, ClosedWithStatus, IsClosed, OrderStatusChangedAt));
+    }
+
 
     #region Event Sourcing
 
-    protected override void Apply(IOrderEvent @event)
+    protected override void Apply(IDomainEvent @event)
     {
         switch (@event)
         {
@@ -182,7 +220,7 @@ public class Order : AggregateRoot<OrderId, IOrderEvent>
     private void OnOrderCreated(OrderCreatedEvent @event)
     {
         Id = OrderId.Create(@event.AggregateId);
-        OrderStatus = @event.OrderStatus;
+        CurrentStatus = @event.OrderStatus;
         PaymentStatus = @event.PaymentStatus;
         DeliveryAddress = @event.DeliveryAddress;
         TotalPrice = @event.TotalPrice;
@@ -192,7 +230,7 @@ public class Order : AggregateRoot<OrderId, IOrderEvent>
     private void OnOrderChangedStatus(OrderChangedStatusEvent @event)
     {
         Id = OrderId.Create(@event.AggregateId);
-        OrderStatus = @event.OrderStatus;
+        CurrentStatus = @event.OrderStatus;
     }
 
     private void OnCourierAppointed(CourierAppointedEvent @event)

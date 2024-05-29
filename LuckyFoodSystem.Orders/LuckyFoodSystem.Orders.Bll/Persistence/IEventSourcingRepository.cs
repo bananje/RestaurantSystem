@@ -1,6 +1,11 @@
-﻿namespace LuckyFoodSystem.Orders.Bll.Persistence;
+﻿using LuckyFoodSystem.Shared.Domain.Models.Contracts;
 
-public interface IEventSourcingRepository<TAggregate>
+namespace LuckyFoodSystem.Orders.Bll.Persistence;
+
+public interface IEventSourcingRepository<TAggregate> 
+    where TAggregate : IAggregateRoot
 {
     Task<TAggregate> FindByIdAsync(Guid id);
+
+    Task SaveAsync(TAggregate aggregate);
 }

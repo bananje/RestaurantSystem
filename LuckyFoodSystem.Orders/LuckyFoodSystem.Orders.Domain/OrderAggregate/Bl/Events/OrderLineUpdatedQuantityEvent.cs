@@ -1,10 +1,9 @@
-﻿using LuckyFoodSystem.Orders.Domain.OrderAggregate.Bl.Common;
-using LuckyFoodSystem.Orders.Domain.OrderAggregate.Entity.OrderLineEntity;
+﻿using LuckyFoodSystem.Orders.Domain.OrderAggregate.Entity.OrderLineEntity;
 using LuckyFoodSystem.Shared.Domain.Models;
 
 namespace LuckyFoodSystem.Orders.Domain.OrderAggregate.Bl.Events;
 
-public class OrderLineUpdatedQuantityEvent : DomainEvent, IOrderEvent
+public class OrderLineUpdatedQuantityEvent : DomainEvent
 {
     public OrderLineId OrderLineId { get; private set; }
 
