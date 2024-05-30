@@ -17,6 +17,7 @@ namespace LuckyFoodSystem.Orders.Domain.OrderAggregate;
 
 public class Order : AggregateRoot<OrderId>
 {
+
     private readonly HashSet<OrderLine> _orderLines = [];
 
     public OrderStatus CurrentStatus { get; private set; } = OrderStatus.Accepted;
@@ -42,25 +43,16 @@ public class Order : AggregateRoot<OrderId>
     public Order() { }
 
     public Order(
-        OrderId orderId,
         CustomerId customerId,
-        Address deliveryAddress,
-        PaymentStatus paymentStatus,
-        OrderStatus orderStatus)
+        Address deliveryAddress)
     {
         CheckRule(new TheCustomerMustHaveAnAddress(deliveryAddress));
 
         Id = OrderId.CreateUnique();
         CustomerId = customerId;
         DeliveryAddress = deliveryAddress;
-
-        RaiseEvent(new OrderCreatedEvent(
-            orderId: Id,
-            orderStatus: CurrentStatus,
-            paymentStatus: PaymentStatus,
-            customerId: CustomerId,
-            deliveryAddress: DeliveryAddress,
-            totalPrice: TotalPrice));
+        CurrentStatus = OrderStatus.Accepted;
+        PaymentStatus = PaymentStatus.Unpaid;
     }
 
     private Order(
@@ -72,15 +64,34 @@ public class Order : AggregateRoot<OrderId>
         decimal totalPrice,
         CourierId courierId
                   ) : this(
-                      orderId,
                       customerId,
-                      deliveryAddress,
-                      paymentStatus,
-                      orderStatus)
+                      deliveryAddress)
     {
         CourierId = courierId;
     }
-  
+
+    public void ConfirmOrder()
+    {
+        CheckRule(new TheOrderMustHaveAtLeastOneOrderLine(_orderLines));
+
+        RaiseEvent(new OrderConfirmedEvent(
+            orderId: Id,
+            orderStatus: CurrentStatus,
+            paymentStatus: PaymentStatus,
+            customerId: CustomerId,
+            deliveryAddress: DeliveryAddress,
+            totalPrice: TotalPrice));
+    }
+
+    public void CheckOrderLinesStatuses()
+    {
+        if (_orderLines.Where(u => u.ReadyStatus == ReadyStatus.Ready).Count() == _orderLines.Count)
+        {
+            CurrentStatus = OrderStatus.Complete;
+
+        }
+    }
+
     public Order AssignCourier(CourierId courierId, CourierStatus courierStatus)
     {
         CheckRule(new TheOrderMustHaveAtLeastOneOrderLine(_orderLines));
@@ -205,7 +216,7 @@ public class Order : AggregateRoot<OrderId>
     {
         switch (@event)
         {
-            case OrderCreatedEvent @e: OnOrderCreated(@e); break;
+            case OrderConfirmedEvent @e: OnOrderCreated(@e); break;
             case OrderChangedStatusEvent @e: OnOrderChangedStatus(@e); break;
             case CourierAppointedEvent @e: OnCourierAppointed(e); break;
             case OrderLineAddedEvent @e: OnOrderLineAdded(@e); break;
@@ -217,7 +228,7 @@ public class Order : AggregateRoot<OrderId>
         Version++;
     }
 
-    private void OnOrderCreated(OrderCreatedEvent @event)
+    private void OnOrderCreated(OrderConfirmedEvent @event)
     {
         Id = OrderId.Create(@event.AggregateId);
         CurrentStatus = @event.OrderStatus;

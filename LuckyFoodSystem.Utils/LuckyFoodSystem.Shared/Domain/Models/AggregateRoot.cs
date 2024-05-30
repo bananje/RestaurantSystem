@@ -29,11 +29,11 @@ namespace LuckyFoodSystem.Shared.Domain.Models
 
         public IEnumerable<IDomainEvent> GetUncommittedChanges() => _uncommittedEvents;
 
-        public void LoadFromHistory(long version, IEnumerable<IDomainEvent> history)
+        public void LoadFromHistory(long version, IEnumerable<IDomainEvent> events)
         {
             Version = version;
 
-            foreach (var @event in history)
+            foreach (var @event in events)
             {
                 Apply(@event);
             }

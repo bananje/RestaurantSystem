@@ -1,10 +1,9 @@
 ﻿using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Enumerations;
-using LuckyFoodSystem.Orders.Domain.OrderAggregate.Bl.Common;
 using LuckyFoodSystem.Shared.Domain.Models;
 
 namespace LuckyFoodSystem.Orders.Domain.OrderAggregate.Bl.Events;
 
-public class OrderChangedStatusEvent : DomainEvent, IOrderEvent
+public class OrderChangedStatusEvent : DomainEvent
 {
     public OrderStatus OrderStatus { get; set; }
 

@@ -28,8 +28,6 @@ public class Courier : AggregateRoot<CourierId>
 
     public OrderId CurrentDeliveringOrder { get; private set; }
 
-    public Location? Location { get; private set; }
-
     public IReadOnlyCollection<OrderId> CompleteOrders => _completeOrders;
 
     public string FullName => $"{MiddleName} {FirstName} {LastName}";
@@ -72,6 +70,9 @@ public class Courier : AggregateRoot<CourierId>
         _completeOrders.Add(orderId);
 
         Status = CourierStatus.Delivering;
+        CurrentDeliveringOrder = orderId;
+
+        RaiseEvent(new CourierGetedOrderEvent(Status, CurrentDeliveringOrder));
     }
 
     public void ChangeStatus(CourierStatus newStatus)

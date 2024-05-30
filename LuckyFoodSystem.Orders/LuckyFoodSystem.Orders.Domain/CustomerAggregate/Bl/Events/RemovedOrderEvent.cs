@@ -1,10 +1,9 @@
-﻿using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Bl.Common;
-using LuckyFoodSystem.Orders.Domain.OrderAggregate;
+﻿using LuckyFoodSystem.Orders.Domain.OrderAggregate;
 using LuckyFoodSystem.Shared.Domain.Models;
 
 namespace LuckyFoodSystem.Orders.Domain.CustomerAggregate.Bl.Events;
 
-public class RemovedOrderEvent : DomainEvent, ICustomerEvent
+public class RemovedOrderEvent : DomainEvent
 {
     public OrderId OrderId { get; private set; }
 

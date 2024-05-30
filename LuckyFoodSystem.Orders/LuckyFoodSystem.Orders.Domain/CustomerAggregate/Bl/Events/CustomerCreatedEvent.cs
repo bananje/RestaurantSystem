@@ -1,11 +1,10 @@
-﻿using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Bl.Common;
-using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Entity;
+﻿using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Entity;
 using LuckyFoodSystem.Orders.Domain.Models.CustomerAggregate.ValueObjects;
 using LuckyFoodSystem.Shared.Domain.Models;
 
 namespace LuckyFoodSystem.Orders.Domain.CustomerAggregate.Bl.Events;
 
-public class CustomerCreatedEvent : DomainEvent, ICustomerEvent
+public class CustomerCreatedEvent : DomainEvent
 {
     public string FirstName { get; private set; } = string.Empty;
 

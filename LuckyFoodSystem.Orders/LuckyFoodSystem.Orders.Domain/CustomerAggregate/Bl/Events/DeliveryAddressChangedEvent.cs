@@ -1,10 +1,9 @@
-﻿using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Bl.Common;
-using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Entity;
+﻿using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Entity;
 using LuckyFoodSystem.Shared.Domain.Models;
 
 namespace LuckyFoodSystem.Orders.Domain.CustomerAggregate.Bl.Events;
 
-public class DeliveryAddressChangedEvent : DomainEvent, ICustomerEvent
+public class DeliveryAddressChangedEvent : DomainEvent
 {
     public Address Address { get; private set; }
 

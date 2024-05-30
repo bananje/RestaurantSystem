@@ -7,14 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="CQ\Commands\AssignCourier\" />
-    <Folder Include="CQ\Commands\OrderLine\AddOrderLine\" />
-    <Folder Include="CQ\Commands\OrderLine\RemoveOrderLine\" />
-    <Folder Include="CQ\Commands\ChangeOrderStatus\" />
-    <Folder Include="CQ\Commands\OrderLine\ChangeOrderLineStatus\" />
-    <Folder Include="CQ\Commands\OrderLine\UpdateOrderLineQuantity\" />
-    <Folder Include="CQ\Commands\OrderLine\" />
-    <Folder Include="Features\Pipelines\" />
+    <Folder Include="OrderBoundedContext\Commands\AssignCourier\" />
+    <Folder Include="OrderBoundedContext\Commands\ChangeOrderStatus\" />
+    <Folder Include="OrderBoundedContext\Commands\OrderLine\ChangeOrderLineStatus\" />
+    <Folder Include="OrderBoundedContext\Commands\OrderLine\UpdateOrderLineQuantity\" />
+    <Folder Include="OrderBoundedContext\Queries\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,10 +19,12 @@
     <PackageReference Include="FluentValidation" Version="11.9.1" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1" />
     <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\LuckyFoodSystem.Utils\LuckyFoodSystem.Shared\LuckyFoodSystem.Shared.csproj" />
+    <ProjectReference Include="..\LuckyFoodSystem.Orders.Domain\LuckyFoodSystem.Orders.Domain.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,4 @@
-﻿using JasperFx.Core;
-using LuckyFoodSystem.Orders.Infrastructure.Options;
+﻿using LuckyFoodSystem.Orders.Infrastructure.Options;
 using Marten;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -25,6 +24,8 @@ public static class MartenConfiguration
             opt.Connection(config.ConnectionString);
 
             opt.Events.DatabaseSchemaName = config.DatabaseSchemaName;
+
+            opt.Events.StreamIdentity = Marten.Events.StreamIdentity.AsString;
         });
 
         return services;

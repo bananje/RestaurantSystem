@@ -38,6 +38,7 @@ namespace LuckyFoodSystem.Shared.Domain.Models
         {
             return Id.GetHashCode();
         }
+        
 
         public static void CheckRule(IBusinessRule businessRule)
         {

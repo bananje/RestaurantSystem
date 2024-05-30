@@ -1,11 +1,10 @@
-﻿using LuckyFoodSystem.Orders.Domain.CourierAggregate.Bl.Common;
-using LuckyFoodSystem.Orders.Domain.Models.CourierAggregate.Enumerations;
+﻿using LuckyFoodSystem.Orders.Domain.Models.CourierAggregate.Enumerations;
 using LuckyFoodSystem.Orders.Domain.Models.CustomerAggregate.ValueObjects;
 using LuckyFoodSystem.Shared.Domain.Models;
 
 namespace LuckyFoodSystem.Orders.Domain.CourierAggregate.Bl.Events;
 
-public class CourierCreatedEvent : DomainEvent, ICourierEvent
+public class CourierCreatedEvent : DomainEvent
 {
     public string FirstName { get; private set; } = string.Empty;
 
