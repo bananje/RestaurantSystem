@@ -3,6 +3,7 @@ using LuckyFoodSystem.Orders.Bll.Persistence;
 using LuckyFoodSystem.Orders.Bll.Results;
 using LuckyFoodSystem.Orders.Bll.Services;
 using LuckyFoodSystem.Orders.Domain.OrderAggregate;
+using LuckyFoodSystem.Shared.Domain.Bl.Exceptions;
 using MediatR;
 
 namespace LuckyFoodSystem.Orders.Bll.OrderBoundedContext.Commands.OrderLine.AddOrderLine;
@@ -25,14 +26,14 @@ public class AddOrderLineCommandHandler : IRequestHandler<AddOrderLineCommand, E
     {
         try
         {
-            var order = await _orderRepository.FindByIdAsync(request.orderId);
+            var order = await _orderRepository.FindByIdAsync(request.orderId, cancellationToken);
 
             if (order is null)
             {
-                return Errors.Order.OrderNotFount($"Заказа с id:{request.orderId} не найден");
+                return Errors.Order.OrderNotFount(request.orderId.ToString());
             }
 
-            var product = await _productService.GetProductByIdAsync(request.OrderLine.ProductId);
+            var product = await _productService.GetProductByIdAsync(request.OrderLine.ProductId, cancellationToken);
 
             if (product is null)
             {
@@ -41,11 +42,11 @@ public class AddOrderLineCommandHandler : IRequestHandler<AddOrderLineCommand, E
 
             order.AddOrderLine(product, request.OrderLine.Quantity);
 
-            await _orderRepository.SaveAsync(order);
+            await _orderRepository.SaveAsync(order, cancellationToken);
 
             return CommandResult.Success($"В заказ ID:{order.Id.Value} добавлена новая позиция");
         }
-        catch (Exception ex)
+        catch (BusinessExceptionBase ex)
         {
             return Errors.Common.BusinessFailure(ex.Message);
         }

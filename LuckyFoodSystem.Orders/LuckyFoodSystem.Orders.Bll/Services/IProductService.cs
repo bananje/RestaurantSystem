@@ -4,5 +4,5 @@ namespace LuckyFoodSystem.Orders.Bll.Services;
 
 public interface IProductService
 {
-    Task<Product> GetProductByIdAsync(Guid productId);
+    Task<Product> GetProductByIdAsync(Guid productId, CancellationToken token = default);
 }

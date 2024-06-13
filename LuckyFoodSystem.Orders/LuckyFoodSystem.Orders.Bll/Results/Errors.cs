@@ -13,8 +13,14 @@ public partial class Errors
         public static Error InvalidCustomer(string message)
             => Error.Failure(code: HttpStatusCode.NotFound.ToString(), message);
 
-        public static Error OrderNotFount(string message)
-           => Error.Failure(code: HttpStatusCode.NotFound.ToString(), message);
+        public static Error OrderNotFount(string orderId)
+           => Error.Failure(code: HttpStatusCode.NotFound.ToString(), $"Заказ с ID:{orderId} не найден!");
+    }
+
+    public static class Courier
+    {
+        public static Error CourierNotFount(string courierId)
+          => Error.Failure(code: HttpStatusCode.NotFound.ToString(), $"Курьер с ID:{courierId} не найден!");
     }
 
     public static class Common

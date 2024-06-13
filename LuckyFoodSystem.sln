@@ -15,7 +15,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Shared", "L
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SourceGeneratingDomain", "LuckyFoodSystem.Utils\SourceGeneratingDomain\SourceGeneratingDomain.csproj", "{08BAB849-21CA-4F30-ACED-DAD42550123B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuckyFoodSystem.Orders.Infrastructure", "LuckyFoodSystem.Orders\LuckyFoodSystem.Orders.Infrastructure\LuckyFoodSystem.Orders.Infrastructure.csproj", "{1CBA1E19-F100-41A7-8629-8E9B098E5D88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LuckyFoodSystem.Orders.Infrastructure", "LuckyFoodSystem.Orders\LuckyFoodSystem.Orders.Infrastructure\LuckyFoodSystem.Orders.Infrastructure.csproj", "{1CBA1E19-F100-41A7-8629-8E9B098E5D88}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4017E93A-4802-45BA-A7B0-63438F43409B}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

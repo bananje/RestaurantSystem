@@ -5,7 +5,7 @@ namespace LuckyFoodSystem.Orders.Infrastructure.DataAccess.Services;
 
 public class ProductService : IProductService
 {
-    public Task<Product> GetProductByIdAsync(Guid productId)
+    public Task<Product> GetProductByIdAsync(Guid productId, CancellationToken token = default)
     {
         throw new NotImplementedException();
     }

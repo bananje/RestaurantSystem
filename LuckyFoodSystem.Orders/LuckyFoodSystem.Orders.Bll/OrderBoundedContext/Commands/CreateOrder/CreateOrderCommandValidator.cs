@@ -1,5 +1,7 @@
 ﻿using FluentValidation;
 
+using LuckyFoodSystem.Orders.Bll.OrderBoundedContext.Validation;
+
 namespace LuckyFoodSystem.Orders.Bll.OrderBoundedContext.Commands.CreateOrder;
 
 public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
@@ -16,6 +18,6 @@ public class CreateOrderCommandValidator : AbstractValidator<CreateOrderCommand>
 
         RuleFor(u => u.ApartmentNum).NotNull().NotEmpty();
 
-        RuleFor(u => u.OrderLines).NotEmpty().NotNull();
+        RuleForEach(u => u.OrderLines).SetValidator(new OrderLineValidator());
     }
 }

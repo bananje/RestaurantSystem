@@ -9,5 +9,5 @@ namespace LuckyFoodSystem.Orders.Bll.OrderBoundedContext.Commands.OrderLine.AddO
 /// </summary>
 public record AddOrderLineCommand(
     Guid orderId,
-    OrderLineStruct OrderLine) : ICommand<CommandResult>;
+    OrderLineRequestStruct OrderLine) : ICommand<CommandResult>;
 

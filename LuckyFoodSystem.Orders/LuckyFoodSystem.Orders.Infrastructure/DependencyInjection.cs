@@ -1,4 +1,6 @@
-﻿using LuckyFoodSystem.Orders.Infrastructure.Extensions;
+﻿using LuckyFoodSystem.Orders.Infrastructure.DataAccess.Context;
+using LuckyFoodSystem.Orders.Infrastructure.Extensions;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,6 +14,13 @@ public static class DependencyInjection
         IConfiguration configuration)
     {
         services.AddMartenConfiguration(serviceProvider, configuration);
+
+        services.AddMassTransitConfiguration(serviceProvider, configuration);
+
+        services.AddDbContext<OrdersDbContext>(opt =>
+        {
+            opt.UseNpgsql(configuration.GetConnectionString("QueryDbConnection"));
+        });
 
         return services;
     }

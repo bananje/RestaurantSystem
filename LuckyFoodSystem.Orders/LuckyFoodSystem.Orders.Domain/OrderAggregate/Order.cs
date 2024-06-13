@@ -74,22 +74,35 @@ public class Order : AggregateRoot<OrderId>
     {
         CheckRule(new TheOrderMustHaveAtLeastOneOrderLine(_orderLines));
 
-        RaiseEvent(new OrderConfirmedEvent(
-            orderId: Id,
-            orderStatus: CurrentStatus,
-            paymentStatus: PaymentStatus,
-            customerId: CustomerId,
-            deliveryAddress: DeliveryAddress,
-            totalPrice: TotalPrice));
+        RaiseEvent(new OrderConfirmedEvent(this));
     }
 
-    public void CheckOrderLinesStatuses()
+    public bool CheckСompletion()
+    {
+        try
+        {
+            CheckRule(new OrderStatusCanNotBeCompleteWhileDontCompletedAllOrderlines(this.OrderLines));
+
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public bool CompleteOrder()
     {
         if (_orderLines.Where(u => u.ReadyStatus == ReadyStatus.Ready).Count() == _orderLines.Count)
         {
             CurrentStatus = OrderStatus.Complete;
 
+            RaiseEvent(new OrderChangedStatusEvent(orderId: this.Id, OrderStatus.Complete));
+
+            return true;
         }
+
+        return false;
     }
 
     public Order AssignCourier(CourierId courierId, CourierStatus courierStatus)
@@ -103,7 +116,7 @@ public class Order : AggregateRoot<OrderId>
             throw new CourierAssignedException($"На заказ ID:{Id.Value} уже назначен курьер");
         }
 
-        RaiseEvent(new CourierAppointedEvent(Id, courierId));
+        RaiseEvent(new CourierAppointedEvent(Id, courierId, CurrentStatus));
 
         return new(OrderId.Create(Id.Value),
             CustomerId,
@@ -167,18 +180,19 @@ public class Order : AggregateRoot<OrderId>
         _orderLines.Add(newOrderLine);
 
         TotalPrice = GetTotalPrice();
+        CurrentStatus = OrderStatus.Accepted;
 
         RaiseEvent(new OrderLineAddedEvent(Id, newOrderLine));
     }
 
-    public void RemoveOrderLine(OrderLineId orderLineId)
-    {
-        _orderLines.RemoveWhere(u => u.Id.Value == orderLineId.Value);
+    //public void RemoveOrderLine(OrderLineId orderLineId)
+    //{
+    //    _orderLines.RemoveWhere(u => u.Id.Value == orderLineId.Value);
 
-        TotalPrice = GetTotalPrice();
+    //    TotalPrice = GetTotalPrice();
 
-        RaiseEvent(new OrderLineRemovedEvent(Id, orderLineId));
-    }
+    //    RaiseEvent(new OrderLineRemovedEvent(Id, orderLineId));
+    //}
 
     public void UpdateOrderLineQuantity(OrderLineId orderLineId, int quantity)
     {
@@ -224,18 +238,16 @@ public class Order : AggregateRoot<OrderId>
             case OrderLineChangedStatusEvent @e: OnOrderLineChangedStatus(@e); break;
             case OrderLineUpdatedQuantityEvent @e: OnOrderLineUpdatedQuantity(@e); break;
         }
-
-        Version++;
     }
 
     private void OnOrderCreated(OrderConfirmedEvent @event)
     {
         Id = OrderId.Create(@event.AggregateId);
-        CurrentStatus = @event.OrderStatus;
-        PaymentStatus = @event.PaymentStatus;
-        DeliveryAddress = @event.DeliveryAddress;
-        TotalPrice = @event.TotalPrice;
-        CustomerId = @event.CustomerId;
+        CurrentStatus = @event.Order.CurrentStatus;
+        PaymentStatus = @event.Order.PaymentStatus;
+        DeliveryAddress = @event.Order.DeliveryAddress;
+        TotalPrice = @event.Order.TotalPrice;
+        CustomerId = @event.Order.CustomerId;
     }
 
     private void OnOrderChangedStatus(OrderChangedStatusEvent @event)

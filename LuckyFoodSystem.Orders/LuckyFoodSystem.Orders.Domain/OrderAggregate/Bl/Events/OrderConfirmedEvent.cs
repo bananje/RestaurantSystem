@@ -1,35 +1,15 @@
-﻿using LuckyFoodSystem.Orders.Domain.CustomerAggregate;
-using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Entity;
-using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Enumerations;
-using LuckyFoodSystem.Shared.Domain.Models;
+﻿using LuckyFoodSystem.Shared.Domain.Models;
 
 namespace LuckyFoodSystem.Orders.Domain.OrderAggregate.Bl.Events;
 
 public class OrderConfirmedEvent : DomainEvent
 {
-    public OrderStatus OrderStatus { get; private set; }
+    public Order Order { get; private set; }
 
-    public PaymentStatus PaymentStatus { get; private set; }
-
-    public CustomerId CustomerId { get; private set; }
-
-    public Address DeliveryAddress { get; private set; }
-
-    public decimal TotalPrice { get; private set; }
-
-    public OrderConfirmedEvent(
-       OrderId orderId,
-       OrderStatus orderStatus,
-       PaymentStatus paymentStatus,
-       CustomerId customerId,
-       Address deliveryAddress,
-       decimal totalPrice)
+    public OrderConfirmedEvent(Order order)
     {
-        AggregateId = orderId.Value;
-        OrderStatus = orderStatus;
-        PaymentStatus = paymentStatus;
-        CustomerId = customerId;
-        DeliveryAddress = deliveryAddress;
-        TotalPrice = totalPrice;
+        AggregateId = order.Id.Value;
+        Order = order;
+        AggregateVersion = order.Version;
     }
 }

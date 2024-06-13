@@ -2,7 +2,7 @@
 
 namespace LuckyFoodSystem.Shared.Domain.Bl.Exceptions;
 
-public class BusinessRuleException : Exception
+public class BusinessRuleException : BusinessExceptionBase
 {
     public BusinessRuleException(IBusinessRule businessRule) : base(businessRule.ErrorMessage)
     {

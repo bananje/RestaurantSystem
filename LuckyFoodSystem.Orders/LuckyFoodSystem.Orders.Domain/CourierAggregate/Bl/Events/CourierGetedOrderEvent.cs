@@ -4,14 +4,16 @@ using LuckyFoodSystem.Shared.Domain.Models;
 
 namespace LuckyFoodSystem.Orders.Domain.CourierAggregate.Bl.Events;
 
-public class CourierGetedOrderEvent : DomainEvent
+public class CourierGatedOrderEvent : DomainEvent
 {
-    public CourierStatus Status { get; private set; } = CourierStatus.Inactive;
+    public CourierStatus Status { get; private set; }
 
     public OrderId CurrentDeliveringOrder { get; private set; }
 
-    public CourierGetedOrderEvent(CourierStatus status, OrderId currentDeliveringOrder)
+
+    public CourierGatedOrderEvent(CourierStatus status, OrderId currentDeliveringOrder, CourierId courierId)
     {
+        AggregateId = courierId.Value;
         Status = status;
         CurrentDeliveringOrder = currentDeliveringOrder;
     }

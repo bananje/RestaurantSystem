@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using LuckyFoodSystem.Shared.Domain.Models.Contracts;
+using System.Linq.Expressions;
 
 namespace LuckyFoodSystem.Orders.Bll.Persistence;
 
@@ -8,5 +9,5 @@ public interface IQueryRepository<TAggregate>
 
     Task<IEnumerable<TAggregate>> FindAllAsync(Expression<Func<TAggregate, bool>> predicate);
 
-    Task<TAggregate> FindByIdAsync(Guid id);
+    Task<TAggregate> FindAsync(Expression<Func<TAggregate, bool>> predicate);
 }

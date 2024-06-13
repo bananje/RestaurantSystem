@@ -11,5 +11,7 @@ public class OrderLineAddedEvent : DomainEvent
         OrderLine = newOrderLine;
     }
 
+    public OrderId OrderId { get; private set; }
+
     public OrderLine OrderLine { get; private set; }
 }

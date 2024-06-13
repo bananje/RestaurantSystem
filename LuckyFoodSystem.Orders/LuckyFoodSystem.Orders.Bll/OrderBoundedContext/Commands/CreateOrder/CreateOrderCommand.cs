@@ -10,5 +10,5 @@ public record CreateOrderCommand(
     string Street,
     string House,
     string ApartmentNum,
-    IReadOnlyCollection<OrderLineStruct> OrderLines) 
+    IReadOnlyCollection<OrderLineRequestStruct> OrderLines) 
     : ICommand<CommandResult>;

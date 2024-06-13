@@ -1,6 +1,5 @@
 ﻿using LuckyFoodSystem.Orders.Domain.CourierAggregate.Bl.Events;
 using LuckyFoodSystem.Orders.Domain.CourierAggregate.Bl.Rules;
-using LuckyFoodSystem.Orders.Domain.CourierAggregate.Entities;
 using LuckyFoodSystem.Orders.Domain.Models.CourierAggregate.Enumerations;
 using LuckyFoodSystem.Orders.Domain.Models.CustomerAggregate.ValueObjects;
 using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Enumerations;
@@ -72,7 +71,7 @@ public class Courier : AggregateRoot<CourierId>
         Status = CourierStatus.Delivering;
         CurrentDeliveringOrder = orderId;
 
-        RaiseEvent(new CourierGetedOrderEvent(Status, CurrentDeliveringOrder));
+        RaiseEvent(new CourierGatedOrderEvent(Status, CurrentDeliveringOrder, Id));
     }
 
     public void ChangeStatus(CourierStatus newStatus)
@@ -92,6 +91,7 @@ public class Courier : AggregateRoot<CourierId>
         {
             case CourierCreatedEvent @e: OnCourierCreated(@e); break;
             case CourierChangedStatusEvent @e: OnCourierChangedStatus(@e); break;
+            case CourierGatedOrderEvent @e: OnCouirerGettedOrder(@e); break;
         }
     }
 
@@ -104,6 +104,13 @@ public class Courier : AggregateRoot<CourierId>
         Email = @event.Email;
         Phone = @event.Phone;
         Status = @event.Status;
+    }
+
+    private void OnCouirerGettedOrder(CourierGatedOrderEvent @event)
+    {
+        Id = CourierId.Create(@event.AggregateId);
+        Status = @event.Status;
+        CurrentDeliveringOrder = @event.CurrentDeliveringOrder;
     }
 
     private void OnCourierChangedStatus(CourierChangedStatusEvent @event)

@@ -33,7 +33,7 @@ public class CreateOrderCommandHandler
     {
         try
         {
-            var customer = await _customerRepository.FindByIdAsync(request.CustomerId);
+            var customer = await _customerRepository.FindByIdAsync(request.CustomerId, cancellationToken);
 
             if (customer is null)
             {
@@ -50,7 +50,7 @@ public class CreateOrderCommandHandler
 
             foreach (var item in request.OrderLines)
             {
-                var product = await _productService.GetProductByIdAsync(item.ProductId);
+                var product = await _productService.GetProductByIdAsync(item.ProductId, cancellationToken);
 
                 if (product is null)
                 {
@@ -62,7 +62,7 @@ public class CreateOrderCommandHandler
 
             order.ConfirmOrder();
 
-            await _orderRepository.SaveAsync(order);
+            await _orderRepository.SaveAsync(order, cancellationToken);
 
             return CommandResult.Success($"Заказ ID:{order.Id.Value} успешно создан!");
         }

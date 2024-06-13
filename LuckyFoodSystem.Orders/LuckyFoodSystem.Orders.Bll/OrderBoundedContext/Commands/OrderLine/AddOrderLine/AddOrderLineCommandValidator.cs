@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using LuckyFoodSystem.Orders.Bll.OrderBoundedContext.Validation;
 
 namespace LuckyFoodSystem.Orders.Bll.OrderBoundedContext.Commands.OrderLine.AddOrderLine;
 
@@ -6,6 +7,8 @@ public class AddOrderLineCommandValidator : AbstractValidator<AddOrderLineComman
 {
     public AddOrderLineCommandValidator()
     {
-        RuleFor(u => u.OrderLineStruct).NotNull().NotEmpty();
+        RuleFor(c => c.orderId).NotEmpty().NotNull();
+
+        RuleFor(u => u.OrderLine).SetValidator(new OrderLineValidator());
     }
 }

@@ -5,8 +5,6 @@ namespace LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Entity.ProductEnti
 
 public partial class Weight : ValueObject
 {
-    public float WeightValue { get; private set; }
-
     public Weight(float weightValue)
     {
         if (weightValue <= 0)

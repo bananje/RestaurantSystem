@@ -23,9 +23,6 @@ public class CommandResult
 
     public object SuccessObject { get; private set; }
 
-    public static CommandResult Success(string message = null!)
-        => new CommandResult(HttpStatusCode.OK, message);
-
-    public static CommandResult Failure(string message = null!)
-        => new CommandResult(HttpStatusCode.BadRequest, message);
+    public static CommandResult Success(HttpStatusCode httpStatusCode = HttpStatusCode.OK, string message = null!)
+        => new CommandResult(httpStatusCode, message);
 }

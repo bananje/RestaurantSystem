@@ -80,21 +80,24 @@ namespace SourceGeneratingDomain
         private static string GenerateSourceForId(ITypeSymbol typeSymbol)
         {
             return $@"
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using LuckyFoodSystem.Shared.Domain.Models.Contracts;
 
 namespace {typeSymbol.ContainingNamespace}
 {{
-  public class {typeSymbol.Name}Id
-  {{        
+    public class {typeSymbol.Name}Id : IAggregateId
+    {{
         public Guid Value {{ get; private set; }}
         public {typeSymbol.Name}Id(Guid value) => Value = value;
         public static {typeSymbol.Name}Id CreateUnique() => new(Guid.NewGuid());
-        public static {typeSymbol.Name}Id Create(Guid value) => new {typeSymbol.Name}Id(value);        
+        public static {typeSymbol.Name}Id Create(Guid value) => new {typeSymbol.Name}Id(value);
         public IEnumerable<object> GetEqualityComponents()
         {{
             yield return Value;
         }}
-  }}
+    }}
 }}";
         }
 
