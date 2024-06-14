@@ -34,7 +34,7 @@ public class Order : AggregateRoot<OrderId>
 
     public bool IsClosed { get; private set; }
 
-    public OrderStatus ClosedWithStatus { get; private set; }
+    public OrderStatus ClosedWithStatus { get; private set; } = null!;
 
     public DateTime OrderStatusChangedAt { get; private set; }
 
@@ -220,7 +220,7 @@ public class Order : AggregateRoot<OrderId>
         CurrentStatus = orderStatus;
         ClosedWithStatus = orderStatus;
 
-        RaiseEvent(new OrderClosedEvent(CurrentStatus, ClosedWithStatus, IsClosed, OrderStatusChangedAt));
+        RaiseEvent(new OrderClosedEvent(Id, CurrentStatus, ClosedWithStatus, IsClosed, OrderStatusChangedAt));
     }
 
 

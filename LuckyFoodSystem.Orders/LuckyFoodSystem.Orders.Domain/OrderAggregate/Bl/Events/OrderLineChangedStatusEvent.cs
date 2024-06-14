@@ -9,9 +9,12 @@ public class OrderLineChangedStatusEvent : DomainEvent
     public OrderLineChangedStatusEvent(OrderId orderId, OrderLineId orderLineId, ReadyStatus readyStatus)
     {
         AggregateId = orderId.Value;
+        OrderId = orderId;
         OrderLineId = orderLineId;
         ReadyStatus = readyStatus;
     }
+
+    public OrderId OrderId { get; private set; }
 
     public OrderLineId OrderLineId { get; private set; }
 

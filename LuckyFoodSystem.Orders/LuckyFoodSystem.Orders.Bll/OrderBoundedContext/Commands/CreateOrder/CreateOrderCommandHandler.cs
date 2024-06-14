@@ -64,7 +64,7 @@ public class CreateOrderCommandHandler
 
             await _orderRepository.SaveAsync(order, cancellationToken);
 
-            return CommandResult.Success($"Заказ ID:{order.Id.Value} успешно создан!");
+            return CommandResult.Success(message:$"Заказ ID:{order.Id.Value} успешно создан!");
         }
         catch (BusinessException ex)
         {

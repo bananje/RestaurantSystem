@@ -6,7 +6,7 @@ namespace LuckyFoodSystem.Shared.Domain.Models
     public abstract class Entity<TId> : IEquatable<Entity<TId>>
         where TId : notnull
     {
-        public TId Id { get; protected set; }
+        public TId? Id { get; protected set; }
 
         protected Entity(TId id)
         {
@@ -36,7 +36,7 @@ namespace LuckyFoodSystem.Shared.Domain.Models
 
         public override int GetHashCode()
         {
-            return Id.GetHashCode();
+            return Id!.GetHashCode();
         }
        
         public static void CheckRule(IBusinessRule businessRule)

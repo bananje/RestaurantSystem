@@ -43,7 +43,7 @@ public class ChangeOrderLineStatusCommandHandler : IRequestHandler<ChangeOrderLi
 
             await _orderRepository.SaveAsync(order, cancellationToken);
 
-            return CommandResult.Success($"Статус позиции заказа ID:{request.OrderLineId} обновлен на {status.Name}");
+            return CommandResult.Success(message:$"Статус позиции заказа ID:{request.OrderLineId} обновлен на {status.Name}");
         }
         catch (BusinessExceptionBase ex)
         {

@@ -16,7 +16,7 @@ public record OrderInfo : IQueryObject
 
     public Guid CustomerId { get; set; }
 
-    public decimal TotalPrice { get; set;; } = 0;
+    public decimal TotalPrice { get; set; } = 0;
 
     public string DeliveryAddress { get; set; } = null!;
 
@@ -26,7 +26,7 @@ public record OrderInfo : IQueryObject
 
     public DateTime OrderStatusChangedAt { get; set; }
 
-    public IReadOnlyCollection<OrderLineInfo> OrderLines { get; set; } = [];
+    public ICollection<OrderLineInfo> OrderLines { get; set; } = [];
 
     public long Version { get; set; }
 }

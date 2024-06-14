@@ -5,9 +5,9 @@ namespace LuckyFoodSystem.Orders.Bll.Persistence;
 
 public interface IQueryRepository<TAggregate>
 {
-    Task<IEnumerable<TAggregate>> FindAllAsync();
+    Task<IEnumerable<TAggregate>> FindAllAsync(CancellationToken cancellationToken = default);
 
-    Task<IEnumerable<TAggregate>> FindAllAsync(Expression<Func<TAggregate, bool>> predicate);
+    Task<IEnumerable<TAggregate>> FindAllAsync(Expression<Func<TAggregate, bool>> predicate, CancellationToken cancellationToken = default);
 
-    Task<TAggregate> FindAsync(Expression<Func<TAggregate, bool>> predicate);
+    Task<TAggregate> FindAsync(Expression<Func<TAggregate, bool>> predicate, CancellationToken cancellationToken = default);
 }

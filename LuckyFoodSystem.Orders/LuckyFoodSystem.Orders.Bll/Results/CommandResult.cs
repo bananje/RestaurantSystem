@@ -19,9 +19,9 @@ public class CommandResult
 
     public HttpStatusCode HttpStatusCode { get; private set; }
 
-    public string Message { get; private set; }
+    public string Message { get; private set; } = string.Empty;
 
-    public object SuccessObject { get; private set; }
+    public object SuccessObject { get; private set; } = string.Empty;
 
     public static CommandResult Success(HttpStatusCode httpStatusCode = HttpStatusCode.OK, string message = null!)
         => new CommandResult(httpStatusCode, message);

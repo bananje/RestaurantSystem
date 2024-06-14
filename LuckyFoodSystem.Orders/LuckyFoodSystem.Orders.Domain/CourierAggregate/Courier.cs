@@ -25,7 +25,7 @@ public class Courier : AggregateRoot<CourierId>
 
     public CourierStatus Status { get; private set; } = CourierStatus.Inactive;
 
-    public OrderId CurrentDeliveringOrder { get; private set; }
+    public OrderId CurrentDeliveringOrder { get; private set; } = null!;
 
     public IReadOnlyCollection<OrderId> CompleteOrders => _completeOrders;
 

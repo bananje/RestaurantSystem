@@ -20,7 +20,7 @@ public class CancelOrderCommandHandler : IRequestHandler<CancelOrderCommand, Err
     {
         try
         {
-            var order = await _orderRepository.FindByIdAsync(request.OrderId);
+            var order = await _orderRepository.FindByIdAsync(request.OrderId, cancellationToken);
 
             if (order is null)
             {
@@ -29,7 +29,7 @@ public class CancelOrderCommandHandler : IRequestHandler<CancelOrderCommand, Err
 
             order.CancelOrder();
 
-            await _orderRepository.SaveAsync(order);
+            await _orderRepository.SaveAsync(order, cancellationToken);
 
             return CommandResult.Success(message: $"Заказ ID:{request.OrderId.ToString()} успешно отменён!");
         }

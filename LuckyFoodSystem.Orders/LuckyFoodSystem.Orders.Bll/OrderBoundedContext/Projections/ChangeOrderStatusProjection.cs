@@ -17,14 +17,14 @@ public class ChangeOrderStatusProjection : INotificationHandler<OrderChangedStat
 
     public async Task Handle(OrderChangedStatusEvent notification, CancellationToken cancellationToken)
     {
-        var order = await _orderRepository.FindAsync(u => u.Id == notification.OrderId.Value);
+        var order = await _orderRepository.FindAsync(u => u.Id == notification.OrderId.Value, cancellationToken);
 
         if (order is not null)
         {
             order.Version = notification.AggregateVersion;
             order.CurrentStatus = notification.OrderStatus.Name;
 
-            await _orderRepository.UpdateAsync(order);
+            await _orderRepository.UpdateAsync(order, cancellationToken);
         }
     }
 }

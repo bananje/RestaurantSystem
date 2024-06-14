@@ -1,20 +1,19 @@
 ﻿using LuckyFoodSystem.Orders.Bll.OrderBoundedContext.QueryModels;
 using LuckyFoodSystem.Orders.Bll.Persistence;
-using LuckyFoodSystem.Orders.Domain.OrderAggregate;
 using LuckyFoodSystem.Orders.Domain.OrderAggregate.Bl.Events;
+using MapsterMapper;
 using MediatR;
 
 namespace LuckyFoodSystem.Orders.Bll.OrderBoundedContext.Projections;
 
 public class OrderConfirmedProjection(
-    IProjectionRepository<OrderInfo> repository) : INotificationHandler<OrderConfirmedEvent>
+    IProjectionRepository<OrderInfo> repository,
+    IMapper mapper) : INotificationHandler<OrderConfirmedEvent>
 {
     public async Task Handle(OrderConfirmedEvent @event, CancellationToken cancellationToken)
     {
-        OrderInfo order = new();
+        var order = mapper.Map<OrderInfo>(@event.Order);
 
-        
-
-        await repository.InsertAsync(@event.Order);
+        await repository.InsertAsync(order);
     }
 }

@@ -50,7 +50,7 @@ public class AssignCourierToOrderCommandHandler : IRequestHandler<AssignCourierT
 
             await _courierRepository.SaveAsync(courier);
 
-            return CommandResult.Success($"На заказ ID:{request.OrderId} назначен курьер ID:{request.CourierId}");
+            return CommandResult.Success(message:$"На заказ ID:{request.OrderId} назначен курьер ID:{request.CourierId}");
         }
         catch (BusinessExceptionBase ex)
         {

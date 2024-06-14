@@ -36,7 +36,7 @@ public class UpdateOrderLineQuantityCommandHandler : IRequestHandler<UpdateOrder
 
             await _orderRepository.SaveAsync(order, cancellationToken);
 
-            return CommandResult.Success($"У позиции заказа ID:{order.Id.Value} обновлено количество продуктов на {request.Quantity}");
+            return CommandResult.Success(message:$"У позиции заказа ID:{order.Id.Value} обновлено количество продуктов на {request.Quantity}");
         }
         catch (BusinessExceptionBase ex)
         {

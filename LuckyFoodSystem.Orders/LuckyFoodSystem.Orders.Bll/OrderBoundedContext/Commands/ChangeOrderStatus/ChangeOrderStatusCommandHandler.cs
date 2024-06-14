@@ -34,7 +34,7 @@ public class ChangeOrderStatusCommandHandler : IRequestHandler<ChangeOrderStatus
 
             await _orderRepository.SaveAsync(order, cancellationToken);
 
-            return CommandResult.Success($"Статус заказа ID:{order.Id.Value} обновлён до {request.OrderStatus}");
+            return CommandResult.Success(message:$"Статус заказа ID:{order.Id.Value} обновлён до {request.OrderStatus}");
         }
         catch (BusinessExceptionBase ex)
         {

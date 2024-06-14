@@ -20,7 +20,8 @@ public class OrderMappingConfig : IRegister
             .Map(dest => dest.DeliveryAddress, src => src.DeliveryAddress.ToString())
             .Map(dest => dest.IsClosed, src => src.IsClosed)
             .Map(dest => dest.ClosedWithStatus, src => src.ClosedWithStatus.Name)
-            .Map(dest => dest.OrderStatusChangedAt, src => src.OrderStatusChangedAt);
+            .Map(dest => dest.OrderStatusChangedAt, src => src.OrderStatusChangedAt)
+            .Map(dest => dest.OrderLines, src => src.OrderLines.Adapt<IReadOnlyCollection<OrderLineInfo>>());
 
         config.NewConfig<OrderLine, OrderLineInfo>()
             .Map(dest => dest.OrderLineId, src => src.Id.Value)
@@ -39,7 +40,7 @@ public class OrderMappingConfig : IRegister
             .Map(dest => dest.ShortDescription, src => src.ShortDescription.Value)
             .Map(dest => dest.Price, src => src.Price.Value)
             .Map(dest => dest.Discount, src => src.Discount.Value)
-            .Map(dest => dest.BaseDiscount, src => src.BaseDiscount.Value)
+            .Map(dest => dest.BaseDiscount, src => src.BaseDiscount!.Value)
             .Map(dest => dest.MaxDiscount, src => src.MaxDiscount)
             .Map(dest => dest.PriceWithDiscount, src => src.PriceWithDiscount)
             .Map(dest => dest.Weight, src => src.Weight.Value)

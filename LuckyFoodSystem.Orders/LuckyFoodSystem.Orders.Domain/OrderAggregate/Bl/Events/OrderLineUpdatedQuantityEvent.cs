@@ -9,9 +9,12 @@ public class OrderLineUpdatedQuantityEvent : DomainEvent
 
     public int Quantity { get; private set; }
 
+    public OrderId OrderId { get; private set; }
+
     public OrderLineUpdatedQuantityEvent(OrderId orderId, OrderLineId orderLineId, int quantity)
     {
         AggregateId = orderId.Value;
+        OrderId  = orderId;
         OrderLineId = orderLineId;
         Quantity = quantity;
     }

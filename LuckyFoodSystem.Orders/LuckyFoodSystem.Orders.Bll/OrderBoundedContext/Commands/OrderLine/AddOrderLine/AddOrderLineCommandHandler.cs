@@ -44,7 +44,7 @@ public class AddOrderLineCommandHandler : IRequestHandler<AddOrderLineCommand, E
 
             await _orderRepository.SaveAsync(order, cancellationToken);
 
-            return CommandResult.Success($"В заказ ID:{order.Id.Value} добавлена новая позиция");
+            return CommandResult.Success(message:$"В заказ ID:{order.Id.Value} добавлена новая позиция");
         }
         catch (BusinessExceptionBase ex)
         {

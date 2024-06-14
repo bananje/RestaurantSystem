@@ -19,27 +19,27 @@ public class ProjectionRepository<TAggregate> : IProjectionRepository<TAggregate
         _dbSet = context.Set<TAggregate>();
     }
 
-    public async Task<IEnumerable<TAggregate>> FindAllAsync()
+    public async Task<IEnumerable<TAggregate>> FindAllAsync(CancellationToken cancellationToken = default)
     {
-        return await _dbSet.ToListAsync();
+        return await _dbSet.ToListAsync(cancellationToken);
     }
 
-    public async Task<IEnumerable<TAggregate>> FindAllAsync(Expression<Func<TAggregate, bool>> predicate)
+    public async Task<IEnumerable<TAggregate>> FindAllAsync(Expression<Func<TAggregate, bool>> predicate, CancellationToken cancellationToken = default)
     {
-        return await _dbSet.Where(predicate).ToListAsync();
+        return await _dbSet.Where(predicate).ToListAsync(cancellationToken);
     }
 
-    public async Task<TAggregate> FindAsync(Expression<Func<TAggregate, bool>> predicate)
+    public async Task<TAggregate> FindAsync(Expression<Func<TAggregate, bool>> predicate, CancellationToken cancellationToken = default)
     {
-        return await _dbSet.FirstOrDefaultAsync(predicate);
+        return await _dbSet.FirstOrDefaultAsync(predicate, cancellationToken);
     }
 
-    public async Task InsertAsync(TAggregate entity)
+    public async Task InsertAsync(TAggregate entity, CancellationToken cancellationToken = default)
     {
-        await _dbSet.AddAsync(entity);
+        await _dbSet.AddAsync(entity, cancellationToken);
     }
 
-    public Task UpdateAsync(TAggregate entity)
+    public Task UpdateAsync(TAggregate entity, CancellationToken cancellationToken = default)
     {
         _dbSet.Attach(entity);
         _dbSet.Update(entity);

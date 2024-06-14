@@ -2,7 +2,7 @@
 
 public interface IProjectionRepository<T> : IQueryRepository<T>
 {
-    Task InsertAsync(T entity);
+    Task InsertAsync(T entity, CancellationToken cancellationToken = default);
 
-    Task UpdateAsync(T entity);
+    Task UpdateAsync(T entity, CancellationToken cancellationToken = default);
 }
