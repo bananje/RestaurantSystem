@@ -1,0 +1,6 @@
+@LuckyFoodSystem.Orders.API_HostAddress = https://localhost:7206
+
+GET {{LuckyFoodSystem.Orders.API_HostAddress}}/WeatherForecast/
+Accept: application/json
+
+###

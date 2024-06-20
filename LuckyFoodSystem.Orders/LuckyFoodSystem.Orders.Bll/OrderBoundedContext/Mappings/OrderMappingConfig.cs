@@ -11,7 +11,7 @@ public class OrderMappingConfig : IRegister
     public void Register(TypeAdapterConfig config)
     {
         config.NewConfig<Order, OrderInfo>()
-            .Map(dest => dest.Id, src => src.Id.Value)
+            .Map(dest => dest.OrderId, src => src.Id!.Value)
             .Map(dest => dest.CurrentStatus, src => src.CurrentStatus.Name)
             .Map(dest => dest.PaymentStatus, src => src.PaymentStatus.Name)
             .Map(dest => dest.CustomerId, src => src.CustomerId.Value)
@@ -32,7 +32,7 @@ public class OrderMappingConfig : IRegister
             .Map(dest => dest.Product, src => src.Product);
 
         config.NewConfig<Product, ProductInfo>()
-            .Map(dest => dest.Id, src => src.Id.Value)
+            .Map(dest => dest.ProductId, src => src.Id!.Value)
             .Map(dest => dest.Title, src => src.Title)
             .Map(dest => dest.Description, src => src.Description)
             .Map(dest => dest.ProductImageUrl, src => src.ProductImageUrl)

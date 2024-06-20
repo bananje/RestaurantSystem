@@ -11,7 +11,7 @@ public class OrderLineUpdatedQuantityProjection(
 {
     public async Task Handle(OrderLineUpdatedQuantityEvent notification, CancellationToken cancellationToken)
     {
-        OrderInfo order = await orderRepository.FindAsync(u => u.Id == notification.OrderId.Value, cancellationToken);
+        OrderInfo order = await orderRepository.FindAsync(u => u.OrderId == notification.OrderId.Value, cancellationToken);
 
         if (order is not null)
         {

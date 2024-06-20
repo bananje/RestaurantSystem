@@ -175,7 +175,7 @@ public class Order : AggregateRoot<OrderId>
 
     public void AddOrderLine(Product product, int quantity)
     {
-        var newOrderLine = OrderLine.CreateOrderLine(product, quantity);
+        var newOrderLine = OrderLine.CreateOrderLine(this.Id!, product, quantity);
 
         _orderLines.Add(newOrderLine);
 

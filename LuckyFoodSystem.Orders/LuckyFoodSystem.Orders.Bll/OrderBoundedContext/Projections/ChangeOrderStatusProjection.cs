@@ -17,7 +17,7 @@ public class ChangeOrderStatusProjection : INotificationHandler<OrderChangedStat
 
     public async Task Handle(OrderChangedStatusEvent notification, CancellationToken cancellationToken)
     {
-        var order = await _orderRepository.FindAsync(u => u.Id == notification.OrderId.Value, cancellationToken);
+        var order = await _orderRepository.FindAsync(u => u.OrderId == notification.OrderId.Value, cancellationToken);
 
         if (order is not null)
         {

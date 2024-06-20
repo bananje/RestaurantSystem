@@ -4,7 +4,7 @@ namespace LuckyFoodSystem.Orders.Bll.OrderBoundedContext.QueryModels;
 
 public record OrderInfo : IQueryObject
 {
-    public Guid Id { get; set; }
+    public Guid OrderId { get; set; }
 
     public string CurrentStatus { get; set; } = string.Empty;
 
@@ -33,6 +33,8 @@ public record OrderInfo : IQueryObject
 
 public record OrderLineInfo
 {
+    public Guid OrderId { get; set; }
+
     public Guid OrderLineId { get; set; }
 
     public ProductInfo Product { get; set; } = null!;
@@ -48,7 +50,7 @@ public record OrderLineInfo
 
 public record ProductInfo
 {
-    public Guid Id { get; set; }
+    public Guid ProductId { get; set; }
 
     public string Title { get; set; } = string.Empty;
 

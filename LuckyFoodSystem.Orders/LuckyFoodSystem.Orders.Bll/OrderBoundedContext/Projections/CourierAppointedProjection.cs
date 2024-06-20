@@ -17,7 +17,7 @@ public class CourierAppointedProjection : INotificationHandler<CourierAppointedE
 
     public async Task Handle(CourierAppointedEvent notification, CancellationToken cancellationToken)
     {
-        var order = await _orderRepository.FindAsync(u => u.Id == notification.OrderId.Value);
+        var order = await _orderRepository.FindAsync(u => u.OrderId == notification.OrderId.Value);
 
         if (order is not null)
         {

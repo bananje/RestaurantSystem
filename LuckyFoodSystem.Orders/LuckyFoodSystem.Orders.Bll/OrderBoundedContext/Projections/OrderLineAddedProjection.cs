@@ -21,7 +21,7 @@ public class OrderLineAddedProjection : INotificationHandler<OrderLineAddedEvent
 
     public async Task Handle(OrderLineAddedEvent notification, CancellationToken cancellationToken)
     {
-        OrderInfo order = await _orderRepository.FindAsync(u => u.Id == notification.OrderId.Value, cancellationToken);
+        OrderInfo order = await _orderRepository.FindAsync(u => u.OrderId == notification.OrderId.Value, cancellationToken);
 
         if (order is not null)
         {
