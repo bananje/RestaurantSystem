@@ -35,7 +35,7 @@ public class CreateOrderCommandHandler
         {
             var customer = await _customerRepository.FindByIdAsync(request.CustomerId, cancellationToken);
 
-            if (customer is null)
+            if (customer.Id is null)
             {
                 return Errors.Customer.CustomerNotFound($"Покупатель с id:{request.CustomerId} не найден");
             }

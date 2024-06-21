@@ -1,6 +1,7 @@
 ﻿using ErrorOr;
 using FluentValidation;
 using MediatR;
+using Microsoft.Extensions.Logging;
 
 namespace LuckyFoodSystem.Orders.Bll.Features.Behaivors;
 
@@ -10,17 +11,27 @@ public class ValidationBehaivor<TRequest, TResponse> :
      where TResponse : IErrorOr
 {
     private readonly IValidator<TRequest>? _validator;
-    public ValidationBehaivor(IValidator<TRequest>? validator = null)
+
+    private readonly ILogger<ValidationBehaivor<TRequest, TResponse>> _logger;
+
+    public ValidationBehaivor(
+        ILogger<ValidationBehaivor<TRequest, TResponse>> logger,
+        IValidator<TRequest>? validator = null)
     {
         _validator = validator;
+        _logger = logger;
     }
 
     public async Task<TResponse> Handle(TRequest request,
                                   RequestHandlerDelegate<TResponse> next,
                                   CancellationToken cancellationToken)
     {
+        _logger.LogInformation($"Исполнение {typeof(TRequest).Name}");
+
         if (_validator is null)
         {
+            _logger.LogError($"Валидатор {typeof(IValidator).Name} недоступен");
+
             return await next();
         }
 

@@ -1,4 +1,5 @@
-
+using LuckyFoodSystem.Orders.Bll;
+using LuckyFoodSystem.Orders.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 {
@@ -7,9 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
 
-    //builder.Services.AddBll(builder.Configuration)
-    //                .AddInfrastructure(builder.Services.BuildServiceProvider(), builder.Configuration);
-    
+    builder.Services.AddBll(builder.Configuration);
+
+    builder.Services.AddInfrastructure(builder.Services.BuildServiceProvider(), builder.Configuration);
+
 }
 
 // Add services to the container.

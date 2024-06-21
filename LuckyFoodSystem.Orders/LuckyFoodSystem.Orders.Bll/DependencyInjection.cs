@@ -16,10 +16,9 @@ public static class DependencyInjection
     {
         services.AddMapsterConfiguration();
 
-        services.AddMediatR(typeof(DependencyInjection).Assembly);
+        services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(typeof(DependencyInjection).Assembly));
 
         services.AddScoped(typeof(IPipelineBehavior<,>), typeof(ValidationBehaivor<,>));
-        services.AddScoped(typeof(IPipelineBehavior<,>), typeof(LoggingBehaviour<,>));
 
         services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
 

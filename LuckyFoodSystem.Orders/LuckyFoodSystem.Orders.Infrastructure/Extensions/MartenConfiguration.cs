@@ -1,32 +1,34 @@
 ﻿using LuckyFoodSystem.Orders.Infrastructure.Options;
 using Marten;
+using Marten.Events;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-
 namespace LuckyFoodSystem.Orders.Infrastructure.Extensions;
 
 public static class MartenConfiguration
 {
     public static IServiceCollection AddMartenConfiguration(
-        this IServiceCollection services, 
-        IServiceProvider serviceProvider,
-        IConfiguration configuration)
+    this IServiceCollection services,
+    IConfiguration configuration)
     {
-        var martenConfig = configuration.GetSection(MartenConfig.SectionName);
+        services.Configure<MartenConfig>(configuration.GetSection(MartenConfig.SectionName));
 
-        services.Configure<MartenConfig>(martenConfig);
-
-        var config = serviceProvider.GetRequiredService<IOptions<MartenConfig>>().Value;
-
-        services.AddMarten(opt =>
+        using (var serviceProvider = services.BuildServiceProvider())
         {
-            opt.Connection(config.ConnectionString);
+            var config = serviceProvider.GetRequiredService<IOptions<MartenConfig>>().Value;
 
-            opt.Events.DatabaseSchemaName = config.DatabaseSchemaName;
+            string connectionString = config.ConnectionString;
 
-            opt.Events.StreamIdentity = Marten.Events.StreamIdentity.AsString;
-        });
+            SeedConfiguration.EnsureDatabase(connectionString, config.DatabaseSchemaName);
+
+            services.AddMarten(opt =>
+            {
+                opt.Connection(connectionString);
+                opt.Events.StreamIdentity = StreamIdentity.AsGuid;
+                opt.AutoCreateSchemaObjects = Weasel.Core.AutoCreate.All;
+            });
+        }
 
         return services;
     }

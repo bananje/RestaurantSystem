@@ -10,19 +10,19 @@ public partial class CustomerEmail : ValueObject
             @"^[^@\s]+@[^@\s]+\.[^@\s]+$",
             RegexOptions.Compiled | RegexOptions.IgnoreCase);
 
-    public CustomerEmail(string emailAddress)
+    public CustomerEmail(string Email)
     {
-        if (string.IsNullOrWhiteSpace(emailAddress))
+        if (string.IsNullOrWhiteSpace(Email))
         {
             throw new BusinessException("CustomerEmail адрес не может быть пустым");
         }
 
-        if (!EmailRegex.IsMatch(emailAddress))
+        if (!EmailRegex.IsMatch(Email))
         {
-            throw new ArgumentException($"Введён некорректный адрес электронной почты {emailAddress}");
+            throw new ArgumentException($"Введён некорректный адрес электронной почты {Email}");
         }
 
-        Value = emailAddress;
+        Value = Email;
     }
 
     public string Value { get; private set; }

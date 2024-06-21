@@ -1,4 +1,10 @@
-﻿using LuckyFoodSystem.Orders.Infrastructure.DataAccess.Context;
+﻿using LuckyFoodSystem.Orders.Bll.Persistence;
+using LuckyFoodSystem.Orders.Bll.Services;
+using LuckyFoodSystem.Orders.Infrastructure.DataAccess.Context;
+using LuckyFoodSystem.Orders.Infrastructure.DataAccess.Repositories;
+using LuckyFoodSystem.Orders.Infrastructure.DataAccess.Services;
+using LuckyFoodSystem.Orders.Infrastructure.EventSourcing;
+using LuckyFoodSystem.Orders.Infrastructure.EventSourcing.Repositories;
 using LuckyFoodSystem.Orders.Infrastructure.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -13,7 +19,7 @@ public static class DependencyInjection
         IServiceProvider serviceProvider,
         IConfiguration configuration)
     {
-        services.AddMartenConfiguration(serviceProvider, configuration);
+        services.AddMartenConfiguration(configuration);
 
         services.AddMassTransitConfiguration(serviceProvider, configuration);
 
@@ -21,6 +27,16 @@ public static class DependencyInjection
         {
             opt.UseNpgsql(configuration.GetConnectionString("QueryDbConnection"));
         });
+
+        services.AddTransient(typeof(IEventSourcingRepository<>), typeof(EventSourcingRepository<>));
+
+        services.AddTransient(typeof(IProjectionRepository<>), typeof(ProjectionRepository<>));
+
+        services.AddTransient<IEventSourcingClient, EventStoreDbClient>();
+
+        services.AddTransient<IProductService, ProductService>();
+
+        services.AddTransient(typeof(IQueryRepository<>), typeof(ProjectionRepository<>));
 
         return services;
     }

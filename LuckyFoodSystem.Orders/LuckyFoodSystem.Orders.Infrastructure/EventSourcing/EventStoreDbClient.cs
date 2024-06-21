@@ -1,5 +1,6 @@
 ﻿using LuckyFoodSystem.Orders.Bll.Services;
 using LuckyFoodSystem.Orders.Infrastructure.Common;
+using LuckyFoodSystem.Orders.Infrastructure.Extensions;
 using LuckyFoodSystem.Shared.Domain.Models.Contracts;
 using Marten;
 using Newtonsoft.Json;
@@ -23,6 +24,8 @@ public class EventStoreDbClient(
 
     public async Task<(long Version, IEnumerable<IDomainEvent> Events)> ReadEventsAsync(Guid aggregateId)
     {
+        //SeedConfiguration.SeedDataAsync(session.DocumentStore);
+
         if (aggregateId == Guid.Empty)
             throw new ArgumentNullException(nameof(aggregateId));
 
@@ -36,7 +39,7 @@ public class EventStoreDbClient(
 
         foreach (var e in events)
         {
-            var domainEvent = DeserializeEvent(e.EventType.Name, (ReadOnlyMemory<byte>) e.Data);
+            var domainEvent = DeserializeEvent((byte[]) e.Data);
             persistedEvents.Add(domainEvent);
             aggregateVersion = e.Version;
         }
@@ -45,17 +48,38 @@ public class EventStoreDbClient(
     }
 
     private static byte[] SerializeEvent(IDomainEvent @event)
-           => Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(@event));
-
-    private static IDomainEvent DeserializeEvent(string eventType, ReadOnlyMemory<byte> data)
     {
+        var eventType = @event.GetType().AssemblyQualifiedName;
+        var eventData = new
+        {
+            EventType = eventType,
+            Data = @event
+        };
+
         JsonSerializerSettings settings = new JsonSerializerSettings
         {
+            Formatting = Formatting.Indented,
             ContractResolver = new PrivateSetterContractResolver(),
             ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
         };
 
-        return (IDomainEvent)JsonConvert.DeserializeObject(Encoding.UTF8.GetString(data.ToArray()), Type.GetType(eventType), settings)!;
+        return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(eventData, settings));
+    }
+
+    private static IDomainEvent DeserializeEvent(ReadOnlyMemory<byte> data)
+    {
+        JsonSerializerSettings settings = new JsonSerializerSettings
+        {
+            ContractResolver = new PrivateSetterContractResolver(),
+            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            Formatting = Formatting.Indented,
+        };
+
+        var eventData = JsonConvert.DeserializeObject<dynamic>(Encoding.UTF8.GetString(data.ToArray()), settings);
+        string type = eventData.EventType;
+        string eventJson = eventData.Data.ToString();
+        return (IDomainEvent)JsonConvert.DeserializeObject(eventJson, Type.GetType(type)!, settings)!;
     }
 }

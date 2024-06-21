@@ -111,7 +111,7 @@ public class Customer : AggregateRoot<CustomerId>
         Email = @event.Email;
         Phone = @event.Phone;
         OrdersCount = @event.OrdersCount;
-        DeliveryAddress = @event.DeliveryAddress;
+        //DeliveryAddress = @event.DeliveryAddress;
     }
 
     private void OnAddedOrder(AddedOrderEvent @event)

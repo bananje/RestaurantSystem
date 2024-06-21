@@ -1,0 +1,104 @@
+﻿using LuckyFoodSystem.Orders.Domain.CustomerAggregate;
+using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Bl.Events;
+using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Entity;
+using LuckyFoodSystem.Orders.Domain.Models.CustomerAggregate.ValueObjects;
+using LuckyFoodSystem.Orders.Domain.OrderAggregate;
+using LuckyFoodSystem.Orders.Domain.OrderAggregate.Bl.Events;
+using LuckyFoodSystem.Orders.Infrastructure.Common;
+using LuckyFoodSystem.Shared.Domain;
+using LuckyFoodSystem.Shared.Domain.Models.Contracts;
+using Marten;
+using Marten.Internal.Storage;
+using Newtonsoft.Json;
+using Npgsql;
+using System.Text;
+
+namespace LuckyFoodSystem.Orders.Infrastructure.Extensions;
+
+public class SeedConfiguration
+{
+    public static void EnsureDatabase(string connectionString, string databaseName)
+    {
+        var builder = new NpgsqlConnectionStringBuilder(connectionString);
+        var adminConnectionString = $"Host={builder.Host};Port={builder.Port};Username={builder.Username};Password={builder.Password}";
+
+        using var connection = new NpgsqlConnection(adminConnectionString);
+        connection.Open();
+
+        using var command = connection.CreateCommand();
+        command.CommandText = $"SELECT 1 FROM pg_database WHERE datname = '{databaseName}'";
+        var exists = command.ExecuteScalar() != null;
+
+        if (!exists)
+        {
+            command.CommandText = $"CREATE DATABASE \"{databaseName}\"";
+            command.ExecuteNonQuery();
+        }
+    }
+
+    public static void SeedDataAsync(IDocumentStore documentStore)
+    {
+        using var session = documentStore.LightweightSession();
+
+        // Создание событий
+        var customerId = new CustomerId(Guid.NewGuid());
+        var customerCreatedEvent = new CustomerCreatedEvent(
+            customerId,
+            "John",
+            "Doe",
+            "Smith",
+            new CustomerEmail("john.doe@example.com"),
+            new CustomerPhone("+1234567890"),
+            0,
+            new Address("fd","fd","fd","5"));
+
+        var orderId = new OrderId(Guid.NewGuid());
+        var address = new Address("df", "fd", "fd", "fd");
+        var order = new Order(customerId, address); // Дополните инициализацию Order, если необходимо
+        var orderConfirmedEvent = new OrderConfirmedEvent(order);
+
+        // Начальная вставка данных
+        session.Events.StartStream(typeof(Customer), customerId.Value, SerializeEvent(customerCreatedEvent));
+        // session.Events.StartStream(typeof(Order), orderId.Value, SerializeEvent(orderConfirmedEvent));
+
+        session.SaveChanges();
+
+    }
+
+    private static byte[] SerializeEvent(IDomainEvent @event)
+    {
+        var eventType = @event.GetType().AssemblyQualifiedName;
+        var eventData = new
+        {
+            EventType = eventType,
+            Data = @event
+        };
+
+        JsonSerializerSettings settings = new JsonSerializerSettings
+        {
+            Formatting = Formatting.Indented,
+            ContractResolver = new PrivateSetterContractResolver(),
+            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore
+        };
+
+
+        return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(eventData, settings));
+    }
+
+    private static IDomainEvent DeserializeEvent(string eventType, ReadOnlyMemory<byte> data)
+    {
+        JsonSerializerSettings settings = new JsonSerializerSettings
+        {
+            ContractResolver = new PrivateSetterContractResolver(),
+            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
+            ReferenceLoopHandling = ReferenceLoopHandling.Ignore,
+            Formatting = Formatting.Indented,
+        };
+
+        var eventData = JsonConvert.DeserializeObject<dynamic>(Encoding.UTF8.GetString(data.ToArray()), settings);
+        string type = eventData.EventType;
+        string eventJson = eventData.Data.ToString();
+        return (IDomainEvent)JsonConvert.DeserializeObject(eventJson, Type.GetType(type)!, settings)!;
+    }
+}
