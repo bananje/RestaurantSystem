@@ -97,7 +97,7 @@ public class Order : AggregateRoot<OrderId>
         {
             CurrentStatus = OrderStatus.Complete;
 
-            RaiseEvent(new OrderChangedStatusEvent(orderId: this.Id, OrderStatus.Complete));
+            RaiseEvent(new OrderChangedStatusEvent(orderId: this.Id!, OrderStatus.Complete));
 
             return true;
         }
@@ -149,14 +149,18 @@ public class Order : AggregateRoot<OrderId>
             CheckRule(new OrderStatusCanNotBeCompleteWhileDontCompletedAllOrderlines(_orderLines));
         }
 
-        if (orderStatus == OrderStatus.Delivered || orderStatus == OrderStatus.Canceled)
+        CurrentStatus = orderStatus;
+
+        if (orderStatus == OrderStatus.Delivered)
         {
-            CloseOrder(orderStatus);
+            RaiseEvent(new OrderDeliveredEvent(Id!, CustomerId, CourierId, orderStatus));
         }
+
+        CloseOrder(orderStatus);
 
         CurrentStatus = orderStatus;
 
-        RaiseEvent(new OrderChangedStatusEvent(Id, orderStatus));
+        RaiseEvent(new OrderChangedStatusEvent(Id!, orderStatus));
     }
 
     public void ChangeOrderLineStatus(OrderLineId orderLineId, ReadyStatus readyStatus)
@@ -185,15 +189,6 @@ public class Order : AggregateRoot<OrderId>
         RaiseEvent(new OrderLineAddedEvent(Id, newOrderLine));
     }
 
-    //public void RemoveOrderLine(OrderLineId orderLineId)
-    //{
-    //    _orderLines.RemoveWhere(u => u.Id.Value == orderLineId.Value);
-
-    //    TotalPrice = GetTotalPrice();
-
-    //    RaiseEvent(new OrderLineRemovedEvent(Id, orderLineId));
-    //}
-
     public void UpdateOrderLineQuantity(OrderLineId orderLineId, int quantity)
     {
         var orderLine = _orderLines.Where(u => u.Id.Value == orderLineId.Value).FirstOrDefault()
@@ -220,7 +215,7 @@ public class Order : AggregateRoot<OrderId>
         CurrentStatus = orderStatus;
         ClosedWithStatus = orderStatus;
 
-        RaiseEvent(new OrderClosedEvent(Id, CurrentStatus, ClosedWithStatus, IsClosed, OrderStatusChangedAt));
+        RaiseEvent(new OrderClosedEvent(Id!, CurrentStatus, ClosedWithStatus, IsClosed, OrderStatusChangedAt));
     }
 
 

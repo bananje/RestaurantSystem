@@ -7,20 +7,20 @@ namespace LuckyFoodSystem.Shared.Domain.Features.Converters;
 public class MultiParameterConstructorConverter<T> : JsonConverter where T : class
 {
     private readonly ConstructorInfo _constructor;
-    private readonly ParameterInfo[] _constructorParameters;
+    private readonly ParameterInfo[] _parameters;
 
     public MultiParameterConstructorConverter()
     {
         // Получаем конструктор с несколькими параметрами
         _constructor = typeof(T).GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
-                                .FirstOrDefault();
+                                .FirstOrDefault()!;
 
         if (_constructor == null)
         {
-            throw new InvalidOperationException($"Type {typeof(T)} does not have a suitable constructor.");
+            throw new InvalidOperationException($"Type {typeof(T)} does not have a constructor with multiple parameters.");
         }
 
-        _constructorParameters = _constructor.GetParameters();
+        _parameters = _constructor.GetParameters();
     }
 
     public override bool CanConvert(Type objectType)
@@ -35,16 +35,18 @@ public class MultiParameterConstructorConverter<T> : JsonConverter where T : cla
             return null;
         }
 
-        // Загружаем JSON объект
-        JObject jsonObject = JObject.Load(reader);
+        JToken token = JToken.Load(reader);
 
-        // Получаем значения для каждого параметра конструктора
-        var constructorArguments = _constructorParameters
-            .Select(p => jsonObject[p.Name]?.ToObject(p.ParameterType, serializer))
-            .ToArray();
+        // Проверяем, является ли JSON объектом
+        if (token.Type != JTokenType.Object)
+        {
+            throw new JsonSerializationException($"Expected JSON object but got {token.Type}.");
+        }
 
-        // Вызываем конструктор с полученными значениями
-        return _constructor.Invoke(constructorArguments);
+        // Считываем значения параметров из JSON
+        var values = _parameters.Select(p => token[p.Name]?.ToObject(p.ParameterType, serializer)).ToArray();
+
+        return _constructor.Invoke(values);
     }
 
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
@@ -55,21 +57,32 @@ public class MultiParameterConstructorConverter<T> : JsonConverter where T : cla
             return;
         }
 
-        // Приводим объект к нужному типу
-        var jsonObject = new JObject();
+        var jObject = new JObject();
 
-        // Записываем значения свойств в JSON объект
-        foreach (var parameter in _constructorParameters)
+        foreach (var parameter in _parameters)
         {
-            var property = value.GetType().GetProperty(parameter.Name, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic);
+            var propertyName = parameter.Name;
+
+            // Попробуем найти свойство с такой же чувствительностью к регистру, что и в конструкторе
+            var property = value.GetType().GetProperty(propertyName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.IgnoreCase);
+            var field = value.GetType().GetField(propertyName, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.IgnoreCase);
+
             if (property != null)
             {
                 var propertyValue = property.GetValue(value);
-                jsonObject.Add(parameter.Name, JToken.FromObject(propertyValue, serializer));
+                jObject.Add(propertyName, JToken.FromObject(propertyValue, serializer));
+            }
+            else if (field != null)
+            {
+                var fieldValue = field.GetValue(value);
+                jObject.Add(propertyName, JToken.FromObject(fieldValue, serializer));
+            }
+            else
+            {
+                throw new InvalidOperationException($"Property or field '{propertyName}' not found on type '{typeof(T)}'.");
             }
         }
 
-        // Сериализуем JSON объект
-        jsonObject.WriteTo(writer);
+        jObject.WriteTo(writer);
     }
 }

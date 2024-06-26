@@ -25,10 +25,8 @@ public class CustomerCreatedEvent : DomainEvent
 
     public int OrdersCount { get; private set; }
 
-    // TO-DO доделать 
-
     [JsonConverter(typeof(MultiParameterConstructorConverter<Address>))]
-    public Address? DeliveryAddress { get; private set; }
+    public Address DeliveryAddress { get; private set; }
 
     public CustomerCreatedEvent(
             CustomerId customerId,

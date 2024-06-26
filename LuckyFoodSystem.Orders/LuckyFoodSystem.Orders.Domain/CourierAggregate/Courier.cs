@@ -66,12 +66,19 @@ public class Courier : AggregateRoot<CourierId>
     {
         CheckRule(new OrderStatusMustHaveCompleteStatusOnly(orderStatus));
 
-        _completeOrders.Add(orderId);
-
         Status = CourierStatus.Delivering;
         CurrentDeliveringOrder = orderId;
 
-        RaiseEvent(new CourierGatedOrderEvent(Status, CurrentDeliveringOrder, Id));
+        RaiseEvent(new CourierGatedOrderEvent(Status, CurrentDeliveringOrder, Id!));
+    }
+
+    public void AddCompletedOrder(Order order)
+    {
+        CheckRule(new OrderMustHaveDeliveredStatus(order.CurrentStatus));
+
+        _completeOrders.Add(order.Id!);
+
+        RaiseEvent(new CourierCompletedOrderEvent(Id!, order.Id!));
     }
 
     public void ChangeStatus(CourierStatus newStatus)

@@ -1,6 +1,6 @@
-﻿using LuckyFoodSystem.Orders.Bll.OrderBoundedContext.QueryModels;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore;
+using LuckyFoodSystem.Orders.Bll.QueryModels;
 
 namespace LuckyFoodSystem.Orders.Infrastructure.DataAccess.Configurations.Customer;
 

@@ -50,10 +50,10 @@ public class SeedConfiguration
             new CustomerEmail("john.doe@example.com"),
             new CustomerPhone("+1234567890"),
             0,
-            new Address("fd","fd","fd","5"));
+            new Address("fd45345","fd34535","fd4543","545"));
 
         var orderId = new OrderId(Guid.NewGuid());
-        var address = new Address("df", "fd", "fd", "fd");
+        var address = new Address("dfFEWF", "fdWEFWEF", "fdWEFWEF", "33");
         var order = new Order(customerId, address); // Дополните инициализацию Order, если необходимо
         var orderConfirmedEvent = new OrderConfirmedEvent(order);
 
@@ -82,11 +82,10 @@ public class SeedConfiguration
             ReferenceLoopHandling = ReferenceLoopHandling.Ignore
         };
 
-
         return Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(eventData, settings));
     }
 
-    private static IDomainEvent DeserializeEvent(string eventType, ReadOnlyMemory<byte> data)
+    private static IDomainEvent DeserializeEvent(ReadOnlyMemory<byte> data)
     {
         JsonSerializerSettings settings = new JsonSerializerSettings
         {

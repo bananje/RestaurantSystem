@@ -22,4 +22,9 @@
     <ProjectReference Include="..\LuckyFoodSystem.Orders.Domain\LuckyFoodSystem.Orders.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="AggregateContext\CustomerBoundedContext\Commands\UpdateCustomerInfo\" />
+    <Folder Include="AggregateContext\CustomerBoundedContext\Projections\" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,4 @@
-﻿using LuckyFoodSystem.Orders.Bll.OrderBoundedContext.QueryModels;
+﻿using LuckyFoodSystem.Orders.Bll.QueryModels;
 using LuckyFoodSystem.Orders.Infrastructure.DataAccess.Configurations.Courier;
 using LuckyFoodSystem.Orders.Infrastructure.DataAccess.Configurations.Customer;
 using LuckyFoodSystem.Orders.Infrastructure.DataAccess.Configurations.Order;

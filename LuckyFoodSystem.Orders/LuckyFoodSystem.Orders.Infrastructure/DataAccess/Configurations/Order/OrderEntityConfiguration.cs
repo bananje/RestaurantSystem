@@ -1,4 +1,4 @@
-﻿using LuckyFoodSystem.Orders.Bll.OrderBoundedContext.QueryModels;
+﻿using LuckyFoodSystem.Orders.Bll.QueryModels;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

@@ -24,7 +24,7 @@ public class EventStoreDbClient(
 
     public async Task<(long Version, IEnumerable<IDomainEvent> Events)> ReadEventsAsync(Guid aggregateId)
     {
-        //SeedConfiguration.SeedDataAsync(session.DocumentStore);
+        SeedConfiguration.SeedDataAsync(session.DocumentStore);
 
         if (aggregateId == Guid.Empty)
             throw new ArgumentNullException(nameof(aggregateId));

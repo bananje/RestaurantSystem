@@ -1,4 +1,5 @@
-﻿using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Enumerations;
+﻿using LuckyFoodSystem.Orders.Domain.CustomerAggregate;
+using LuckyFoodSystem.Orders.Domain.Models.OrderAggregate.Enumerations;
 using LuckyFoodSystem.Shared.Domain.Models;
 
 namespace LuckyFoodSystem.Orders.Domain.OrderAggregate.Bl.Events;

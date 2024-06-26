@@ -35,14 +35,12 @@ public class Customer : AggregateRoot<CustomerId>
 
     }
 
-    public Customer(CustomerId customerId,
-                     string firstName,
-                     string middleName,
-                     string lastName,
-                     CustomerEmail email,
-                     CustomerPhone phone,
-                     int ordersCount,
-                     Address address)
+    public Customer(string firstName,
+                    string middleName,
+                    string lastName,
+                    CustomerEmail email,
+                    CustomerPhone phone,
+                    Address address)
     {
         Id = CustomerId.CreateUnique();
         FirstName = firstName;
@@ -50,7 +48,7 @@ public class Customer : AggregateRoot<CustomerId>
         LastName = lastName;
         Email = email;
         Phone = phone;
-        OrdersCount = ordersCount;
+        OrdersCount = 0;
         DeliveryAddress = address;
 
         RaiseEvent(new CustomerCreatedEvent(
@@ -60,7 +58,26 @@ public class Customer : AggregateRoot<CustomerId>
              LastName,
              Email,
              Phone,
-             OrdersCount));
+             OrdersCount,
+             DeliveryAddress));
+    }
+
+    public void UpdateCustomerInfo(
+        CustomerId customerId,
+        string firstName,
+        string middleName,
+        string lastName,
+        CustomerEmail email,
+        CustomerPhone phone,
+        Address address)
+    {
+        Id = customerId;
+        FirstName = firstName;
+        MiddleName = middleName;
+        LastName = lastName;
+        Email = email;
+        Phone = phone;
+        DeliveryAddress = address;
     }
 
     public void AddOrder(Order order)
@@ -70,16 +87,16 @@ public class Customer : AggregateRoot<CustomerId>
             OrdersCount++;
         }
 
-        _orders.Add(order.Id);
+        _orders.Add(order.Id!);
 
-        RaiseEvent(new AddedOrderEvent(Id, order.Id));
+        RaiseEvent(new AddedOrderEvent(Id!, order.Id!));
     }
 
     public void RemoveOrder(OrderId orderId)
     {
         _orders.Remove(orderId);
 
-        RaiseEvent(new RemovedOrderEvent(Id, orderId));
+        RaiseEvent(new RemovedOrderEvent(Id!, orderId));
     }
 
     public void ChangeDeliveryAddress(Address address)
@@ -111,7 +128,7 @@ public class Customer : AggregateRoot<CustomerId>
         Email = @event.Email;
         Phone = @event.Phone;
         OrdersCount = @event.OrdersCount;
-        //DeliveryAddress = @event.DeliveryAddress;
+        DeliveryAddress = @event.DeliveryAddress;
     }
 
     private void OnAddedOrder(AddedOrderEvent @event)

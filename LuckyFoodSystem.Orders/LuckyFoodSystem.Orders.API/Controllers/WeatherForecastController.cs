@@ -1,5 +1,5 @@
+using LuckyFoodSystem.Orders.Bll.AggregateContext.OrderBoundedContext.Contracts;
 using LuckyFoodSystem.Orders.Bll.OrderBoundedContext.Commands.CreateOrder;
-using LuckyFoodSystem.Orders.Bll.OrderBoundedContext.Contracts;
 using LuckyFoodSystem.Orders.Infrastructure.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -46,7 +46,7 @@ namespace LuckyFoodSystem.Orders.API.Controllers
 
             orderLines.Add(o);
 
-            var command = new CreateOrderCommand(Guid.Parse("1044ba55-c13f-46d1-a49a-c4cf7f7206d3"), "fgerg", "gdfg", "gfdfg","34", orderLines);
+            var command = new CreateOrderCommand(Guid.Parse("957b692b-d1d0-4b8e-a0ee-64e06cab3abb"), "fgerg", "gdfg", "gfdfg","34", orderLines);
 
             var t = await _SENDER.Send(command);
 
