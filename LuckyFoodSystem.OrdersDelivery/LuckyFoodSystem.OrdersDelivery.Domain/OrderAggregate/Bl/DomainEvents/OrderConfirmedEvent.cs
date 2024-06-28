@@ -1,6 +1,6 @@
 ﻿using LuckyFoodSystem.Shared.Domain.Models;
 
-namespace LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.Events;
+namespace LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.DomainEvents;
 
 public class OrderConfirmedEvent : DomainEvent
 {

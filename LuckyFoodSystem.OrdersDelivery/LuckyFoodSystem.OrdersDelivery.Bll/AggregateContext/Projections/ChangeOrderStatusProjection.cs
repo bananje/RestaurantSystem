@@ -1,6 +1,6 @@
 ﻿using LuckyFoodSystem.OrdersDelivery.Bll.Persistence;
 using LuckyFoodSystem.OrdersDelivery.Bll.QueryModels;
-using LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.Events;
+using LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.DomainEvents;
 using MediatR;
 
 namespace LuckyFoodSystem.OrdersDelivery.Bll.AggregateContext.Projections;

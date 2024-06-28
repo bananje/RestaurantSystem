@@ -3,7 +3,7 @@ using LuckyFoodSystem.OrdersDelivery.Domain.Models.OrderAggregate.Enumerations;
 using LuckyFoodSystem.Shared.Domain.Models;
 
 
-namespace LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.Events;
+namespace LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.DomainEvents;
 
 public class CourierAppointedEvent : DomainEvent
 {

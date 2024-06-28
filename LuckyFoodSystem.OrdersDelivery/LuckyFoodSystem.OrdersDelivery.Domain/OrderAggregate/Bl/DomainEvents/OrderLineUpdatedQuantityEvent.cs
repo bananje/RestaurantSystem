@@ -1,7 +1,7 @@
 ﻿using LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Entity.OrderLineEntity;
 using LuckyFoodSystem.Shared.Domain.Models;
 
-namespace LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.Events;
+namespace LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.DomainEvents;
 
 public class OrderLineUpdatedQuantityEvent : DomainEvent
 {
@@ -14,7 +14,7 @@ public class OrderLineUpdatedQuantityEvent : DomainEvent
     public OrderLineUpdatedQuantityEvent(OrderId orderId, OrderLineId orderLineId, int quantity)
     {
         AggregateId = orderId.Value;
-        OrderId  = orderId;
+        OrderId = orderId;
         OrderLineId = orderLineId;
         Quantity = quantity;
     }

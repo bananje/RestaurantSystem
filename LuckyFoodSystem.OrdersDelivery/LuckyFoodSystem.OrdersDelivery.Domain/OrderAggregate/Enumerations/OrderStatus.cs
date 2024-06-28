@@ -4,7 +4,7 @@ namespace LuckyFoodSystem.OrdersDelivery.Domain.Models.OrderAggregate.Enumeratio
 
 public partial class OrderStatus : Enumeration
 {
-    public static OrderStatus Accepted = new (1, nameof(Accepted));
+    public static OrderStatus Created = new (1, nameof(Created));
 
     public static OrderStatus InProcess = new(2, nameof(InProcess));
 

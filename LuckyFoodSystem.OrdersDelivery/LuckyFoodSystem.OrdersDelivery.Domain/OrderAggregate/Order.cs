@@ -3,7 +3,7 @@ using LuckyFoodSystem.OrdersDelivery.Domain.CourierAggregate;
 using LuckyFoodSystem.OrdersDelivery.Domain.Models.CourierAggregate.Enumerations;
 using LuckyFoodSystem.OrdersDelivery.Domain.Models.OrderAggregate.Entity.OrderLineEntity.Enumerations;
 using LuckyFoodSystem.OrdersDelivery.Domain.Models.OrderAggregate.Enumerations;
-using LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.Events;
+using LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.DomainEvents;
 using LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.Exceptions;
 using LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.Rules;
 using LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Entity.OrderLineEntity;
@@ -20,7 +20,7 @@ public class Order : AggregateRoot<OrderId>
 
     private readonly HashSet<OrderLine> _orderLines = [];
 
-    public OrderStatus CurrentStatus { get; private set; } = OrderStatus.Accepted;
+    public OrderStatus CurrentStatus { get; private set; } = OrderStatus.Created;
 
     public PaymentStatus PaymentStatus { get; private set; } = PaymentStatus.Unpaid;
 
@@ -51,7 +51,7 @@ public class Order : AggregateRoot<OrderId>
         Id = OrderId.CreateUnique();
         CustomerId = customerId;
         DeliveryAddress = deliveryAddress;
-        CurrentStatus = OrderStatus.Accepted;
+        CurrentStatus = OrderStatus.Created;
         PaymentStatus = PaymentStatus.Unpaid;
     }
 
@@ -184,7 +184,7 @@ public class Order : AggregateRoot<OrderId>
         _orderLines.Add(newOrderLine);
 
         TotalPrice = GetTotalPrice();
-        CurrentStatus = OrderStatus.Accepted;
+        CurrentStatus = OrderStatus.Created;
 
         RaiseEvent(new OrderLineAddedEvent(Id, newOrderLine));
     }
