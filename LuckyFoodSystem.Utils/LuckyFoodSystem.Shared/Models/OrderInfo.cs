@@ -1,6 +1,6 @@
-﻿using LuckyFoodSystem.OrdersDelivery.Bll.Features.Mediatr;
+﻿using LuckyFoodSystem.Shared.Mediatr;
 
-namespace LuckyFoodSystem.OrdersDelivery.Bll.QueryModels;
+namespace LuckyFoodSystem.Shared.Models;
 
 public record OrderInfo : IQueryObject
 {

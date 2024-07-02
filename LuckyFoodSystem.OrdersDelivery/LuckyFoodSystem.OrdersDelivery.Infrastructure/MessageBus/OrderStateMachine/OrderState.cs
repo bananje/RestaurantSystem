@@ -1,8 +1,4 @@
-﻿using LuckyFoodSystem.Orders.Domain.CustomerAggregate;
-using LuckyFoodSystem.OrdersDelivery.Domain.CourierAggregate;
-using LuckyFoodSystem.OrdersDelivery.Domain.Models.OrderAggregate.Enumerations;
-using LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Entity.OrderLineEntity;
-using LuckyFoodSystem.Shared.Domain.Models.Entity;
+﻿using LuckyFoodSystem.Shared.Models;
 using MassTransit;
 
 namespace LuckyFoodSystem.OrdersDelivery.Infrastructure.MessageBus.OrderStateMachine;
@@ -11,23 +7,29 @@ public class OrderState : SagaStateMachineInstance
 {
     public Guid CorrelationId { get; set; }
 
-    public OrderStatus CurrentState { get; set; } = null!;
+    public string CurrentState { get; set; } = string.Empty;
 
     public bool IsClosed { get; set; }
 
-    public OrderStatus ClosedWithStatus { get; set; } = null!;
+    public string ClosedWithStatus { get; set; } = string.Empty;
 
     public DateTime OrderStatusChangedAt { get; set; }
 
-    public Address DeliveryAddress { get; private set; } = null!;
+    public string City { get; set; } = string.Empty;
+
+    public string Street { get; set; } = string.Empty;
+
+    public string House { get; set; } = string.Empty;
+
+    public string ApartmentNum { get; set; } = string.Empty;
 
     public decimal TotalPrice { get; set; }
 
-    public PaymentStatus PaymentStatus { get; set; } = null!;
+    public string PaymentStatus { get; set; } = string.Empty;
 
-    public List<OrderLine> OrderLines { get; set; } = [];
+    public List<OrderLineInfo> OrderLines { get; set; } = [];
 
-    public CustomerId CustomerId { get; private set; } = null!;
+    public Guid CustomerId { get; set; }
 
-    public CourierId CourierId { get; private set; } = null!;
+    public Guid CourierId { get; set; }
 }
