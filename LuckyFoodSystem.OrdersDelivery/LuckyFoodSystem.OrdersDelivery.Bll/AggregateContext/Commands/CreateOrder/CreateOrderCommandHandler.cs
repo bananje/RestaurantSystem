@@ -4,8 +4,13 @@ using LuckyFoodSystem.OrdersDelivery.Bll.Persistence;
 using LuckyFoodSystem.OrdersDelivery.Bll.Results;
 using LuckyFoodSystem.OrdersDelivery.Bll.Services;
 using LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate;
+using LuckyFoodSystem.Shared.Contracts.Common.DTO;
+using LuckyFoodSystem.Shared.Contracts.OrderService.Contracts;
+using LuckyFoodSystem.Shared.Contracts.OrderService.Events;
 using LuckyFoodSystem.Shared.Domain.Bl.Exceptions;
 using LuckyFoodSystem.Shared.Domain.Models.Entity;
+using LuckyFoodSystem.Shared.Features;
+using MassTransit;
 using MediatR;
 
 namespace LuckyFoodSystem.OrdersDelivery.Bll.AggregateContext.Commands.CreateOrder;
@@ -19,20 +24,33 @@ public class CreateOrderCommandHandler
 
     private readonly IProductService _productService;
 
+    private readonly IPublishEndpoint _publishEndpoint;
+
+    private readonly IRequestClient<GetOrderStateRequest> _orderStateClient;
+
     public CreateOrderCommandHandler(
+        IPublishEndpoint publishEndpoint,
+        IRequestClient<GetOrderStateRequest> orderStateClient,
         IEventSourcingRepository<Order> orderRepository,
-        IEventSourcingRepository<Customer> customerRepository,
-        IProductService productService)
+        IEventSourcingRepository<Customer> customerRepository)
     {
         _customerRepository = customerRepository;
         _orderRepository = orderRepository;
-        _productService = productService;
+        _publishEndpoint = publishEndpoint;
+        _orderStateClient = orderStateClient;
     }
 
     public async Task<ErrorOr<CommandResult>> Handle(CreateOrderCommand request, CancellationToken cancellationToken)
     {
         try
         {
+            await _publishEndpoint.Publish<OrderCreated>(new
+            {
+                CustomerId = Guid.NewGuid(),
+                OrderLines = new List<OrderLineStruct>()
+            });
+
+
             var customer = await _customerRepository.FindByIdAsync(request.CustomerId, cancellationToken);
 
             if (customer.Id is null)
@@ -50,7 +68,7 @@ public class CreateOrderCommandHandler
 
             foreach (var item in request.OrderLines)
             {
-                var product = await _productService.GetProductByIdAsync(item.ProductId, cancellationToken);
+                var product = await _productService.GetProductByI3dAsync(item.ProductId, cancellationToken);
 
                 if (product is null)
                 {

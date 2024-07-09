@@ -1,5 +1,6 @@
 using LuckyFoodSystem.OrdersDelivery.Bll.AggregateContext.Commands.CreateOrder;
-using LuckyFoodSystem.OrdersDelivery.Bll.AggregateContext.Contracts;
+using LuckyFoodSystem.Shared.Contracts.Common.DTO;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,10 +19,13 @@ namespace LuckyFoodSystem.OrdersDelivery.API.Controllers
 
         private readonly ISender _SENDER;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger, ISender sender)
+        private readonly IPublishEndpoint _publishEndpoint;
+
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, ISender sender, IPublishEndpoint publishEndpoint)
         {
             _logger = logger;
             _SENDER = sender;
+            _publishEndpoint = publishEndpoint;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -39,6 +43,20 @@ namespace LuckyFoodSystem.OrdersDelivery.API.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateOrder()
         {
+            try
+            {
+                await _publishEndpoint.Publish<OrderCreated>(new
+                {
+                    CustomerId = Guid.NewGuid(),
+                    OrderLines = new List<OrderLineStruct>()
+                });
+
+                var confirmedOrder
+            }
+            catch
+            {
+
+            }
             List<OrderLineRequestStruct> orderLines = [];
 
             var o = new OrderLineRequestStruct(Guid.Parse("0e482dd0-258f-4172-9da3-9eadb11a7c03"), 34);

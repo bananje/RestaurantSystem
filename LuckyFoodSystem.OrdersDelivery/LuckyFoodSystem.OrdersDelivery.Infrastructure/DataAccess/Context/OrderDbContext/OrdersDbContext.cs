@@ -4,12 +4,12 @@ using LuckyFoodSystem.OrdersDelivery.Infrastructure.DataAccess.Configurations.Cu
 using LuckyFoodSystem.OrdersDelivery.Infrastructure.DataAccess.Configurations.Order;
 using Microsoft.EntityFrameworkCore;
 
-namespace LuckyFoodSystem.OrdersDelivery.Infrastructure.DataAccess.Context;
+namespace LuckyFoodSystem.OrdersDelivery.Infrastructure.DataAccess.Context.OrderDbContext;
 
 public class OrdersDbContext : DbContext
 {
     public OrdersDbContext(DbContextOptions<OrdersDbContext> options) : base(options)
-    {       
+    {
     }
 
     public DbSet<OrderInfo> Orders { get; set; }

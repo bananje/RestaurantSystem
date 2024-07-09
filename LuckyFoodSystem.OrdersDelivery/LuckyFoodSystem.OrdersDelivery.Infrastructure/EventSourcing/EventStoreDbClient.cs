@@ -77,7 +77,7 @@ public class EventStoreDbClient(
             Formatting = Formatting.Indented,
         };
 
-        var eventData = JsonConvert.DeserializeObject<dynamic>(Encoding.UTF8.GetString(data.ToArray()), settings);
+        dynamic? eventData = JsonConvert.DeserializeObject<dynamic>(Encoding.UTF8.GetString(data.ToArray()), settings);
         string type = eventData.EventType;
         string eventJson = eventData.Data.ToString();
         return (IDomainEvent)JsonConvert.DeserializeObject(eventJson, Type.GetType(type)!, settings)!;

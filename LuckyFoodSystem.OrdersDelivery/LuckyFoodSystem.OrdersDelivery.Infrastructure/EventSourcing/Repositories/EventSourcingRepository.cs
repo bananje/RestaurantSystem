@@ -36,6 +36,7 @@ public class EventSourcingRepository<TAggregate>(
         CancellationToken cancellationToken = default)
     {
         var aggregateVersion = aggregate.Version;
+
         foreach (var @event in aggregate.GetUncommittedChanges())
         {
             @event.AggregateVersion = aggregateVersion++;
@@ -43,6 +44,7 @@ public class EventSourcingRepository<TAggregate>(
 
             await publisher.Publish((dynamic)@event);
         }
+
         aggregate.MarkChangesAsCommitted();
     }
 }

@@ -6,11 +6,9 @@ namespace LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Entity.ProductEnt
 {
     public class Product : Entity<ProductId>
     {
-        public string Title { get; private set; } = null!;
+        public string Title { get; private set; } = string.Empty;
 
-        public string Description { get; private set; } = null!;
-
-        public string ProductImageUrl { get; private set; } = null!;
+        public string ProductImageUrl { get; private set; } = string.Empty;
 
         public SaleStatus Status { get; private set; } = null!;
 
@@ -18,11 +16,7 @@ namespace LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Entity.ProductEnt
 
         public Price Price { get; private set; } = null!;
 
-        public Discount Discount { get; private set; } = null!;
-
-        public decimal? BaseDiscount { get; private set; }
-
-        public decimal? MaxDiscount { get; private set; }
+        public Discount Discount { get; private set; } 
 
         public decimal PriceWithDiscount => GetPriceWithDiscount(Price, Discount);
 
@@ -31,7 +25,6 @@ namespace LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Entity.ProductEnt
         public WeightUnit WeightUnit { get; private set; } = null!;
 
         public Product(string title,
-                       string description,
                        string productImageUrl,
                        ShortDescription shortDescription,
                        SaleStatus status,
@@ -42,7 +35,6 @@ namespace LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Entity.ProductEnt
         {
             Id = ProductId.CreateUnique();
             Title = title;
-            Description = description;
             ProductImageUrl = productImageUrl;
             ShortDescription = shortDescription;
             Price = price;

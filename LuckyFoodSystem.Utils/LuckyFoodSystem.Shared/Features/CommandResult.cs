@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace LuckyFoodSystem.OrdersDelivery.Bll.Results;
+namespace LuckyFoodSystem.Shared.Features;
 
 public class CommandResult
 {

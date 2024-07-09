@@ -1,6 +1,6 @@
 ﻿using LuckyFoodSystem.Shared.Mediatr;
 
-namespace LuckyFoodSystem.Shared.Models;
+namespace LuckyFoodSystem.OrdersDelivery.Infrastructure.DataAccess.Context.OrderDbContext.Models;
 
 public record CustomerInfo : IQueryObject
 {

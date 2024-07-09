@@ -4,7 +4,7 @@ namespace LuckyFoodSystem.OrdersDelivery.Domain.Models.OrderAggregate.Entity.Pro
 
 public partial class SaleStatus : Enumeration
 {
-    public static SaleStatus Available = new(1, nameof(Available));
+    public static SaleStatus Available = new(1, "Доступен");
 
-    public static SaleStatus UnAvailable = new(2, nameof(UnAvailable));
+    public static SaleStatus UnAvailable = new(2, "Недоступен");
 }

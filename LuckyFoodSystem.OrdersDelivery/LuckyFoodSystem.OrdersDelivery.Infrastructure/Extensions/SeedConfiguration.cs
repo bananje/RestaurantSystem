@@ -1,6 +1,7 @@
 ﻿using LuckyFoodSystem.Orders.Domain.CustomerAggregate;
 using LuckyFoodSystem.Orders.Domain.CustomerAggregate.Bl.Events;
 using LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate;
+using LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.DomainEvents;
 using LuckyFoodSystem.OrdersDelivery.Domain.OrderAggregate.Bl.Events;
 using LuckyFoodSystem.OrdersDelivery.Infrastructure.Common;
 using LuckyFoodSystem.Shared.Domain.Models.Contracts;

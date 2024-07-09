@@ -1,14 +1,9 @@
-﻿using LuckyFoodSystem.OrdersDelivery.Bll.AggregateContext.Contracts;
-using LuckyFoodSystem.OrdersDelivery.Bll.Features.Mediatr;
-using LuckyFoodSystem.OrdersDelivery.Bll.Results;
+﻿using LuckyFoodSystem.Shared.Contracts.Common.DTO;
+using LuckyFoodSystem.Shared.Features;
+using LuckyFoodSystem.Shared.Mediatr;
 
 namespace LuckyFoodSystem.OrdersDelivery.Bll.AggregateContext.Commands.CreateOrder;
 
 public record CreateOrderCommand(
     Guid CustomerId,
-    string City,
-    string Street,
-    string House,
-    string ApartmentNum,
-    IReadOnlyCollection<OrderLineRequestStruct> OrderLines)
-    : ICommand<CommandResult>;
+    IReadOnlyCollection<OrderLineStruct> OrderLines) : ICommand<CommandResult>;

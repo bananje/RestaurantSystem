@@ -1,5 +1,6 @@
-﻿using LuckyFoodSystem.OrdersDelivery.Infrastructure.Options;
-using LuckyFoodSystem.Shared.Contracts;
+﻿using LuckyFoodSystem.OrdersDelivery.Infrastructure.MessageBus.Events;
+using LuckyFoodSystem.OrdersDelivery.Infrastructure.Options;
+using LuckyFoodSystem.Shared.Contracts.OrderService.Contracts;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -12,21 +13,22 @@ public class OrderStateMachine : MassTransitStateMachine<OrderState>
 
     private readonly IOptions<EndpointsConfiguration> _settings;
 
-    public State Created { get; private set; }
+    public State Confirmed { get; private set; }
 
-    public State AwaitingProductData { get; private set; }
-
-    public State AwaitingCustomerData { get; private set; }
-
-    public State OrderConfirmed { get; private set; }
+    public State Closed { get; private set; }
 
 
+    public Event<OrderCreated> OrderCreated { get; private set; }
 
-    public Event<CreateOrder> OrderCreated { get; private set; }
+    public Event<OrderConfirmed> OrderConfirmed { get; private set; }
 
-    public Request<OrderState, GetProductData, GetProductDataResponse> ProductRequest { get; private set; }
+    public Event<OrderLinesNotConfirmed> OrderLineNotConfirmed { get; private set; }
 
-    public Request<OrderState, GetCustomerData, GetCustomerDataResponse> CustomerRequest { get; private set; }
+
+    public Request<OrderState, IList<GetProductDataRequest>, IList<GetProductDataResponse>> ProductRequest { get; private set; }
+
+    public Request<OrderState, GetDeliveryAddress, GetDeliveryAddressResponse> CustomerRequest { get; private set; }
+
 
     public OrderStateMachine(
         ILogger<OrderStateMachine> logger,
@@ -35,7 +37,7 @@ public class OrderStateMachine : MassTransitStateMachine<OrderState>
         _logger = logger;
         _settings = settings;
 
-        InstanceState(x => x.CurrentState.Name);
+        InstanceState(x => x.CurrentState);
         
         BuildStateMachine();
 
@@ -45,6 +47,8 @@ public class OrderStateMachine : MassTransitStateMachine<OrderState>
     private void BuildStateMachine()
     {
         Event(() => OrderCreated, x => x.CorrelateById(context => context.Message.OrderId));
+        Event(() => OrderConfirmed, x => x.CorrelateById(context => context.Message.OrderId));
+        Event(() => OrderLineNotConfirmed, x => x.CorrelateById(context => context.Message.OrderLines.Select(u => u.OrderLine.OrderId).First()));
     }
 
     private Task HandleUnhandledEvent(UnhandledEventContext<OrderState> context)
@@ -61,39 +65,64 @@ public class OrderStateMachine : MassTransitStateMachine<OrderState>
         return Task.CompletedTask;
     }
 
+    private EventActivities<OrderState> WhenOrderLineNotConfirmed()
+    {
+        return When(OrderLineNotConfirmed)
+            .Then(context =>
+            {
+                context.Saga.CourierId
+            })
+            .Request(ProductRequest, x => x.Init<GetProductDataRequest>(new
+            {
+                x.Saga.OrderLines
+            }))
+            .TransitionTo(ProductRequest.Pending);
+    }
+
     private EventActivities<OrderState> WhenOrderCreated()
     {
         return When(OrderCreated)
             .Then(context =>
             {
+                context.Saga.CorrelationId = context.Message.OrderId;
+                context.Saga.CustomerId = context.Message.CustomerId;
+                context.Saga.OrderLines = context.Message.OrderLines;
+
                 _logger.LogInformation($"[{DateTime.Now}][SAGA] Order submitted. CorrelationId: {context.Instance.CorrelationId}");
             })
-            .Request(ProductRequest, x => x.Init<GetProductData>(new { ProductIds = x.Instance.OrderLines.Select(u => u.Id!.Value) }))
+            .Request(ProductRequest, x => x.Init<GetProductDataRequest>(new
+            {
+                x.Saga.OrderLines
+            }))
+            .Catch<>
             .TransitionTo(ProductRequest.Pending);
     }
 
-    private EventActivities<OrderState> WhenCustomerDataReturned()
+    private EventActivities<OrderState> WhenProductDataReturned()
     {
         return When(ProductRequest.Completed)
             .Then(context =>
             {
-                _logger.LogInformation($"[{DateTime.Now}][SAGA] Order submitted. CorrelationId: {context.Instance.CorrelationId}");
+                context.Saga.OrderLines = context.Message.OrderLines;
+
+                _logger.LogInformation($"[{DateTime.Now}][SAGA] Order submitted. CorrelationId: {context.Saga.CorrelationId}");
             })
-            .Request(CustomerRequest, x => x.Init<GetCustomerData>(new { CustomerId = x.Instance.CustomerId.Value }))
+            .Request(CustomerRequest, x => x.Init<GetDeliveryAddress>(new { x.Saga.CustomerId }))
             .TransitionTo(CustomerRequest.Pending);
     }
 
-    private EventActivities<OrderState> WhenOrderConfirmed()
+    private EventActivities<OrderState> WhenCustomerDataReturned()
     {
         return When(CustomerRequest.Completed)
             .Then(context =>
             {
-                _logger.LogInformation($"[{DateTime.Now}][SAGA] Order submitted. CorrelationId: {context.Instance.CorrelationId}");
+                context.Saga.ApartmentNum = context.Message.ApartmentNum;
+                context.Saga.City = context.Message.City;
+                context.Saga.Street = context.Message.Street;
+                context.Saga.House = context.Message.House;
+
+                _logger.LogInformation($"[{DateTime.Now}][SAGA] Order submitted. CorrelationId: {context.Saga.CorrelationId}");
             })
-            .SendAsync(new Uri(_settings.Value.UserServiceAddress), x => x.Init<>(new
-            {
-                OrderId = x.Instance.CorrelationId,
-                Cart = FromDtoCartPositionToDbConverter.ConvertBackMany(x.Instance.Cart)
-            }))
+            .TransitionTo(Confirmed);
     }
 }

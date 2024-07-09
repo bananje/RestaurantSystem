@@ -1,4 +1,4 @@
-﻿using LuckyFoodSystem.Shared.Models;
+﻿using LuckyFoodSystem.OrdersDelivery.Infrastructure.DataAccess.Context.OrderStateMachineDbContext.Models;
 using MassTransit;
 
 namespace LuckyFoodSystem.OrdersDelivery.Infrastructure.MessageBus.OrderStateMachine;
@@ -27,9 +27,11 @@ public class OrderState : SagaStateMachineInstance
 
     public string PaymentStatus { get; set; } = string.Empty;
 
-    public List<OrderLineInfo> OrderLines { get; set; } = [];
+    public IList<OrderLine> OrderLines { get; set; } = [];
 
     public Guid CustomerId { get; set; }
 
     public Guid CourierId { get; set; }
+
+    public byte[] RowVersion { get; set; } = Array.Empty<byte>();
 }
