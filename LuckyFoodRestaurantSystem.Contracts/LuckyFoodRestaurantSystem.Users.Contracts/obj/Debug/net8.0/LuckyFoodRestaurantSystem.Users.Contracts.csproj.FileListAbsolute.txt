@@ -1,0 +1,11 @@
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Users.Contracts\bin\Debug\net8.0\LuckyFoodRestaurantSystem.Users.Contracts.deps.json
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Users.Contracts\bin\Debug\net8.0\LuckyFoodRestaurantSystem.Users.Contracts.dll
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Users.Contracts\bin\Debug\net8.0\LuckyFoodRestaurantSystem.Users.Contracts.pdb
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Users.Contracts\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Users.Contracts.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Users.Contracts\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Users.Contracts.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Users.Contracts\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Users.Contracts.AssemblyInfo.cs
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Users.Contracts\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Users.Contracts.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Users.Contracts\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Users.Contracts.dll
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Users.Contracts\obj\Debug\net8.0\refint\LuckyFoodRestaurantSystem.Users.Contracts.dll
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Users.Contracts\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Users.Contracts.pdb
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Users.Contracts\obj\Debug\net8.0\ref\LuckyFoodRestaurantSystem.Users.Contracts.dll

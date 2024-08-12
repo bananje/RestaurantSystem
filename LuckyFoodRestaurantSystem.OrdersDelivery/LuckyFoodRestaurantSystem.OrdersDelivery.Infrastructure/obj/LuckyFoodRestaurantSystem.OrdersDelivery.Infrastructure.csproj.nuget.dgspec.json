@@ -1,0 +1,708 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Infrastructure\\LuckyFoodRestaurantSystem.OrdersDelivery.Infrastructure.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Contracts.Shared\\LuckyFoodRestaurantSystem.Contracts.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Contracts.Shared\\LuckyFoodRestaurantSystem.Contracts.Shared.csproj",
+        "projectName": "LuckyFoodRestaurantSystem.Contracts.Shared",
+        "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Contracts.Shared\\LuckyFoodRestaurantSystem.Contracts.Shared.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Contracts.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.voids.site/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300-preview.24203.14/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts.csproj",
+        "projectName": "LuckyFoodRestaurantSystem.OrdersDelivery.Contracts",
+        "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.voids.site/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Contracts.Shared\\LuckyFoodRestaurantSystem.Contracts.Shared.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Contracts.Shared\\LuckyFoodRestaurantSystem.Contracts.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300-preview.24203.14/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts.csproj",
+        "projectName": "LuckyFoodRestaurantSystem.ProductStock.Contracts",
+        "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.voids.site/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Contracts.Shared\\LuckyFoodRestaurantSystem.Contracts.Shared.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Contracts.Shared\\LuckyFoodRestaurantSystem.Contracts.Shared.csproj"
+              },
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Utils\\LuckyFoodRestaurantSystem.Shared\\LuckyFoodRestaurantSystem.Shared.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Utils\\LuckyFoodRestaurantSystem.Shared\\LuckyFoodRestaurantSystem.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300-preview.24203.14/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Users.Contracts\\LuckyFoodRestaurantSystem.Users.Contracts.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Users.Contracts\\LuckyFoodRestaurantSystem.Users.Contracts.csproj",
+        "projectName": "LuckyFoodRestaurantSystem.Users.Contracts",
+        "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Users.Contracts\\LuckyFoodRestaurantSystem.Users.Contracts.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Users.Contracts\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.voids.site/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300-preview.24203.14/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Bll\\LuckyFoodRestaurantSystem.OrdersDelivery.Bll.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Bll\\LuckyFoodRestaurantSystem.OrdersDelivery.Bll.csproj",
+        "projectName": "LuckyFoodRestaurantSystem.OrdersDelivery.Bll",
+        "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Bll\\LuckyFoodRestaurantSystem.OrdersDelivery.Bll.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Bll\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.voids.site/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Contracts.Shared\\LuckyFoodRestaurantSystem.Contracts.Shared.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Contracts.Shared\\LuckyFoodRestaurantSystem.Contracts.Shared.csproj"
+              },
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts.csproj"
+              },
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts.csproj"
+              },
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Users.Contracts\\LuckyFoodRestaurantSystem.Users.Contracts.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.Users.Contracts\\LuckyFoodRestaurantSystem.Users.Contracts.csproj"
+              },
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain.csproj"
+              },
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Utils\\LuckyFoodRestaurantSystem.Shared\\LuckyFoodRestaurantSystem.Shared.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Utils\\LuckyFoodRestaurantSystem.Shared\\LuckyFoodRestaurantSystem.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "ErrorOr": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
+            "FluentValidation": {
+              "target": "Package",
+              "version": "[11.9.1, )"
+            },
+            "FluentValidation.DependencyInjectionExtensions": {
+              "target": "Package",
+              "version": "[11.9.1, )"
+            },
+            "Mapster": {
+              "target": "Package",
+              "version": "[7.4.0, )"
+            },
+            "Mapster.DependencyInjection": {
+              "target": "Package",
+              "version": "[1.0.1, )"
+            },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[8.2.3, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[12.3.0, )"
+            },
+            "Microsoft.AspNetCore.Http.Abstractions": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300-preview.24203.14/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain.csproj",
+        "projectName": "LuckyFoodRestaurantSystem.OrdersDelivery.Domain",
+        "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.voids.site/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Utils\\LuckyFoodRestaurantSystem.Shared\\LuckyFoodRestaurantSystem.Shared.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Utils\\LuckyFoodRestaurantSystem.Shared\\LuckyFoodRestaurantSystem.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300-preview.24203.14/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Infrastructure\\LuckyFoodRestaurantSystem.OrdersDelivery.Infrastructure.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Infrastructure\\LuckyFoodRestaurantSystem.OrdersDelivery.Infrastructure.csproj",
+        "projectName": "LuckyFoodRestaurantSystem.OrdersDelivery.Infrastructure",
+        "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Infrastructure\\LuckyFoodRestaurantSystem.OrdersDelivery.Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Infrastructure\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.voids.site/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts\\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts.csproj"
+              },
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts\\LuckyFoodRestaurantSystem.ProductStock.Contracts.csproj"
+              },
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Bll\\LuckyFoodRestaurantSystem.OrdersDelivery.Bll.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Bll\\LuckyFoodRestaurantSystem.OrdersDelivery.Bll.csproj"
+              },
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.OrdersDelivery\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain\\LuckyFoodRestaurantSystem.OrdersDelivery.Domain.csproj"
+              },
+              "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Utils\\LuckyFoodRestaurantSystem.Shared\\LuckyFoodRestaurantSystem.Shared.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Utils\\LuckyFoodRestaurantSystem.Shared\\LuckyFoodRestaurantSystem.Shared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Marten": {
+              "target": "Package",
+              "version": "[7.16.0, )"
+            },
+            "Marten.AspNetCore": {
+              "target": "Package",
+              "version": "[7.16.0, )"
+            },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[8.2.3, )"
+            },
+            "MassTransit.RabbitMQ": {
+              "target": "Package",
+              "version": "[8.2.3, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Relational": {
+              "target": "Package",
+              "version": "[8.0.6, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.4, )"
+            },
+            "Microsoft.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[8.0.1, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[8.0.2, )"
+            },
+            "Microsoft.Extensions.Options.ConfigurationExtensions": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
+            "Npgsql": {
+              "target": "Package",
+              "version": "[8.0.3, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300-preview.24203.14/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Utils\\LuckyFoodRestaurantSystem.Shared\\LuckyFoodRestaurantSystem.Shared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Utils\\LuckyFoodRestaurantSystem.Shared\\LuckyFoodRestaurantSystem.Shared.csproj",
+        "projectName": "LuckyFoodRestaurantSystem.Shared",
+        "projectPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Utils\\LuckyFoodRestaurantSystem.Shared\\LuckyFoodRestaurantSystem.Shared.csproj",
+        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\LuckyFoodRestaurantSystem\\LuckyFoodRestaurantSystem.Utils\\LuckyFoodRestaurantSystem.Shared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.voids.site/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "ErrorOr": {
+              "target": "Package",
+              "version": "[2.0.1, )"
+            },
+            "MassTransit": {
+              "target": "Package",
+              "version": "[8.2.3, )"
+            },
+            "MediatR": {
+              "target": "Package",
+              "version": "[11.1.0, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.300-preview.24203.14/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

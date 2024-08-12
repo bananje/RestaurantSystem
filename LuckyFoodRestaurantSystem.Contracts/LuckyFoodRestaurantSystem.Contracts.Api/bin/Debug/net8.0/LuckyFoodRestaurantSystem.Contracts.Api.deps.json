@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "LuckyFoodRestaurantSystem.Contracts.Api/1.0.0": {
+        "dependencies": {
+          "LuckyFoodRestaurantSystem.Contracts.Shared": "1.0.0"
+        },
+        "runtime": {
+          "LuckyFoodRestaurantSystem.Contracts.Api.dll": {}
+        }
+      },
+      "LuckyFoodRestaurantSystem.Contracts.Shared/1.0.0": {
+        "runtime": {
+          "LuckyFoodRestaurantSystem.Contracts.Shared.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LuckyFoodRestaurantSystem.Contracts.Api/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "LuckyFoodRestaurantSystem.Contracts.Shared/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

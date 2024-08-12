@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Marten" Version="7.16.0" />
+		<PackageReference Include="Marten.AspNetCore" Version="7.16.0" />
+		<PackageReference Include="MassTransit" Version="8.2.3" />
+		<PackageReference Include="MassTransit.RabbitMQ" Version="8.2.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.6">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="8.0.6.0" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.4">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="8.0.2" />
+		<PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="8.0.0" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+		<PackageReference Include="Npgsql" Version="8.0.3" />
+		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.4" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts.csproj" />
+	  <ProjectReference Include="..\..\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.ProductStock.Contracts\LuckyFoodRestaurantSystem.ProductStock.Contracts.csproj" />
+	  <ProjectReference Include="..\..\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\LuckyFoodRestaurantSystem.Shared.csproj" />
+	  <ProjectReference Include="..\..\LuckyFoodRestaurantSystem.Utils\SourceGeneratingDomain\SourceGeneratingDomain.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+	  <ProjectReference Include="..\LuckyFoodRestaurantSystem.OrdersDelivery.Bll\LuckyFoodRestaurantSystem.OrdersDelivery.Bll.csproj" />
+	  <ProjectReference Include="..\LuckyFoodRestaurantSystem.OrdersDelivery.Domain\LuckyFoodRestaurantSystem.OrdersDelivery.Domain.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="Common\Exceptions\" />
+	</ItemGroup>
+
+</Project>

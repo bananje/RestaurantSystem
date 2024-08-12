@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "h7HhjfIqBz0LBTfjRHuCL6sHa3DxiYHRlKpG1LJIKv8=",
+  "Source": "LuckyFoodRestaurantSystem.OrdersDelivery.Api",
+  "BasePath": "_content/LuckyFoodRestaurantSystem.OrdersDelivery.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="ErrorOr" Version="2.0.1" />
+		<PackageReference Include="FluentValidation" Version="11.9.1" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.1" />
+		<PackageReference Include="Mapster" Version="7.4.0" />
+		<PackageReference Include="Mapster.DependencyInjection" Version="1.0.1" />
+		<PackageReference Include="MassTransit" Version="8.2.3" />
+		<PackageReference Include="MediatR" Version="12.3.0" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Shared\LuckyFoodRestaurantSystem.Contracts.Shared.csproj" />
+	  <ProjectReference Include="..\..\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts\LuckyFoodRestaurantSystem.OrdersDelivery.Contracts.csproj" />
+	  <ProjectReference Include="..\..\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.ProductStock.Contracts\LuckyFoodRestaurantSystem.ProductStock.Contracts.csproj" />
+	  <ProjectReference Include="..\..\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Users.Contracts\LuckyFoodRestaurantSystem.Users.Contracts.csproj" />
+	  <ProjectReference Include="..\..\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\LuckyFoodRestaurantSystem.Shared.csproj" />
+	  <ProjectReference Include="..\LuckyFoodRestaurantSystem.OrdersDelivery.Domain\LuckyFoodRestaurantSystem.OrdersDelivery.Domain.csproj" />
+	</ItemGroup>
+	
+</Project>

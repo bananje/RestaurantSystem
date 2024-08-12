@@ -1,0 +1,12 @@
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\bin\Debug\net8.0\LuckyFoodRestaurantSystem.Shared.deps.json
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\bin\Debug\net8.0\LuckyFoodRestaurantSystem.Shared.dll
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\bin\Debug\net8.0\LuckyFoodRestaurantSystem.Shared.pdb
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Shared.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Shared.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Shared.AssemblyInfo.cs
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Shared.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Shared.dll
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\obj\Debug\net8.0\refint\LuckyFoodRestaurantSystem.Shared.dll
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Shared.pdb
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Utils\LuckyFoodRestaurantSystem.Shared\obj\Debug\net8.0\ref\LuckyFoodRestaurantSystem.Shared.dll

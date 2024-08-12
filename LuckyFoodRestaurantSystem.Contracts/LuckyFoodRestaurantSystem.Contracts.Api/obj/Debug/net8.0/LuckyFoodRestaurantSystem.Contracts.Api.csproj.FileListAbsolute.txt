@@ -1,0 +1,15 @@
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\bin\Debug\net8.0\LuckyFoodRestaurantSystem.Contracts.Api.deps.json
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\bin\Debug\net8.0\LuckyFoodRestaurantSystem.Contracts.Api.dll
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\bin\Debug\net8.0\LuckyFoodRestaurantSystem.Contracts.Api.pdb
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\bin\Debug\net8.0\LuckyFoodRestaurantSystem.Contracts.Shared.dll
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\bin\Debug\net8.0\LuckyFoodRestaurantSystem.Contracts.Shared.pdb
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Contracts.Api.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Contracts.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Contracts.Api.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Contracts.Api.AssemblyInfo.cs
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Contracts.Api.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\obj\Debug\net8.0\LuckyFoo.4758DBDD.Up2Date
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Contracts.Api.dll
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\obj\Debug\net8.0\refint\LuckyFoodRestaurantSystem.Contracts.Api.dll
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\obj\Debug\net8.0\LuckyFoodRestaurantSystem.Contracts.Api.pdb
+C:\Users\user\source\repos\LuckyFoodRestaurantSystem\LuckyFoodRestaurantSystem.Contracts\LuckyFoodRestaurantSystem.Contracts.Api\obj\Debug\net8.0\ref\LuckyFoodRestaurantSystem.Contracts.Api.dll
